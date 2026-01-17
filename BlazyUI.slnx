@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/BlazyUI.Demo/BlazyUI.Demo.csproj" />
+    <Project Path="src/BlazyUI/BlazyUI.csproj" />
+  </Folder>
+</Solution>
