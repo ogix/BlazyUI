@@ -1,0 +1,70 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div role="alert" class="@CssClass" @attributes="AdditionalAttributes">
+    @Icon
+    @ChildContent
+</div>
+
+@code {
+    /// <summary>
+    /// The color variant of the alert.
+    /// </summary>
+    [Parameter]
+    public AlertColor Color { get; set; } = AlertColor.None;
+
+    /// <summary>
+    /// The style variant of the alert.
+    /// </summary>
+    [Parameter]
+    public AlertStyle Style { get; set; } = AlertStyle.None;
+
+    /// <summary>
+    /// The layout direction of the alert.
+    /// </summary>
+    [Parameter]
+    public AlertLayout Layout { get; set; } = AlertLayout.None;
+
+    /// <summary>
+    /// Optional icon to display before the content.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? Icon { get; set; }
+
+    /// <summary>
+    /// The content to display inside the alert.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "alert",
+        ColorClass,
+        StyleClass,
+        LayoutClass
+    );
+
+    private string? ColorClass => Color switch
+    {
+        AlertColor.Info => "alert-info",
+        AlertColor.Success => "alert-success",
+        AlertColor.Warning => "alert-warning",
+        AlertColor.Error => "alert-error",
+        _ => null
+    };
+
+    private string? StyleClass => Style switch
+    {
+        AlertStyle.Outline => "alert-outline",
+        AlertStyle.Dash => "alert-dash",
+        AlertStyle.Soft => "alert-soft",
+        _ => null
+    };
+
+    private string? LayoutClass => Layout switch
+    {
+        AlertLayout.Vertical => "alert-vertical",
+        AlertLayout.Horizontal => "alert-horizontal",
+        _ => null
+    };
+}

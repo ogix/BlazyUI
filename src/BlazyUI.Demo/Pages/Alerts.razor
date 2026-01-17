@@ -1,0 +1,256 @@
+@page "/alerts"
+
+<PageTitle>Alerts</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Alert Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <Alert>This is a simple alert message.</Alert>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-col gap-2">
+            <Alert>Default alert</Alert>
+            <Alert Color="AlertColor.Info">Info: New software update available.</Alert>
+            <Alert Color="AlertColor.Success">Success: Your purchase has been confirmed!</Alert>
+            <Alert Color="AlertColor.Warning">Warning: Invalid email address!</Alert>
+            <Alert Color="AlertColor.Error">Error: Something went wrong!</Alert>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Styles</h2>
+    <CodeExample Code="@stylesCode">
+        <div class="flex flex-col gap-2">
+            <Alert Color="AlertColor.Info">Solid (Default)</Alert>
+            <Alert Color="AlertColor.Info" Style="AlertStyle.Outline">Outline</Alert>
+            <Alert Color="AlertColor.Info" Style="AlertStyle.Dash">Dash</Alert>
+            <Alert Color="AlertColor.Info" Style="AlertStyle.Soft">Soft</Alert>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Icons</h2>
+    <CodeExample Code="@iconsCode">
+        <div class="flex flex-col gap-2">
+            <Alert Color="AlertColor.Info">
+                <Icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </Icon>
+                <ChildContent>
+                    <span>New software update available.</span>
+                </ChildContent>
+            </Alert>
+            <Alert Color="AlertColor.Success">
+                <Icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </Icon>
+                <ChildContent>
+                    <span>Your purchase has been confirmed!</span>
+                </ChildContent>
+            </Alert>
+            <Alert Color="AlertColor.Warning">
+                <Icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                </Icon>
+                <ChildContent>
+                    <span>Warning: Invalid email address!</span>
+                </ChildContent>
+            </Alert>
+            <Alert Color="AlertColor.Error">
+                <Icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </Icon>
+                <ChildContent>
+                    <span>Error! Task failed successfully.</span>
+                </ChildContent>
+            </Alert>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Title and Description</h2>
+    <CodeExample Code="@titleDescCode">
+        <Alert Color="AlertColor.Warning">
+            <Icon>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+            </Icon>
+            <ChildContent>
+                <div>
+                    <h3 class="font-bold">Warning!</h3>
+                    <div class="text-xs">Your session is about to expire in 5 minutes.</div>
+                </div>
+            </ChildContent>
+        </Alert>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Actions</h2>
+    <CodeExample Code="@actionsCode">
+        <Alert Color="AlertColor.Info">
+            <Icon>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </Icon>
+            <ChildContent>
+                <span>We use cookies for no reason.</span>
+                <div class="flex gap-2">
+                    <Button Size="ButtonSize.Small">Deny</Button>
+                    <Button Size="ButtonSize.Small" Color="ButtonColor.Primary">Accept</Button>
+                </div>
+            </ChildContent>
+        </Alert>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Layout</h2>
+    <CodeExample Code="@layoutCode">
+        <div class="flex flex-col gap-2">
+            <Alert Color="AlertColor.Success" Layout="AlertLayout.Vertical">
+                <Icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </Icon>
+                <ChildContent>
+                    <span>Vertical layout alert</span>
+                </ChildContent>
+            </Alert>
+            <Alert Color="AlertColor.Success" Layout="AlertLayout.Horizontal">
+                <Icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </Icon>
+                <ChildContent>
+                    <span>Horizontal layout alert</span>
+                </ChildContent>
+            </Alert>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Dismissible (Custom)</h2>
+    <CodeExample Code="@dismissibleCode">
+        @if (showAlert)
+        {
+            <Alert Color="AlertColor.Success">
+                <Icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </Icon>
+                <ChildContent>
+                    <span>This alert can be dismissed!</span>
+                    <Button Size="ButtonSize.Small" Style="ButtonStyle.Ghost" Circle OnClick="@(() => showAlert = false)">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </Button>
+                </ChildContent>
+            </Alert>
+        }
+        else
+        {
+            <Button Color="ButtonColor.Primary" OnClick="@(() => showAlert = true)">Show Alert</Button>
+        }
+    </CodeExample>
+</section>
+
+@code {
+    private bool showAlert = true;
+
+    private string basicCode = @"<Alert>This is a simple alert message.</Alert>";
+
+    private string colorsCode = @"<Alert>Default alert</Alert>
+<Alert Color=""AlertColor.Info"">Info: New software update available.</Alert>
+<Alert Color=""AlertColor.Success"">Success: Your purchase has been confirmed!</Alert>
+<Alert Color=""AlertColor.Warning"">Warning: Invalid email address!</Alert>
+<Alert Color=""AlertColor.Error"">Error: Something went wrong!</Alert>";
+
+    private string stylesCode = @"<Alert Color=""AlertColor.Info"">Solid (Default)</Alert>
+<Alert Color=""AlertColor.Info"" Style=""AlertStyle.Outline"">Outline</Alert>
+<Alert Color=""AlertColor.Info"" Style=""AlertStyle.Dash"">Dash</Alert>
+<Alert Color=""AlertColor.Info"" Style=""AlertStyle.Soft"">Soft</Alert>";
+
+    private string iconsCode = @"<Alert Color=""AlertColor.Info"">
+    <Icon>
+        <svg><!-- info icon --></svg>
+    </Icon>
+    <ChildContent>
+        <span>New software update available.</span>
+    </ChildContent>
+</Alert>";
+
+    private string titleDescCode = @"<Alert Color=""AlertColor.Warning"">
+    <Icon>
+        <svg><!-- warning icon --></svg>
+    </Icon>
+    <ChildContent>
+        <div>
+            <h3 class=""font-bold"">Warning!</h3>
+            <div class=""text-xs"">Your session is about to expire.</div>
+        </div>
+    </ChildContent>
+</Alert>";
+
+    private string actionsCode = @"<Alert Color=""AlertColor.Info"">
+    <Icon>
+        <svg><!-- info icon --></svg>
+    </Icon>
+    <ChildContent>
+        <span>We use cookies for no reason.</span>
+        <div class=""flex gap-2"">
+            <Button Size=""ButtonSize.Small"">Deny</Button>
+            <Button Size=""ButtonSize.Small"" Color=""ButtonColor.Primary"">Accept</Button>
+        </div>
+    </ChildContent>
+</Alert>";
+
+    private string layoutCode = @"<Alert Color=""AlertColor.Success"" Layout=""AlertLayout.Vertical"">
+    <Icon><svg>...</svg></Icon>
+    <ChildContent>
+        <span>Vertical layout alert</span>
+    </ChildContent>
+</Alert>";
+
+    private string dismissibleCode = @"@if (showAlert)
+{
+    <Alert Color=""AlertColor.Success"">
+        <Icon><svg>...</svg></Icon>
+        <ChildContent>
+            <span>This alert can be dismissed!</span>
+            <Button Size=""ButtonSize.Small"" Style=""ButtonStyle.Ghost"" Circle
+                    OnClick=""@(() => showAlert = false)"">
+                <svg><!-- X icon --></svg>
+            </Button>
+        </ChildContent>
+    </Alert>
+}
+
+@code {
+    private bool showAlert = true;
+}";
+}
