@@ -6,7 +6,7 @@ namespace BlazyUI;
 public enum ButtonSize
 {
     /// <summary>Default medium size.</summary>
-    None,
+    Default,
     /// <summary>Extra small button (btn-xs).</summary>
     ExtraSmall,
     /// <summary>Small button (btn-sm).</summary>

@@ -17,19 +17,19 @@
     /// The color variant of the button.
     /// </summary>
     [Parameter]
-    public ButtonColor Color { get; set; } = ButtonColor.None;
+    public ButtonColor Color { get; set; } = ButtonColor.Default;
 
     /// <summary>
     /// The size of the button.
     /// </summary>
     [Parameter]
-    public ButtonSize Size { get; set; } = ButtonSize.None;
+    public ButtonSize Size { get; set; } = ButtonSize.Default;
 
     /// <summary>
     /// The style variant of the button.
     /// </summary>
     [Parameter]
-    public ButtonStyle Style { get; set; } = ButtonStyle.None;
+    public ButtonStyle Style { get; set; } = ButtonStyle.Default;
 
     /// <summary>
     /// Makes the button wider than normal.
@@ -94,6 +94,7 @@
 
     private string? ColorClass => Color switch
     {
+        ButtonColor.Default => null,
         ButtonColor.Neutral => "btn-neutral",
         ButtonColor.Primary => "btn-primary",
         ButtonColor.Secondary => "btn-secondary",
@@ -102,24 +103,26 @@
         ButtonColor.Success => "btn-success",
         ButtonColor.Warning => "btn-warning",
         ButtonColor.Error => "btn-error",
-        _ => null
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
     };
 
     private string? SizeClass => Size switch
     {
+        ButtonSize.Default => null,
         ButtonSize.ExtraSmall => "btn-xs",
         ButtonSize.Small => "btn-sm",
         ButtonSize.Large => "btn-lg",
         ButtonSize.ExtraLarge => "btn-xl",
-        _ => null
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
     };
 
     private string? StyleClass => Style switch
     {
+        ButtonStyle.Default => null,
         ButtonStyle.Outline => "btn-outline",
         ButtonStyle.Soft => "btn-soft",
         ButtonStyle.Ghost => "btn-ghost",
         ButtonStyle.Link => "btn-link",
-        _ => null
+        _ => throw new ArgumentOutOfRangeException(nameof(Style), Style, null)
     };
 }

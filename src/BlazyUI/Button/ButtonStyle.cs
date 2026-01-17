@@ -6,7 +6,7 @@ namespace BlazyUI;
 public enum ButtonStyle
 {
     /// <summary>Solid fill (default).</summary>
-    None,
+    Default,
     /// <summary>Outline style with transparent background.</summary>
     Outline,
     /// <summary>Soft style with muted background.</summary>

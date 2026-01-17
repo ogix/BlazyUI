@@ -6,7 +6,7 @@ namespace BlazyUI;
 public enum NavBarColor
 {
     /// <summary>No color modifier (default styling).</summary>
-    None,
+    Default,
     /// <summary>Neutral color with matching text.</summary>
     Neutral,
     /// <summary>Primary theme color with matching text.</summary>

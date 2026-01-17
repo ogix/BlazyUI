@@ -11,19 +11,19 @@
     /// The color variant of the alert.
     /// </summary>
     [Parameter]
-    public AlertColor Color { get; set; } = AlertColor.None;
+    public AlertColor Color { get; set; } = AlertColor.Default;
 
     /// <summary>
     /// The style variant of the alert.
     /// </summary>
     [Parameter]
-    public AlertStyle Style { get; set; } = AlertStyle.None;
+    public AlertStyle Style { get; set; } = AlertStyle.Default;
 
     /// <summary>
     /// The layout direction of the alert.
     /// </summary>
     [Parameter]
-    public AlertLayout Layout { get; set; } = AlertLayout.None;
+    public AlertLayout Layout { get; set; } = AlertLayout.Default;
 
     /// <summary>
     /// Optional icon to display before the content.
@@ -46,25 +46,28 @@
 
     private string? ColorClass => Color switch
     {
+        AlertColor.Default => null,
         AlertColor.Info => "alert-info",
         AlertColor.Success => "alert-success",
         AlertColor.Warning => "alert-warning",
         AlertColor.Error => "alert-error",
-        _ => null
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
     };
 
     private string? StyleClass => Style switch
     {
+        AlertStyle.Default => null,
         AlertStyle.Outline => "alert-outline",
         AlertStyle.Dash => "alert-dash",
         AlertStyle.Soft => "alert-soft",
-        _ => null
+        _ => throw new ArgumentOutOfRangeException(nameof(Style), Style, null)
     };
 
     private string? LayoutClass => Layout switch
     {
+        AlertLayout.Default => null,
         AlertLayout.Vertical => "alert-vertical",
         AlertLayout.Horizontal => "alert-horizontal",
-        _ => null
+        _ => throw new ArgumentOutOfRangeException(nameof(Layout), Layout, null)
     };
 }

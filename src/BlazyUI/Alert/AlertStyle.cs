@@ -6,7 +6,7 @@ namespace BlazyUI;
 public enum AlertStyle
 {
     /// <summary>Solid fill (default styling).</summary>
-    None,
+    Default,
     /// <summary>Outline style with border.</summary>
     Outline,
     /// <summary>Dashed outline style.</summary>

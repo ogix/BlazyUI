@@ -6,7 +6,7 @@ namespace BlazyUI;
 public enum AlertColor
 {
     /// <summary>No color modifier (default styling).</summary>
-    None,
+    Default,
     /// <summary>Info color (typically blue).</summary>
     Info,
     /// <summary>Success color (typically green).</summary>

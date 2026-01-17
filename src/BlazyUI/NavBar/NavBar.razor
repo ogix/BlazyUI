@@ -11,7 +11,7 @@
     /// The color variant of the navbar.
     /// </summary>
     [Parameter]
-    public NavBarColor Color { get; set; } = NavBarColor.None;
+    public NavBarColor Color { get; set; } = NavBarColor.Default;
 
     /// <summary>
     /// Makes the navbar sticky at the top of the viewport.
@@ -40,10 +40,11 @@
 
     private string? ColorClass => Color switch
     {
+        NavBarColor.Default => null,
         NavBarColor.Neutral => "bg-neutral text-neutral-content",
         NavBarColor.Primary => "bg-primary text-primary-content",
         NavBarColor.Secondary => "bg-secondary text-secondary-content",
         NavBarColor.Accent => "bg-accent text-accent-content",
-        _ => null
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
     };
 }

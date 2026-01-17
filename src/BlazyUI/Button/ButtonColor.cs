@@ -6,7 +6,7 @@ namespace BlazyUI;
 public enum ButtonColor
 {
     /// <summary>No color modifier (default styling).</summary>
-    None,
+    Default,
     /// <summary>Neutral color.</summary>
     Neutral,
     /// <summary>Primary theme color.</summary>

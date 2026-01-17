@@ -6,7 +6,7 @@ namespace BlazyUI;
 public enum AlertLayout
 {
     /// <summary>Default layout.</summary>
-    None,
+    Default,
     /// <summary>Vertical layout (stacked content).</summary>
     Vertical,
     /// <summary>Horizontal layout (inline content).</summary>
