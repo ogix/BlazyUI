@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@source "../../BlazyUI/**/*.razor";
+@source "../**/*.razor";
+
+#blazor-error-ui {
+    display: none;
+    background: oklch(var(--er));
+    color: oklch(var(--erc));
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    text-align: center;
+    z-index: 1000;
+}
+
+#blazor-error-ui[style*="display: block"] {
+    display: block;
+}

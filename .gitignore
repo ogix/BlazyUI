@@ -480,3 +480,6 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+# Build outputs
+src/BlazyUI.Demo/wwwroot/css/app.min.css
+src/BlazyUI.Demo/node_modules/
