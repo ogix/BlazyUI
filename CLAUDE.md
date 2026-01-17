@@ -31,20 +31,27 @@ dotnet watch --project src/BlazyUI.Demo
 - `src/BlazyUI.Demo/` - Blazor WebAssembly demo site showcasing components
 
 **Component Pattern:**
-Each component lives in its own folder with the component and its enums:
+Each component lives in its own folder under `Components/`:
 ```
-src/BlazyUI/ComponentName/
+src/BlazyUI/Components/ComponentName/
 ├── ComponentName.razor    # Component markup and code
 ├── ComponentNameVariant.cs  # Enum for variant parameter
 └── ComponentNameSize.cs     # Enum for size parameter (if applicable)
 ```
 
-**Base Class:**
-All components inherit from `BlazyComponentBase` which provides:
-- `TwMerge` injection for intelligent Tailwind class conflict resolution
-- `Class` parameter for consumer CSS overrides
-- `AdditionalAttributes` for capturing unmatched HTML attributes
-- `MergeClasses()` helper method
+**Base Classes:**
+- `BlazyComponentBase` - For non-input components (Button, Alert, etc.)
+  - `TwMerge` injection for intelligent Tailwind class conflict resolution
+  - `Class` parameter for consumer CSS overrides
+  - `AdditionalAttributes` for capturing unmatched HTML attributes
+  - `MergeClasses()` helper method
+
+- `BlazyInputBase<T>` - For form input components (TextInput, Select, etc.)
+  - Inherits from Blazor's `InputBase<T>` for EditForm validation integration
+  - `TwMerge` injection for class merging
+  - `Class` parameter for consumer CSS overrides
+  - Abstract `GetErrorColorClass()` for validation styling
+  - `MergeClasses()` helper with automatic validation color support
 
 **Enum Conventions:**
 - Most enums include a `None` value for default/inherited behavior
