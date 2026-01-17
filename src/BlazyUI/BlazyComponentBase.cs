@@ -28,12 +28,13 @@ public abstract class BlazyComponentBase : ComponentBase
     /// <summary>
     /// Merges the provided CSS classes using TailwindMerge.
     /// Later classes override earlier ones when there are conflicts.
+    /// The Class parameter is always appended last, allowing consumer overrides.
     /// </summary>
-    /// <param name="defaultClasses">The component's default CSS classes.</param>
-    /// <param name="additionalClasses">Optional additional classes to merge before the Class parameter.</param>
+    /// <param name="classes">CSS classes to merge. Null values are ignored.</param>
     /// <returns>The merged CSS class string.</returns>
-    protected string MergeClasses(string? defaultClasses, string? additionalClasses = null)
+    protected string MergeClasses(params string?[] classes)
     {
-        return TwMerge.Merge(defaultClasses, additionalClasses, Class) ?? string.Empty;
+        var allClasses = classes.Append(Class).Where(c => !string.IsNullOrWhiteSpace(c)).ToArray();
+        return TwMerge.Merge(allClasses) ?? string.Empty;
     }
 }

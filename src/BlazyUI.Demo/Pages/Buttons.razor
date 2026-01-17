@@ -1,0 +1,96 @@
+@page "/buttons"
+
+<PageTitle>Buttons</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Button Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <div class="flex flex-wrap gap-2">
+        <Button>Default</Button>
+        <Button Color="ButtonColor.Neutral">Neutral</Button>
+        <Button Color="ButtonColor.Primary">Primary</Button>
+        <Button Color="ButtonColor.Secondary">Secondary</Button>
+        <Button Color="ButtonColor.Accent">Accent</Button>
+        <Button Color="ButtonColor.Info">Info</Button>
+        <Button Color="ButtonColor.Success">Success</Button>
+        <Button Color="ButtonColor.Warning">Warning</Button>
+        <Button Color="ButtonColor.Error">Error</Button>
+    </div>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <div class="flex flex-wrap items-center gap-2">
+        <Button Size="ButtonSize.ExtraSmall">Extra Small</Button>
+        <Button Size="ButtonSize.Small">Small</Button>
+        <Button>Medium</Button>
+        <Button Size="ButtonSize.Large">Large</Button>
+        <Button Size="ButtonSize.ExtraLarge">Extra Large</Button>
+    </div>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Styles</h2>
+    <div class="flex flex-wrap gap-2">
+        <Button Color="ButtonColor.Primary">Solid</Button>
+        <Button Color="ButtonColor.Primary" Style="ButtonStyle.Outline">Outline</Button>
+        <Button Color="ButtonColor.Primary" Style="ButtonStyle.Soft">Soft</Button>
+        <Button Color="ButtonColor.Primary" Style="ButtonStyle.Ghost">Ghost</Button>
+        <Button Color="ButtonColor.Primary" Style="ButtonStyle.Link">Link</Button>
+    </div>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Modifiers</h2>
+    <div class="flex flex-wrap gap-4 items-start">
+        <Button Color="ButtonColor.Primary" Wide>Wide</Button>
+        <Button Color="ButtonColor.Secondary" Square>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </Button>
+        <Button Color="ButtonColor.Accent" Circle>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+        </Button>
+    </div>
+    <div class="mt-4">
+        <Button Color="ButtonColor.Info" Block>Block (Full Width)</Button>
+    </div>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">States</h2>
+    <div class="flex flex-wrap gap-2">
+        <Button Color="ButtonColor.Primary" Disabled>Disabled</Button>
+        <Button Color="ButtonColor.Primary" Loading>Loading</Button>
+        <Button Color="ButtonColor.Secondary" Style="ButtonStyle.Outline" Loading>Loading Outline</Button>
+    </div>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Interactive</h2>
+    <div class="flex flex-wrap items-center gap-4">
+        <Button Color="ButtonColor.Primary" OnClick="@HandleClick">Click me</Button>
+        <span class="text-sm">Clicked: @clickCount times</span>
+    </div>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Custom Classes</h2>
+    <div class="flex flex-wrap gap-2">
+        <Button Color="ButtonColor.Primary" Class="rounded-full">Rounded Full</Button>
+        <Button Color="ButtonColor.Secondary" Class="shadow-lg">With Shadow</Button>
+    </div>
+</section>
+
+@code {
+    private int clickCount = 0;
+
+    private void HandleClick()
+    {
+        clickCount++;
+    }
+}

@@ -1,8 +1,11 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+    themes: light --default, dark --prefersdark;
+}
 
-@source "../../BlazyUI/**/*.razor";
-@source "../**/*.razor";
+@source "../../../BlazyUI/**/*.razor";
+@source "../../../BlazyUI/**/*.cs";
+@source "../../**/*.razor";
 
 #blazor-error-ui {
     display: none;

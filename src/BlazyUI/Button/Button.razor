@@ -1,0 +1,122 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<button class="@CssClass"
+        disabled="@IsDisabled"
+        @onclick="OnClick"
+        @attributes="AdditionalAttributes">
+    @ChildContent
+</button>
+
+@code {
+    /// <summary>
+    /// The color variant of the button.
+    /// </summary>
+    [Parameter]
+    public ButtonColor Color { get; set; } = ButtonColor.None;
+
+    /// <summary>
+    /// The size of the button.
+    /// </summary>
+    [Parameter]
+    public ButtonSize Size { get; set; } = ButtonSize.None;
+
+    /// <summary>
+    /// The style variant of the button.
+    /// </summary>
+    [Parameter]
+    public ButtonStyle Style { get; set; } = ButtonStyle.None;
+
+    /// <summary>
+    /// Makes the button wider than normal.
+    /// </summary>
+    [Parameter]
+    public bool Wide { get; set; }
+
+    /// <summary>
+    /// Makes the button full width (block-level).
+    /// </summary>
+    [Parameter]
+    public bool Block { get; set; }
+
+    /// <summary>
+    /// Makes the button square (equal width and height).
+    /// </summary>
+    [Parameter]
+    public bool Square { get; set; }
+
+    /// <summary>
+    /// Makes the button circular.
+    /// </summary>
+    [Parameter]
+    public bool Circle { get; set; }
+
+    /// <summary>
+    /// Shows a loading spinner. Automatically disables the button.
+    /// </summary>
+    [Parameter]
+    public bool Loading { get; set; }
+
+    /// <summary>
+    /// Disables the button.
+    /// </summary>
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    /// <summary>
+    /// The content to display inside the button.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>
+    /// Callback when the button is clicked.
+    /// </summary>
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+    private bool IsDisabled => Disabled || Loading;
+
+    private string CssClass => MergeClasses(
+        "btn",
+        ColorClass,
+        SizeClass,
+        StyleClass,
+        Wide ? "btn-wide" : null,
+        Block ? "btn-block" : null,
+        Square ? "btn-square" : null,
+        Circle ? "btn-circle" : null,
+        Loading ? "btn-loading" : null
+    );
+
+    private string? ColorClass => Color switch
+    {
+        ButtonColor.Neutral => "btn-neutral",
+        ButtonColor.Primary => "btn-primary",
+        ButtonColor.Secondary => "btn-secondary",
+        ButtonColor.Accent => "btn-accent",
+        ButtonColor.Info => "btn-info",
+        ButtonColor.Success => "btn-success",
+        ButtonColor.Warning => "btn-warning",
+        ButtonColor.Error => "btn-error",
+        _ => null
+    };
+
+    private string? SizeClass => Size switch
+    {
+        ButtonSize.ExtraSmall => "btn-xs",
+        ButtonSize.Small => "btn-sm",
+        ButtonSize.Large => "btn-lg",
+        ButtonSize.ExtraLarge => "btn-xl",
+        _ => null
+    };
+
+    private string? StyleClass => Style switch
+    {
+        ButtonStyle.Outline => "btn-outline",
+        ButtonStyle.Soft => "btn-soft",
+        ButtonStyle.Ghost => "btn-ghost",
+        ButtonStyle.Link => "btn-link",
+        _ => null
+    };
+}
