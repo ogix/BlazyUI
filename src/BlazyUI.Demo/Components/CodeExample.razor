@@ -1,0 +1,89 @@
+@inject IJSRuntime JSRuntime
+
+<div class="code-example border border-base-300 rounded-lg overflow-hidden mb-4">
+    @if (!string.IsNullOrEmpty(Title))
+    {
+        <div class="px-4 py-2 bg-base-200 border-b border-base-300 font-medium">
+            @Title
+        </div>
+    }
+
+    <div class="p-4 bg-base-100">
+        @ChildContent
+    </div>
+
+    <div class="flex justify-end gap-2 px-4 py-2 bg-base-200 border-t border-base-300">
+        <button class="btn btn-sm btn-ghost" @onclick="ToggleCode">
+            @(showCode ? "Hide Code" : "Show Code")
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+        </button>
+        @if (showCode)
+        {
+            <button class="btn btn-sm btn-ghost" @onclick="CopyCode">
+                @(copied ? "Copied!" : "Copy")
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+            </button>
+        }
+    </div>
+
+    @if (showCode)
+    {
+        <div class="border-t border-base-300 bg-[#0d1117]">
+            <pre class="m-0 p-4 overflow-x-auto"><code id="@codeId" class="language-@Language text-sm">@Code</code></pre>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; } = default!;
+    [Parameter] public string Code { get; set; } = "";
+    [Parameter] public string Language { get; set; } = "html";
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public bool DefaultExpanded { get; set; } = false;
+
+    private bool showCode;
+    private bool copied;
+    private string codeId = $"code-{Guid.NewGuid():N}";
+
+    protected override void OnInitialized()
+    {
+        showCode = DefaultExpanded;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && DefaultExpanded)
+        {
+            await JSRuntime.InvokeVoidAsync("codeHighlight.highlight", codeId);
+        }
+    }
+
+    private async Task ToggleCode()
+    {
+        showCode = !showCode;
+        if (showCode)
+        {
+            await Task.Yield();
+            StateHasChanged();
+            await Task.Delay(1);
+            await JSRuntime.InvokeVoidAsync("codeHighlight.highlight", codeId);
+        }
+    }
+
+    private async Task CopyCode()
+    {
+        var success = await JSRuntime.InvokeAsync<bool>("codeHighlight.copyToClipboard", Code);
+        if (success)
+        {
+            copied = true;
+            StateHasChanged();
+            await Task.Delay(2000);
+            copied = false;
+            StateHasChanged();
+        }
+    }
+}
