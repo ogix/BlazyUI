@@ -36,7 +36,7 @@ src/BlazyUI/NavBar/
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `Color` | `NavBarColor` | `None` | Background color variant |
+| `Color` | `NavBarColor` | `Default` | Background color variant |
 | `Sticky` | `bool` | `false` | Adds `sticky top-0 z-50` for scroll-fixed positioning |
 | `Shadow` | `bool` | `false` | Adds `shadow-sm` for subtle bottom shadow |
 | `ChildContent` | `RenderFragment` | - | Content (NavBarStart, NavBarCenter, NavBarEnd) |
@@ -48,7 +48,7 @@ src/BlazyUI/NavBar/
 ```csharp
 public enum NavBarColor
 {
-    None,      // default (bg-base-100)
+    Default,   // default (bg-base-100)
     Neutral,   // bg-neutral text-neutral-content
     Primary,   // bg-primary text-primary-content
     Secondary, // bg-secondary text-secondary-content
@@ -80,11 +80,12 @@ private string CssClass => MergeClasses(
 
 private string? ColorClass => Color switch
 {
+    NavBarColor.Default => null,
     NavBarColor.Neutral => "bg-neutral text-neutral-content",
     NavBarColor.Primary => "bg-primary text-primary-content",
     NavBarColor.Secondary => "bg-secondary text-secondary-content",
     NavBarColor.Accent => "bg-accent text-accent-content",
-    _ => null
+    _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
 };
 ```
 
@@ -116,7 +117,7 @@ private string CssClass => MergeClasses("navbar-end");
 The demo page will showcase:
 
 1. Basic navbar with logo and navigation links
-2. All color variants (None, Neutral, Primary, Secondary, Accent)
+2. All color variants (Default, Neutral, Primary, Secondary, Accent)
 3. Sticky navbar with scroll behavior
 4. Shadow option comparison
 5. Responsive pattern with dropdown menu for mobile
