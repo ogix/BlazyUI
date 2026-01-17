@@ -5,6 +5,10 @@
         disabled="@IsDisabled"
         @onclick="OnClick"
         @attributes="AdditionalAttributes">
+    @if (Loading)
+    {
+        <span class="loading loading-spinner"></span>
+    }
     @ChildContent
 </button>
 
@@ -85,8 +89,7 @@
         Wide ? "btn-wide" : null,
         Block ? "btn-block" : null,
         Square ? "btn-square" : null,
-        Circle ? "btn-circle" : null,
-        Loading ? "btn-loading" : null
+        Circle ? "btn-circle" : null
     );
 
     private string? ColorClass => Color switch
