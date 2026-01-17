@@ -1,0 +1,285 @@
+@page "/navbars"
+
+<PageTitle>NavBars</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">NavBar Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <NavBar Class="bg-base-200 rounded-box">
+            <NavBarStart>
+                <a class="btn btn-ghost text-xl">BlazyUI</a>
+            </NavBarStart>
+            <NavBarCenter>
+                <a class="btn btn-ghost">Home</a>
+                <a class="btn btn-ghost">About</a>
+                <a class="btn btn-ghost">Contact</a>
+            </NavBarCenter>
+            <NavBarEnd>
+                <Button>Login</Button>
+            </NavBarEnd>
+        </NavBar>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-col gap-4">
+            <NavBar Class="rounded-box">
+                <NavBarStart>
+                    <span class="text-xl font-bold px-4">Default</span>
+                </NavBarStart>
+            </NavBar>
+            <NavBar Color="NavBarColor.Neutral" Class="rounded-box">
+                <NavBarStart>
+                    <span class="text-xl font-bold px-4">Neutral</span>
+                </NavBarStart>
+            </NavBar>
+            <NavBar Color="NavBarColor.Primary" Class="rounded-box">
+                <NavBarStart>
+                    <span class="text-xl font-bold px-4">Primary</span>
+                </NavBarStart>
+            </NavBar>
+            <NavBar Color="NavBarColor.Secondary" Class="rounded-box">
+                <NavBarStart>
+                    <span class="text-xl font-bold px-4">Secondary</span>
+                </NavBarStart>
+            </NavBar>
+            <NavBar Color="NavBarColor.Accent" Class="rounded-box">
+                <NavBarStart>
+                    <span class="text-xl font-bold px-4">Accent</span>
+                </NavBarStart>
+            </NavBar>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Shadow</h2>
+    <CodeExample Code="@shadowCode">
+        <div class="flex flex-col gap-4">
+            <NavBar Class="bg-base-200 rounded-box">
+                <NavBarStart>
+                    <span class="px-4">Without shadow</span>
+                </NavBarStart>
+            </NavBar>
+            <NavBar Shadow Class="bg-base-200 rounded-box">
+                <NavBarStart>
+                    <span class="px-4">With shadow</span>
+                </NavBarStart>
+            </NavBar>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Logo and Menu</h2>
+    <CodeExample Code="@logoMenuCode">
+        <NavBar Color="NavBarColor.Primary" Class="rounded-box">
+            <NavBarStart>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span class="text-xl font-bold">Brand</span>
+            </NavBarStart>
+            <NavBarCenter class="hidden lg:flex">
+                <ul class="menu menu-horizontal px-1">
+                    <li><a>Features</a></li>
+                    <li><a>Pricing</a></li>
+                    <li><a>About</a></li>
+                </ul>
+            </NavBarCenter>
+            <NavBarEnd>
+                <Button Style="ButtonStyle.Ghost">Sign In</Button>
+                <Button>Get Started</Button>
+            </NavBarEnd>
+        </NavBar>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Search</h2>
+    <CodeExample Code="@searchCode">
+        <NavBar Class="bg-base-200 rounded-box">
+            <NavBarStart>
+                <a class="btn btn-ghost text-xl">App</a>
+            </NavBarStart>
+            <NavBarCenter>
+                <input type="text" placeholder="Search..." class="input input-bordered w-full max-w-xs" />
+            </NavBarCenter>
+            <NavBarEnd>
+                <button class="btn btn-ghost btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                <button class="btn btn-ghost btn-circle">
+                    <div class="indicator">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span class="badge badge-xs badge-primary indicator-item"></span>
+                    </div>
+                </button>
+            </NavBarEnd>
+        </NavBar>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Responsive with Dropdown</h2>
+    <CodeExample Code="@responsiveCode">
+        <NavBar Class="bg-base-200 rounded-box">
+            <NavBarStart>
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        <li><a>Homepage</a></li>
+                        <li><a>Portfolio</a></li>
+                        <li><a>About</a></li>
+                    </ul>
+                </div>
+                <a class="btn btn-ghost text-xl">daisyUI</a>
+            </NavBarStart>
+            <NavBarCenter class="hidden lg:flex">
+                <ul class="menu menu-horizontal px-1">
+                    <li><a>Homepage</a></li>
+                    <li><a>Portfolio</a></li>
+                    <li><a>About</a></li>
+                </ul>
+            </NavBarCenter>
+            <NavBarEnd>
+                <Button Color="ButtonColor.Primary">Contact</Button>
+            </NavBarEnd>
+        </NavBar>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Sticky (scroll to see effect)</h2>
+    <p class="mb-4 text-sm text-base-content/70">The sticky navbar below stays fixed at the top when you scroll within the container.</p>
+    <CodeExample Code="@stickyCode">
+        <div class="h-64 overflow-y-auto border border-base-300 rounded-box">
+            <NavBar Sticky Shadow Color="NavBarColor.Primary">
+                <NavBarStart>
+                    <span class="text-xl font-bold px-4">Sticky NavBar</span>
+                </NavBarStart>
+                <NavBarEnd>
+                    <Button Style="ButtonStyle.Ghost">Action</Button>
+                </NavBarEnd>
+            </NavBar>
+            <div class="p-4 space-y-4">
+                <p>Scroll down to see the sticky navbar effect.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+                <p>Excepteur sint occaecat cupidatat non proident.</p>
+                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private string basicCode = @"<NavBar>
+    <NavBarStart>
+        <a class=""btn btn-ghost text-xl"">BlazyUI</a>
+    </NavBarStart>
+    <NavBarCenter>
+        <a class=""btn btn-ghost"">Home</a>
+        <a class=""btn btn-ghost"">About</a>
+        <a class=""btn btn-ghost"">Contact</a>
+    </NavBarCenter>
+    <NavBarEnd>
+        <Button>Login</Button>
+    </NavBarEnd>
+</NavBar>";
+
+    private string colorsCode = @"<NavBar>Default</NavBar>
+<NavBar Color=""NavBarColor.Neutral"">Neutral</NavBar>
+<NavBar Color=""NavBarColor.Primary"">Primary</NavBar>
+<NavBar Color=""NavBarColor.Secondary"">Secondary</NavBar>
+<NavBar Color=""NavBarColor.Accent"">Accent</NavBar>";
+
+    private string shadowCode = @"<NavBar>Without shadow</NavBar>
+<NavBar Shadow>With shadow</NavBar>";
+
+    private string logoMenuCode = @"<NavBar Color=""NavBarColor.Primary"">
+    <NavBarStart>
+        <svg><!-- Logo icon --></svg>
+        <span class=""text-xl font-bold"">Brand</span>
+    </NavBarStart>
+    <NavBarCenter class=""hidden lg:flex"">
+        <ul class=""menu menu-horizontal px-1"">
+            <li><a>Features</a></li>
+            <li><a>Pricing</a></li>
+            <li><a>About</a></li>
+        </ul>
+    </NavBarCenter>
+    <NavBarEnd>
+        <Button Style=""ButtonStyle.Ghost"">Sign In</Button>
+        <Button>Get Started</Button>
+    </NavBarEnd>
+</NavBar>";
+
+    private string searchCode = @"<NavBar>
+    <NavBarStart>
+        <a class=""btn btn-ghost text-xl"">App</a>
+    </NavBarStart>
+    <NavBarCenter>
+        <input type=""text"" placeholder=""Search..."" class=""input input-bordered"" />
+    </NavBarCenter>
+    <NavBarEnd>
+        <button class=""btn btn-ghost btn-circle"">
+            <svg><!-- Search icon --></svg>
+        </button>
+        <button class=""btn btn-ghost btn-circle"">
+            <svg><!-- Bell icon --></svg>
+        </button>
+    </NavBarEnd>
+</NavBar>";
+
+    private string responsiveCode = @"<NavBar>
+    <NavBarStart>
+        <div class=""dropdown"">
+            <div tabindex=""0"" role=""button"" class=""btn btn-ghost lg:hidden"">
+                <svg><!-- Hamburger icon --></svg>
+            </div>
+            <ul tabindex=""0"" class=""menu menu-sm dropdown-content"">
+                <li><a>Homepage</a></li>
+                <li><a>Portfolio</a></li>
+                <li><a>About</a></li>
+            </ul>
+        </div>
+        <a class=""btn btn-ghost text-xl"">daisyUI</a>
+    </NavBarStart>
+    <NavBarCenter class=""hidden lg:flex"">
+        <ul class=""menu menu-horizontal px-1"">
+            <li><a>Homepage</a></li>
+            <li><a>Portfolio</a></li>
+            <li><a>About</a></li>
+        </ul>
+    </NavBarCenter>
+    <NavBarEnd>
+        <Button Color=""ButtonColor.Primary"">Contact</Button>
+    </NavBarEnd>
+</NavBar>";
+
+    private string stickyCode = @"<NavBar Sticky Shadow Color=""NavBarColor.Primary"">
+    <NavBarStart>
+        <span class=""text-xl font-bold px-4"">Sticky NavBar</span>
+    </NavBarStart>
+    <NavBarEnd>
+        <Button Style=""ButtonStyle.Ghost"">Action</Button>
+    </NavBarEnd>
+</NavBar>";
+}

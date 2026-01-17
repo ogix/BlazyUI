@@ -1,0 +1,17 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="@CssClass"
+     @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    /// <summary>
+    /// The content to display in the end (right) section of the navbar.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses("navbar-end");
+}
