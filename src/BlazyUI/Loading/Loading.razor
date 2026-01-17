@@ -1,0 +1,61 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<span role="status" aria-label="Loading" class="@CssClass" @attributes="AdditionalAttributes"></span>
+
+@code {
+    /// <summary>
+    /// The type of loading animation to display.
+    /// </summary>
+    [Parameter]
+    public LoadingType Type { get; set; } = LoadingType.Spinner;
+
+    /// <summary>
+    /// The size of the loading indicator.
+    /// </summary>
+    [Parameter]
+    public LoadingSize Size { get; set; } = LoadingSize.Medium;
+
+    /// <summary>
+    /// The color of the loading indicator. None inherits from parent.
+    /// </summary>
+    [Parameter]
+    public LoadingColor Color { get; set; } = LoadingColor.None;
+
+    private string CssClass => MergeClasses("loading", TypeClass, SizeClass, ColorClass);
+
+    private string TypeClass => Type switch
+    {
+        LoadingType.Spinner => "loading-spinner",
+        LoadingType.Dots => "loading-dots",
+        LoadingType.Ring => "loading-ring",
+        LoadingType.Ball => "loading-ball",
+        LoadingType.Bars => "loading-bars",
+        LoadingType.Infinity => "loading-infinity",
+        _ => throw new ArgumentOutOfRangeException(nameof(Type), Type, "Unknown loading type")
+    };
+
+    private string SizeClass => Size switch
+    {
+        LoadingSize.ExtraSmall => "loading-xs",
+        LoadingSize.Small => "loading-sm",
+        LoadingSize.Medium => "loading-md",
+        LoadingSize.Large => "loading-lg",
+        LoadingSize.ExtraLarge => "loading-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, "Unknown loading size")
+    };
+
+    private string? ColorClass => Color switch
+    {
+        LoadingColor.None => null,
+        LoadingColor.Primary => "text-primary",
+        LoadingColor.Secondary => "text-secondary",
+        LoadingColor.Accent => "text-accent",
+        LoadingColor.Neutral => "text-neutral",
+        LoadingColor.Info => "text-info",
+        LoadingColor.Success => "text-success",
+        LoadingColor.Warning => "text-warning",
+        LoadingColor.Error => "text-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, "Unknown loading color")
+    };
+}

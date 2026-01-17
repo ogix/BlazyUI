@@ -1,0 +1,184 @@
+@page "/loadings"
+
+<PageTitle>Loading</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Loading Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <Loading />
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Types</h2>
+    <CodeExample Code="@typesCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <div class="flex flex-col items-center gap-2">
+                <Loading Type="LoadingType.Spinner" />
+                <span class="text-sm">Spinner</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <Loading Type="LoadingType.Dots" />
+                <span class="text-sm">Dots</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <Loading Type="LoadingType.Ring" />
+                <span class="text-sm">Ring</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <Loading Type="LoadingType.Ball" />
+                <span class="text-sm">Ball</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <Loading Type="LoadingType.Bars" />
+                <span class="text-sm">Bars</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <Loading Type="LoadingType.Infinity" />
+                <span class="text-sm">Infinity</span>
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <CodeExample Code="@sizesCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <div class="flex flex-col items-center gap-2">
+                <Loading Size="LoadingSize.ExtraSmall" />
+                <span class="text-sm">XS</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <Loading Size="LoadingSize.Small" />
+                <span class="text-sm">Small</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <Loading Size="LoadingSize.Medium" />
+                <span class="text-sm">Medium</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <Loading Size="LoadingSize.Large" />
+                <span class="text-sm">Large</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <Loading Size="LoadingSize.ExtraLarge" />
+                <span class="text-sm">XL</span>
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <Loading Color="LoadingColor.Primary" />
+            <Loading Color="LoadingColor.Secondary" />
+            <Loading Color="LoadingColor.Accent" />
+            <Loading Color="LoadingColor.Neutral" />
+            <Loading Color="LoadingColor.Info" />
+            <Loading Color="LoadingColor.Success" />
+            <Loading Color="LoadingColor.Warning" />
+            <Loading Color="LoadingColor.Error" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Colors with Different Types</h2>
+    <CodeExample Code="@colorsTypesCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <Loading Type="LoadingType.Spinner" Color="LoadingColor.Primary" />
+            <Loading Type="LoadingType.Dots" Color="LoadingColor.Secondary" />
+            <Loading Type="LoadingType.Ring" Color="LoadingColor.Accent" />
+            <Loading Type="LoadingType.Ball" Color="LoadingColor.Success" />
+            <Loading Type="LoadingType.Bars" Color="LoadingColor.Warning" />
+            <Loading Type="LoadingType.Infinity" Color="LoadingColor.Error" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Inherited Color</h2>
+    <CodeExample Code="@inheritedColorCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <div class="text-primary">
+                <Loading />
+            </div>
+            <div class="text-success">
+                <Loading Type="LoadingType.Dots" />
+            </div>
+            <div class="text-error">
+                <Loading Type="LoadingType.Ring" />
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Button</h2>
+    <CodeExample Code="@buttonCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <Button Loading>Loading...</Button>
+            <Button Color="ButtonColor.Primary" Loading>Processing</Button>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Custom Aria Label</h2>
+    <CodeExample Code="@ariaCode">
+        <Loading aria-label="Saving your changes" />
+    </CodeExample>
+</section>
+
+@code {
+    private string basicCode = @"<Loading />";
+
+    private string typesCode = @"<Loading Type=""LoadingType.Spinner"" />
+<Loading Type=""LoadingType.Dots"" />
+<Loading Type=""LoadingType.Ring"" />
+<Loading Type=""LoadingType.Ball"" />
+<Loading Type=""LoadingType.Bars"" />
+<Loading Type=""LoadingType.Infinity"" />";
+
+    private string sizesCode = @"<Loading Size=""LoadingSize.ExtraSmall"" />
+<Loading Size=""LoadingSize.Small"" />
+<Loading Size=""LoadingSize.Medium"" />
+<Loading Size=""LoadingSize.Large"" />
+<Loading Size=""LoadingSize.ExtraLarge"" />";
+
+    private string colorsCode = @"<Loading Color=""LoadingColor.Primary"" />
+<Loading Color=""LoadingColor.Secondary"" />
+<Loading Color=""LoadingColor.Accent"" />
+<Loading Color=""LoadingColor.Neutral"" />
+<Loading Color=""LoadingColor.Info"" />
+<Loading Color=""LoadingColor.Success"" />
+<Loading Color=""LoadingColor.Warning"" />
+<Loading Color=""LoadingColor.Error"" />";
+
+    private string colorsTypesCode = @"<Loading Type=""LoadingType.Spinner"" Color=""LoadingColor.Primary"" />
+<Loading Type=""LoadingType.Dots"" Color=""LoadingColor.Secondary"" />
+<Loading Type=""LoadingType.Ring"" Color=""LoadingColor.Accent"" />
+<Loading Type=""LoadingType.Ball"" Color=""LoadingColor.Success"" />
+<Loading Type=""LoadingType.Bars"" Color=""LoadingColor.Warning"" />
+<Loading Type=""LoadingType.Infinity"" Color=""LoadingColor.Error"" />";
+
+    private string inheritedColorCode = @"<div class=""text-primary"">
+    <Loading />
+</div>
+<div class=""text-success"">
+    <Loading Type=""LoadingType.Dots"" />
+</div>
+<div class=""text-error"">
+    <Loading Type=""LoadingType.Ring"" />
+</div>";
+
+    private string buttonCode = @"<Button Loading>Loading...</Button>
+<Button Color=""ButtonColor.Primary"" Loading>Processing</Button>";
+
+    private string ariaCode = @"<Loading aria-label=""Saving your changes"" />";
+}
