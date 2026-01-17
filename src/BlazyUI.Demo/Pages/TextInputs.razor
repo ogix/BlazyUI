@@ -1,0 +1,128 @@
+@page "/textinputs"
+
+<PageTitle>TextInput - BlazyUI</PageTitle>
+
+<h1 class="text-3xl font-bold mb-8">TextInput</h1>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <div class="flex flex-wrap gap-4">
+        <TextInput @bind-Value="basicValue" placeholder="Type something..." />
+    </div>
+    <p class="mt-2 text-sm opacity-70">Value: @basicValue</p>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Input Types</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <TextInput Type="text" @bind-Value="textValue" placeholder="Text" />
+        <TextInput Type="password" @bind-Value="passwordValue" placeholder="Password" />
+        <TextInput Type="email" @bind-Value="emailValue" placeholder="Email" />
+        <TextInput Type="number" @bind-Value="numberValue" placeholder="Number" />
+        <TextInput Type="search" @bind-Value="searchValue" placeholder="Search" />
+        <TextInput Type="tel" @bind-Value="telValue" placeholder="Phone" />
+        <TextInput Type="url" @bind-Value="urlValue" placeholder="URL" />
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <TextInput Size="TextInputSize.ExtraSmall" @bind-Value="sizeValue" placeholder="Extra Small" />
+        <TextInput Size="TextInputSize.Small" @bind-Value="sizeValue" placeholder="Small" />
+        <TextInput Size="TextInputSize.Default" @bind-Value="sizeValue" placeholder="Default (Medium)" />
+        <TextInput Size="TextInputSize.Large" @bind-Value="sizeValue" placeholder="Large" />
+        <TextInput Size="TextInputSize.ExtraLarge" @bind-Value="sizeValue" placeholder="Extra Large" />
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <TextInput Color="TextInputColor.Default" @bind-Value="colorValue" placeholder="Default" />
+        <TextInput Color="TextInputColor.Neutral" @bind-Value="colorValue" placeholder="Neutral" />
+        <TextInput Color="TextInputColor.Primary" @bind-Value="colorValue" placeholder="Primary" />
+        <TextInput Color="TextInputColor.Secondary" @bind-Value="colorValue" placeholder="Secondary" />
+        <TextInput Color="TextInputColor.Accent" @bind-Value="colorValue" placeholder="Accent" />
+        <TextInput Color="TextInputColor.Info" @bind-Value="colorValue" placeholder="Info" />
+        <TextInput Color="TextInputColor.Success" @bind-Value="colorValue" placeholder="Success" />
+        <TextInput Color="TextInputColor.Warning" @bind-Value="colorValue" placeholder="Warning" />
+        <TextInput Color="TextInputColor.Error" @bind-Value="colorValue" placeholder="Error" />
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Ghost Style</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <TextInput Ghost @bind-Value="ghostValue" placeholder="Ghost input" />
+        <TextInput Ghost Color="TextInputColor.Primary" @bind-Value="ghostValue" placeholder="Ghost Primary" />
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Validation</h2>
+    <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
+        <DataAnnotationsValidator />
+
+        <div class="form-control mb-4">
+            <label class="label"><span class="label-text">Email</span></label>
+            <TextInput Type="email" @bind-Value="formModel.Email" placeholder="Enter email" />
+            <ValidationMessage For="@(() => formModel.Email)" class="text-error text-sm mt-1" />
+        </div>
+
+        <div class="form-control mb-4">
+            <label class="label"><span class="label-text">Password</span></label>
+            <TextInput Type="password" @bind-Value="formModel.Password" placeholder="Enter password" />
+            <ValidationMessage For="@(() => formModel.Password)" class="text-error text-sm mt-1" />
+        </div>
+
+        <Button Type="submit" Color="ButtonColor.Primary" Block>Sign In</Button>
+    </EditForm>
+    @if (formSubmitted)
+    {
+        <Alert Color="AlertColor.Success" class="mt-4">Form submitted successfully!</Alert>
+    }
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <TextInput @bind-Value="attrValue" placeholder="Max 10 chars" maxlength="10" />
+        <TextInput @bind-Value="attrValue" placeholder="Disabled" disabled />
+        <TextInput @bind-Value="attrValue" placeholder="Readonly" readonly />
+    </div>
+</section>
+
+@code {
+    private string basicValue = "";
+    private string textValue = "";
+    private string passwordValue = "";
+    private string emailValue = "";
+    private string numberValue = "";
+    private string searchValue = "";
+    private string telValue = "";
+    private string urlValue = "";
+    private string sizeValue = "";
+    private string colorValue = "";
+    private string ghostValue = "";
+    private string attrValue = "";
+    private bool formSubmitted = false;
+
+    private FormModel formModel = new();
+
+    private void HandleValidSubmit()
+    {
+        formSubmitted = true;
+    }
+
+    private class FormModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Email is required")]
+        [System.ComponentModel.DataAnnotations.EmailAddress(ErrorMessage = "Invalid email format")]
+        public string Email { get; set; } = "";
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Password is required")]
+        [System.ComponentModel.DataAnnotations.MinLength(6, ErrorMessage = "Password must be at least 6 characters")]
+        public string Password { get; set; } = "";
+    }
+}
