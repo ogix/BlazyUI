@@ -1,7 +1,7 @@
 @namespace BlazyUI
 @inherits BlazyInputBase<int>
 
-<div class="@ContainerCssClass" @attributes="AdditionalAttributes">
+<div id="@IdAttributeValue" class="@ContainerCssClass" @attributes="AdditionalAttributes">
     @if (AllowClear)
     {
         <input type="radio"
@@ -71,7 +71,7 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        _name = Name ?? $"rating-{++_instanceCounter}";
+        _name = Name ?? NameAttributeValue ?? $"rating-{++_instanceCounter}";
     }
 
     /// <inheritdoc />

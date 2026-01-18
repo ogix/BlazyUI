@@ -1,7 +1,9 @@
 @namespace BlazyUI
 @inherits BlazyInputBase<string>
 
-<select class="@ComputedCssClass"
+<select id="@IdAttributeValue"
+        name="@NameAttributeValue"
+        class="@ComputedCssClass"
         value="@CurrentValue"
         @onchange="OnChange"
         @attributes="AdditionalAttributes">

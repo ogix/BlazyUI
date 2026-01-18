@@ -1,7 +1,9 @@
 @namespace BlazyUI
 @inherits BlazyInputBase<string>
 
-<textarea class="@ComputedCssClass"
+<textarea id="@IdAttributeValue"
+          name="@NameAttributeValue"
+          class="@ComputedCssClass"
           @onchange="OnChange"
           @attributes="AdditionalAttributes">@CurrentValue</textarea>
 
