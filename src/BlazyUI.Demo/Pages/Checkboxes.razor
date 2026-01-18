@@ -1,0 +1,148 @@
+@page "/checkboxes"
+
+<PageTitle>Checkbox - BlazyUI</PageTitle>
+
+<h1 class="text-3xl font-bold mb-8">Checkbox</h1>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <div class="flex flex-wrap gap-4 items-center">
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox @bind-Value="basicValue" />
+            <span>Accept terms and conditions</span>
+        </label>
+    </div>
+    <p class="mt-2 text-sm opacity-70">Checked: @basicValue</p>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <div class="flex flex-col gap-4">
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Size="CheckboxSize.ExtraSmall" @bind-Value="sizeXs" />
+            <span>Extra Small</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Size="CheckboxSize.Small" @bind-Value="sizeSm" />
+            <span>Small</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Size="CheckboxSize.Default" @bind-Value="sizeMd" />
+            <span>Default (Medium)</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Size="CheckboxSize.Large" @bind-Value="sizeLg" />
+            <span>Large</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Size="CheckboxSize.ExtraLarge" @bind-Value="sizeXl" />
+            <span>Extra Large</span>
+        </label>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <div class="flex flex-col gap-4">
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Color="CheckboxColor.Default" @bind-Value="colorDefault" />
+            <span>Default</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Color="CheckboxColor.Neutral" @bind-Value="colorNeutral" />
+            <span>Neutral</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Color="CheckboxColor.Primary" @bind-Value="colorPrimary" />
+            <span>Primary</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Color="CheckboxColor.Secondary" @bind-Value="colorSecondary" />
+            <span>Secondary</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Color="CheckboxColor.Accent" @bind-Value="colorAccent" />
+            <span>Accent</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Color="CheckboxColor.Info" @bind-Value="colorInfo" />
+            <span>Info</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Color="CheckboxColor.Success" @bind-Value="colorSuccess" />
+            <span>Success</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Color="CheckboxColor.Warning" @bind-Value="colorWarning" />
+            <span>Warning</span>
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox Color="CheckboxColor.Error" @bind-Value="colorError" />
+            <span>Error</span>
+        </label>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Validation</h2>
+    <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
+        <DataAnnotationsValidator />
+
+        <div class="form-control mb-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Checkbox @bind-Value="formModel.AcceptTerms" />
+                <span class="label-text">I accept the terms and conditions</span>
+            </label>
+            <ValidationMessage For="@(() => formModel.AcceptTerms)" class="text-error text-sm mt-1" />
+        </div>
+
+        <Button Type="submit" Color="ButtonColor.Primary" Block>Submit</Button>
+    </EditForm>
+    @if (formSubmitted)
+    {
+        <Alert Color="AlertColor.Success" class="mt-4">Form submitted successfully!</Alert>
+    }
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
+    <div class="flex flex-col gap-4">
+        <label class="flex items-center gap-2 cursor-pointer">
+            <Checkbox @bind-Value="disabledValue" disabled />
+            <span class="opacity-50">Disabled</span>
+        </label>
+    </div>
+</section>
+
+@code {
+    private bool basicValue = false;
+    private bool sizeXs = true;
+    private bool sizeSm = true;
+    private bool sizeMd = true;
+    private bool sizeLg = true;
+    private bool sizeXl = true;
+    private bool colorDefault = true;
+    private bool colorNeutral = true;
+    private bool colorPrimary = true;
+    private bool colorSecondary = true;
+    private bool colorAccent = true;
+    private bool colorInfo = true;
+    private bool colorSuccess = true;
+    private bool colorWarning = true;
+    private bool colorError = true;
+    private bool disabledValue = true;
+    private bool formSubmitted = false;
+
+    private FormModel formModel = new();
+
+    private void HandleValidSubmit()
+    {
+        formSubmitted = true;
+    }
+
+    private class FormModel
+    {
+        [System.ComponentModel.DataAnnotations.Range(typeof(bool), "true", "true", ErrorMessage = "You must accept the terms and conditions")]
+        public bool AcceptTerms { get; set; } = false;
+    }
+}
