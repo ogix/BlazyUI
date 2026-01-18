@@ -1,0 +1,164 @@
+@page "/selects"
+
+<PageTitle>Select - BlazyUI</PageTitle>
+
+<h1 class="text-3xl font-bold mb-8">Select</h1>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <div class="flex flex-wrap gap-4">
+        <Select @bind-Value="basicValue" class="w-full max-w-xs">
+            <option value="" disabled selected>Pick a color</option>
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+        </Select>
+    </div>
+    <p class="mt-2 text-sm opacity-70">Selected: @basicValue</p>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <Select Size="SelectSize.ExtraSmall" @bind-Value="sizeValue">
+            <option value="" disabled selected>Extra Small</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+        </Select>
+        <Select Size="SelectSize.Small" @bind-Value="sizeValue">
+            <option value="" disabled selected>Small</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+        </Select>
+        <Select Size="SelectSize.Default" @bind-Value="sizeValue">
+            <option value="" disabled selected>Default (Medium)</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+        </Select>
+        <Select Size="SelectSize.Large" @bind-Value="sizeValue">
+            <option value="" disabled selected>Large</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+        </Select>
+        <Select Size="SelectSize.ExtraLarge" @bind-Value="sizeValue">
+            <option value="" disabled selected>Extra Large</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+        </Select>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <Select Color="SelectColor.Default" @bind-Value="colorValue">
+            <option value="" disabled selected>Default</option>
+            <option value="1">Option 1</option>
+        </Select>
+        <Select Color="SelectColor.Neutral" @bind-Value="colorValue">
+            <option value="" disabled selected>Neutral</option>
+            <option value="1">Option 1</option>
+        </Select>
+        <Select Color="SelectColor.Primary" @bind-Value="colorValue">
+            <option value="" disabled selected>Primary</option>
+            <option value="1">Option 1</option>
+        </Select>
+        <Select Color="SelectColor.Secondary" @bind-Value="colorValue">
+            <option value="" disabled selected>Secondary</option>
+            <option value="1">Option 1</option>
+        </Select>
+        <Select Color="SelectColor.Accent" @bind-Value="colorValue">
+            <option value="" disabled selected>Accent</option>
+            <option value="1">Option 1</option>
+        </Select>
+        <Select Color="SelectColor.Info" @bind-Value="colorValue">
+            <option value="" disabled selected>Info</option>
+            <option value="1">Option 1</option>
+        </Select>
+        <Select Color="SelectColor.Success" @bind-Value="colorValue">
+            <option value="" disabled selected>Success</option>
+            <option value="1">Option 1</option>
+        </Select>
+        <Select Color="SelectColor.Warning" @bind-Value="colorValue">
+            <option value="" disabled selected>Warning</option>
+            <option value="1">Option 1</option>
+        </Select>
+        <Select Color="SelectColor.Error" @bind-Value="colorValue">
+            <option value="" disabled selected>Error</option>
+            <option value="1">Option 1</option>
+        </Select>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Ghost Style</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <Select Ghost @bind-Value="ghostValue">
+            <option value="" disabled selected>Ghost select</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+        </Select>
+        <Select Ghost Color="SelectColor.Primary" @bind-Value="ghostValue">
+            <option value="" disabled selected>Ghost Primary</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+        </Select>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Validation</h2>
+    <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
+        <DataAnnotationsValidator />
+
+        <div class="form-control mb-4">
+            <label class="label"><span class="label-text">Country</span></label>
+            <Select @bind-Value="formModel.Country">
+                <option value="">Select a country</option>
+                <option value="us">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="ca">Canada</option>
+                <option value="au">Australia</option>
+            </Select>
+            <ValidationMessage For="@(() => formModel.Country)" class="text-error text-sm mt-1" />
+        </div>
+
+        <Button Type="submit" Color="ButtonColor.Primary" Block>Submit</Button>
+    </EditForm>
+    @if (formSubmitted)
+    {
+        <Alert Color="AlertColor.Success" class="mt-4">Form submitted! Country: @formModel.Country</Alert>
+    }
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <Select @bind-Value="attrValue" disabled>
+            <option value="" disabled selected>Disabled</option>
+            <option value="1">Option 1</option>
+        </Select>
+    </div>
+</section>
+
+@code {
+    private string basicValue = "";
+    private string sizeValue = "";
+    private string colorValue = "";
+    private string ghostValue = "";
+    private string attrValue = "";
+    private bool formSubmitted = false;
+
+    private FormModel formModel = new();
+
+    private void HandleValidSubmit()
+    {
+        formSubmitted = true;
+    }
+
+    private class FormModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Please select a country")]
+        public string Country { get; set; } = "";
+    }
+}
