@@ -1,0 +1,155 @@
+@page "/ranges"
+
+<PageTitle>Range - BlazyUI</PageTitle>
+
+<h1 class="text-3xl font-bold mb-8">Range</h1>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <div class="w-full max-w-xs">
+        <Range @bind-Value="basicValue" />
+        <p class="mt-2 text-sm opacity-70">Value: @basicValue</p>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Min/Max/Step</h2>
+    <div class="w-full max-w-xs">
+        <Range @bind-Value="customValue" Min="0" Max="50" Step="5" Color="RangeColor.Primary" />
+        <p class="mt-2 text-sm opacity-70">Value: @customValue (0-50, step 5)</p>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <div>
+            <label class="label-text">Extra Small</label>
+            <Range Size="RangeSize.ExtraSmall" @bind-Value="sizeXs" />
+        </div>
+        <div>
+            <label class="label-text">Small</label>
+            <Range Size="RangeSize.Small" @bind-Value="sizeSm" />
+        </div>
+        <div>
+            <label class="label-text">Default (Medium)</label>
+            <Range Size="RangeSize.Default" @bind-Value="sizeMd" />
+        </div>
+        <div>
+            <label class="label-text">Large</label>
+            <Range Size="RangeSize.Large" @bind-Value="sizeLg" />
+        </div>
+        <div>
+            <label class="label-text">Extra Large</label>
+            <Range Size="RangeSize.ExtraLarge" @bind-Value="sizeXl" />
+        </div>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <div>
+            <label class="label-text">Default</label>
+            <Range Color="RangeColor.Default" @bind-Value="colorDefault" />
+        </div>
+        <div>
+            <label class="label-text">Neutral</label>
+            <Range Color="RangeColor.Neutral" @bind-Value="colorNeutral" />
+        </div>
+        <div>
+            <label class="label-text">Primary</label>
+            <Range Color="RangeColor.Primary" @bind-Value="colorPrimary" />
+        </div>
+        <div>
+            <label class="label-text">Secondary</label>
+            <Range Color="RangeColor.Secondary" @bind-Value="colorSecondary" />
+        </div>
+        <div>
+            <label class="label-text">Accent</label>
+            <Range Color="RangeColor.Accent" @bind-Value="colorAccent" />
+        </div>
+        <div>
+            <label class="label-text">Info</label>
+            <Range Color="RangeColor.Info" @bind-Value="colorInfo" />
+        </div>
+        <div>
+            <label class="label-text">Success</label>
+            <Range Color="RangeColor.Success" @bind-Value="colorSuccess" />
+        </div>
+        <div>
+            <label class="label-text">Warning</label>
+            <Range Color="RangeColor.Warning" @bind-Value="colorWarning" />
+        </div>
+        <div>
+            <label class="label-text">Error</label>
+            <Range Color="RangeColor.Error" @bind-Value="colorError" />
+        </div>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Validation</h2>
+    <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
+        <DataAnnotationsValidator />
+
+        <div class="form-control mb-4">
+            <label class="label">
+                <span class="label-text">Volume (10-90)</span>
+            </label>
+            <Range @bind-Value="formModel.Volume" Min="0" Max="100" Color="RangeColor.Primary" />
+            <label class="label">
+                <span class="label-text-alt">Current: @formModel.Volume</span>
+            </label>
+            <ValidationMessage For="@(() => formModel.Volume)" class="text-error text-sm" />
+        </div>
+
+        <Button Type="submit" Color="ButtonColor.Primary" Block>Save Settings</Button>
+    </EditForm>
+    @if (formSubmitted)
+    {
+        <Alert Color="AlertColor.Success" class="mt-4">Settings saved! Volume: @formModel.Volume</Alert>
+    }
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
+    <div class="w-full max-w-xs">
+        <Range @bind-Value="disabledValue" disabled class="opacity-50" />
+        <p class="mt-2 text-sm opacity-50">Disabled</p>
+    </div>
+</section>
+
+@code {
+    private int basicValue = 50;
+    private int customValue = 25;
+    private int sizeXs = 50;
+    private int sizeSm = 50;
+    private int sizeMd = 50;
+    private int sizeLg = 50;
+    private int sizeXl = 50;
+    private int colorDefault = 70;
+    private int colorNeutral = 70;
+    private int colorPrimary = 70;
+    private int colorSecondary = 70;
+    private int colorAccent = 70;
+    private int colorInfo = 70;
+    private int colorSuccess = 70;
+    private int colorWarning = 70;
+    private int colorError = 70;
+    private int disabledValue = 30;
+    private bool formSubmitted = false;
+
+    private FormModel formModel = new();
+
+    private void HandleValidSubmit()
+    {
+        formSubmitted = true;
+    }
+
+    private class FormModel
+    {
+        [System.ComponentModel.DataAnnotations.Range(10, 90, ErrorMessage = "Volume must be between 10 and 90")]
+        public int Volume { get; set; } = 50;
+    }
+}
