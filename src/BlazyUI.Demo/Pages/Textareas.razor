@@ -1,0 +1,99 @@
+@page "/textareas"
+
+<PageTitle>Textarea - BlazyUI</PageTitle>
+
+<h1 class="text-3xl font-bold mb-8">Textarea</h1>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <div class="flex flex-wrap gap-4">
+        <Textarea @bind-Value="basicValue" placeholder="Type something..." class="w-full max-w-xs" />
+    </div>
+    <p class="mt-2 text-sm opacity-70">Value: @basicValue</p>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <Textarea Size="TextareaSize.ExtraSmall" @bind-Value="sizeValue" placeholder="Extra Small" />
+        <Textarea Size="TextareaSize.Small" @bind-Value="sizeValue" placeholder="Small" />
+        <Textarea Size="TextareaSize.Default" @bind-Value="sizeValue" placeholder="Default (Medium)" />
+        <Textarea Size="TextareaSize.Large" @bind-Value="sizeValue" placeholder="Large" />
+        <Textarea Size="TextareaSize.ExtraLarge" @bind-Value="sizeValue" placeholder="Extra Large" />
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <Textarea Color="TextareaColor.Default" @bind-Value="colorValue" placeholder="Default" />
+        <Textarea Color="TextareaColor.Neutral" @bind-Value="colorValue" placeholder="Neutral" />
+        <Textarea Color="TextareaColor.Primary" @bind-Value="colorValue" placeholder="Primary" />
+        <Textarea Color="TextareaColor.Secondary" @bind-Value="colorValue" placeholder="Secondary" />
+        <Textarea Color="TextareaColor.Accent" @bind-Value="colorValue" placeholder="Accent" />
+        <Textarea Color="TextareaColor.Info" @bind-Value="colorValue" placeholder="Info" />
+        <Textarea Color="TextareaColor.Success" @bind-Value="colorValue" placeholder="Success" />
+        <Textarea Color="TextareaColor.Warning" @bind-Value="colorValue" placeholder="Warning" />
+        <Textarea Color="TextareaColor.Error" @bind-Value="colorValue" placeholder="Error" />
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Ghost Style</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <Textarea Ghost @bind-Value="ghostValue" placeholder="Ghost textarea" />
+        <Textarea Ghost Color="TextareaColor.Primary" @bind-Value="ghostValue" placeholder="Ghost Primary" />
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Validation</h2>
+    <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
+        <DataAnnotationsValidator />
+
+        <div class="form-control mb-4">
+            <label class="label"><span class="label-text">Message</span></label>
+            <Textarea @bind-Value="formModel.Message" placeholder="Enter your message" rows="4" />
+            <ValidationMessage For="@(() => formModel.Message)" class="text-error text-sm mt-1" />
+        </div>
+
+        <Button Type="submit" Color="ButtonColor.Primary" Block>Submit</Button>
+    </EditForm>
+    @if (formSubmitted)
+    {
+        <Alert Color="AlertColor.Success" class="mt-4">Form submitted successfully!</Alert>
+    }
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <Textarea @bind-Value="attrValue" placeholder="4 rows" rows="4" />
+        <Textarea @bind-Value="attrValue" placeholder="Max 100 chars" maxlength="100" />
+        <Textarea @bind-Value="attrValue" placeholder="Disabled" disabled />
+        <Textarea @bind-Value="attrValue" placeholder="Readonly" readonly />
+    </div>
+</section>
+
+@code {
+    private string basicValue = "";
+    private string sizeValue = "";
+    private string colorValue = "";
+    private string ghostValue = "";
+    private string attrValue = "";
+    private bool formSubmitted = false;
+
+    private FormModel formModel = new();
+
+    private void HandleValidSubmit()
+    {
+        formSubmitted = true;
+    }
+
+    private class FormModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Message is required")]
+        [System.ComponentModel.DataAnnotations.MinLength(10, ErrorMessage = "Message must be at least 10 characters")]
+        public string Message { get; set; } = "";
+    }
+}
