@@ -1,0 +1,76 @@
+@namespace BlazyUI
+@inherits BlazyInputBase<bool>
+
+<input type="checkbox"
+       class="@ComputedCssClass"
+       checked="@CurrentValue"
+       @onchange="OnChange"
+       @attributes="AdditionalAttributes" />
+
+@code {
+    /// <summary>
+    /// The size of the toggle.
+    /// </summary>
+    [Parameter]
+    public ToggleSize Size { get; set; } = ToggleSize.Default;
+
+    /// <summary>
+    /// The color of the toggle.
+    /// </summary>
+    [Parameter]
+    public ToggleColor Color { get; set; } = ToggleColor.Default;
+
+    /// <inheritdoc />
+    protected override string GetErrorColorClass() => "toggle-error";
+
+    /// <inheritdoc />
+    protected override bool TryParseValueFromString(
+        string? value,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out bool result,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        if (bool.TryParse(value, out result))
+        {
+            validationErrorMessage = null;
+            return true;
+        }
+
+        result = false;
+        validationErrorMessage = $"The value '{value}' is not a valid boolean.";
+        return false;
+    }
+
+    private string ComputedCssClass => MergeClasses(
+        "toggle",
+        SizeClass,
+        ColorClass
+    );
+
+    private void OnChange(ChangeEventArgs e)
+        => CurrentValue = (bool)(e.Value ?? false);
+
+    private string? SizeClass => Size switch
+    {
+        ToggleSize.Default => null,
+        ToggleSize.ExtraSmall => "toggle-xs",
+        ToggleSize.Small => "toggle-sm",
+        ToggleSize.Medium => "toggle-md",
+        ToggleSize.Large => "toggle-lg",
+        ToggleSize.ExtraLarge => "toggle-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? ColorClass => Color switch
+    {
+        ToggleColor.Default => null,
+        ToggleColor.Neutral => "toggle-neutral",
+        ToggleColor.Primary => "toggle-primary",
+        ToggleColor.Secondary => "toggle-secondary",
+        ToggleColor.Accent => "toggle-accent",
+        ToggleColor.Info => "toggle-info",
+        ToggleColor.Success => "toggle-success",
+        ToggleColor.Warning => "toggle-warning",
+        ToggleColor.Error => "toggle-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+}
