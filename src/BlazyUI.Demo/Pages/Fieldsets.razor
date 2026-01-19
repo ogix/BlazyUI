@@ -90,7 +90,7 @@
             <label class="label">Phone</label>
             <input type="tel" class="input w-full" placeholder="+1 (555) 123-4567" />
             <label class="label">Address</label>
-            <Textarea placeholder="Enter your address..." Class="w-full" />
+            <Textarea @bind-Value="address" placeholder="Enter your address..." Class="w-full" />
         </Fieldset>
 
         <Fieldset Legend="Account Settings" Class="bg-base-200 border-base-300 rounded-box border p-4">
@@ -116,4 +116,5 @@
     private bool darkMode = false;
     private string language = "en";
     private string timezone = "utc";
+    private string address = "";
 }
