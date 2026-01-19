@@ -1,0 +1,291 @@
+@page "/quickgrid"
+@using Microsoft.AspNetCore.Components.QuickGrid
+
+<PageTitle>QuickGrid with DaisyUI</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">QuickGrid with DaisyUI Styling</h1>
+
+<p class="mb-6 text-base-content/70">
+    Blazor's QuickGrid component styled with DaisyUI table classes. QuickGrid provides efficient data rendering
+    with built-in sorting and pagination, while DaisyUI provides the visual styling.
+</p>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic Table</h2>
+    <CodeExample Code="@basicCode">
+        <div class="overflow-x-auto">
+            <QuickGrid Items="@people" Class="table">
+                <PropertyColumn Property="@(p => p.Id)" Title="ID" />
+                <PropertyColumn Property="@(p => p.Name)" />
+                <PropertyColumn Property="@(p => p.Email)" />
+                <PropertyColumn Property="@(p => p.Department)" />
+            </QuickGrid>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Zebra Stripes</h2>
+    <CodeExample Code="@zebraCode">
+        <div class="overflow-x-auto">
+            <QuickGrid Items="@people" Class="table table-zebra">
+                <PropertyColumn Property="@(p => p.Id)" Title="ID" />
+                <PropertyColumn Property="@(p => p.Name)" />
+                <PropertyColumn Property="@(p => p.Email)" />
+                <PropertyColumn Property="@(p => p.Department)" />
+            </QuickGrid>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Table Sizes</h2>
+
+    <h3 class="text-lg font-medium mb-2 mt-4">Extra Small (table-xs)</h3>
+    <CodeExample Code="@sizeXsCode">
+        <div class="overflow-x-auto">
+            <QuickGrid Items="@people" Class="table table-xs">
+                <PropertyColumn Property="@(p => p.Id)" Title="ID" />
+                <PropertyColumn Property="@(p => p.Name)" />
+                <PropertyColumn Property="@(p => p.Email)" />
+                <PropertyColumn Property="@(p => p.Department)" />
+            </QuickGrid>
+        </div>
+    </CodeExample>
+
+    <h3 class="text-lg font-medium mb-2 mt-4">Small (table-sm)</h3>
+    <CodeExample Code="@sizeSmCode">
+        <div class="overflow-x-auto">
+            <QuickGrid Items="@people" Class="table table-sm">
+                <PropertyColumn Property="@(p => p.Id)" Title="ID" />
+                <PropertyColumn Property="@(p => p.Name)" />
+                <PropertyColumn Property="@(p => p.Email)" />
+                <PropertyColumn Property="@(p => p.Department)" />
+            </QuickGrid>
+        </div>
+    </CodeExample>
+
+    <h3 class="text-lg font-medium mb-2 mt-4">Large (table-lg)</h3>
+    <CodeExample Code="@sizeLgCode">
+        <div class="overflow-x-auto">
+            <QuickGrid Items="@people" Class="table table-lg">
+                <PropertyColumn Property="@(p => p.Id)" Title="ID" />
+                <PropertyColumn Property="@(p => p.Name)" />
+                <PropertyColumn Property="@(p => p.Email)" />
+                <PropertyColumn Property="@(p => p.Department)" />
+            </QuickGrid>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Pinned Rows (Sticky Header)</h2>
+    <CodeExample Code="@pinnedRowsCode">
+        <div class="overflow-x-auto h-64">
+            <QuickGrid Items="@manyPeople" Class="table table-pin-rows">
+                <PropertyColumn Property="@(p => p.Id)" Title="ID" />
+                <PropertyColumn Property="@(p => p.Name)" />
+                <PropertyColumn Property="@(p => p.Email)" />
+                <PropertyColumn Property="@(p => p.Department)" />
+            </QuickGrid>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Sortable Columns</h2>
+    <CodeExample Code="@sortableCode">
+        <div class="overflow-x-auto">
+            <QuickGrid Items="@people" Class="table table-zebra">
+                <PropertyColumn Property="@(p => p.Id)" Title="ID" Sortable="true" />
+                <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
+                <PropertyColumn Property="@(p => p.Email)" Sortable="true" />
+                <PropertyColumn Property="@(p => p.Department)" Sortable="true" />
+            </QuickGrid>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Pagination</h2>
+    <CodeExample Code="@paginationCode">
+        <div class="overflow-x-auto">
+            <QuickGrid Items="@manyPeople" Class="table table-zebra" Pagination="@pagination">
+                <PropertyColumn Property="@(p => p.Id)" Title="ID" Sortable="true" />
+                <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
+                <PropertyColumn Property="@(p => p.Email)" Sortable="true" />
+                <PropertyColumn Property="@(p => p.Department)" Sortable="true" />
+            </QuickGrid>
+        </div>
+        <div class="flex justify-center mt-4">
+            <div class="join">
+                <button class="join-item btn btn-sm" disabled="@(pagination.CurrentPageIndex == 0)" @onclick="@(() => GoToPageAsync(0))">
+                    First
+                </button>
+                <button class="join-item btn btn-sm" disabled="@(pagination.CurrentPageIndex == 0)" @onclick="@(() => GoToPageAsync(pagination.CurrentPageIndex - 1))">
+                    Previous
+                </button>
+                <button class="join-item btn btn-sm btn-active">
+                    Page @(pagination.CurrentPageIndex + 1) of @(pagination.LastPageIndex + 1)
+                </button>
+                <button class="join-item btn btn-sm" disabled="@(pagination.CurrentPageIndex >= pagination.LastPageIndex)" @onclick="@(() => GoToPageAsync(pagination.CurrentPageIndex + 1))">
+                    Next
+                </button>
+                <button class="join-item btn btn-sm" disabled="@(pagination.CurrentPageIndex >= pagination.LastPageIndex)" @onclick="@(() => GoToPageAsync(pagination.LastPageIndex ?? 0))">
+                    Last
+                </button>
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Custom Templates</h2>
+    <CodeExample Code="@templateCode">
+        <div class="overflow-x-auto">
+            <QuickGrid Items="@people" Class="table">
+                <PropertyColumn Property="@(p => p.Id)" Title="ID" />
+                <TemplateColumn Title="Name">
+                    <div class="flex items-center gap-3">
+                        <div class="avatar placeholder">
+                            <div class="bg-neutral text-neutral-content w-8 rounded-full">
+                                <span class="text-xs">@context.Name[0]</span>
+                            </div>
+                        </div>
+                        <span class="font-medium">@context.Name</span>
+                    </div>
+                </TemplateColumn>
+                <PropertyColumn Property="@(p => p.Email)" />
+                <TemplateColumn Title="Department">
+                    <Badge Color="@GetDepartmentColor(context.Department)">@context.Department</Badge>
+                </TemplateColumn>
+            </QuickGrid>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private record Person(int Id, string Name, string Email, string Department);
+
+    private PaginationState pagination = new() { ItemsPerPage = 5 };
+
+    private IQueryable<Person> people = new List<Person>
+    {
+        new(1, "Alice Johnson", "alice@example.com", "Engineering"),
+        new(2, "Bob Smith", "bob@example.com", "Marketing"),
+        new(3, "Carol Williams", "carol@example.com", "Engineering"),
+        new(4, "David Brown", "david@example.com", "Sales"),
+        new(5, "Eve Davis", "eve@example.com", "HR")
+    }.AsQueryable();
+
+    private IQueryable<Person> manyPeople = Enumerable.Range(1, 50)
+        .Select(i => new Person(
+            i,
+            $"Person {i}",
+            $"person{i}@example.com",
+            new[] { "Engineering", "Marketing", "Sales", "HR", "Finance" }[i % 5]
+        ))
+        .AsQueryable();
+
+    private async Task GoToPageAsync(int pageIndex)
+    {
+        await pagination.SetCurrentPageIndexAsync(pageIndex);
+    }
+
+    private BadgeColor GetDepartmentColor(string department) => department switch
+    {
+        "Engineering" => BadgeColor.Primary,
+        "Marketing" => BadgeColor.Secondary,
+        "Sales" => BadgeColor.Accent,
+        "HR" => BadgeColor.Info,
+        "Finance" => BadgeColor.Success,
+        _ => BadgeColor.Default
+    };
+
+    private string basicCode = @"<div class=""overflow-x-auto"">
+    <QuickGrid Items=""@people"" Class=""table"">
+        <PropertyColumn Property=""@(p => p.Id)"" Title=""ID"" />
+        <PropertyColumn Property=""@(p => p.Name)"" />
+        <PropertyColumn Property=""@(p => p.Email)"" />
+        <PropertyColumn Property=""@(p => p.Department)"" />
+    </QuickGrid>
+</div>";
+
+    private string zebraCode = @"<div class=""overflow-x-auto"">
+    <QuickGrid Items=""@people"" Class=""table table-zebra"">
+        <PropertyColumn Property=""@(p => p.Id)"" Title=""ID"" />
+        <PropertyColumn Property=""@(p => p.Name)"" />
+        <PropertyColumn Property=""@(p => p.Email)"" />
+        <PropertyColumn Property=""@(p => p.Department)"" />
+    </QuickGrid>
+</div>";
+
+    private string sizeXsCode = @"<QuickGrid Items=""@people"" Class=""table table-xs"">
+    ...
+</QuickGrid>";
+
+    private string sizeSmCode = @"<QuickGrid Items=""@people"" Class=""table table-sm"">
+    ...
+</QuickGrid>";
+
+    private string sizeLgCode = @"<QuickGrid Items=""@people"" Class=""table table-lg"">
+    ...
+</QuickGrid>";
+
+    private string pinnedRowsCode = @"<div class=""overflow-x-auto h-64"">
+    <QuickGrid Items=""@manyPeople"" Class=""table table-pin-rows"">
+        <PropertyColumn Property=""@(p => p.Id)"" Title=""ID"" />
+        <PropertyColumn Property=""@(p => p.Name)"" />
+        <PropertyColumn Property=""@(p => p.Email)"" />
+        <PropertyColumn Property=""@(p => p.Department)"" />
+    </QuickGrid>
+</div>";
+
+    private string sortableCode = @"<QuickGrid Items=""@people"" Class=""table table-zebra"">
+    <PropertyColumn Property=""@(p => p.Id)"" Title=""ID"" Sortable=""true"" />
+    <PropertyColumn Property=""@(p => p.Name)"" Sortable=""true"" />
+    <PropertyColumn Property=""@(p => p.Email)"" Sortable=""true"" />
+    <PropertyColumn Property=""@(p => p.Department)"" Sortable=""true"" />
+</QuickGrid>";
+
+    private string paginationCode = @"<QuickGrid Items=""@manyPeople"" Class=""table table-zebra"" Pagination=""@pagination"">
+    <PropertyColumn Property=""@(p => p.Id)"" Title=""ID"" Sortable=""true"" />
+    <PropertyColumn Property=""@(p => p.Name)"" Sortable=""true"" />
+    ...
+</QuickGrid>
+
+<div class=""join"">
+    <button class=""join-item btn btn-sm"" @onclick=""@(() => GoToPageAsync(0))"">First</button>
+    <button class=""join-item btn btn-sm"" @onclick=""@(() => GoToPageAsync(pagination.CurrentPageIndex - 1))"">Previous</button>
+    <button class=""join-item btn btn-sm btn-active"">Page @(pagination.CurrentPageIndex + 1)</button>
+    <button class=""join-item btn btn-sm"" @onclick=""@(() => GoToPageAsync(pagination.CurrentPageIndex + 1))"">Next</button>
+    <button class=""join-item btn btn-sm"" @onclick=""@(() => GoToPageAsync(pagination.LastPageIndex ?? 0))"">Last</button>
+</div>
+
+@code {
+    private PaginationState pagination = new() { ItemsPerPage = 5 };
+
+    private async Task GoToPageAsync(int pageIndex)
+    {
+        await pagination.SetCurrentPageIndexAsync(pageIndex);
+    }
+}";
+
+    private string templateCode = @"<QuickGrid Items=""@people"" Class=""table"">
+    <PropertyColumn Property=""@(p => p.Id)"" Title=""ID"" />
+    <TemplateColumn Title=""Name"">
+        <div class=""flex items-center gap-3"">
+            <div class=""avatar placeholder"">
+                <div class=""bg-neutral text-neutral-content w-8 rounded-full"">
+                    <span class=""text-xs"">@context.Name[0]</span>
+                </div>
+            </div>
+            <span class=""font-medium"">@context.Name</span>
+        </div>
+    </TemplateColumn>
+    <PropertyColumn Property=""@(p => p.Email)"" />
+    <TemplateColumn Title=""Department"">
+        <Badge Color=""@GetDepartmentColor(context.Department)"">@context.Department</Badge>
+    </TemplateColumn>
+</QuickGrid>";
+}
