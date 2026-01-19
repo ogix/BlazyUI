@@ -9,6 +9,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddTailwindMerge();
         services.AddScoped<IModalService, ModalService>();
+        services.AddScoped<IToastService, ToastService>();
         return services;
     }
 }

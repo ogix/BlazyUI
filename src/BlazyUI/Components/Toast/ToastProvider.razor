@@ -1,0 +1,125 @@
+@namespace BlazyUI
+@implements IDisposable
+
+@foreach (var positionGroup in _toasts.GroupBy(t => t.Options.Position))
+{
+    <div class="toast @GetPositionClasses(positionGroup.Key) z-[1000]">
+        @foreach (var toast in positionGroup)
+        {
+            <Alert Color="@GetAlertColor(toast.Type)" Style="@toast.Options.Style">
+                <Icon>
+                    @switch (toast.Type)
+                    {
+                        case ToastType.Info:
+                            <InfoIcon Class="w-6 h-6" />
+                            break;
+                        case ToastType.Success:
+                            <SuccessIcon Class="w-6 h-6" />
+                            break;
+                        case ToastType.Warning:
+                            <WarningIcon Class="w-6 h-6" />
+                            break;
+                        case ToastType.Error:
+                            <ErrorIcon Class="w-6 h-6" />
+                            break;
+                    }
+                </Icon>
+                <ChildContent>
+                    <span>@toast.Message</span>
+                    @if (toast.Options.ShowCloseButton)
+                    {
+                        <Button Size="ButtonSize.Small" Style="ButtonStyle.Ghost" OnClick="() => Remove(toast.Id)">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </Button>
+                    }
+                </ChildContent>
+            </Alert>
+        }
+    </div>
+}
+
+@code {
+    [Inject] private IToastService ToastService { get; set; } = default!;
+
+    private ToastService? _service;
+    private IReadOnlyList<ToastReference> _toasts = Array.Empty<ToastReference>();
+    private readonly Dictionary<Guid, Timer> _timers = new();
+
+    protected override void OnInitialized()
+    {
+        _service = ToastService as ToastService;
+        if (_service != null)
+        {
+            _toasts = _service.Toasts;
+            _service.OnChange += HandleChange;
+        }
+    }
+
+    private void HandleChange()
+    {
+        if (_service != null)
+        {
+            _toasts = _service.Toasts;
+
+            // Set up timers for new toasts with auto-dismiss
+            foreach (var toast in _toasts)
+            {
+                if (toast.Options.Duration > 0 && !_timers.ContainsKey(toast.Id))
+                {
+                    var timer = new Timer(_ => InvokeAsync(() => Remove(toast.Id)), null, toast.Options.Duration, Timeout.Infinite);
+                    _timers[toast.Id] = timer;
+                }
+            }
+        }
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void Remove(Guid id)
+    {
+        if (_timers.TryGetValue(id, out var timer))
+        {
+            timer.Dispose();
+            _timers.Remove(id);
+        }
+        _service?.Remove(id);
+    }
+
+    private static string GetPositionClasses(ToastPosition position) => position switch
+    {
+        ToastPosition.TopStart => "toast-start toast-top",
+        ToastPosition.TopCenter => "toast-center toast-top",
+        ToastPosition.TopEnd => "toast-end toast-top",
+        ToastPosition.MiddleStart => "toast-start toast-middle",
+        ToastPosition.MiddleCenter => "toast-center toast-middle",
+        ToastPosition.MiddleEnd => "toast-end toast-middle",
+        ToastPosition.BottomStart => "toast-start toast-bottom",
+        ToastPosition.BottomCenter => "toast-center toast-bottom",
+        ToastPosition.BottomEnd => "toast-end toast-bottom",
+        _ => throw new ArgumentOutOfRangeException(nameof(position))
+    };
+
+    private static AlertColor GetAlertColor(ToastType type) => type switch
+    {
+        ToastType.Info => AlertColor.Info,
+        ToastType.Success => AlertColor.Success,
+        ToastType.Warning => AlertColor.Warning,
+        ToastType.Error => AlertColor.Error,
+        _ => throw new ArgumentOutOfRangeException(nameof(type))
+    };
+
+    public void Dispose()
+    {
+        if (_service != null)
+        {
+            _service.OnChange -= HandleChange;
+        }
+
+        foreach (var timer in _timers.Values)
+        {
+            timer.Dispose();
+        }
+        _timers.Clear();
+    }
+}

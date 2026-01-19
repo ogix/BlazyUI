@@ -1,0 +1,215 @@
+@page "/toasts"
+@inject IToastService ToastService
+
+<PageTitle>Toasts</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Toast Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Simple Toasts</h2>
+    <CodeExample Code="@simpleToastsCode">
+        <div class="flex flex-wrap gap-2">
+            <Button Color="ButtonColor.Info" OnClick="ShowInfo">Info</Button>
+            <Button Color="ButtonColor.Success" OnClick="ShowSuccess">Success</Button>
+            <Button Color="ButtonColor.Warning" OnClick="ShowWarning">Warning</Button>
+            <Button Color="ButtonColor.Error" OnClick="ShowError">Error</Button>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Custom Duration</h2>
+    <CodeExample Code="@customDurationCode">
+        <div class="flex flex-wrap gap-2">
+            <Button Color="ButtonColor.Primary" OnClick="ShowShortDuration">Short (2s)</Button>
+            <Button Color="ButtonColor.Secondary" OnClick="ShowLongDuration">Long (10s)</Button>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Custom Position</h2>
+    <CodeExample Code="@customPositionCode">
+        <div class="flex flex-wrap gap-2">
+            <Button Color="ButtonColor.Accent" OnClick="ShowTopStart">Top Start</Button>
+            <Button Color="ButtonColor.Accent" OnClick="ShowTopCenter">Top Center</Button>
+            <Button Color="ButtonColor.Accent" OnClick="ShowTopEnd">Top End</Button>
+            <Button Color="ButtonColor.Accent" OnClick="ShowMiddleCenter">Middle Center</Button>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">No Auto-Dismiss</h2>
+    <CodeExample Code="@noAutoDismissCode">
+        <div class="flex flex-wrap gap-2">
+            <Button Color="ButtonColor.Neutral" OnClick="ShowPersistent">Persistent Toast</Button>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Clear All</h2>
+    <CodeExample Code="@clearAllCode">
+        <div class="flex flex-wrap gap-2">
+            <Button Color="ButtonColor.Error" Variant="ButtonVariant.Outline" OnClick="ClearAll">Clear All Toasts</Button>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private void ShowInfo()
+    {
+        ToastService.Info("This is an informational message.");
+    }
+
+    private void ShowSuccess()
+    {
+        ToastService.Success("Operation completed successfully!");
+    }
+
+    private void ShowWarning()
+    {
+        ToastService.Warning("Please review your input before continuing.");
+    }
+
+    private void ShowError()
+    {
+        ToastService.Error("An error occurred. Please try again.");
+    }
+
+    private void ShowShortDuration()
+    {
+        ToastService.Info("This toast disappears quickly!", options =>
+        {
+            options.Duration = 2000;
+        });
+    }
+
+    private void ShowLongDuration()
+    {
+        ToastService.Info("This toast stays longer.", options =>
+        {
+            options.Duration = 10000;
+        });
+    }
+
+    private void ShowTopStart()
+    {
+        ToastService.Success("Top Start position!", options =>
+        {
+            options.Position = ToastPosition.TopStart;
+        });
+    }
+
+    private void ShowTopCenter()
+    {
+        ToastService.Success("Top Center position!", options =>
+        {
+            options.Position = ToastPosition.TopCenter;
+        });
+    }
+
+    private void ShowTopEnd()
+    {
+        ToastService.Success("Top End position!", options =>
+        {
+            options.Position = ToastPosition.TopEnd;
+        });
+    }
+
+    private void ShowMiddleCenter()
+    {
+        ToastService.Success("Middle Center position!", options =>
+        {
+            options.Position = ToastPosition.MiddleCenter;
+        });
+    }
+
+    private void ShowPersistent()
+    {
+        ToastService.Warning("This toast won't auto-dismiss. Click X to close.", options =>
+        {
+            options.Duration = 0;
+        });
+    }
+
+    private void ClearAll()
+    {
+        ToastService.Clear();
+    }
+
+    private string simpleToastsCode = @"@inject IToastService ToastService
+
+<Button Color=""ButtonColor.Info"" OnClick=""ShowInfo"">Info</Button>
+<Button Color=""ButtonColor.Success"" OnClick=""ShowSuccess"">Success</Button>
+<Button Color=""ButtonColor.Warning"" OnClick=""ShowWarning"">Warning</Button>
+<Button Color=""ButtonColor.Error"" OnClick=""ShowError"">Error</Button>
+
+@code {
+    private void ShowInfo()
+    {
+        ToastService.Info(""This is an informational message."");
+    }
+
+    private void ShowSuccess()
+    {
+        ToastService.Success(""Operation completed successfully!"");
+    }
+
+    private void ShowWarning()
+    {
+        ToastService.Warning(""Please review your input before continuing."");
+    }
+
+    private void ShowError()
+    {
+        ToastService.Error(""An error occurred. Please try again."");
+    }
+}";
+
+    private string customDurationCode = @"// Short duration (2 seconds)
+ToastService.Info(""This toast disappears quickly!"", options =>
+{
+    options.Duration = 2000;
+});
+
+// Long duration (10 seconds)
+ToastService.Info(""This toast stays longer."", options =>
+{
+    options.Duration = 10000;
+});";
+
+    private string customPositionCode = @"// Top Start
+ToastService.Success(""Top Start position!"", options =>
+{
+    options.Position = ToastPosition.TopStart;
+});
+
+// Top Center
+ToastService.Success(""Top Center position!"", options =>
+{
+    options.Position = ToastPosition.TopCenter;
+});
+
+// Top End
+ToastService.Success(""Top End position!"", options =>
+{
+    options.Position = ToastPosition.TopEnd;
+});
+
+// Middle Center
+ToastService.Success(""Middle Center position!"", options =>
+{
+    options.Position = ToastPosition.MiddleCenter;
+});";
+
+    private string noAutoDismissCode = @"// Duration = 0 means the toast won't auto-dismiss
+ToastService.Warning(""This toast won't auto-dismiss. Click X to close."", options =>
+{
+    options.Duration = 0;
+});";
+
+    private string clearAllCode = @"// Clear all toasts
+ToastService.Clear();";
+}
