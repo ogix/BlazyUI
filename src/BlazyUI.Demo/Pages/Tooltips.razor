@@ -1,0 +1,169 @@
+@page "/tooltips"
+
+<PageTitle>Tooltips</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Tooltip Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <div class="flex flex-wrap gap-4">
+            <Tooltip Text="Hello, I'm a tooltip!">
+                <Button>Hover me</Button>
+            </Tooltip>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Positions</h2>
+    <CodeExample Code="@positionsCode">
+        <div class="flex flex-wrap gap-4 py-8">
+            <Tooltip Text="Top tooltip" Position="TooltipPosition.Top">
+                <Button>Top</Button>
+            </Tooltip>
+            <Tooltip Text="Bottom tooltip" Position="TooltipPosition.Bottom">
+                <Button>Bottom</Button>
+            </Tooltip>
+            <Tooltip Text="Left tooltip" Position="TooltipPosition.Left">
+                <Button>Left</Button>
+            </Tooltip>
+            <Tooltip Text="Right tooltip" Position="TooltipPosition.Right">
+                <Button>Right</Button>
+            </Tooltip>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-wrap gap-16 py-8">
+            <Tooltip Text="Neutral tooltip" Color="TooltipColor.Neutral" Open>
+                <Button Color="ButtonColor.Neutral">Neutral</Button>
+            </Tooltip>
+            <Tooltip Text="Primary tooltip" Color="TooltipColor.Primary" Open>
+                <Button Color="ButtonColor.Primary">Primary</Button>
+            </Tooltip>
+            <Tooltip Text="Secondary tooltip" Color="TooltipColor.Secondary" Open>
+                <Button Color="ButtonColor.Secondary">Secondary</Button>
+            </Tooltip>
+            <Tooltip Text="Accent tooltip" Color="TooltipColor.Accent" Open>
+                <Button Color="ButtonColor.Accent">Accent</Button>
+            </Tooltip>
+        </div>
+        <div class="flex flex-wrap gap-16 py-8">
+            <Tooltip Text="Info tooltip" Color="TooltipColor.Info" Open>
+                <Button Color="ButtonColor.Info">Info</Button>
+            </Tooltip>
+            <Tooltip Text="Success tooltip" Color="TooltipColor.Success" Open>
+                <Button Color="ButtonColor.Success">Success</Button>
+            </Tooltip>
+            <Tooltip Text="Warning tooltip" Color="TooltipColor.Warning" Open>
+                <Button Color="ButtonColor.Warning">Warning</Button>
+            </Tooltip>
+            <Tooltip Text="Error tooltip" Color="TooltipColor.Error" Open>
+                <Button Color="ButtonColor.Error">Error</Button>
+            </Tooltip>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Force Open</h2>
+    <CodeExample Code="@forceOpenCode">
+        <div class="flex flex-wrap gap-4 py-4">
+            <Tooltip Text="I'm always visible!" Open>
+                <Button Color="ButtonColor.Primary">Always Open</Button>
+            </Tooltip>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Custom HTML Content</h2>
+    <CodeExample Code="@customContentCode">
+        <div class="flex flex-wrap gap-4 py-8">
+            <Tooltip>
+                <TooltipContent>
+                    <div class="p-2">
+                        <strong>Rich Content</strong>
+                        <p class="text-sm">With <em>HTML</em> formatting!</p>
+                    </div>
+                </TooltipContent>
+                <ChildContent>
+                    <Button Color="ButtonColor.Secondary">Custom Content</Button>
+                </ChildContent>
+            </Tooltip>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Different Elements</h2>
+    <CodeExample Code="@withElementsCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <Tooltip Text="This is a text tooltip">
+                <span class="underline decoration-dotted cursor-help">Hover over this text</span>
+            </Tooltip>
+            <Tooltip Text="Badge information" Color="TooltipColor.Info">
+                <span class="badge badge-info">Info Badge</span>
+            </Tooltip>
+            <Tooltip Text="Click to see more" Position="TooltipPosition.Bottom">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </Tooltip>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private string basicCode = @"<Tooltip Text=""Hello, I'm a tooltip!"">
+    <Button>Hover me</Button>
+</Tooltip>";
+
+    private string positionsCode = @"<Tooltip Text=""Top tooltip"" Position=""TooltipPosition.Top"">
+    <Button>Top</Button>
+</Tooltip>
+<Tooltip Text=""Bottom tooltip"" Position=""TooltipPosition.Bottom"">
+    <Button>Bottom</Button>
+</Tooltip>
+<Tooltip Text=""Left tooltip"" Position=""TooltipPosition.Left"">
+    <Button>Left</Button>
+</Tooltip>
+<Tooltip Text=""Right tooltip"" Position=""TooltipPosition.Right"">
+    <Button>Right</Button>
+</Tooltip>";
+
+    private string colorsCode = @"<Tooltip Text=""Neutral tooltip"" Color=""TooltipColor.Neutral"" Open>
+    <Button Color=""ButtonColor.Neutral"">Neutral</Button>
+</Tooltip>
+<Tooltip Text=""Primary tooltip"" Color=""TooltipColor.Primary"" Open>
+    <Button Color=""ButtonColor.Primary"">Primary</Button>
+</Tooltip>
+<!-- ... other colors ... -->";
+
+    private string forceOpenCode = @"<Tooltip Text=""I'm always visible!"" Open>
+    <Button Color=""ButtonColor.Primary"">Always Open</Button>
+</Tooltip>";
+
+    private string customContentCode = @"<Tooltip>
+    <TooltipContent>
+        <div class=""p-2"">
+            <strong>Rich Content</strong>
+            <p class=""text-sm"">With <em>HTML</em> formatting!</p>
+        </div>
+    </TooltipContent>
+    <ChildContent>
+        <Button Color=""ButtonColor.Secondary"">Custom Content</Button>
+    </ChildContent>
+</Tooltip>";
+
+    private string withElementsCode = @"<Tooltip Text=""This is a text tooltip"">
+    <span class=""underline decoration-dotted cursor-help"">Hover over this text</span>
+</Tooltip>
+<Tooltip Text=""Badge information"" Color=""TooltipColor.Info"">
+    <span class=""badge badge-info"">Info Badge</span>
+</Tooltip>";
+}

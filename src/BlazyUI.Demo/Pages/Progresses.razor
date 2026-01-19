@@ -1,0 +1,177 @@
+@page "/progresses"
+
+<PageTitle>Progress</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Progress Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <div class="w-full max-w-md">
+            <Progress Value="50" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Different Values</h2>
+    <CodeExample Code="@valuesCode">
+        <div class="w-full max-w-md space-y-4">
+            <div class="flex items-center gap-4">
+                <span class="w-12 text-right">0%</span>
+                <Progress Value="0" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-12 text-right">25%</span>
+                <Progress Value="25" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-12 text-right">50%</span>
+                <Progress Value="50" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-12 text-right">75%</span>
+                <Progress Value="75" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-12 text-right">100%</span>
+                <Progress Value="100" Class="flex-1" />
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Indeterminate</h2>
+    <p class="text-sm text-base-content/70 mb-4">When no value is provided, the progress bar shows an animated indeterminate state.</p>
+    <CodeExample Code="@indeterminateCode">
+        <div class="w-full max-w-md">
+            <Progress />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <div class="w-full max-w-md space-y-4">
+            <div class="flex items-center gap-4">
+                <span class="w-24 text-right">Default</span>
+                <Progress Value="70" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-24 text-right">Neutral</span>
+                <Progress Value="70" Color="ProgressColor.Neutral" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-24 text-right">Primary</span>
+                <Progress Value="70" Color="ProgressColor.Primary" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-24 text-right">Secondary</span>
+                <Progress Value="70" Color="ProgressColor.Secondary" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-24 text-right">Accent</span>
+                <Progress Value="70" Color="ProgressColor.Accent" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-24 text-right">Info</span>
+                <Progress Value="70" Color="ProgressColor.Info" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-24 text-right">Success</span>
+                <Progress Value="70" Color="ProgressColor.Success" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-24 text-right">Warning</span>
+                <Progress Value="70" Color="ProgressColor.Warning" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-24 text-right">Error</span>
+                <Progress Value="70" Color="ProgressColor.Error" Class="flex-1" />
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Custom Max Value</h2>
+    <CodeExample Code="@customMaxCode">
+        <div class="w-full max-w-md space-y-4">
+            <div class="flex items-center gap-4">
+                <span class="w-24 text-right">40/200</span>
+                <Progress Value="40" Max="200" Class="flex-1" />
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="w-24 text-right">100/200</span>
+                <Progress Value="100" Max="200" Class="flex-1" />
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Custom Width</h2>
+    <CodeExample Code="@customWidthCode">
+        <div class="space-y-4">
+            <Progress Value="60" Color="ProgressColor.Primary" Class="w-24" />
+            <Progress Value="60" Color="ProgressColor.Primary" Class="w-48" />
+            <Progress Value="60" Color="ProgressColor.Primary" Class="w-96" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Interactive Example</h2>
+    <CodeExample Code="@interactiveCode">
+        <div class="w-full max-w-md space-y-4">
+            <Progress Value="@progressValue" Color="ProgressColor.Primary" />
+            <div class="flex items-center gap-4">
+                <Button Color="ButtonColor.Primary" Size="ButtonSize.Small" OnClick="@(() => progressValue = Math.Max(0, progressValue - 10))">-10</Button>
+                <span class="flex-1 text-center">@progressValue%</span>
+                <Button Color="ButtonColor.Primary" Size="ButtonSize.Small" OnClick="@(() => progressValue = Math.Min(100, progressValue + 10))">+10</Button>
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private int progressValue = 50;
+
+    private string basicCode = @"<Progress Value=""50"" />";
+
+    private string valuesCode = @"<Progress Value=""0"" />
+<Progress Value=""25"" />
+<Progress Value=""50"" />
+<Progress Value=""75"" />
+<Progress Value=""100"" />";
+
+    private string indeterminateCode = @"<Progress />";
+
+    private string colorsCode = @"<Progress Value=""70"" />
+<Progress Value=""70"" Color=""ProgressColor.Neutral"" />
+<Progress Value=""70"" Color=""ProgressColor.Primary"" />
+<Progress Value=""70"" Color=""ProgressColor.Secondary"" />
+<Progress Value=""70"" Color=""ProgressColor.Accent"" />
+<Progress Value=""70"" Color=""ProgressColor.Info"" />
+<Progress Value=""70"" Color=""ProgressColor.Success"" />
+<Progress Value=""70"" Color=""ProgressColor.Warning"" />
+<Progress Value=""70"" Color=""ProgressColor.Error"" />";
+
+    private string customMaxCode = @"<Progress Value=""40"" Max=""200"" />
+<Progress Value=""100"" Max=""200"" />";
+
+    private string customWidthCode = @"<Progress Value=""60"" Color=""ProgressColor.Primary"" Class=""w-24"" />
+<Progress Value=""60"" Color=""ProgressColor.Primary"" Class=""w-48"" />
+<Progress Value=""60"" Color=""ProgressColor.Primary"" Class=""w-96"" />";
+
+    private string interactiveCode = @"<Progress Value=""@progressValue"" Color=""ProgressColor.Primary"" />
+<Button OnClick=""@(() => progressValue -= 10)"">-10</Button>
+<span>@progressValue%</span>
+<Button OnClick=""@(() => progressValue += 10)"">+10</Button>
+
+@code {
+    private int progressValue = 50;
+}";
+}

@@ -1,0 +1,24 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="@CssClass" @attributes="AdditionalAttributes"></div>
+
+@code {
+    /// <summary>
+    /// When true, applies the skeleton-text modifier for text-like placeholders.
+    /// </summary>
+    [Parameter]
+    public bool Text { get; set; }
+
+    /// <summary>
+    /// When true, makes the skeleton circular using rounded-full.
+    /// </summary>
+    [Parameter]
+    public bool Circle { get; set; }
+
+    private string CssClass => MergeClasses(
+        "skeleton",
+        Text ? "skeleton-text" : null,
+        Circle ? "rounded-full" : null
+    );
+}

@@ -1,0 +1,87 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="@CssClass"
+     data-tip="@DataTip"
+     @attributes="AdditionalAttributes">
+    @ChildContent
+    @if (TooltipContent is not null)
+    {
+        <div class="tooltip-content">
+            @TooltipContent
+        </div>
+    }
+</div>
+
+@code {
+    /// <summary>
+    /// The text to display in the tooltip.
+    /// Use this for simple text tooltips.
+    /// </summary>
+    [Parameter]
+    public string? Text { get; set; }
+
+    /// <summary>
+    /// Custom HTML content for the tooltip.
+    /// Use this for rich content tooltips instead of the Text parameter.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? TooltipContent { get; set; }
+
+    /// <summary>
+    /// The position of the tooltip relative to the element.
+    /// </summary>
+    [Parameter]
+    public TooltipPosition Position { get; set; } = TooltipPosition.Default;
+
+    /// <summary>
+    /// The color variant of the tooltip.
+    /// </summary>
+    [Parameter]
+    public TooltipColor Color { get; set; } = TooltipColor.Default;
+
+    /// <summary>
+    /// Forces the tooltip to be visible without hover.
+    /// </summary>
+    [Parameter]
+    public bool Open { get; set; }
+
+    /// <summary>
+    /// The content that the tooltip wraps around.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string? DataTip => TooltipContent is null ? Text : null;
+
+    private string CssClass => MergeClasses(
+        "tooltip",
+        PositionClass,
+        ColorClass,
+        Open ? "tooltip-open" : null
+    );
+
+    private string? PositionClass => Position switch
+    {
+        TooltipPosition.Default => null,
+        TooltipPosition.Top => "tooltip-top",
+        TooltipPosition.Bottom => "tooltip-bottom",
+        TooltipPosition.Left => "tooltip-left",
+        TooltipPosition.Right => "tooltip-right",
+        _ => throw new ArgumentOutOfRangeException(nameof(Position), Position, null)
+    };
+
+    private string? ColorClass => Color switch
+    {
+        TooltipColor.Default => null,
+        TooltipColor.Neutral => "tooltip-neutral",
+        TooltipColor.Primary => "tooltip-primary",
+        TooltipColor.Secondary => "tooltip-secondary",
+        TooltipColor.Accent => "tooltip-accent",
+        TooltipColor.Info => "tooltip-info",
+        TooltipColor.Success => "tooltip-success",
+        TooltipColor.Warning => "tooltip-warning",
+        TooltipColor.Error => "tooltip-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+}
