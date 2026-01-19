@@ -5,119 +5,131 @@
 <h1 class="text-3xl font-bold mb-8">Label</h1>
 
 <section class="mb-12">
-    <h2 class="text-xl font-semibold mb-4">Basic Label</h2>
-    <div class="w-full max-w-xs">
-        <Label Text="Email address" For="email1" />
-        <TextInput @bind-Value="email" id="email1" placeholder="you@example.com" />
+    <h2 class="text-xl font-semibold mb-4">Standalone Label</h2>
+    <p class="text-sm opacity-70 mb-4">Basic label that links to an input via the For parameter.</p>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <div>
+            <Label Text="Email address" For="email1" />
+            <input type="email" id="email1" class="input w-full" placeholder="you@example.com" />
+        </div>
+        <div>
+            <Label For="password1">
+                Password <span class="text-error">*</span>
+            </Label>
+            <input type="password" id="password1" class="input w-full" placeholder="Enter password" />
+        </div>
     </div>
 </section>
 
 <section class="mb-12">
-    <h2 class="text-xl font-semibold mb-4">Label with Custom Content</h2>
-    <div class="w-full max-w-xs">
-        <Label For="password1">
-            Password <span class="text-error">*</span>
+    <h2 class="text-xl font-semibold mb-4">Input Wrapper</h2>
+    <p class="text-sm opacity-70 mb-4">Wraps an input with the label using DaisyUI v5 pattern.</p>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <Label Variant="LabelVariant.Input" Text="Username">
+            <input type="text" class="grow" placeholder="Enter username" @bind="username" />
         </Label>
-        <TextInput @bind-Value="password" Type="password" id="password1" placeholder="Enter password" />
+
+        <Label Variant="LabelVariant.Input" Text="Email">
+            <input type="email" class="grow" placeholder="Enter email" @bind="email" />
+        </Label>
+
+        <Label Variant="LabelVariant.Input" Text="Search" Position="LabelPosition.Right">
+            <input type="text" class="grow" placeholder="Type here..." />
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+        </Label>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Select Wrapper</h2>
+    <p class="text-sm opacity-70 mb-4">Wraps a select with the label using DaisyUI v5 pattern.</p>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <Label Variant="LabelVariant.Select" Text="Country">
+            <select class="grow" @bind="country">
+                <option disabled selected value="">Pick one</option>
+                <option value="us">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="ca">Canada</option>
+            </select>
+        </Label>
+
+        <Label Variant="LabelVariant.Select" Text="Category" Position="LabelPosition.Right">
+            <select class="grow" @bind="category">
+                <option disabled selected value="">Select category</option>
+                <option value="tech">Technology</option>
+                <option value="science">Science</option>
+                <option value="arts">Arts</option>
+            </select>
+        </Label>
     </div>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Floating Label</h2>
-    <p class="text-sm opacity-70 mb-4">Use the floating-label class on a wrapper for floating label effect.</p>
+    <p class="text-sm opacity-70 mb-4">Creates a floating label effect that moves when the input is focused.</p>
     <div class="flex flex-col gap-4 max-w-xs">
-        <label class="floating-label">
-            <span>Username</span>
-            <TextInput @bind-Value="username" placeholder="Username" />
-        </label>
+        <Label Variant="LabelVariant.Floating" Text="Username">
+            <input type="text" class="input input-md" placeholder="Username" @bind="floatingUsername" />
+        </Label>
 
-        <label class="floating-label">
-            <span>Email</span>
-            <TextInput @bind-Value="floatingEmail" Type="email" placeholder="Email" />
-        </label>
-    </div>
-</section>
+        <Label Variant="LabelVariant.Floating" Text="Email">
+            <input type="email" class="input input-md" placeholder="Email" @bind="floatingEmail" />
+        </Label>
 
-<section class="mb-12">
-    <h2 class="text-xl font-semibold mb-4">Labels with Different Inputs</h2>
-    <div class="flex flex-col gap-6 max-w-xs">
-        <div>
-            <Label Text="Select your country" For="country1" />
-            <Select @bind-Value="country" id="country1">
+        <Label Variant="LabelVariant.Floating" Text="Country">
+            <select class="select select-md" @bind="floatingCountry">
                 <option disabled selected value="">Pick one</option>
                 <option value="us">United States</option>
                 <option value="uk">United Kingdom</option>
                 <option value="ca">Canada</option>
-            </Select>
-        </div>
-
-        <div>
-            <Label Text="Your bio" For="bio1" />
-            <Textarea @bind-Value="bio" id="bio1" placeholder="Tell us about yourself..." />
-        </div>
-
-        <label class="label cursor-pointer justify-start gap-4">
-            <Checkbox @bind-Value="remember" />
-            <span>Remember me</span>
-        </label>
-
-        <label class="label cursor-pointer justify-start gap-4">
-            <Toggle @bind-Value="notifications" Color="ToggleColor.Primary" />
-            <span>Enable notifications</span>
-        </label>
+            </select>
+        </Label>
     </div>
 </section>
 
 <section class="mb-12">
-    <h2 class="text-xl font-semibold mb-4">With Validation</h2>
-    <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
-        <DataAnnotationsValidator />
+    <h2 class="text-xl font-semibold mb-4">Label Position</h2>
+    <p class="text-sm opacity-70 mb-4">Labels can be positioned on the left (default) or right of the content.</p>
+    <div class="flex flex-col gap-4 max-w-md">
+        <Label Variant="LabelVariant.Input" Text="Left label" Position="LabelPosition.Left">
+            <input type="text" class="grow" placeholder="Label on the left" />
+        </Label>
 
-        <div class="mb-4">
-            <Label Text="Full Name" For="fullname" />
-            <TextInput @bind-Value="formModel.FullName" id="fullname" />
-            <ValidationMessage For="@(() => formModel.FullName)" class="text-error text-sm mt-1" />
-        </div>
+        <Label Variant="LabelVariant.Input" Text="Right label" Position="LabelPosition.Right">
+            <input type="text" class="grow" placeholder="Label on the right" />
+        </Label>
+    </div>
+</section>
 
-        <div class="mb-4">
-            <Label Text="Email" For="formemail" />
-            <TextInput @bind-Value="formModel.Email" Type="email" id="formemail" />
-            <ValidationMessage For="@(() => formModel.Email)" class="text-error text-sm mt-1" />
-        </div>
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Icons</h2>
+    <p class="text-sm opacity-70 mb-4">Combine labels with icons for enhanced UX.</p>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <Label Variant="LabelVariant.Input" Text="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <input type="email" class="grow" placeholder="you@example.com" />
+        </Label>
 
-        <Button Type="submit" Color="ButtonColor.Primary" Block>Submit</Button>
-    </EditForm>
-    @if (formSubmitted)
-    {
-        <Alert Color="AlertColor.Success" class="mt-4">Form submitted successfully!</Alert>
-    }
+        <Label Variant="LabelVariant.Input" Text="Password">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            <input type="password" class="grow" placeholder="Enter password" />
+            <button type="button" class="btn btn-ghost btn-xs">Show</button>
+        </Label>
+    </div>
 </section>
 
 @code {
-    private string email = "";
     private string username = "";
-    private string password = "";
-    private string floatingEmail = "";
+    private string email = "";
     private string country = "";
-    private string bio = "";
-    private bool remember = false;
-    private bool notifications = true;
-    private bool formSubmitted = false;
-
-    private FormModel formModel = new();
-
-    private void HandleValidSubmit()
-    {
-        formSubmitted = true;
-    }
-
-    private class FormModel
-    {
-        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Full name is required")]
-        public string FullName { get; set; } = "";
-
-        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Email is required")]
-        [System.ComponentModel.DataAnnotations.EmailAddress(ErrorMessage = "Invalid email format")]
-        public string Email { get; set; } = "";
-    }
+    private string category = "";
+    private string floatingUsername = "";
+    private string floatingEmail = "";
+    private string floatingCountry = "";
 }
