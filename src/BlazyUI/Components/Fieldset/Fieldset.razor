@@ -1,0 +1,36 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<fieldset class="@ComputedCssClass" @attributes="AdditionalAttributes">
+    @if (LegendContent is not null)
+    {
+        <legend class="fieldset-legend">@LegendContent</legend>
+    }
+    else if (!string.IsNullOrEmpty(Legend))
+    {
+        <legend class="fieldset-legend">@Legend</legend>
+    }
+    @ChildContent
+</fieldset>
+
+@code {
+    /// <summary>
+    /// The legend text for the fieldset.
+    /// </summary>
+    [Parameter]
+    public string? Legend { get; set; }
+
+    /// <summary>
+    /// Custom content for the legend. When provided, Legend parameter is ignored.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? LegendContent { get; set; }
+
+    /// <summary>
+    /// The content of the fieldset (form fields).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string ComputedCssClass => MergeClasses("fieldset");
+}
