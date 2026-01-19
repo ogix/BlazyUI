@@ -1,0 +1,25 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<CascadingValue Value="GroupName" Name="AccordionGroupName">
+    <div class="@CssClass" @attributes="AdditionalAttributes">
+        @ChildContent
+    </div>
+</CascadingValue>
+
+@code {
+    /// <summary>
+    /// When set, only one accordion item can be open at a time.
+    /// Items will use radio inputs with this name for exclusive behavior.
+    /// </summary>
+    [Parameter]
+    public string? GroupName { get; set; }
+
+    /// <summary>
+    /// The content of the accordion (typically AccordionItem components).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses();
+}

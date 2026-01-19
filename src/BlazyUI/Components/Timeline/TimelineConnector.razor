@@ -1,0 +1,8 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<hr class="@CssClass" @attributes="AdditionalAttributes" />
+
+@code {
+    private string CssClass => MergeClasses();
+}

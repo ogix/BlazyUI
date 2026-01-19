@@ -1,0 +1,125 @@
+@page "/badges"
+
+<PageTitle>Badges</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Badge Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <div class="flex flex-wrap gap-4">
+            <Badge>Badge</Badge>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-wrap gap-4">
+            <Badge>Default</Badge>
+            <Badge Color="BadgeColor.Neutral">Neutral</Badge>
+            <Badge Color="BadgeColor.Primary">Primary</Badge>
+            <Badge Color="BadgeColor.Secondary">Secondary</Badge>
+            <Badge Color="BadgeColor.Accent">Accent</Badge>
+            <Badge Color="BadgeColor.Info">Info</Badge>
+            <Badge Color="BadgeColor.Success">Success</Badge>
+            <Badge Color="BadgeColor.Warning">Warning</Badge>
+            <Badge Color="BadgeColor.Error">Error</Badge>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <CodeExample Code="@sizesCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <Badge Size="BadgeSize.ExtraSmall">XS</Badge>
+            <Badge Size="BadgeSize.Small">SM</Badge>
+            <Badge>Default</Badge>
+            <Badge Size="BadgeSize.Large">LG</Badge>
+            <Badge Size="BadgeSize.ExtraLarge">XL</Badge>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Styles</h2>
+    <CodeExample Code="@stylesCode">
+        <div class="flex flex-wrap gap-4">
+            <Badge Color="BadgeColor.Primary">Default</Badge>
+            <Badge Color="BadgeColor.Primary" Style="BadgeStyle.Outline">Outline</Badge>
+            <Badge Color="BadgeColor.Primary" Style="BadgeStyle.Dash">Dash</Badge>
+            <Badge Color="BadgeColor.Primary" Style="BadgeStyle.Soft">Soft</Badge>
+            <Badge Color="BadgeColor.Primary" Style="BadgeStyle.Ghost">Ghost</Badge>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">In Text</h2>
+    <CodeExample Code="@inTextCode">
+        <div class="flex flex-wrap items-center gap-2">
+            <h2 class="text-lg font-semibold">
+                Inbox
+                <Badge Color="BadgeColor.Secondary">99+</Badge>
+            </h2>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Button</h2>
+    <CodeExample Code="@withButtonCode">
+        <div class="flex flex-wrap gap-4">
+            <Button>
+                Notifications
+                <Badge Color="BadgeColor.Secondary">8</Badge>
+            </Button>
+            <Button Color="ButtonColor.Primary">
+                Messages
+                <Badge Style="BadgeStyle.Outline">New</Badge>
+            </Button>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private string basicCode = @"<Badge>Badge</Badge>";
+
+    private string colorsCode = @"<Badge>Default</Badge>
+<Badge Color=""BadgeColor.Neutral"">Neutral</Badge>
+<Badge Color=""BadgeColor.Primary"">Primary</Badge>
+<Badge Color=""BadgeColor.Secondary"">Secondary</Badge>
+<Badge Color=""BadgeColor.Accent"">Accent</Badge>
+<Badge Color=""BadgeColor.Info"">Info</Badge>
+<Badge Color=""BadgeColor.Success"">Success</Badge>
+<Badge Color=""BadgeColor.Warning"">Warning</Badge>
+<Badge Color=""BadgeColor.Error"">Error</Badge>";
+
+    private string sizesCode = @"<Badge Size=""BadgeSize.ExtraSmall"">XS</Badge>
+<Badge Size=""BadgeSize.Small"">SM</Badge>
+<Badge>Default</Badge>
+<Badge Size=""BadgeSize.Large"">LG</Badge>
+<Badge Size=""BadgeSize.ExtraLarge"">XL</Badge>";
+
+    private string stylesCode = @"<Badge Color=""BadgeColor.Primary"">Default</Badge>
+<Badge Color=""BadgeColor.Primary"" Style=""BadgeStyle.Outline"">Outline</Badge>
+<Badge Color=""BadgeColor.Primary"" Style=""BadgeStyle.Dash"">Dash</Badge>
+<Badge Color=""BadgeColor.Primary"" Style=""BadgeStyle.Soft"">Soft</Badge>
+<Badge Color=""BadgeColor.Primary"" Style=""BadgeStyle.Ghost"">Ghost</Badge>";
+
+    private string inTextCode = @"<h2>
+    Inbox
+    <Badge Color=""BadgeColor.Secondary"">99+</Badge>
+</h2>";
+
+    private string withButtonCode = @"<Button>
+    Notifications
+    <Badge Color=""BadgeColor.Secondary"">8</Badge>
+</Button>
+<Button Color=""ButtonColor.Primary"">
+    Messages
+    <Badge Style=""BadgeStyle.Outline"">New</Badge>
+</Button>";
+}

@@ -1,0 +1,73 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<span class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</span>
+
+@code {
+    /// <summary>
+    /// The color variant of the badge.
+    /// </summary>
+    [Parameter]
+    public BadgeColor Color { get; set; } = BadgeColor.Default;
+
+    /// <summary>
+    /// The size of the badge.
+    /// </summary>
+    [Parameter]
+    public BadgeSize Size { get; set; } = BadgeSize.Default;
+
+    /// <summary>
+    /// The style variant of the badge.
+    /// </summary>
+    [Parameter]
+    public BadgeStyle Style { get; set; } = BadgeStyle.Default;
+
+    /// <summary>
+    /// The content to display inside the badge.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "badge",
+        ColorClass,
+        SizeClass,
+        StyleClass
+    );
+
+    private string? ColorClass => Color switch
+    {
+        BadgeColor.Default => null,
+        BadgeColor.Neutral => "badge-neutral",
+        BadgeColor.Primary => "badge-primary",
+        BadgeColor.Secondary => "badge-secondary",
+        BadgeColor.Accent => "badge-accent",
+        BadgeColor.Info => "badge-info",
+        BadgeColor.Success => "badge-success",
+        BadgeColor.Warning => "badge-warning",
+        BadgeColor.Error => "badge-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+
+    private string? SizeClass => Size switch
+    {
+        BadgeSize.Default => null,
+        BadgeSize.ExtraSmall => "badge-xs",
+        BadgeSize.Small => "badge-sm",
+        BadgeSize.Large => "badge-lg",
+        BadgeSize.ExtraLarge => "badge-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? StyleClass => Style switch
+    {
+        BadgeStyle.Default => null,
+        BadgeStyle.Outline => "badge-outline",
+        BadgeStyle.Dash => "badge-dash",
+        BadgeStyle.Soft => "badge-soft",
+        BadgeStyle.Ghost => "badge-ghost",
+        _ => throw new ArgumentOutOfRangeException(nameof(Style), Style, null)
+    };
+}

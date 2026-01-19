@@ -1,0 +1,16 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<li class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</li>
+
+@code {
+    /// <summary>
+    /// The content of the timeline item (typically TimelineStart, TimelineMiddle, TimelineEnd, TimelineConnector).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses();
+}

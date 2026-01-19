@@ -1,0 +1,171 @@
+@page "/accordions"
+
+<PageTitle>Accordions</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Accordion Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic (Using Checkbox)</h2>
+    <CodeExample Code="@basicCode">
+        <div class="space-y-2">
+            <AccordionItem Indicator="AccordionIndicator.Arrow" Class="bg-base-200">
+                <AccordionTitle Class="font-medium">
+                    Click to open this one and close others
+                </AccordionTitle>
+                <AccordionContent>
+                    <p>Hello! This is the content of the accordion panel. You can put anything here.</p>
+                </AccordionContent>
+            </AccordionItem>
+            <AccordionItem Indicator="AccordionIndicator.Arrow" Class="bg-base-200">
+                <AccordionTitle Class="font-medium">
+                    Click to open this one and close others
+                </AccordionTitle>
+                <AccordionContent>
+                    <p>Different content for the second panel.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Radio Group (Only One Open)</h2>
+    <CodeExample Code="@radioGroupCode">
+        <Accordion GroupName="my-accordion-1">
+            <div class="space-y-2">
+                <AccordionItem Indicator="AccordionIndicator.Arrow" Class="bg-base-200">
+                    <AccordionTitle Class="font-medium">
+                        First item
+                    </AccordionTitle>
+                    <AccordionContent>
+                        <p>Content for the first item. Opening this will close others.</p>
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem Indicator="AccordionIndicator.Arrow" Class="bg-base-200">
+                    <AccordionTitle Class="font-medium">
+                        Second item
+                    </AccordionTitle>
+                    <AccordionContent>
+                        <p>Content for the second item. Opening this will close others.</p>
+                    </AccordionContent>
+                </AccordionItem>
+                <AccordionItem Indicator="AccordionIndicator.Arrow" Class="bg-base-200">
+                    <AccordionTitle Class="font-medium">
+                        Third item
+                    </AccordionTitle>
+                    <AccordionContent>
+                        <p>Content for the third item. Opening this will close others.</p>
+                    </AccordionContent>
+                </AccordionItem>
+            </div>
+        </Accordion>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Plus/Minus Indicator</h2>
+    <CodeExample Code="@plusIndicatorCode">
+        <div class="space-y-2">
+            <AccordionItem Indicator="AccordionIndicator.Plus" Class="bg-base-200">
+                <AccordionTitle Class="font-medium">
+                    Click to expand
+                </AccordionTitle>
+                <AccordionContent>
+                    <p>This accordion uses a plus/minus indicator.</p>
+                </AccordionContent>
+            </AccordionItem>
+            <AccordionItem Indicator="AccordionIndicator.Plus" Class="bg-base-200">
+                <AccordionTitle Class="font-medium">
+                    Another section
+                </AccordionTitle>
+                <AccordionContent>
+                    <p>More content here.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Force Open/Closed</h2>
+    <CodeExample Code="@forceOpenCode">
+        <div class="space-y-2">
+            <AccordionItem Indicator="AccordionIndicator.Arrow" Open Class="bg-base-200">
+                <AccordionTitle Class="font-medium">
+                    This is always open
+                </AccordionTitle>
+                <AccordionContent>
+                    <p>This accordion item is forced to stay open.</p>
+                </AccordionContent>
+            </AccordionItem>
+            <AccordionItem Indicator="AccordionIndicator.Arrow" Closed Class="bg-base-200">
+                <AccordionTitle Class="font-medium">
+                    This is always closed
+                </AccordionTitle>
+                <AccordionContent>
+                    <p>This content won't be visible because the accordion is forced closed.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Styled Accordions</h2>
+    <CodeExample Code="@styledCode">
+        <div class="space-y-2">
+            <AccordionItem Indicator="AccordionIndicator.Arrow" Class="border border-base-300 bg-base-100 rounded-box">
+                <AccordionTitle Class="font-medium">
+                    Bordered Accordion
+                </AccordionTitle>
+                <AccordionContent>
+                    <p>This accordion has a border and rounded corners.</p>
+                </AccordionContent>
+            </AccordionItem>
+            <AccordionItem Indicator="AccordionIndicator.Plus" Class="bg-primary text-primary-content rounded-box">
+                <AccordionTitle Class="font-medium">
+                    Primary Colored
+                </AccordionTitle>
+                <AccordionContent>
+                    <p>This accordion uses the primary color.</p>
+                </AccordionContent>
+            </AccordionItem>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private string basicCode = @"<AccordionItem Indicator=""AccordionIndicator.Arrow"" Class=""bg-base-200"">
+    <AccordionTitle Class=""font-medium"">
+        Click to open
+    </AccordionTitle>
+    <AccordionContent>
+        <p>Content goes here.</p>
+    </AccordionContent>
+</AccordionItem>";
+
+    private string radioGroupCode = @"<Accordion GroupName=""my-accordion-1"">
+    <AccordionItem Indicator=""AccordionIndicator.Arrow"" Class=""bg-base-200"">
+        <AccordionTitle>First item</AccordionTitle>
+        <AccordionContent>
+            <p>Content for the first item.</p>
+        </AccordionContent>
+    </AccordionItem>
+    <!-- More items... -->
+</Accordion>";
+
+    private string plusIndicatorCode = @"<AccordionItem Indicator=""AccordionIndicator.Plus"" Class=""bg-base-200"">
+    <AccordionTitle>Click to expand</AccordionTitle>
+    <AccordionContent>
+        <p>Content here.</p>
+    </AccordionContent>
+</AccordionItem>";
+
+    private string forceOpenCode = @"<AccordionItem Open>Always open</AccordionItem>
+<AccordionItem Closed>Always closed</AccordionItem>";
+
+    private string styledCode = @"<AccordionItem Class=""border border-base-300 rounded-box"">
+    <AccordionTitle>Bordered</AccordionTitle>
+    <AccordionContent>Content</AccordionContent>
+</AccordionItem>";
+}

@@ -1,0 +1,16 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<h2 class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</h2>
+
+@code {
+    /// <summary>
+    /// The content of the card title.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses("card-title");
+}

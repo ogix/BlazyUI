@@ -1,0 +1,16 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<figure class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</figure>
+
+@code {
+    /// <summary>
+    /// The content of the card figure (typically an image).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses();
+}

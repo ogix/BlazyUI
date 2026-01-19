@@ -1,0 +1,255 @@
+@page "/cards"
+
+<PageTitle>Cards</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Card Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <div class="flex flex-wrap gap-4">
+            <Card Class="w-96 shadow-xl">
+                <CardFigure>
+                    <img src="https://picsum.photos/seed/card1/400/200" alt="Card image" />
+                </CardFigure>
+                <CardBody>
+                    <CardTitle>Card Title</CardTitle>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <CardActions>
+                        <Button Color="ButtonColor.Primary">Buy Now</Button>
+                    </CardActions>
+                </CardBody>
+            </Card>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Styles</h2>
+    <CodeExample Code="@stylesCode">
+        <div class="flex flex-wrap gap-4">
+            <Card Class="w-64 shadow-xl">
+                <CardBody>
+                    <CardTitle>Default</CardTitle>
+                    <p>Default card style</p>
+                </CardBody>
+            </Card>
+            <Card Style="CardStyle.Border" Class="w-64">
+                <CardBody>
+                    <CardTitle>Border</CardTitle>
+                    <p>Card with border style</p>
+                </CardBody>
+            </Card>
+            <Card Style="CardStyle.Dash" Class="w-64">
+                <CardBody>
+                    <CardTitle>Dash</CardTitle>
+                    <p>Card with dashed border</p>
+                </CardBody>
+            </Card>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Side Image</h2>
+    <CodeExample Code="@sideCode">
+        <Card Side Class="shadow-xl">
+            <CardFigure>
+                <img src="https://picsum.photos/seed/card2/200/280" alt="Card image" />
+            </CardFigure>
+            <CardBody>
+                <CardTitle>New movie is released!</CardTitle>
+                <p>Click the button to watch on Jetflix app.</p>
+                <CardActions>
+                    <Button Color="ButtonColor.Primary">Watch</Button>
+                </CardActions>
+            </CardBody>
+        </Card>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Image Full</h2>
+    <CodeExample Code="@imageFullCode">
+        <Card ImageFull Class="w-96 shadow-xl">
+            <CardFigure>
+                <img src="https://picsum.photos/seed/card3/400/200" alt="Card image" />
+            </CardFigure>
+            <CardBody>
+                <CardTitle>Overlay Title</CardTitle>
+                <p>Text overlaid on the image</p>
+                <CardActions>
+                    <Button Color="ButtonColor.Primary">Get Started</Button>
+                </CardActions>
+            </CardBody>
+        </Card>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Card Sizes</h2>
+    <CodeExample Code="@sizesCode">
+        <div class="flex flex-wrap gap-4">
+            <Card Size="CardSize.ExtraSmall" Style="CardStyle.Border">
+                <CardBody>
+                    <CardTitle>XS Card</CardTitle>
+                    <p>Extra small card</p>
+                </CardBody>
+            </Card>
+            <Card Size="CardSize.Small" Style="CardStyle.Border">
+                <CardBody>
+                    <CardTitle>Small Card</CardTitle>
+                    <p>Small card size</p>
+                </CardBody>
+            </Card>
+            <Card Style="CardStyle.Border">
+                <CardBody>
+                    <CardTitle>Default Card</CardTitle>
+                    <p>Default card size</p>
+                </CardBody>
+            </Card>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Card Actions Alignment</h2>
+    <CodeExample Code="@actionsAlignCode">
+        <div class="flex flex-wrap gap-4">
+            <Card Style="CardStyle.Border" Class="w-64">
+                <CardBody>
+                    <CardTitle>Start</CardTitle>
+                    <CardActions Justify="CardActionsJustify.Start">
+                        <Button Size="ButtonSize.Small">Action</Button>
+                    </CardActions>
+                </CardBody>
+            </Card>
+            <Card Style="CardStyle.Border" Class="w-64">
+                <CardBody>
+                    <CardTitle>Center</CardTitle>
+                    <CardActions Justify="CardActionsJustify.Center">
+                        <Button Size="ButtonSize.Small">Action</Button>
+                    </CardActions>
+                </CardBody>
+            </Card>
+            <Card Style="CardStyle.Border" Class="w-64">
+                <CardBody>
+                    <CardTitle>End (Default)</CardTitle>
+                    <CardActions Justify="CardActionsJustify.End">
+                        <Button Size="ButtonSize.Small">Action</Button>
+                    </CardActions>
+                </CardBody>
+            </Card>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private string basicCode = @"<Card Class=""w-96 shadow-xl"">
+    <CardFigure>
+        <img src=""https://picsum.photos/seed/card1/400/200"" alt=""Card image"" />
+    </CardFigure>
+    <CardBody>
+        <CardTitle>Card Title</CardTitle>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <CardActions>
+            <Button Color=""ButtonColor.Primary"">Buy Now</Button>
+        </CardActions>
+    </CardBody>
+</Card>";
+
+    private string stylesCode = @"<Card Class=""w-64 shadow-xl"">
+    <CardBody>
+        <CardTitle>Default</CardTitle>
+        <p>Default card style</p>
+    </CardBody>
+</Card>
+
+<Card Style=""CardStyle.Border"" Class=""w-64"">
+    <CardBody>
+        <CardTitle>Border</CardTitle>
+        <p>Card with border style</p>
+    </CardBody>
+</Card>
+
+<Card Style=""CardStyle.Dash"" Class=""w-64"">
+    <CardBody>
+        <CardTitle>Dash</CardTitle>
+        <p>Card with dashed border</p>
+    </CardBody>
+</Card>";
+
+    private string sideCode = @"<Card Side Class=""shadow-xl"">
+    <CardFigure>
+        <img src=""https://picsum.photos/seed/card2/200/280"" alt=""Card image"" />
+    </CardFigure>
+    <CardBody>
+        <CardTitle>New movie is released!</CardTitle>
+        <p>Click the button to watch on Jetflix app.</p>
+        <CardActions>
+            <Button Color=""ButtonColor.Primary"">Watch</Button>
+        </CardActions>
+    </CardBody>
+</Card>";
+
+    private string imageFullCode = @"<Card ImageFull Class=""w-96 shadow-xl"">
+    <CardFigure>
+        <img src=""https://picsum.photos/seed/card3/400/200"" alt=""Card image"" />
+    </CardFigure>
+    <CardBody>
+        <CardTitle>Overlay Title</CardTitle>
+        <p>Text overlaid on the image</p>
+        <CardActions>
+            <Button Color=""ButtonColor.Primary"">Get Started</Button>
+        </CardActions>
+    </CardBody>
+</Card>";
+
+    private string sizesCode = @"<Card Size=""CardSize.ExtraSmall"" Style=""CardStyle.Border"">
+    <CardBody>
+        <CardTitle>XS Card</CardTitle>
+        <p>Extra small card</p>
+    </CardBody>
+</Card>
+
+<Card Size=""CardSize.Small"" Style=""CardStyle.Border"">
+    <CardBody>
+        <CardTitle>Small Card</CardTitle>
+        <p>Small card size</p>
+    </CardBody>
+</Card>
+
+<Card Style=""CardStyle.Border"">
+    <CardBody>
+        <CardTitle>Default Card</CardTitle>
+        <p>Default card size</p>
+    </CardBody>
+</Card>";
+
+    private string actionsAlignCode = @"<Card Style=""CardStyle.Border"" Class=""w-64"">
+    <CardBody>
+        <CardTitle>Start</CardTitle>
+        <CardActions Justify=""CardActionsJustify.Start"">
+            <Button Size=""ButtonSize.Small"">Action</Button>
+        </CardActions>
+    </CardBody>
+</Card>
+
+<Card Style=""CardStyle.Border"" Class=""w-64"">
+    <CardBody>
+        <CardTitle>Center</CardTitle>
+        <CardActions Justify=""CardActionsJustify.Center"">
+            <Button Size=""ButtonSize.Small"">Action</Button>
+        </CardActions>
+    </CardBody>
+</Card>
+
+<Card Style=""CardStyle.Border"" Class=""w-64"">
+    <CardBody>
+        <CardTitle>End (Default)</CardTitle>
+        <CardActions Justify=""CardActionsJustify.End"">
+            <Button Size=""ButtonSize.Small"">Action</Button>
+        </CardActions>
+    </CardBody>
+</Card>";
+}

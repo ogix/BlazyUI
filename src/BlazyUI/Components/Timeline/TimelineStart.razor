@@ -1,0 +1,25 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    /// <summary>
+    /// Adds a box style around the content.
+    /// </summary>
+    [Parameter]
+    public bool Box { get; set; }
+
+    /// <summary>
+    /// The content at the start of the timeline item.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "timeline-start",
+        Box ? "timeline-box" : null
+    );
+}

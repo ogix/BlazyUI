@@ -1,0 +1,47 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<ul class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</ul>
+
+@code {
+    /// <summary>
+    /// The direction/layout of the timeline.
+    /// </summary>
+    [Parameter]
+    public TimelineDirection Direction { get; set; } = TimelineDirection.Default;
+
+    /// <summary>
+    /// Makes the timeline more compact.
+    /// </summary>
+    [Parameter]
+    public bool Compact { get; set; }
+
+    /// <summary>
+    /// Snaps timeline icons to their positions.
+    /// </summary>
+    [Parameter]
+    public bool SnapIcon { get; set; }
+
+    /// <summary>
+    /// The content of the timeline (typically TimelineItem components).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "timeline",
+        DirectionClass,
+        Compact ? "timeline-compact" : null,
+        SnapIcon ? "timeline-snap-icon" : null
+    );
+
+    private string? DirectionClass => Direction switch
+    {
+        TimelineDirection.Default => null,
+        TimelineDirection.Vertical => "timeline-vertical",
+        TimelineDirection.Horizontal => "timeline-horizontal",
+        _ => throw new ArgumentOutOfRangeException(nameof(Direction), Direction, null)
+    };
+}
