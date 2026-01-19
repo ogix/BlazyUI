@@ -1,0 +1,185 @@
+@page "/modals"
+@inject IModalService ModalService
+
+<PageTitle>Modals</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Modal Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Simple Dialogs</h2>
+    <CodeExample Code="@simpleDialogsCode">
+        <div class="flex flex-wrap gap-2">
+            <Button Color="ButtonColor.Info" OnClick="ShowInfo">Info</Button>
+            <Button Color="ButtonColor.Warning" OnClick="ShowWarning">Warning</Button>
+            <Button Color="ButtonColor.Error" OnClick="ShowError">Error</Button>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Confirmation Dialog</h2>
+    <CodeExample Code="@confirmDialogCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <Button Color="ButtonColor.Primary" OnClick="ShowConfirm">Delete Item</Button>
+            @if (confirmResult != null)
+            {
+                <span class="text-sm">
+                    Result: <strong>@(confirmResult.Value ? "Confirmed" : "Cancelled")</strong>
+                </span>
+            }
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Custom Button Text</h2>
+    <CodeExample Code="@customButtonsCode">
+        <div class="flex flex-wrap gap-2">
+            <Button Color="ButtonColor.Success" OnClick="ShowCustomButtons">Save Changes</Button>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Custom Component Modal</h2>
+    <CodeExample Code="@customComponentCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <Button Color="ButtonColor.Secondary" OnClick="ShowEditUser">Edit User</Button>
+            @if (!string.IsNullOrEmpty(editedUserName))
+            {
+                <span class="text-sm">
+                    Updated name: <strong>@editedUserName</strong>
+                </span>
+            }
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private bool? confirmResult;
+    private string? editedUserName;
+
+    private async Task ShowInfo()
+    {
+        await ModalService.Info("Information", "This is an informational message.");
+    }
+
+    private async Task ShowWarning()
+    {
+        await ModalService.Warning("Warning", "This action may have consequences.");
+    }
+
+    private async Task ShowError()
+    {
+        await ModalService.Error("Error", "Something went wrong. Please try again.");
+    }
+
+    private async Task ShowConfirm()
+    {
+        confirmResult = await ModalService.Confirm(
+            "Delete Item",
+            "Are you sure you want to delete this item? This action cannot be undone.");
+    }
+
+    private async Task ShowCustomButtons()
+    {
+        await ModalService.Confirm(
+            "Unsaved Changes",
+            "You have unsaved changes. Do you want to save them before leaving?",
+            confirmText: "Save",
+            cancelText: "Discard");
+    }
+
+    private async Task ShowEditUser()
+    {
+        var parameters = new Dictionary<string, object>
+        {
+            ["UserName"] = "John Doe"
+        };
+
+        var result = await ModalService.Show<EditUserModal, string>(
+            parameters,
+            options => options.CssClass = "max-w-md");
+
+        if (result.Confirmed && result.Data != null)
+        {
+            editedUserName = result.Data;
+        }
+    }
+
+    private string simpleDialogsCode = @"@inject IModalService ModalService
+
+<Button Color=""ButtonColor.Info"" OnClick=""ShowInfo"">Info</Button>
+<Button Color=""ButtonColor.Warning"" OnClick=""ShowWarning"">Warning</Button>
+<Button Color=""ButtonColor.Error"" OnClick=""ShowError"">Error</Button>
+
+@code {
+    private async Task ShowInfo()
+    {
+        await ModalService.Info(""Information"", ""This is an informational message."");
+    }
+
+    private async Task ShowWarning()
+    {
+        await ModalService.Warning(""Warning"", ""This action may have consequences."");
+    }
+
+    private async Task ShowError()
+    {
+        await ModalService.Error(""Error"", ""Something went wrong. Please try again."");
+    }
+}";
+
+    private string confirmDialogCode = @"@inject IModalService ModalService
+
+<Button Color=""ButtonColor.Primary"" OnClick=""ShowConfirm"">Delete Item</Button>
+<span>Result: @(confirmResult.Value ? ""Confirmed"" : ""Cancelled"")</span>
+
+@code {
+    private bool? confirmResult;
+
+    private async Task ShowConfirm()
+    {
+        confirmResult = await ModalService.Confirm(
+            ""Delete Item"",
+            ""Are you sure you want to delete this item? This action cannot be undone."");
+    }
+}";
+
+    private string customButtonsCode = @"await ModalService.Confirm(
+    ""Unsaved Changes"",
+    ""You have unsaved changes. Do you want to save them before leaving?"",
+    confirmText: ""Save"",
+    cancelText: ""Discard"");";
+
+    private string customComponentCode = @"// EditUserModal.razor - Custom modal component
+@code {
+    [CascadingParameter] public ModalInstance Modal { get; set; } = default!;
+    [Parameter] public string UserName { get; set; } = """";
+
+    private void Save()
+    {
+        Modal.Close(userName, confirmed: true);
+    }
+
+    private void Cancel()
+    {
+        Modal.Close(confirmed: false);
+    }
+}
+
+// Usage:
+var parameters = new Dictionary<string, object>
+{
+    [""UserName""] = ""John Doe""
+};
+
+var result = await ModalService.Show<EditUserModal, string>(
+    parameters,
+    options => options.CssClass = ""max-w-md"");
+
+if (result.Confirmed && result.Data != null)
+{
+    editedUserName = result.Data;
+}";
+}

@@ -1,0 +1,37 @@
+@namespace BlazyUI.Demo.Pages
+
+<h3 class="font-bold text-lg">Edit User</h3>
+
+<div class="py-4">
+    <label class="label">
+        <span class="label-text">Name</span>
+    </label>
+    <input type="text" @bind="userName" class="input input-bordered w-full" placeholder="Enter name" />
+</div>
+
+<div class="modal-action">
+    <button class="btn" @onclick="Cancel">Cancel</button>
+    <button class="btn btn-primary" @onclick="Save">Save</button>
+</div>
+
+@code {
+    [CascadingParameter] public ModalInstance Modal { get; set; } = default!;
+    [Parameter] public string UserName { get; set; } = "";
+
+    private string userName = "";
+
+    protected override void OnParametersSet()
+    {
+        userName = UserName;
+    }
+
+    private void Save()
+    {
+        Modal.Close(userName, confirmed: true);
+    }
+
+    private void Cancel()
+    {
+        Modal.Close(confirmed: false);
+    }
+}
