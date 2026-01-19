@@ -6,108 +6,113 @@
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Basic Fieldset</h2>
-    <p class="text-sm opacity-70 mb-4">Groups related form elements with an optional legend.</p>
-    <Fieldset Legend="User Information" Class="bg-base-200 border-base-300 rounded-box border p-4 max-w-md">
-        <label class="label">Name</label>
-        <input type="text" class="input w-full" placeholder="Enter your name" />
-        <label class="label">Email</label>
-        <input type="email" class="input w-full" placeholder="Enter your email" />
-    </Fieldset>
+    <CodeExample Code="@basicCode">
+        <Fieldset Legend="User Information" Class="bg-base-200 border-base-300 rounded-box border p-4 max-w-md">
+            <label class="label">Name</label>
+            <input type="text" class="input w-full" placeholder="Enter your name" />
+            <label class="label">Email</label>
+            <input type="email" class="input w-full" placeholder="Enter your email" />
+        </Fieldset>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Without Legend</h2>
-    <p class="text-sm opacity-70 mb-4">Fieldset can be used without a legend for simple grouping.</p>
-    <Fieldset Class="bg-base-200 border-base-300 rounded-box border p-4 max-w-md">
-        <label class="label">Username</label>
-        <input type="text" class="input w-full" placeholder="Choose a username" />
-        <label class="label">Password</label>
-        <input type="password" class="input w-full" placeholder="Create a password" />
-    </Fieldset>
+    <CodeExample Code="@noLegendCode">
+        <Fieldset Class="bg-base-200 border-base-300 rounded-box border p-4 max-w-md">
+            <label class="label">Username</label>
+            <input type="text" class="input w-full" placeholder="Choose a username" />
+            <label class="label">Password</label>
+            <input type="password" class="input w-full" placeholder="Create a password" />
+        </Fieldset>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Custom Legend Content</h2>
-    <p class="text-sm opacity-70 mb-4">Use LegendContent for rich legend formatting.</p>
-    <Fieldset Class="bg-base-200 border-base-300 rounded-box border p-4 max-w-md">
-        <LegendContent>
-            <span class="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-                Security Settings
-            </span>
-        </LegendContent>
-        <ChildContent>
-            <label class="label">Current Password</label>
-            <input type="password" class="input w-full" placeholder="Enter current password" />
-            <label class="label">New Password</label>
-            <input type="password" class="input w-full" placeholder="Enter new password" />
-            <label class="label">Confirm Password</label>
-            <input type="password" class="input w-full" placeholder="Confirm new password" />
-        </ChildContent>
-    </Fieldset>
+    <CodeExample Code="@customLegendCode">
+        <Fieldset Class="bg-base-200 border-base-300 rounded-box border p-4 max-w-md">
+            <LegendContent>
+                <span class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    Security Settings
+                </span>
+            </LegendContent>
+            <ChildContent>
+                <label class="label">Current Password</label>
+                <input type="password" class="input w-full" placeholder="Enter current password" />
+                <label class="label">New Password</label>
+                <input type="password" class="input w-full" placeholder="Enter new password" />
+                <label class="label">Confirm Password</label>
+                <input type="password" class="input w-full" placeholder="Confirm new password" />
+            </ChildContent>
+        </Fieldset>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">With BlazyUI Components</h2>
-    <p class="text-sm opacity-70 mb-4">Combine with other BlazyUI form components.</p>
-    <Fieldset Legend="Preferences" Class="bg-base-200 border-base-300 rounded-box border p-4 max-w-md">
-        <Label Variant="LabelVariant.Input" Text="Theme">
-            <select class="grow" @bind="theme">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-                <option value="system">System</option>
-            </select>
-        </Label>
-        <div class="mt-4">
-            <label class="label cursor-pointer justify-start gap-4">
-                <Checkbox @bind-Value="notifications" />
-                <span>Enable notifications</span>
-            </label>
-        </div>
-        <div class="mt-2">
-            <label class="label cursor-pointer justify-start gap-4">
-                <Toggle @bind-Value="darkMode" Color="ToggleColor.Primary" />
-                <span>Dark mode</span>
-            </label>
-        </div>
-    </Fieldset>
+    <CodeExample Code="@blazyuiCode">
+        <Fieldset Legend="Preferences" Class="bg-base-200 border-base-300 rounded-box border p-4 max-w-md">
+            <Label Variant="LabelVariant.Input" Text="Theme">
+                <select class="grow" @bind="theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="system">System</option>
+                </select>
+            </Label>
+            <div class="mt-4">
+                <label class="label cursor-pointer justify-start gap-4">
+                    <Checkbox @bind-Value="notifications" />
+                    <span>Enable notifications</span>
+                </label>
+            </div>
+            <div class="mt-2">
+                <label class="label cursor-pointer justify-start gap-4">
+                    <Toggle @bind-Value="darkMode" Color="ToggleColor.Primary" />
+                    <span>Dark mode</span>
+                </label>
+            </div>
+        </Fieldset>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Multiple Fieldsets</h2>
-    <p class="text-sm opacity-70 mb-4">Organize complex forms into logical sections.</p>
-    <div class="flex flex-col gap-6 max-w-md">
-        <Fieldset Legend="Personal Details" Class="bg-base-200 border-base-300 rounded-box border p-4">
-            <label class="label">First Name</label>
-            <input type="text" class="input w-full" placeholder="John" />
-            <label class="label">Last Name</label>
-            <input type="text" class="input w-full" placeholder="Doe" />
-        </Fieldset>
+    <CodeExample Code="@multipleCode">
+        <div class="flex flex-col gap-6 max-w-md">
+            <Fieldset Legend="Personal Details" Class="bg-base-200 border-base-300 rounded-box border p-4">
+                <label class="label">First Name</label>
+                <input type="text" class="input w-full" placeholder="John" />
+                <label class="label">Last Name</label>
+                <input type="text" class="input w-full" placeholder="Doe" />
+            </Fieldset>
 
-        <Fieldset Legend="Contact Information" Class="bg-base-200 border-base-300 rounded-box border p-4">
-            <label class="label">Phone</label>
-            <input type="tel" class="input w-full" placeholder="+1 (555) 123-4567" />
-            <label class="label">Address</label>
-            <Textarea @bind-Value="address" placeholder="Enter your address..." Class="w-full" />
-        </Fieldset>
+            <Fieldset Legend="Contact Information" Class="bg-base-200 border-base-300 rounded-box border p-4">
+                <label class="label">Phone</label>
+                <input type="tel" class="input w-full" placeholder="+1 (555) 123-4567" />
+                <label class="label">Address</label>
+                <Textarea @bind-Value="address" placeholder="Enter your address..." Class="w-full" />
+            </Fieldset>
 
-        <Fieldset Legend="Account Settings" Class="bg-base-200 border-base-300 rounded-box border p-4">
-            <label class="label">Language</label>
-            <Select @bind-Value="language" Class="w-full">
-                <option value="en">English</option>
-                <option value="es">Spanish</option>
-                <option value="fr">French</option>
-            </Select>
-            <label class="label">Timezone</label>
-            <Select @bind-Value="timezone" Class="w-full">
-                <option value="utc">UTC</option>
-                <option value="est">Eastern Time</option>
-                <option value="pst">Pacific Time</option>
-            </Select>
-        </Fieldset>
-    </div>
+            <Fieldset Legend="Account Settings" Class="bg-base-200 border-base-300 rounded-box border p-4">
+                <label class="label">Language</label>
+                <Select @bind-Value="language" Class="w-full">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                </Select>
+                <label class="label">Timezone</label>
+                <Select @bind-Value="timezone" Class="w-full">
+                    <option value="utc">UTC</option>
+                    <option value="est">Eastern Time</option>
+                    <option value="pst">Pacific Time</option>
+                </Select>
+            </Fieldset>
+        </div>
+    </CodeExample>
 </section>
 
 @code {
@@ -117,4 +122,52 @@
     private string language = "en";
     private string timezone = "utc";
     private string address = "";
+
+    private string basicCode = @"<Fieldset Legend=""User Information"" Class=""bg-base-200 border-base-300 rounded-box border p-4"">
+    <label class=""label"">Name</label>
+    <input type=""text"" class=""input w-full"" placeholder=""Enter your name"" />
+    <label class=""label"">Email</label>
+    <input type=""email"" class=""input w-full"" placeholder=""Enter your email"" />
+</Fieldset>";
+
+    private string noLegendCode = @"<Fieldset Class=""bg-base-200 border-base-300 rounded-box border p-4"">
+    <label class=""label"">Username</label>
+    <input type=""text"" class=""input w-full"" />
+    <label class=""label"">Password</label>
+    <input type=""password"" class=""input w-full"" />
+</Fieldset>";
+
+    private string customLegendCode = @"<Fieldset Class=""bg-base-200 border-base-300 rounded-box border p-4"">
+    <LegendContent>
+        <span class=""flex items-center gap-2"">
+            <svg>...</svg>
+            Security Settings
+        </span>
+    </LegendContent>
+    <ChildContent>
+        <label class=""label"">Current Password</label>
+        <input type=""password"" class=""input w-full"" />
+    </ChildContent>
+</Fieldset>";
+
+    private string blazyuiCode = @"<Fieldset Legend=""Preferences"" Class=""bg-base-200 border-base-300 rounded-box border p-4"">
+    <Label Variant=""LabelVariant.Input"" Text=""Theme"">
+        <select class=""grow"" @bind=""theme"">
+            <option value=""light"">Light</option>
+            <option value=""dark"">Dark</option>
+        </select>
+    </Label>
+    <Checkbox @bind-Value=""notifications"" />
+    <Toggle @bind-Value=""darkMode"" Color=""ToggleColor.Primary"" />
+</Fieldset>";
+
+    private string multipleCode = @"<Fieldset Legend=""Personal Details"" Class=""..."">
+    ...
+</Fieldset>
+<Fieldset Legend=""Contact Information"" Class=""..."">
+    ...
+</Fieldset>
+<Fieldset Legend=""Account Settings"" Class=""..."">
+    ...
+</Fieldset>";
 }

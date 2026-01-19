@@ -6,135 +6,145 @@
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
-    <div class="flex flex-col gap-2">
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio @bind-Value="basicValue" Name="basic" OptionValue="option1" />
-            <span>Option 1</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio @bind-Value="basicValue" Name="basic" OptionValue="option2" />
-            <span>Option 2</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio @bind-Value="basicValue" Name="basic" OptionValue="option3" />
-            <span>Option 3</span>
-        </label>
-    </div>
-    <p class="mt-2 text-sm opacity-70">Selected: @basicValue</p>
+    <CodeExample Code="@basicCode">
+        <div class="flex flex-col gap-2">
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio @bind-Value="basicValue" Name="basic" OptionValue="option1" />
+                <span>Option 1</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio @bind-Value="basicValue" Name="basic" OptionValue="option2" />
+                <span>Option 2</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio @bind-Value="basicValue" Name="basic" OptionValue="option3" />
+                <span>Option 3</span>
+            </label>
+        </div>
+        <p class="mt-2 text-sm opacity-70">Selected: @basicValue</p>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Sizes</h2>
-    <div class="flex flex-col gap-4">
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Size="RadioSize.ExtraSmall" @bind-Value="sizeValue" Name="sizes" OptionValue="xs" />
-            <span>Extra Small</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Size="RadioSize.Small" @bind-Value="sizeValue" Name="sizes" OptionValue="sm" />
-            <span>Small</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Size="RadioSize.Default" @bind-Value="sizeValue" Name="sizes" OptionValue="default" />
-            <span>Default (Medium)</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Size="RadioSize.Large" @bind-Value="sizeValue" Name="sizes" OptionValue="lg" />
-            <span>Large</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Size="RadioSize.ExtraLarge" @bind-Value="sizeValue" Name="sizes" OptionValue="xl" />
-            <span>Extra Large</span>
-        </label>
-    </div>
+    <CodeExample Code="@sizesCode">
+        <div class="flex flex-col gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Size="RadioSize.ExtraSmall" @bind-Value="sizeValue" Name="sizes" OptionValue="xs" />
+                <span>Extra Small</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Size="RadioSize.Small" @bind-Value="sizeValue" Name="sizes" OptionValue="sm" />
+                <span>Small</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Size="RadioSize.Default" @bind-Value="sizeValue" Name="sizes" OptionValue="default" />
+                <span>Default (Medium)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Size="RadioSize.Large" @bind-Value="sizeValue" Name="sizes" OptionValue="lg" />
+                <span>Large</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Size="RadioSize.ExtraLarge" @bind-Value="sizeValue" Name="sizes" OptionValue="xl" />
+                <span>Extra Large</span>
+            </label>
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Colors</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Color="RadioColor.Default" @bind-Value="colorValue" Name="colors" OptionValue="default" />
-            <span>Default</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Color="RadioColor.Neutral" @bind-Value="colorValue" Name="colors" OptionValue="neutral" />
-            <span>Neutral</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Color="RadioColor.Primary" @bind-Value="colorValue" Name="colors" OptionValue="primary" />
-            <span>Primary</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Color="RadioColor.Secondary" @bind-Value="colorValue" Name="colors" OptionValue="secondary" />
-            <span>Secondary</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Color="RadioColor.Accent" @bind-Value="colorValue" Name="colors" OptionValue="accent" />
-            <span>Accent</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Color="RadioColor.Info" @bind-Value="colorValue" Name="colors" OptionValue="info" />
-            <span>Info</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Color="RadioColor.Success" @bind-Value="colorValue" Name="colors" OptionValue="success" />
-            <span>Success</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Color="RadioColor.Warning" @bind-Value="colorValue" Name="colors" OptionValue="warning" />
-            <span>Warning</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio Color="RadioColor.Error" @bind-Value="colorValue" Name="colors" OptionValue="error" />
-            <span>Error</span>
-        </label>
-    </div>
+    <CodeExample Code="@colorsCode">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Color="RadioColor.Default" @bind-Value="colorValue" Name="colors" OptionValue="default" />
+                <span>Default</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Color="RadioColor.Neutral" @bind-Value="colorValue" Name="colors" OptionValue="neutral" />
+                <span>Neutral</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Color="RadioColor.Primary" @bind-Value="colorValue" Name="colors" OptionValue="primary" />
+                <span>Primary</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Color="RadioColor.Secondary" @bind-Value="colorValue" Name="colors" OptionValue="secondary" />
+                <span>Secondary</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Color="RadioColor.Accent" @bind-Value="colorValue" Name="colors" OptionValue="accent" />
+                <span>Accent</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Color="RadioColor.Info" @bind-Value="colorValue" Name="colors" OptionValue="info" />
+                <span>Info</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Color="RadioColor.Success" @bind-Value="colorValue" Name="colors" OptionValue="success" />
+                <span>Success</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Color="RadioColor.Warning" @bind-Value="colorValue" Name="colors" OptionValue="warning" />
+                <span>Warning</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio Color="RadioColor.Error" @bind-Value="colorValue" Name="colors" OptionValue="error" />
+                <span>Error</span>
+            </label>
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">With Validation</h2>
-    <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
-        <DataAnnotationsValidator />
+    <CodeExample Code="@validationCode">
+        <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
+            <DataAnnotationsValidator />
 
-        <div class="form-control mb-4">
-            <span class="label-text mb-2">Select your plan:</span>
-            <div class="flex flex-col gap-2">
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <Radio @bind-Value="formModel.SelectedPlan" Name="plan" OptionValue="free" Color="RadioColor.Primary" />
-                    <span class="label-text">Free</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <Radio @bind-Value="formModel.SelectedPlan" Name="plan" OptionValue="pro" Color="RadioColor.Primary" />
-                    <span class="label-text">Pro ($9/mo)</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                    <Radio @bind-Value="formModel.SelectedPlan" Name="plan" OptionValue="enterprise" Color="RadioColor.Primary" />
-                    <span class="label-text">Enterprise ($99/mo)</span>
-                </label>
+            <div class="form-control mb-4">
+                <span class="label-text mb-2">Select your plan:</span>
+                <div class="flex flex-col gap-2">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <Radio @bind-Value="formModel.SelectedPlan" Name="plan" OptionValue="free" Color="RadioColor.Primary" />
+                        <span class="label-text">Free</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <Radio @bind-Value="formModel.SelectedPlan" Name="plan" OptionValue="pro" Color="RadioColor.Primary" />
+                        <span class="label-text">Pro ($9/mo)</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <Radio @bind-Value="formModel.SelectedPlan" Name="plan" OptionValue="enterprise" Color="RadioColor.Primary" />
+                        <span class="label-text">Enterprise ($99/mo)</span>
+                    </label>
+                </div>
+                <ValidationMessage For="@(() => formModel.SelectedPlan)" class="text-error text-sm mt-1" />
             </div>
-            <ValidationMessage For="@(() => formModel.SelectedPlan)" class="text-error text-sm mt-1" />
-        </div>
 
-        <Button Type="submit" Color="ButtonColor.Primary" Block>Subscribe</Button>
-    </EditForm>
-    @if (formSubmitted)
-    {
-        <Alert Color="AlertColor.Success" class="mt-4">Subscribed to @formModel.SelectedPlan plan!</Alert>
-    }
+            <Button Type="submit" Color="ButtonColor.Primary" Block>Subscribe</Button>
+        </EditForm>
+        @if (formSubmitted)
+        {
+            <Alert Color="AlertColor.Success" class="mt-4">Subscribed to @formModel.SelectedPlan plan!</Alert>
+        }
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
-    <div class="flex flex-col gap-2">
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Radio @bind-Value="disabledValue" Name="disabled" OptionValue="enabled" />
-            <span>Enabled option</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer opacity-50">
-            <Radio @bind-Value="disabledValue" Name="disabled" OptionValue="disabled" disabled />
-            <span>Disabled option</span>
-        </label>
-    </div>
+    <CodeExample Code="@attributesCode">
+        <div class="flex flex-col gap-2">
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Radio @bind-Value="disabledValue" Name="disabled" OptionValue="enabled" />
+                <span>Enabled option</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer opacity-50">
+                <Radio @bind-Value="disabledValue" Name="disabled" OptionValue="disabled" disabled />
+                <span>Disabled option</span>
+            </label>
+        </div>
+    </CodeExample>
 </section>
 
 @code {
@@ -155,4 +165,37 @@
     {
         public string SelectedPlan { get; set; } = "";
     }
+
+    private string basicCode = @"<Radio @bind-Value=""selectedValue"" Name=""group"" OptionValue=""option1"" />
+<Radio @bind-Value=""selectedValue"" Name=""group"" OptionValue=""option2"" />
+<Radio @bind-Value=""selectedValue"" Name=""group"" OptionValue=""option3"" />";
+
+    private string sizesCode = @"<Radio Size=""RadioSize.ExtraSmall"" />
+<Radio Size=""RadioSize.Small"" />
+<Radio Size=""RadioSize.Default"" />
+<Radio Size=""RadioSize.Large"" />
+<Radio Size=""RadioSize.ExtraLarge"" />";
+
+    private string colorsCode = @"<Radio Color=""RadioColor.Default"" />
+<Radio Color=""RadioColor.Primary"" />
+<Radio Color=""RadioColor.Secondary"" />
+<Radio Color=""RadioColor.Accent"" />
+<Radio Color=""RadioColor.Info"" />
+<Radio Color=""RadioColor.Success"" />
+<Radio Color=""RadioColor.Warning"" />
+<Radio Color=""RadioColor.Error"" />";
+
+    private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
+    <DataAnnotationsValidator />
+    <div class=""form-control mb-4"">
+        <span class=""label-text mb-2"">Select your plan:</span>
+        <Radio @bind-Value=""formModel.SelectedPlan"" Name=""plan"" OptionValue=""free"" />
+        <Radio @bind-Value=""formModel.SelectedPlan"" Name=""plan"" OptionValue=""pro"" />
+        <Radio @bind-Value=""formModel.SelectedPlan"" Name=""plan"" OptionValue=""enterprise"" />
+        <ValidationMessage For=""@(() => formModel.SelectedPlan)"" />
+    </div>
+    <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Subscribe</Button>
+</EditForm>";
+
+    private string attributesCode = @"<Radio @bind-Value=""value"" Name=""group"" OptionValue=""option"" disabled />";
 }

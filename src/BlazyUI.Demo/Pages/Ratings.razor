@@ -6,131 +6,147 @@
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
-    <div class="flex flex-col gap-2">
-        <Rating @bind-Value="basicValue" />
-        <p class="text-sm opacity-70">Rating: @basicValue / 5</p>
-    </div>
+    <CodeExample Code="@basicCode">
+        <div class="flex flex-col gap-2">
+            <Rating @bind-Value="basicValue" />
+            <p class="text-sm opacity-70">Rating: @basicValue / 5</p>
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">With Clear Option</h2>
-    <div class="flex flex-col gap-2">
-        <Rating @bind-Value="clearableValue" AllowClear />
-        <p class="text-sm opacity-70">Rating: @clearableValue / 5 (click selected star to clear)</p>
-    </div>
+    <CodeExample Code="@clearableCode">
+        <div class="flex flex-col gap-2">
+            <Rating @bind-Value="clearableValue" AllowClear />
+            <p class="text-sm opacity-70">Rating: @clearableValue / 5 (click selected star to clear)</p>
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Different Max Values</h2>
-    <div class="flex flex-col gap-4">
-        <div>
-            <label class="label-text">3 stars</label>
-            <Rating @bind-Value="max3Value" Max="3" />
+    <CodeExample Code="@maxCode">
+        <div class="flex flex-col gap-4">
+            <div>
+                <label class="label-text">3 stars</label>
+                <Rating @bind-Value="max3Value" Max="3" />
+            </div>
+            <div>
+                <label class="label-text">10 stars</label>
+                <Rating @bind-Value="max10Value" Max="10" />
+            </div>
         </div>
-        <div>
-            <label class="label-text">10 stars</label>
-            <Rating @bind-Value="max10Value" Max="10" />
-        </div>
-    </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Mask Shapes</h2>
-    <div class="flex flex-col gap-4">
-        <div>
-            <label class="label-text">Star (outline)</label>
-            <Rating @bind-Value="maskStarValue" Mask="RatingMask.Star" />
+    <CodeExample Code="@maskCode">
+        <div class="flex flex-col gap-4">
+            <div>
+                <label class="label-text">Star (outline)</label>
+                <Rating @bind-Value="maskStarValue" Mask="RatingMask.Star" />
+            </div>
+            <div>
+                <label class="label-text">Star 2 (filled)</label>
+                <Rating @bind-Value="maskStar2Value" Mask="RatingMask.Star2" />
+            </div>
+            <div>
+                <label class="label-text">Heart</label>
+                <Rating @bind-Value="maskHeartValue" Mask="RatingMask.Heart" BackgroundColor="bg-red-400" />
+            </div>
         </div>
-        <div>
-            <label class="label-text">Star 2 (filled)</label>
-            <Rating @bind-Value="maskStar2Value" Mask="RatingMask.Star2" />
-        </div>
-        <div>
-            <label class="label-text">Heart</label>
-            <Rating @bind-Value="maskHeartValue" Mask="RatingMask.Heart" BackgroundColor="bg-red-400" />
-        </div>
-    </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Sizes</h2>
-    <div class="flex flex-col gap-4">
-        <div>
-            <label class="label-text">Extra Small</label>
-            <Rating Size="RatingSize.ExtraSmall" @bind-Value="sizeXs" />
+    <CodeExample Code="@sizesCode">
+        <div class="flex flex-col gap-4">
+            <div>
+                <label class="label-text">Extra Small</label>
+                <Rating Size="RatingSize.ExtraSmall" @bind-Value="sizeXs" />
+            </div>
+            <div>
+                <label class="label-text">Small</label>
+                <Rating Size="RatingSize.Small" @bind-Value="sizeSm" />
+            </div>
+            <div>
+                <label class="label-text">Default (Medium)</label>
+                <Rating Size="RatingSize.Default" @bind-Value="sizeMd" />
+            </div>
+            <div>
+                <label class="label-text">Large</label>
+                <Rating Size="RatingSize.Large" @bind-Value="sizeLg" />
+            </div>
+            <div>
+                <label class="label-text">Extra Large</label>
+                <Rating Size="RatingSize.ExtraLarge" @bind-Value="sizeXl" />
+            </div>
         </div>
-        <div>
-            <label class="label-text">Small</label>
-            <Rating Size="RatingSize.Small" @bind-Value="sizeSm" />
-        </div>
-        <div>
-            <label class="label-text">Default (Medium)</label>
-            <Rating Size="RatingSize.Default" @bind-Value="sizeMd" />
-        </div>
-        <div>
-            <label class="label-text">Large</label>
-            <Rating Size="RatingSize.Large" @bind-Value="sizeLg" />
-        </div>
-        <div>
-            <label class="label-text">Extra Large</label>
-            <Rating Size="RatingSize.ExtraLarge" @bind-Value="sizeXl" />
-        </div>
-    </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Custom Colors</h2>
-    <div class="flex flex-col gap-4">
-        <div>
-            <label class="label-text">Orange</label>
-            <Rating @bind-Value="colorOrange" BackgroundColor="bg-orange-400" />
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-col gap-4">
+            <div>
+                <label class="label-text">Orange</label>
+                <Rating @bind-Value="colorOrange" BackgroundColor="bg-orange-400" />
+            </div>
+            <div>
+                <label class="label-text">Yellow</label>
+                <Rating @bind-Value="colorYellow" BackgroundColor="bg-yellow-400" />
+            </div>
+            <div>
+                <label class="label-text">Green</label>
+                <Rating @bind-Value="colorGreen" BackgroundColor="bg-green-500" />
+            </div>
+            <div>
+                <label class="label-text">Blue</label>
+                <Rating @bind-Value="colorBlue" BackgroundColor="bg-blue-500" />
+            </div>
+            <div>
+                <label class="label-text">Purple</label>
+                <Rating @bind-Value="colorPurple" BackgroundColor="bg-purple-500" />
+            </div>
         </div>
-        <div>
-            <label class="label-text">Yellow</label>
-            <Rating @bind-Value="colorYellow" BackgroundColor="bg-yellow-400" />
-        </div>
-        <div>
-            <label class="label-text">Green</label>
-            <Rating @bind-Value="colorGreen" BackgroundColor="bg-green-500" />
-        </div>
-        <div>
-            <label class="label-text">Blue</label>
-            <Rating @bind-Value="colorBlue" BackgroundColor="bg-blue-500" />
-        </div>
-        <div>
-            <label class="label-text">Purple</label>
-            <Rating @bind-Value="colorPurple" BackgroundColor="bg-purple-500" />
-        </div>
-    </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">With Validation</h2>
-    <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
-        <DataAnnotationsValidator />
+    <CodeExample Code="@validationCode">
+        <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
+            <DataAnnotationsValidator />
 
-        <div class="form-control mb-4">
-            <label class="label">
-                <span class="label-text">Rate your experience (required)</span>
-            </label>
-            <Rating @bind-Value="formModel.Rating" BackgroundColor="bg-yellow-400" />
-            <ValidationMessage For="@(() => formModel.Rating)" class="text-error text-sm mt-1" />
-        </div>
+            <div class="form-control mb-4">
+                <label class="label">
+                    <span class="label-text">Rate your experience (required)</span>
+                </label>
+                <Rating @bind-Value="formModel.Rating" BackgroundColor="bg-yellow-400" />
+                <ValidationMessage For="@(() => formModel.Rating)" class="text-error text-sm mt-1" />
+            </div>
 
-        <Button Type="submit" Color="ButtonColor.Primary" Block>Submit Review</Button>
-    </EditForm>
-    @if (formSubmitted)
-    {
-        <Alert Color="AlertColor.Success" class="mt-4">Thank you! You rated us @formModel.Rating stars.</Alert>
-    }
+            <Button Type="submit" Color="ButtonColor.Primary" Block>Submit Review</Button>
+        </EditForm>
+        @if (formSubmitted)
+        {
+            <Alert Color="AlertColor.Success" class="mt-4">Thank you! You rated us @formModel.Rating stars.</Alert>
+        }
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Read-only Display</h2>
-    <div class="flex items-center gap-2">
-        <Rating @bind-Value="readOnlyValue" BackgroundColor="bg-yellow-400" class="pointer-events-none" />
-        <span class="text-sm opacity-70">4.5 average (read-only)</span>
-    </div>
+    <CodeExample Code="@readonlyCode">
+        <div class="flex items-center gap-2">
+            <Rating @bind-Value="readOnlyValue" BackgroundColor="bg-yellow-400" class="pointer-events-none" />
+            <span class="text-sm opacity-70">4.5 average (read-only)</span>
+        </div>
+    </CodeExample>
 </section>
 
 @code {
@@ -166,4 +182,41 @@
         [System.ComponentModel.DataAnnotations.Range(1, 5, ErrorMessage = "Please select a rating")]
         public int Rating { get; set; } = 0;
     }
+
+    private string basicCode = @"<Rating @bind-Value=""value"" />";
+
+    private string clearableCode = @"<Rating @bind-Value=""value"" AllowClear />";
+
+    private string maxCode = @"<Rating @bind-Value=""value"" Max=""3"" />
+<Rating @bind-Value=""value"" Max=""10"" />";
+
+    private string maskCode = @"<Rating Mask=""RatingMask.Star"" />
+<Rating Mask=""RatingMask.Star2"" />
+<Rating Mask=""RatingMask.Heart"" BackgroundColor=""bg-red-400"" />";
+
+    private string sizesCode = @"<Rating Size=""RatingSize.ExtraSmall"" />
+<Rating Size=""RatingSize.Small"" />
+<Rating Size=""RatingSize.Default"" />
+<Rating Size=""RatingSize.Large"" />
+<Rating Size=""RatingSize.ExtraLarge"" />";
+
+    private string colorsCode = @"<Rating BackgroundColor=""bg-orange-400"" />
+<Rating BackgroundColor=""bg-yellow-400"" />
+<Rating BackgroundColor=""bg-green-500"" />
+<Rating BackgroundColor=""bg-blue-500"" />
+<Rating BackgroundColor=""bg-purple-500"" />";
+
+    private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
+    <DataAnnotationsValidator />
+    <div class=""form-control mb-4"">
+        <label class=""label"">
+            <span class=""label-text"">Rate your experience (required)</span>
+        </label>
+        <Rating @bind-Value=""formModel.Rating"" BackgroundColor=""bg-yellow-400"" />
+        <ValidationMessage For=""@(() => formModel.Rating)"" />
+    </div>
+    <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Submit Review</Button>
+</EditForm>";
+
+    private string readonlyCode = @"<Rating @bind-Value=""value"" BackgroundColor=""bg-yellow-400"" class=""pointer-events-none"" />";
 }

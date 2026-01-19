@@ -6,122 +6,128 @@
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Standalone Label</h2>
-    <p class="text-sm opacity-70 mb-4">Basic label that links to an input via the For parameter.</p>
-    <div class="flex flex-col gap-4 max-w-xs">
-        <div>
-            <Label Text="Email address" For="email1" />
-            <input type="email" id="email1" class="input w-full" placeholder="you@example.com" />
+    <CodeExample Code="@standaloneCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <div>
+                <Label Text="Email address" For="email1" />
+                <input type="email" id="email1" class="input w-full" placeholder="you@example.com" />
+            </div>
+            <div>
+                <Label For="password1">
+                    Password <span class="text-error">*</span>
+                </Label>
+                <input type="password" id="password1" class="input w-full" placeholder="Enter password" />
+            </div>
         </div>
-        <div>
-            <Label For="password1">
-                Password <span class="text-error">*</span>
-            </Label>
-            <input type="password" id="password1" class="input w-full" placeholder="Enter password" />
-        </div>
-    </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Input Wrapper</h2>
-    <p class="text-sm opacity-70 mb-4">Wraps an input with the label using DaisyUI v5 pattern.</p>
-    <div class="flex flex-col gap-4 max-w-xs">
-        <Label Variant="LabelVariant.Input" Text="Username">
-            <input type="text" class="grow" placeholder="Enter username" @bind="username" />
-        </Label>
+    <CodeExample Code="@inputCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <Label Variant="LabelVariant.Input" Text="Username">
+                <input type="text" class="grow" placeholder="Enter username" @bind="username" />
+            </Label>
 
-        <Label Variant="LabelVariant.Input" Text="Email">
-            <input type="email" class="grow" placeholder="Enter email" @bind="email" />
-        </Label>
+            <Label Variant="LabelVariant.Input" Text="Email">
+                <input type="email" class="grow" placeholder="Enter email" @bind="email" />
+            </Label>
 
-        <Label Variant="LabelVariant.Input" Text="Search" Position="LabelPosition.Right">
-            <input type="text" class="grow" placeholder="Type here..." />
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-        </Label>
-    </div>
+            <Label Variant="LabelVariant.Input" Text="Search" Position="LabelPosition.Right">
+                <input type="text" class="grow" placeholder="Type here..." />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </Label>
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Select Wrapper</h2>
-    <p class="text-sm opacity-70 mb-4">Wraps a select with the label using DaisyUI v5 pattern.</p>
-    <div class="flex flex-col gap-4 max-w-xs">
-        <Label Variant="LabelVariant.Select" Text="Country">
-            <select class="grow" @bind="country">
-                <option disabled selected value="">Pick one</option>
-                <option value="us">United States</option>
-                <option value="uk">United Kingdom</option>
-                <option value="ca">Canada</option>
-            </select>
-        </Label>
+    <CodeExample Code="@selectCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <Label Variant="LabelVariant.Select" Text="Country">
+                <select class="grow" @bind="country">
+                    <option disabled selected value="">Pick one</option>
+                    <option value="us">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="ca">Canada</option>
+                </select>
+            </Label>
 
-        <Label Variant="LabelVariant.Select" Text="Category" Position="LabelPosition.Right">
-            <select class="grow" @bind="category">
-                <option disabled selected value="">Select category</option>
-                <option value="tech">Technology</option>
-                <option value="science">Science</option>
-                <option value="arts">Arts</option>
-            </select>
-        </Label>
-    </div>
+            <Label Variant="LabelVariant.Select" Text="Category" Position="LabelPosition.Right">
+                <select class="grow" @bind="category">
+                    <option disabled selected value="">Select category</option>
+                    <option value="tech">Technology</option>
+                    <option value="science">Science</option>
+                    <option value="arts">Arts</option>
+                </select>
+            </Label>
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Floating Label</h2>
-    <p class="text-sm opacity-70 mb-4">Creates a floating label effect that moves when the input is focused.</p>
-    <div class="flex flex-col gap-4 max-w-xs">
-        <Label Variant="LabelVariant.Floating" Text="Username">
-            <input type="text" class="input input-md" placeholder="Username" @bind="floatingUsername" />
-        </Label>
+    <CodeExample Code="@floatingCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <Label Variant="LabelVariant.Floating" Text="Username">
+                <input type="text" class="input input-md" placeholder="Username" @bind="floatingUsername" />
+            </Label>
 
-        <Label Variant="LabelVariant.Floating" Text="Email">
-            <input type="email" class="input input-md" placeholder="Email" @bind="floatingEmail" />
-        </Label>
+            <Label Variant="LabelVariant.Floating" Text="Email">
+                <input type="email" class="input input-md" placeholder="Email" @bind="floatingEmail" />
+            </Label>
 
-        <Label Variant="LabelVariant.Floating" Text="Country">
-            <select class="select select-md" @bind="floatingCountry">
-                <option disabled selected value="">Pick one</option>
-                <option value="us">United States</option>
-                <option value="uk">United Kingdom</option>
-                <option value="ca">Canada</option>
-            </select>
-        </Label>
-    </div>
+            <Label Variant="LabelVariant.Floating" Text="Country">
+                <select class="select select-md" @bind="floatingCountry">
+                    <option disabled selected value="">Pick one</option>
+                    <option value="us">United States</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="ca">Canada</option>
+                </select>
+            </Label>
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Label Position</h2>
-    <p class="text-sm opacity-70 mb-4">Labels can be positioned on the left (default) or right of the content.</p>
-    <div class="flex flex-col gap-4 max-w-md">
-        <Label Variant="LabelVariant.Input" Text="Left label" Position="LabelPosition.Left">
-            <input type="text" class="grow" placeholder="Label on the left" />
-        </Label>
+    <CodeExample Code="@positionCode">
+        <div class="flex flex-col gap-4 max-w-md">
+            <Label Variant="LabelVariant.Input" Text="Left label" Position="LabelPosition.Left">
+                <input type="text" class="grow" placeholder="Label on the left" />
+            </Label>
 
-        <Label Variant="LabelVariant.Input" Text="Right label" Position="LabelPosition.Right">
-            <input type="text" class="grow" placeholder="Label on the right" />
-        </Label>
-    </div>
+            <Label Variant="LabelVariant.Input" Text="Right label" Position="LabelPosition.Right">
+                <input type="text" class="grow" placeholder="Label on the right" />
+            </Label>
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">With Icons</h2>
-    <p class="text-sm opacity-70 mb-4">Combine labels with icons for enhanced UX.</p>
-    <div class="flex flex-col gap-4 max-w-xs">
-        <Label Variant="LabelVariant.Input" Text="Email">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <input type="email" class="grow" placeholder="you@example.com" />
-        </Label>
+    <CodeExample Code="@iconsCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <Label Variant="LabelVariant.Input" Text="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <input type="email" class="grow" placeholder="you@example.com" />
+            </Label>
 
-        <Label Variant="LabelVariant.Input" Text="Password">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
-            <input type="password" class="grow" placeholder="Enter password" />
-            <button type="button" class="btn btn-ghost btn-xs">Show</button>
-        </Label>
-    </div>
+            <Label Variant="LabelVariant.Input" Text="Password">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <input type="password" class="grow" placeholder="Enter password" />
+                <button type="button" class="btn btn-ghost btn-xs">Show</button>
+            </Label>
+        </div>
+    </CodeExample>
 </section>
 
 @code {
@@ -132,4 +138,57 @@
     private string floatingUsername = "";
     private string floatingEmail = "";
     private string floatingCountry = "";
+
+    private string standaloneCode = @"<Label Text=""Email address"" For=""email1"" />
+<input type=""email"" id=""email1"" class=""input w-full"" />
+
+<Label For=""password1"">
+    Password <span class=""text-error"">*</span>
+</Label>
+<input type=""password"" id=""password1"" class=""input w-full"" />";
+
+    private string inputCode = @"<Label Variant=""LabelVariant.Input"" Text=""Username"">
+    <input type=""text"" class=""grow"" placeholder=""Enter username"" />
+</Label>
+
+<Label Variant=""LabelVariant.Input"" Text=""Search"" Position=""LabelPosition.Right"">
+    <input type=""text"" class=""grow"" placeholder=""Type here..."" />
+    <svg>...</svg>
+</Label>";
+
+    private string selectCode = @"<Label Variant=""LabelVariant.Select"" Text=""Country"">
+    <select class=""grow"">
+        <option>Pick one</option>
+        <option value=""us"">United States</option>
+    </select>
+</Label>";
+
+    private string floatingCode = @"<Label Variant=""LabelVariant.Floating"" Text=""Username"">
+    <input type=""text"" class=""input input-md"" placeholder=""Username"" />
+</Label>
+
+<Label Variant=""LabelVariant.Floating"" Text=""Country"">
+    <select class=""select select-md"">
+        <option>Pick one</option>
+    </select>
+</Label>";
+
+    private string positionCode = @"<Label Variant=""LabelVariant.Input"" Text=""Left label"" Position=""LabelPosition.Left"">
+    <input type=""text"" class=""grow"" />
+</Label>
+
+<Label Variant=""LabelVariant.Input"" Text=""Right label"" Position=""LabelPosition.Right"">
+    <input type=""text"" class=""grow"" />
+</Label>";
+
+    private string iconsCode = @"<Label Variant=""LabelVariant.Input"" Text=""Email"">
+    <svg>...</svg>
+    <input type=""email"" class=""grow"" />
+</Label>
+
+<Label Variant=""LabelVariant.Input"" Text=""Password"">
+    <svg>...</svg>
+    <input type=""password"" class=""grow"" />
+    <button type=""button"" class=""btn btn-ghost btn-xs"">Show</button>
+</Label>";
 }

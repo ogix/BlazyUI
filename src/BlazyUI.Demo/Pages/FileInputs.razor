@@ -6,132 +6,144 @@
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
-    <div class="w-full max-w-xs">
-        <FileInput OnChange="@OnBasicFileSelected" />
-        @if (!string.IsNullOrEmpty(basicFileName))
-        {
-            <p class="mt-2 text-sm opacity-70">Selected: @basicFileName</p>
-        }
-    </div>
+    <CodeExample Code="@basicCode">
+        <div class="w-full max-w-xs">
+            <FileInput OnChange="@OnBasicFileSelected" />
+            @if (!string.IsNullOrEmpty(basicFileName))
+            {
+                <p class="mt-2 text-sm opacity-70">Selected: @basicFileName</p>
+            }
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">With Border</h2>
-    <div class="w-full max-w-xs">
-        <FileInput Bordered OnChange="@OnBorderedFileSelected" />
-        @if (!string.IsNullOrEmpty(borderedFileName))
-        {
-            <p class="mt-2 text-sm opacity-70">Selected: @borderedFileName</p>
-        }
-    </div>
+    <CodeExample Code="@borderedCode">
+        <div class="w-full max-w-xs">
+            <FileInput Bordered OnChange="@OnBorderedFileSelected" />
+            @if (!string.IsNullOrEmpty(borderedFileName))
+            {
+                <p class="mt-2 text-sm opacity-70">Selected: @borderedFileName</p>
+            }
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Ghost Style</h2>
-    <div class="w-full max-w-xs">
-        <FileInput Ghost OnChange="@OnGhostFileSelected" />
-    </div>
+    <CodeExample Code="@ghostCode">
+        <div class="w-full max-w-xs">
+            <FileInput Ghost OnChange="@OnGhostFileSelected" />
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Multiple Files</h2>
-    <div class="w-full max-w-xs">
-        <FileInput Multiple Bordered OnChange="@OnMultipleFilesSelected" />
-        @if (multipleFileNames.Any())
-        {
-            <p class="mt-2 text-sm opacity-70">Selected: @string.Join(", ", multipleFileNames)</p>
-        }
-    </div>
+    <CodeExample Code="@multipleCode">
+        <div class="w-full max-w-xs">
+            <FileInput Multiple Bordered OnChange="@OnMultipleFilesSelected" />
+            @if (multipleFileNames.Any())
+            {
+                <p class="mt-2 text-sm opacity-70">Selected: @string.Join(", ", multipleFileNames)</p>
+            }
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Accept Specific Types</h2>
-    <div class="flex flex-col gap-4 max-w-xs">
-        <div>
-            <label class="label-text">Images only</label>
-            <FileInput Bordered Accept="image/*" OnChange="@OnImageFileSelected" />
+    <CodeExample Code="@acceptCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <div>
+                <label class="label-text">Images only</label>
+                <FileInput Bordered Accept="image/*" OnChange="@OnImageFileSelected" />
+            </div>
+            <div>
+                <label class="label-text">PDF only</label>
+                <FileInput Bordered Accept=".pdf" OnChange="@OnPdfFileSelected" />
+            </div>
         </div>
-        <div>
-            <label class="label-text">PDF only</label>
-            <FileInput Bordered Accept=".pdf" OnChange="@OnPdfFileSelected" />
-        </div>
-    </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Sizes</h2>
-    <div class="flex flex-col gap-4 max-w-xs">
-        <div>
-            <label class="label-text">Extra Small</label>
-            <FileInput Size="FileInputSize.ExtraSmall" Bordered />
+    <CodeExample Code="@sizesCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <div>
+                <label class="label-text">Extra Small</label>
+                <FileInput Size="FileInputSize.ExtraSmall" Bordered />
+            </div>
+            <div>
+                <label class="label-text">Small</label>
+                <FileInput Size="FileInputSize.Small" Bordered />
+            </div>
+            <div>
+                <label class="label-text">Default (Medium)</label>
+                <FileInput Size="FileInputSize.Default" Bordered />
+            </div>
+            <div>
+                <label class="label-text">Large</label>
+                <FileInput Size="FileInputSize.Large" Bordered />
+            </div>
+            <div>
+                <label class="label-text">Extra Large</label>
+                <FileInput Size="FileInputSize.ExtraLarge" Bordered />
+            </div>
         </div>
-        <div>
-            <label class="label-text">Small</label>
-            <FileInput Size="FileInputSize.Small" Bordered />
-        </div>
-        <div>
-            <label class="label-text">Default (Medium)</label>
-            <FileInput Size="FileInputSize.Default" Bordered />
-        </div>
-        <div>
-            <label class="label-text">Large</label>
-            <FileInput Size="FileInputSize.Large" Bordered />
-        </div>
-        <div>
-            <label class="label-text">Extra Large</label>
-            <FileInput Size="FileInputSize.ExtraLarge" Bordered />
-        </div>
-    </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Colors</h2>
-    <div class="flex flex-col gap-4 max-w-xs">
-        <div>
-            <label class="label-text">Default</label>
-            <FileInput Color="FileInputColor.Default" Bordered />
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <div>
+                <label class="label-text">Default</label>
+                <FileInput Color="FileInputColor.Default" Bordered />
+            </div>
+            <div>
+                <label class="label-text">Primary</label>
+                <FileInput Color="FileInputColor.Primary" Bordered />
+            </div>
+            <div>
+                <label class="label-text">Secondary</label>
+                <FileInput Color="FileInputColor.Secondary" Bordered />
+            </div>
+            <div>
+                <label class="label-text">Accent</label>
+                <FileInput Color="FileInputColor.Accent" Bordered />
+            </div>
+            <div>
+                <label class="label-text">Info</label>
+                <FileInput Color="FileInputColor.Info" Bordered />
+            </div>
+            <div>
+                <label class="label-text">Success</label>
+                <FileInput Color="FileInputColor.Success" Bordered />
+            </div>
+            <div>
+                <label class="label-text">Warning</label>
+                <FileInput Color="FileInputColor.Warning" Bordered />
+            </div>
+            <div>
+                <label class="label-text">Error</label>
+                <FileInput Color="FileInputColor.Error" Bordered />
+            </div>
         </div>
-        <div>
-            <label class="label-text">Neutral</label>
-            <FileInput Color="FileInputColor.Neutral" Bordered />
-        </div>
-        <div>
-            <label class="label-text">Primary</label>
-            <FileInput Color="FileInputColor.Primary" Bordered />
-        </div>
-        <div>
-            <label class="label-text">Secondary</label>
-            <FileInput Color="FileInputColor.Secondary" Bordered />
-        </div>
-        <div>
-            <label class="label-text">Accent</label>
-            <FileInput Color="FileInputColor.Accent" Bordered />
-        </div>
-        <div>
-            <label class="label-text">Info</label>
-            <FileInput Color="FileInputColor.Info" Bordered />
-        </div>
-        <div>
-            <label class="label-text">Success</label>
-            <FileInput Color="FileInputColor.Success" Bordered />
-        </div>
-        <div>
-            <label class="label-text">Warning</label>
-            <FileInput Color="FileInputColor.Warning" Bordered />
-        </div>
-        <div>
-            <label class="label-text">Error</label>
-            <FileInput Color="FileInputColor.Error" Bordered />
-        </div>
-    </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
-    <div class="w-full max-w-xs">
-        <FileInput Bordered disabled class="opacity-50" />
-        <p class="mt-2 text-sm opacity-50">Disabled</p>
-    </div>
+    <CodeExample Code="@attributesCode">
+        <div class="w-full max-w-xs">
+            <FileInput Bordered disabled class="opacity-50" />
+            <p class="mt-2 text-sm opacity-50">Disabled</p>
+        </div>
+    </CodeExample>
 </section>
 
 @code {
@@ -168,4 +180,32 @@
     {
         // Just for demo purposes
     }
+
+    private string basicCode = @"<FileInput OnChange=""@OnFileSelected"" />";
+
+    private string borderedCode = @"<FileInput Bordered OnChange=""@OnFileSelected"" />";
+
+    private string ghostCode = @"<FileInput Ghost />";
+
+    private string multipleCode = @"<FileInput Multiple Bordered OnChange=""@OnMultipleFilesSelected"" />";
+
+    private string acceptCode = @"<FileInput Bordered Accept=""image/*"" />
+<FileInput Bordered Accept="".pdf"" />";
+
+    private string sizesCode = @"<FileInput Size=""FileInputSize.ExtraSmall"" Bordered />
+<FileInput Size=""FileInputSize.Small"" Bordered />
+<FileInput Size=""FileInputSize.Default"" Bordered />
+<FileInput Size=""FileInputSize.Large"" Bordered />
+<FileInput Size=""FileInputSize.ExtraLarge"" Bordered />";
+
+    private string colorsCode = @"<FileInput Color=""FileInputColor.Default"" Bordered />
+<FileInput Color=""FileInputColor.Primary"" Bordered />
+<FileInput Color=""FileInputColor.Secondary"" Bordered />
+<FileInput Color=""FileInputColor.Accent"" Bordered />
+<FileInput Color=""FileInputColor.Info"" Bordered />
+<FileInput Color=""FileInputColor.Success"" Bordered />
+<FileInput Color=""FileInputColor.Warning"" Bordered />
+<FileInput Color=""FileInputColor.Error"" Bordered />";
+
+    private string attributesCode = @"<FileInput Bordered disabled />";
 }

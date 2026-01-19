@@ -6,112 +6,120 @@
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
-    <div class="flex flex-wrap gap-4 items-center">
+    <CodeExample Code="@basicCode">
         <label class="flex items-center gap-2 cursor-pointer">
             <Toggle @bind-Value="basicValue" />
             <span>Enable notifications</span>
         </label>
-    </div>
-    <p class="mt-2 text-sm opacity-70">Enabled: @basicValue</p>
+        <p class="mt-2 text-sm opacity-70">Enabled: @basicValue</p>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Sizes</h2>
-    <div class="flex flex-col gap-4">
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Size="ToggleSize.ExtraSmall" @bind-Value="sizeXs" />
-            <span>Extra Small</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Size="ToggleSize.Small" @bind-Value="sizeSm" />
-            <span>Small</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Size="ToggleSize.Default" @bind-Value="sizeMd" />
-            <span>Default (Medium)</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Size="ToggleSize.Large" @bind-Value="sizeLg" />
-            <span>Large</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Size="ToggleSize.ExtraLarge" @bind-Value="sizeXl" />
-            <span>Extra Large</span>
-        </label>
-    </div>
+    <CodeExample Code="@sizesCode">
+        <div class="flex flex-col gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Size="ToggleSize.ExtraSmall" @bind-Value="sizeXs" />
+                <span>Extra Small</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Size="ToggleSize.Small" @bind-Value="sizeSm" />
+                <span>Small</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Size="ToggleSize.Default" @bind-Value="sizeMd" />
+                <span>Default (Medium)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Size="ToggleSize.Large" @bind-Value="sizeLg" />
+                <span>Large</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Size="ToggleSize.ExtraLarge" @bind-Value="sizeXl" />
+                <span>Extra Large</span>
+            </label>
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Colors</h2>
-    <div class="flex flex-col gap-4">
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Color="ToggleColor.Default" @bind-Value="colorDefault" />
-            <span>Default</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Color="ToggleColor.Neutral" @bind-Value="colorNeutral" />
-            <span>Neutral</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Color="ToggleColor.Primary" @bind-Value="colorPrimary" />
-            <span>Primary</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Color="ToggleColor.Secondary" @bind-Value="colorSecondary" />
-            <span>Secondary</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Color="ToggleColor.Accent" @bind-Value="colorAccent" />
-            <span>Accent</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Color="ToggleColor.Info" @bind-Value="colorInfo" />
-            <span>Info</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Color="ToggleColor.Success" @bind-Value="colorSuccess" />
-            <span>Success</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Color="ToggleColor.Warning" @bind-Value="colorWarning" />
-            <span>Warning</span>
-        </label>
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle Color="ToggleColor.Error" @bind-Value="colorError" />
-            <span>Error</span>
-        </label>
-    </div>
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-col gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Color="ToggleColor.Default" @bind-Value="colorDefault" />
+                <span>Default</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Color="ToggleColor.Neutral" @bind-Value="colorNeutral" />
+                <span>Neutral</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Color="ToggleColor.Primary" @bind-Value="colorPrimary" />
+                <span>Primary</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Color="ToggleColor.Secondary" @bind-Value="colorSecondary" />
+                <span>Secondary</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Color="ToggleColor.Accent" @bind-Value="colorAccent" />
+                <span>Accent</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Color="ToggleColor.Info" @bind-Value="colorInfo" />
+                <span>Info</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Color="ToggleColor.Success" @bind-Value="colorSuccess" />
+                <span>Success</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Color="ToggleColor.Warning" @bind-Value="colorWarning" />
+                <span>Warning</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle Color="ToggleColor.Error" @bind-Value="colorError" />
+                <span>Error</span>
+            </label>
+        </div>
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">With Validation</h2>
-    <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
-        <DataAnnotationsValidator />
+    <CodeExample Code="@validationCode">
+        <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
+            <DataAnnotationsValidator />
 
-        <div class="form-control mb-4">
-            <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle @bind-Value="formModel.AcceptMarketing" Color="ToggleColor.Primary" />
-                <span class="label-text">Receive marketing emails</span>
-            </label>
-            <ValidationMessage For="@(() => formModel.AcceptMarketing)" class="text-error text-sm mt-1" />
-        </div>
+            <div class="form-control mb-4">
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <Toggle @bind-Value="formModel.AcceptMarketing" Color="ToggleColor.Primary" />
+                    <span class="label-text">Receive marketing emails</span>
+                </label>
+                <ValidationMessage For="@(() => formModel.AcceptMarketing)" class="text-error text-sm mt-1" />
+            </div>
 
-        <Button Type="submit" Color="ButtonColor.Primary" Block>Save Preferences</Button>
-    </EditForm>
-    @if (formSubmitted)
-    {
-        <Alert Color="AlertColor.Success" class="mt-4">Preferences saved!</Alert>
-    }
+            <Button Type="submit" Color="ButtonColor.Primary" Block>Save Preferences</Button>
+        </EditForm>
+        @if (formSubmitted)
+        {
+            <Alert Color="AlertColor.Success" class="mt-4">Preferences saved!</Alert>
+        }
+    </CodeExample>
 </section>
 
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
-    <div class="flex flex-col gap-4">
-        <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle @bind-Value="disabledValue" disabled />
-            <span class="opacity-50">Disabled</span>
-        </label>
-    </div>
+    <CodeExample Code="@attributesCode">
+        <div class="flex flex-col gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+                <Toggle @bind-Value="disabledValue" disabled />
+                <span class="opacity-50">Disabled</span>
+            </label>
+        </div>
+    </CodeExample>
 </section>
 
 @code {
@@ -144,4 +152,37 @@
     {
         public bool AcceptMarketing { get; set; } = false;
     }
+
+    private string basicCode = @"<label class=""flex items-center gap-2 cursor-pointer"">
+    <Toggle @bind-Value=""value"" />
+    <span>Enable notifications</span>
+</label>";
+
+    private string sizesCode = @"<Toggle Size=""ToggleSize.ExtraSmall"" />
+<Toggle Size=""ToggleSize.Small"" />
+<Toggle Size=""ToggleSize.Default"" />
+<Toggle Size=""ToggleSize.Large"" />
+<Toggle Size=""ToggleSize.ExtraLarge"" />";
+
+    private string colorsCode = @"<Toggle Color=""ToggleColor.Default"" />
+<Toggle Color=""ToggleColor.Primary"" />
+<Toggle Color=""ToggleColor.Secondary"" />
+<Toggle Color=""ToggleColor.Accent"" />
+<Toggle Color=""ToggleColor.Info"" />
+<Toggle Color=""ToggleColor.Success"" />
+<Toggle Color=""ToggleColor.Warning"" />
+<Toggle Color=""ToggleColor.Error"" />";
+
+    private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
+    <DataAnnotationsValidator />
+    <div class=""form-control mb-4"">
+        <label class=""flex items-center gap-2 cursor-pointer"">
+            <Toggle @bind-Value=""formModel.AcceptMarketing"" Color=""ToggleColor.Primary"" />
+            <span class=""label-text"">Receive marketing emails</span>
+        </label>
+    </div>
+    <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Save Preferences</Button>
+</EditForm>";
+
+    private string attributesCode = @"<Toggle @bind-Value=""value"" disabled />";
 }
