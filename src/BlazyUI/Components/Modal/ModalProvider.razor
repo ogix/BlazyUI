@@ -1,0 +1,111 @@
+@namespace BlazyUI
+@implements IDisposable
+
+@foreach (var modal in _modals)
+{
+    <dialog class="modal modal-open">
+        <div class="modal-box @modal.CssClass">
+            @if (modal.Type == ModalType.Custom)
+            {
+                <CascadingValue Value="modal.Instance">
+                    <DynamicComponent Type="@modal.ComponentType" Parameters="@modal.Parameters" />
+                </CascadingValue>
+            }
+            else
+            {
+                <div class="flex gap-4">
+                    <div class="@GetIconColorClass(modal.Type)">
+                        @switch (modal.Type)
+                        {
+                            case ModalType.Info:
+                                <InfoIcon Class="w-6 h-6" />
+                                break;
+                            case ModalType.Warning:
+                                <WarningIcon Class="w-6 h-6" />
+                                break;
+                            case ModalType.Error:
+                                <ErrorIcon Class="w-6 h-6" />
+                                break;
+                            case ModalType.Confirm:
+                                <QuestionIcon Class="w-6 h-6" />
+                                break;
+                        }
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="font-bold text-lg">@modal.Title</h3>
+                        <p class="py-4">@modal.Message</p>
+                    </div>
+                </div>
+
+                <div class="modal-action">
+                    @if (modal.Type == ModalType.Confirm)
+                    {
+                        <button class="btn" @onclick="() => Close(modal, false)">
+                            @modal.CancelText
+                        </button>
+                    }
+                    <button class="btn btn-primary" @onclick="() => Close(modal, true)">
+                        @modal.OkText
+                    </button>
+                </div>
+            }
+        </div>
+
+        @if (modal.CloseOnBackdropClick)
+        {
+            <div class="modal-backdrop" @onclick="() => Close(modal, false)"></div>
+        }
+        else
+        {
+            <div class="modal-backdrop"></div>
+        }
+    </dialog>
+}
+
+@code {
+    [Inject] private IModalService ModalService { get; set; } = default!;
+
+    private ModalService? _service;
+    private IReadOnlyList<ModalReference> _modals = Array.Empty<ModalReference>();
+
+    protected override void OnInitialized()
+    {
+        _service = ModalService as ModalService;
+        if (_service != null)
+        {
+            _modals = _service.Modals;
+            _service.OnChange += HandleChange;
+        }
+    }
+
+    private void HandleChange()
+    {
+        if (_service != null)
+        {
+            _modals = _service.Modals;
+        }
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void Close(ModalReference modal, bool confirmed)
+    {
+        _service?.CloseModalById(modal.Id, confirmed);
+    }
+
+    private static string GetIconColorClass(ModalType type) => type switch
+    {
+        ModalType.Info => "text-info",
+        ModalType.Warning => "text-warning",
+        ModalType.Error => "text-error",
+        ModalType.Confirm => "text-base-content",
+        _ => ""
+    };
+
+    public void Dispose()
+    {
+        if (_service != null)
+        {
+            _service.OnChange -= HandleChange;
+        }
+    }
+}
