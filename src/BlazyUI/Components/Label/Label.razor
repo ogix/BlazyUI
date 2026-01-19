@@ -1,0 +1,35 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<label class="@ComputedCssClass" for="@For" @attributes="AdditionalAttributes">
+    @if (ChildContent is not null)
+    {
+        @ChildContent
+    }
+    else
+    {
+        @Text
+    }
+</label>
+
+@code {
+    /// <summary>
+    /// The id of the input element this label is for.
+    /// </summary>
+    [Parameter]
+    public string? For { get; set; }
+
+    /// <summary>
+    /// The label text. Used when ChildContent is not provided.
+    /// </summary>
+    [Parameter]
+    public string? Text { get; set; }
+
+    /// <summary>
+    /// Custom content for the label. When provided, Text is ignored.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string ComputedCssClass => MergeClasses("label");
+}

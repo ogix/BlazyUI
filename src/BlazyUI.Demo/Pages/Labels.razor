@@ -1,0 +1,123 @@
+@page "/labels"
+
+<PageTitle>Label - BlazyUI</PageTitle>
+
+<h1 class="text-3xl font-bold mb-8">Label</h1>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Basic Label</h2>
+    <div class="w-full max-w-xs">
+        <Label Text="Email address" For="email1" />
+        <TextInput @bind-Value="email" id="email1" placeholder="you@example.com" />
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Label with Custom Content</h2>
+    <div class="w-full max-w-xs">
+        <Label For="password1">
+            Password <span class="text-error">*</span>
+        </Label>
+        <TextInput @bind-Value="password" Type="password" id="password1" placeholder="Enter password" />
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Floating Label</h2>
+    <p class="text-sm opacity-70 mb-4">Use the floating-label class on a wrapper for floating label effect.</p>
+    <div class="flex flex-col gap-4 max-w-xs">
+        <label class="floating-label">
+            <span>Username</span>
+            <TextInput @bind-Value="username" placeholder="Username" />
+        </label>
+
+        <label class="floating-label">
+            <span>Email</span>
+            <TextInput @bind-Value="floatingEmail" Type="email" placeholder="Email" />
+        </label>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Labels with Different Inputs</h2>
+    <div class="flex flex-col gap-6 max-w-xs">
+        <div>
+            <Label Text="Select your country" For="country1" />
+            <Select @bind-Value="country" id="country1">
+                <option disabled selected value="">Pick one</option>
+                <option value="us">United States</option>
+                <option value="uk">United Kingdom</option>
+                <option value="ca">Canada</option>
+            </Select>
+        </div>
+
+        <div>
+            <Label Text="Your bio" For="bio1" />
+            <Textarea @bind-Value="bio" id="bio1" placeholder="Tell us about yourself..." />
+        </div>
+
+        <label class="label cursor-pointer justify-start gap-4">
+            <Checkbox @bind-Value="remember" />
+            <span>Remember me</span>
+        </label>
+
+        <label class="label cursor-pointer justify-start gap-4">
+            <Toggle @bind-Value="notifications" Color="ToggleColor.Primary" />
+            <span>Enable notifications</span>
+        </label>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Validation</h2>
+    <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
+        <DataAnnotationsValidator />
+
+        <div class="mb-4">
+            <Label Text="Full Name" For="fullname" />
+            <TextInput @bind-Value="formModel.FullName" id="fullname" />
+            <ValidationMessage For="@(() => formModel.FullName)" class="text-error text-sm mt-1" />
+        </div>
+
+        <div class="mb-4">
+            <Label Text="Email" For="formemail" />
+            <TextInput @bind-Value="formModel.Email" Type="email" id="formemail" />
+            <ValidationMessage For="@(() => formModel.Email)" class="text-error text-sm mt-1" />
+        </div>
+
+        <Button Type="submit" Color="ButtonColor.Primary" Block>Submit</Button>
+    </EditForm>
+    @if (formSubmitted)
+    {
+        <Alert Color="AlertColor.Success" class="mt-4">Form submitted successfully!</Alert>
+    }
+</section>
+
+@code {
+    private string email = "";
+    private string username = "";
+    private string password = "";
+    private string floatingEmail = "";
+    private string country = "";
+    private string bio = "";
+    private bool remember = false;
+    private bool notifications = true;
+    private bool formSubmitted = false;
+
+    private FormModel formModel = new();
+
+    private void HandleValidSubmit()
+    {
+        formSubmitted = true;
+    }
+
+    private class FormModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Full name is required")]
+        public string FullName { get; set; } = "";
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Email is required")]
+        [System.ComponentModel.DataAnnotations.EmailAddress(ErrorMessage = "Invalid email format")]
+        public string Email { get; set; } = "";
+    }
+}
