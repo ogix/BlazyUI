@@ -1,0 +1,75 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="@CssClass" @attributes="AdditionalAttributes">
+    <input type="checkbox" checked="@Open" @onchange="OnCheckboxChanged" />
+    @ChildContent
+</div>
+
+@code {
+    /// <summary>
+    /// The indicator style for the collapse.
+    /// </summary>
+    [Parameter]
+    public CollapseIndicator Indicator { get; set; } = CollapseIndicator.None;
+
+    /// <summary>
+    /// Whether the collapse is open (expanded). Supports two-way binding with @bind-Open.
+    /// </summary>
+    [Parameter]
+    public bool Open { get; set; }
+
+    /// <summary>
+    /// Event callback when the open state changes. Supports two-way binding with @bind-Open.
+    /// </summary>
+    [Parameter]
+    public EventCallback<bool> OpenChanged { get; set; }
+
+    /// <summary>
+    /// Forces the collapse to always stay open, ignoring user clicks.
+    /// </summary>
+    [Parameter]
+    public bool ForceOpen { get; set; }
+
+    /// <summary>
+    /// Forces the collapse to always stay closed, ignoring user clicks.
+    /// </summary>
+    [Parameter]
+    public bool ForceClosed { get; set; }
+
+    /// <summary>
+    /// The content of the collapse (typically CollapseTitle and CollapseContent).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private bool IsForced => ForceOpen || ForceClosed;
+
+    private string CssClass => MergeClasses(
+        "collapse",
+        IndicatorClass,
+        ForceOpen ? "collapse-open" : null,
+        ForceClosed ? "collapse-close" : null
+    );
+
+    private string? IndicatorClass => Indicator switch
+    {
+        CollapseIndicator.None => null,
+        CollapseIndicator.Arrow => "collapse-arrow",
+        CollapseIndicator.Plus => "collapse-plus",
+        _ => throw new ArgumentOutOfRangeException(nameof(Indicator), Indicator, null)
+    };
+
+    private async Task OnCheckboxChanged(ChangeEventArgs e)
+    {
+        if (IsForced)
+            return;
+
+        var newValue = (bool)(e.Value ?? false);
+        if (newValue != Open)
+        {
+            Open = newValue;
+            await OpenChanged.InvokeAsync(Open);
+        }
+    }
+}
