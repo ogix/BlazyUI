@@ -1,0 +1,13 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<li class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</li>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses("menu-title");
+}
