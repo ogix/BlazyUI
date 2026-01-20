@@ -1,0 +1,108 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<CascadingValue Value="_context">
+    <div role="tablist" class="@CssClass" @attributes="AdditionalAttributes">
+        @ChildContent
+    </div>
+</CascadingValue>
+
+@code {
+    private TabsContext _context = default!;
+    private string _groupName = default!;
+
+    /// <summary>
+    /// The style variant of the tabs.
+    /// </summary>
+    [Parameter]
+    public TabVariant Variant { get; set; } = TabVariant.Default;
+
+    /// <summary>
+    /// The size of the tabs.
+    /// </summary>
+    [Parameter]
+    public TabSize Size { get; set; } = TabSize.Default;
+
+    /// <summary>
+    /// The placement of the tab buttons relative to the content.
+    /// </summary>
+    [Parameter]
+    public TabPlacement Placement { get; set; } = TabPlacement.Top;
+
+    /// <summary>
+    /// The radio group name. If not provided, a unique name is auto-generated.
+    /// </summary>
+    [Parameter]
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// The currently active tab ID for two-way binding.
+    /// </summary>
+    [Parameter]
+    public string? ActiveTab { get; set; }
+
+    /// <summary>
+    /// Callback when the active tab changes.
+    /// </summary>
+    [Parameter]
+    public EventCallback<string?> ActiveTabChanged { get; set; }
+
+    /// <summary>
+    /// The content of the tabs (typically TabItem components).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        _groupName = Name ?? $"tabs-{Guid.NewGuid():N}";
+    }
+
+    protected override void OnParametersSet()
+    {
+        _context = new TabsContext(_groupName, ActiveTab, OnTabSelected);
+    }
+
+    private void OnTabSelected(string? tabId)
+    {
+        if (ActiveTab != tabId)
+        {
+            ActiveTab = tabId;
+            ActiveTabChanged.InvokeAsync(tabId);
+        }
+    }
+
+    private string CssClass => MergeClasses(
+        "tabs",
+        VariantClass,
+        SizeClass,
+        PlacementClass
+    );
+
+    private string? VariantClass => Variant switch
+    {
+        TabVariant.Default => null,
+        TabVariant.Border => "tabs-border",
+        TabVariant.Lift => "tabs-lift",
+        TabVariant.Box => "tabs-box",
+        _ => throw new ArgumentOutOfRangeException(nameof(Variant), Variant, null)
+    };
+
+    private string? SizeClass => Size switch
+    {
+        TabSize.Default => null,
+        TabSize.ExtraSmall => "tabs-xs",
+        TabSize.Small => "tabs-sm",
+        TabSize.Medium => "tabs-md",
+        TabSize.Large => "tabs-lg",
+        TabSize.ExtraLarge => "tabs-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? PlacementClass => Placement switch
+    {
+        TabPlacement.Top => "tabs-top",
+        TabPlacement.Bottom => "tabs-bottom",
+        _ => throw new ArgumentOutOfRangeException(nameof(Placement), Placement, null)
+    };
+}

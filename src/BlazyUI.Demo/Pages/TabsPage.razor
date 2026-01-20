@@ -1,0 +1,365 @@
+@page "/tabs"
+
+<PageTitle>Tabs</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Tabs Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic Tabs (CSS-only)</h2>
+    <CodeExample Code="@basicCode">
+        <Tabs>
+            <TabItem Label="Tab 1" DefaultActive>
+                <p class="p-4">Content for Tab 1. This is the default active tab.</p>
+            </TabItem>
+            <TabItem Label="Tab 2">
+                <p class="p-4">Content for Tab 2.</p>
+            </TabItem>
+            <TabItem Label="Tab 3">
+                <p class="p-4">Content for Tab 3.</p>
+            </TabItem>
+        </Tabs>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Border Variant</h2>
+    <CodeExample Code="@borderCode">
+        <Tabs Variant="TabVariant.Border">
+            <TabItem Label="Tab 1" DefaultActive>
+                <p class="p-4">Content for Tab 1 with border style.</p>
+            </TabItem>
+            <TabItem Label="Tab 2">
+                <p class="p-4">Content for Tab 2 with border style.</p>
+            </TabItem>
+            <TabItem Label="Tab 3">
+                <p class="p-4">Content for Tab 3 with border style.</p>
+            </TabItem>
+        </Tabs>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Lift Variant</h2>
+    <CodeExample Code="@liftCode">
+        <Tabs Variant="TabVariant.Lift">
+            <TabItem Label="Tab 1" DefaultActive>
+                <p class="p-4">Content for Tab 1 with lifted style.</p>
+            </TabItem>
+            <TabItem Label="Tab 2">
+                <p class="p-4">Content for Tab 2 with lifted style.</p>
+            </TabItem>
+            <TabItem Label="Tab 3">
+                <p class="p-4">Content for Tab 3 with lifted style.</p>
+            </TabItem>
+        </Tabs>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Box Variant</h2>
+    <CodeExample Code="@boxCode">
+        <Tabs Variant="TabVariant.Box">
+            <TabItem Label="Tab 1" DefaultActive>
+                <p class="p-4">Content for Tab 1 with boxed style.</p>
+            </TabItem>
+            <TabItem Label="Tab 2">
+                <p class="p-4">Content for Tab 2 with boxed style.</p>
+            </TabItem>
+            <TabItem Label="Tab 3">
+                <p class="p-4">Content for Tab 3 with boxed style.</p>
+            </TabItem>
+        </Tabs>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Placement</h2>
+    <CodeExample Code="@placementCode">
+        <div class="space-y-8">
+            <div>
+                <p class="text-sm text-base-content/70 mb-2">Top (default)</p>
+                <Tabs Variant="TabVariant.Box" Placement="TabPlacement.Top">
+                    <TabItem Label="Tab 1" DefaultActive>
+                        <p class="p-4">Tabs are on top of the content.</p>
+                    </TabItem>
+                    <TabItem Label="Tab 2">
+                        <p class="p-4">Content for Tab 2.</p>
+                    </TabItem>
+                </Tabs>
+            </div>
+            <div>
+                <p class="text-sm text-base-content/70 mb-2">Bottom</p>
+                <Tabs Variant="TabVariant.Box" Placement="TabPlacement.Bottom">
+                    <TabItem Label="Tab 1" DefaultActive>
+                        <p class="p-4">Tabs are below the content.</p>
+                    </TabItem>
+                    <TabItem Label="Tab 2">
+                        <p class="p-4">Content for Tab 2.</p>
+                    </TabItem>
+                </Tabs>
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <CodeExample Code="@sizesCode">
+        <div class="space-y-4">
+            <div>
+                <p class="text-sm text-base-content/70 mb-2">Extra Small (xs)</p>
+                <Tabs Variant="TabVariant.Border" Size="TabSize.ExtraSmall">
+                    <TabItem Label="Tab 1" DefaultActive />
+                    <TabItem Label="Tab 2" />
+                    <TabItem Label="Tab 3" />
+                </Tabs>
+            </div>
+            <div>
+                <p class="text-sm text-base-content/70 mb-2">Small (sm)</p>
+                <Tabs Variant="TabVariant.Border" Size="TabSize.Small">
+                    <TabItem Label="Tab 1" DefaultActive />
+                    <TabItem Label="Tab 2" />
+                    <TabItem Label="Tab 3" />
+                </Tabs>
+            </div>
+            <div>
+                <p class="text-sm text-base-content/70 mb-2">Medium (md)</p>
+                <Tabs Variant="TabVariant.Border" Size="TabSize.Medium">
+                    <TabItem Label="Tab 1" DefaultActive />
+                    <TabItem Label="Tab 2" />
+                    <TabItem Label="Tab 3" />
+                </Tabs>
+            </div>
+            <div>
+                <p class="text-sm text-base-content/70 mb-2">Large (lg)</p>
+                <Tabs Variant="TabVariant.Border" Size="TabSize.Large">
+                    <TabItem Label="Tab 1" DefaultActive />
+                    <TabItem Label="Tab 2" />
+                    <TabItem Label="Tab 3" />
+                </Tabs>
+            </div>
+            <div>
+                <p class="text-sm text-base-content/70 mb-2">Extra Large (xl)</p>
+                <Tabs Variant="TabVariant.Border" Size="TabSize.ExtraLarge">
+                    <TabItem Label="Tab 1" DefaultActive />
+                    <TabItem Label="Tab 2" />
+                    <TabItem Label="Tab 3" />
+                </Tabs>
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Disabled Tabs</h2>
+    <CodeExample Code="@disabledCode">
+        <Tabs Variant="TabVariant.Box">
+            <TabItem Label="Active" DefaultActive>
+                <p class="p-4">This tab is active.</p>
+            </TabItem>
+            <TabItem Label="Disabled" Disabled>
+                <p class="p-4">This content is hidden because the tab is disabled.</p>
+            </TabItem>
+            <TabItem Label="Enabled">
+                <p class="p-4">This tab is enabled.</p>
+            </TabItem>
+        </Tabs>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Programmatic Control (@@bind-ActiveTab)</h2>
+    <CodeExample Code="@bindCode">
+        <div class="space-y-4">
+            <Tabs @bind-ActiveTab="activeTab" Variant="TabVariant.Lift">
+                <TabItem Id="home" Label="Home">
+                    <p class="p-4">Welcome to the Home tab!</p>
+                </TabItem>
+                <TabItem Id="profile" Label="Profile">
+                    <p class="p-4">This is your Profile information.</p>
+                </TabItem>
+                <TabItem Id="settings" Label="Settings">
+                    <p class="p-4">Adjust your Settings here.</p>
+                </TabItem>
+            </Tabs>
+            <p class="text-sm text-base-content/70">Current tab: <strong>@(activeTab ?? "none")</strong></p>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">External Button Control</h2>
+    <CodeExample Code="@externalControlCode">
+        <div class="space-y-4">
+            <div class="flex gap-2">
+                <Button Color="ButtonColor.Primary" @onclick='() => controlledTab = "tab1"'>Go to Tab 1</Button>
+                <Button Color="ButtonColor.Secondary" @onclick='() => controlledTab = "tab2"'>Go to Tab 2</Button>
+                <Button Color="ButtonColor.Accent" @onclick='() => controlledTab = "tab3"'>Go to Tab 3</Button>
+            </div>
+            <Tabs @bind-ActiveTab="controlledTab" Variant="TabVariant.Box">
+                <TabItem Id="tab1" Label="Tab 1">
+                    <p class="p-4">Content controlled externally - Tab 1</p>
+                </TabItem>
+                <TabItem Id="tab2" Label="Tab 2">
+                    <p class="p-4">Content controlled externally - Tab 2</p>
+                </TabItem>
+                <TabItem Id="tab3" Label="Tab 3">
+                    <p class="p-4">Content controlled externally - Tab 3</p>
+                </TabItem>
+            </Tabs>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private string? activeTab = "home";
+    private string? controlledTab = "tab1";
+
+    private string basicCode = @"<Tabs>
+    <TabItem Label=""Tab 1"" DefaultActive>
+        <p class=""p-4"">Content for Tab 1. This is the default active tab.</p>
+    </TabItem>
+    <TabItem Label=""Tab 2"">
+        <p class=""p-4"">Content for Tab 2.</p>
+    </TabItem>
+    <TabItem Label=""Tab 3"">
+        <p class=""p-4"">Content for Tab 3.</p>
+    </TabItem>
+</Tabs>";
+
+    private string borderCode = @"<Tabs Variant=""TabVariant.Border"">
+    <TabItem Label=""Tab 1"" DefaultActive>
+        <p class=""p-4"">Content for Tab 1 with border style.</p>
+    </TabItem>
+    <TabItem Label=""Tab 2"">
+        <p class=""p-4"">Content for Tab 2 with border style.</p>
+    </TabItem>
+    <TabItem Label=""Tab 3"">
+        <p class=""p-4"">Content for Tab 3 with border style.</p>
+    </TabItem>
+</Tabs>";
+
+    private string liftCode = @"<Tabs Variant=""TabVariant.Lift"">
+    <TabItem Label=""Tab 1"" DefaultActive>
+        <p class=""p-4"">Content for Tab 1 with lifted style.</p>
+    </TabItem>
+    <TabItem Label=""Tab 2"">
+        <p class=""p-4"">Content for Tab 2 with lifted style.</p>
+    </TabItem>
+    <TabItem Label=""Tab 3"">
+        <p class=""p-4"">Content for Tab 3 with lifted style.</p>
+    </TabItem>
+</Tabs>";
+
+    private string boxCode = @"<Tabs Variant=""TabVariant.Box"">
+    <TabItem Label=""Tab 1"" DefaultActive>
+        <p class=""p-4"">Content for Tab 1 with boxed style.</p>
+    </TabItem>
+    <TabItem Label=""Tab 2"">
+        <p class=""p-4"">Content for Tab 2 with boxed style.</p>
+    </TabItem>
+    <TabItem Label=""Tab 3"">
+        <p class=""p-4"">Content for Tab 3 with boxed style.</p>
+    </TabItem>
+</Tabs>";
+
+    private string placementCode = @"@* Top placement (default) *@
+<Tabs Variant=""TabVariant.Box"" Placement=""TabPlacement.Top"">
+    <TabItem Label=""Tab 1"" DefaultActive>
+        <p class=""p-4"">Tabs are on top of the content.</p>
+    </TabItem>
+    <TabItem Label=""Tab 2"">
+        <p class=""p-4"">Content for Tab 2.</p>
+    </TabItem>
+</Tabs>
+
+@* Bottom placement *@
+<Tabs Variant=""TabVariant.Box"" Placement=""TabPlacement.Bottom"">
+    <TabItem Label=""Tab 1"" DefaultActive>
+        <p class=""p-4"">Tabs are below the content.</p>
+    </TabItem>
+    <TabItem Label=""Tab 2"">
+        <p class=""p-4"">Content for Tab 2.</p>
+    </TabItem>
+</Tabs>";
+
+    private string sizesCode = @"<Tabs Variant=""TabVariant.Border"" Size=""TabSize.ExtraSmall"">
+    <TabItem Label=""Tab 1"" DefaultActive />
+    <TabItem Label=""Tab 2"" />
+    <TabItem Label=""Tab 3"" />
+</Tabs>
+
+<Tabs Variant=""TabVariant.Border"" Size=""TabSize.Small"">
+    <TabItem Label=""Tab 1"" DefaultActive />
+    <TabItem Label=""Tab 2"" />
+    <TabItem Label=""Tab 3"" />
+</Tabs>
+
+<Tabs Variant=""TabVariant.Border"" Size=""TabSize.Medium"">
+    <TabItem Label=""Tab 1"" DefaultActive />
+    <TabItem Label=""Tab 2"" />
+    <TabItem Label=""Tab 3"" />
+</Tabs>
+
+<Tabs Variant=""TabVariant.Border"" Size=""TabSize.Large"">
+    <TabItem Label=""Tab 1"" DefaultActive />
+    <TabItem Label=""Tab 2"" />
+    <TabItem Label=""Tab 3"" />
+</Tabs>
+
+<Tabs Variant=""TabVariant.Border"" Size=""TabSize.ExtraLarge"">
+    <TabItem Label=""Tab 1"" DefaultActive />
+    <TabItem Label=""Tab 2"" />
+    <TabItem Label=""Tab 3"" />
+</Tabs>";
+
+    private string disabledCode = @"<Tabs Variant=""TabVariant.Box"">
+    <TabItem Label=""Active"" DefaultActive>
+        <p class=""p-4"">This tab is active.</p>
+    </TabItem>
+    <TabItem Label=""Disabled"" Disabled>
+        <p class=""p-4"">This content is hidden because the tab is disabled.</p>
+    </TabItem>
+    <TabItem Label=""Enabled"">
+        <p class=""p-4"">This tab is enabled.</p>
+    </TabItem>
+</Tabs>";
+
+    private string bindCode = @"<Tabs @bind-ActiveTab=""activeTab"" Variant=""TabVariant.Lift"">
+    <TabItem Id=""home"" Label=""Home"">
+        <p class=""p-4"">Welcome to the Home tab!</p>
+    </TabItem>
+    <TabItem Id=""profile"" Label=""Profile"">
+        <p class=""p-4"">This is your Profile information.</p>
+    </TabItem>
+    <TabItem Id=""settings"" Label=""Settings"">
+        <p class=""p-4"">Adjust your Settings here.</p>
+    </TabItem>
+</Tabs>
+<p class=""text-sm text-base-content/70"">Current tab: <strong>@(activeTab ?? ""none"")</strong></p>
+
+@code {
+    private string? activeTab = ""home"";
+}";
+
+    private string externalControlCode = @"<div class=""flex gap-2"">
+    <Button Color=""ButtonColor.Primary"" @onclick='() => controlledTab = ""tab1""'>Go to Tab 1</Button>
+    <Button Color=""ButtonColor.Secondary"" @onclick='() => controlledTab = ""tab2""'>Go to Tab 2</Button>
+    <Button Color=""ButtonColor.Accent"" @onclick='() => controlledTab = ""tab3""'>Go to Tab 3</Button>
+</div>
+<Tabs @bind-ActiveTab=""controlledTab"" Variant=""TabVariant.Box"">
+    <TabItem Id=""tab1"" Label=""Tab 1"">
+        <p class=""p-4"">Content controlled externally - Tab 1</p>
+    </TabItem>
+    <TabItem Id=""tab2"" Label=""Tab 2"">
+        <p class=""p-4"">Content controlled externally - Tab 2</p>
+    </TabItem>
+    <TabItem Id=""tab3"" Label=""Tab 3"">
+        <p class=""p-4"">Content controlled externally - Tab 3</p>
+    </TabItem>
+</Tabs>
+
+@code {
+    private string? controlledTab = ""tab1"";
+}";
+}

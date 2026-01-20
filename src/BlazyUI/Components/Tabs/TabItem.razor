@@ -1,0 +1,92 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<input type="radio"
+       name="@EffectiveGroupName"
+       role="tab"
+       class="@TabCssClass"
+       aria-label="@Label"
+       checked="@IsChecked"
+       disabled="@Disabled"
+       @onchange="OnChange"
+       @attributes="AdditionalAttributes" />
+@if (ChildContent != null)
+{
+    <div role="tabpanel" class="@ContentCssClass">
+        @ChildContent
+    </div>
+}
+
+@code {
+    /// <summary>
+    /// Unique identifier for this tab. Defaults to the Label if not specified.
+    /// </summary>
+    [Parameter]
+    public string? Id { get; set; }
+
+    /// <summary>
+    /// The text displayed on the tab button.
+    /// </summary>
+    [Parameter]
+    public string? Label { get; set; }
+
+    /// <summary>
+    /// Whether this tab is disabled.
+    /// </summary>
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    /// <summary>
+    /// Whether this tab is initially active (CSS-only mode).
+    /// Only used when parent Tabs has no ActiveTab binding.
+    /// </summary>
+    [Parameter]
+    public bool DefaultActive { get; set; }
+
+    /// <summary>
+    /// The content displayed when this tab is active.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>
+    /// Additional CSS classes for the tab content panel.
+    /// </summary>
+    [Parameter]
+    public string? ContentClass { get; set; }
+
+    [CascadingParameter]
+    private TabsContext? Context { get; set; }
+
+    private string EffectiveId => Id ?? Label ?? string.Empty;
+    private string EffectiveGroupName => Context?.GroupName ?? $"standalone-tab-{Guid.NewGuid():N}";
+
+    private bool IsChecked
+    {
+        get
+        {
+            // If parent has ActiveTab binding, use that
+            if (Context?.ActiveTab != null)
+            {
+                return Context.ActiveTab == EffectiveId;
+            }
+            // Otherwise, use DefaultActive for CSS-only mode
+            return DefaultActive;
+        }
+    }
+
+    private void OnChange(ChangeEventArgs e)
+    {
+        if (Disabled) return;
+
+        // Radio change event only fires when selected, so we can directly notify
+        Context?.OnTabSelected?.Invoke(EffectiveId);
+    }
+
+    private string TabCssClass => MergeClasses(
+        "tab",
+        Disabled ? "tab-disabled" : null
+    );
+
+    private string ContentCssClass => TwMerge.Merge("tab-content", ContentClass) ?? string.Empty;
+}
