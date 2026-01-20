@@ -135,11 +135,14 @@ public class ModalService : IModalService
         CloseModal(modal.Instance!);
     }
 
-    private void CloseModal(ModalInstance instance)
+    private async void CloseModal(ModalInstance instance)
     {
         var modal = _modals.FirstOrDefault(m => m.Instance == instance);
         if (modal != null)
         {
+            modal.IsClosing = true;
+            OnChange?.Invoke();
+            await Task.Delay(300); // Wait for CSS closing animation
             _modals.Remove(modal);
             OnChange?.Invoke();
         }

@@ -15,4 +15,5 @@ internal class ModalReference
     public string? CssClass { get; init; }
     public TaskCompletionSource<ModalResult> TaskCompletionSource { get; init; } = default!;
     public ModalInstance? Instance { get; set; }
+    public bool IsClosing { get; set; }
 }
