@@ -1,0 +1,122 @@
+@page "/divider"
+
+<PageTitle>Divider</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Divider Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic Divider</h2>
+    <CodeExample Code="@basicCode">
+        <div class="flex flex-col w-full">
+            <div>Content above</div>
+            <Divider />
+            <div>Content below</div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Divider with Text</h2>
+    <CodeExample Code="@withTextCode">
+        <div class="flex flex-col w-full">
+            <div>Content above</div>
+            <Divider>OR</Divider>
+            <div>Content below</div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-col w-full gap-2">
+            <Divider>Default</Divider>
+            <Divider Color="DividerColor.Neutral">Neutral</Divider>
+            <Divider Color="DividerColor.Primary">Primary</Divider>
+            <Divider Color="DividerColor.Secondary">Secondary</Divider>
+            <Divider Color="DividerColor.Accent">Accent</Divider>
+            <Divider Color="DividerColor.Info">Info</Divider>
+            <Divider Color="DividerColor.Success">Success</Divider>
+            <Divider Color="DividerColor.Warning">Warning</Divider>
+            <Divider Color="DividerColor.Error">Error</Divider>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Text Position</h2>
+    <CodeExample Code="@positionCode">
+        <div class="flex flex-col w-full gap-2">
+            <Divider Position="DividerPosition.Start">Start</Divider>
+            <Divider>Center (Default)</Divider>
+            <Divider Position="DividerPosition.End">End</Divider>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Horizontal Divider</h2>
+    <p class="mb-4 text-sm opacity-70">For use in flex-row containers</p>
+    <CodeExample Code="@horizontalCode">
+        <div class="flex w-full">
+            <div class="card bg-base-300 rounded-box grid h-20 grow place-items-center">Left</div>
+            <Divider Horizontal />
+            <div class="card bg-base-300 rounded-box grid h-20 grow place-items-center">Right</div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Horizontal with Text</h2>
+    <CodeExample Code="@horizontalTextCode">
+        <div class="flex w-full">
+            <div class="card bg-base-300 rounded-box grid h-20 grow place-items-center">Left</div>
+            <Divider Horizontal>OR</Divider>
+            <div class="card bg-base-300 rounded-box grid h-20 grow place-items-center">Right</div>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private string basicCode = @"<div class=""flex flex-col w-full"">
+    <div>Content above</div>
+    <Divider />
+    <div>Content below</div>
+</div>";
+
+    private string withTextCode = @"<div class=""flex flex-col w-full"">
+    <div>Content above</div>
+    <Divider>OR</Divider>
+    <div>Content below</div>
+</div>";
+
+    private string colorsCode = @"<div class=""flex flex-col w-full gap-2"">
+    <Divider>Default</Divider>
+    <Divider Color=""DividerColor.Neutral"">Neutral</Divider>
+    <Divider Color=""DividerColor.Primary"">Primary</Divider>
+    <Divider Color=""DividerColor.Secondary"">Secondary</Divider>
+    <Divider Color=""DividerColor.Accent"">Accent</Divider>
+    <Divider Color=""DividerColor.Info"">Info</Divider>
+    <Divider Color=""DividerColor.Success"">Success</Divider>
+    <Divider Color=""DividerColor.Warning"">Warning</Divider>
+    <Divider Color=""DividerColor.Error"">Error</Divider>
+</div>";
+
+    private string positionCode = @"<div class=""flex flex-col w-full gap-2"">
+    <Divider Position=""DividerPosition.Start"">Start</Divider>
+    <Divider>Center (Default)</Divider>
+    <Divider Position=""DividerPosition.End"">End</Divider>
+</div>";
+
+    private string horizontalCode = @"<div class=""flex w-full"">
+    <div class=""card bg-base-300 rounded-box grid h-20 grow place-items-center"">Left</div>
+    <Divider Horizontal />
+    <div class=""card bg-base-300 rounded-box grid h-20 grow place-items-center"">Right</div>
+</div>";
+
+    private string horizontalTextCode = @"<div class=""flex w-full"">
+    <div class=""card bg-base-300 rounded-box grid h-20 grow place-items-center"">Left</div>
+    <Divider Horizontal>OR</Divider>
+    <div class=""card bg-base-300 rounded-box grid h-20 grow place-items-center"">Right</div>
+</div>";
+}
