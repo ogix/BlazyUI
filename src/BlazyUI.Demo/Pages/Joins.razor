@@ -1,0 +1,119 @@
+@page "/joins"
+
+<PageTitle>Join</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Join Component</h1>
+
+<p class="mb-6 opacity-70">Join groups multiple items together with connected borders by removing internal border-radius between items.</p>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Button Group</h2>
+    <CodeExample Code="@buttonGroupCode">
+        <Join>
+            <Button Class="join-item">Button 1</Button>
+            <Button Class="join-item">Button 2</Button>
+            <Button Class="join-item">Button 3</Button>
+        </Join>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Vertical Layout</h2>
+    <CodeExample Code="@verticalCode">
+        <Join Direction="JoinDirection.Vertical">
+            <Button Class="join-item">Top</Button>
+            <Button Class="join-item">Middle</Button>
+            <Button Class="join-item">Bottom</Button>
+        </Join>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <Join>
+            <Button Class="join-item" Color="ButtonColor.Primary">Primary</Button>
+            <Button Class="join-item" Color="ButtonColor.Secondary">Secondary</Button>
+            <Button Class="join-item" Color="ButtonColor.Accent">Accent</Button>
+        </Join>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Mixed Elements - Search Input</h2>
+    <CodeExample Code="@searchCode">
+        <Join>
+            <input type="text" class="input join-item" placeholder="Search..." />
+            <Button Class="join-item" Color="ButtonColor.Primary">Go</Button>
+        </Join>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Select with Button</h2>
+    <CodeExample Code="@selectCode">
+        <Join>
+            <select class="select join-item">
+                <option selected>Category</option>
+                <option>Electronics</option>
+                <option>Clothing</option>
+                <option>Books</option>
+            </select>
+            <input type="text" class="input join-item" placeholder="Search..." />
+            <Button Class="join-item" Color="ButtonColor.Primary">Search</Button>
+        </Join>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Radio Input Group</h2>
+    <CodeExample Code="@radioCode">
+        <Join>
+            <input class="join-item btn" type="radio" name="options" aria-label="Option A" />
+            <input class="join-item btn" type="radio" name="options" aria-label="Option B" checked="checked" />
+            <input class="join-item btn" type="radio" name="options" aria-label="Option C" />
+        </Join>
+    </CodeExample>
+</section>
+
+@code {
+    private string buttonGroupCode = @"<Join>
+    <Button Class=""join-item"">Button 1</Button>
+    <Button Class=""join-item"">Button 2</Button>
+    <Button Class=""join-item"">Button 3</Button>
+</Join>";
+
+    private string verticalCode = @"<Join Direction=""JoinDirection.Vertical"">
+    <Button Class=""join-item"">Top</Button>
+    <Button Class=""join-item"">Middle</Button>
+    <Button Class=""join-item"">Bottom</Button>
+</Join>";
+
+    private string colorsCode = @"<Join>
+    <Button Class=""join-item"" Color=""ButtonColor.Primary"">Primary</Button>
+    <Button Class=""join-item"" Color=""ButtonColor.Secondary"">Secondary</Button>
+    <Button Class=""join-item"" Color=""ButtonColor.Accent"">Accent</Button>
+</Join>";
+
+    private string searchCode = @"<Join>
+    <input type=""text"" class=""input join-item"" placeholder=""Search..."" />
+    <Button Class=""join-item"" Color=""ButtonColor.Primary"">Go</Button>
+</Join>";
+
+    private string selectCode = @"<Join>
+    <select class=""select join-item"">
+        <option selected>Category</option>
+        <option>Electronics</option>
+        <option>Clothing</option>
+        <option>Books</option>
+    </select>
+    <input type=""text"" class=""input join-item"" placeholder=""Search..."" />
+    <Button Class=""join-item"" Color=""ButtonColor.Primary"">Search</Button>
+</Join>";
+
+    private string radioCode = @"<Join>
+    <input class=""join-item btn"" type=""radio"" name=""options"" aria-label=""Option A"" />
+    <input class=""join-item btn"" type=""radio"" name=""options"" aria-label=""Option B"" checked=""checked"" />
+    <input class=""join-item btn"" type=""radio"" name=""options"" aria-label=""Option C"" />
+</Join>";
+}
