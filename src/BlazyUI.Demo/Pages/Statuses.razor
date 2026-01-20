@@ -1,0 +1,168 @@
+@page "/statuses"
+
+<PageTitle>Status</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Status Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <div class="flex flex-wrap gap-4">
+            <Status />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <Status />
+            <Status Color="StatusColor.Neutral" />
+            <Status Color="StatusColor.Primary" />
+            <Status Color="StatusColor.Secondary" />
+            <Status Color="StatusColor.Accent" />
+            <Status Color="StatusColor.Info" />
+            <Status Color="StatusColor.Success" />
+            <Status Color="StatusColor.Warning" />
+            <Status Color="StatusColor.Error" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <CodeExample Code="@sizesCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <Status Size="StatusSize.ExtraSmall" Color="StatusColor.Primary" />
+            <Status Size="StatusSize.Small" Color="StatusColor.Primary" />
+            <Status Size="StatusSize.Medium" Color="StatusColor.Primary" />
+            <Status Size="StatusSize.Large" Color="StatusColor.Primary" />
+            <Status Size="StatusSize.ExtraLarge" Color="StatusColor.Primary" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Text</h2>
+    <CodeExample Code="@withTextCode">
+        <div class="flex flex-col gap-3">
+            <div class="flex items-center gap-2">
+                <Status Color="StatusColor.Success" Size="StatusSize.Small" />
+                <span>Online</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <Status Color="StatusColor.Error" Size="StatusSize.Small" />
+                <span>Offline</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <Status Color="StatusColor.Warning" Size="StatusSize.Small" />
+                <span>Away</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <Status Color="StatusColor.Neutral" Size="StatusSize.Small" />
+                <span>Busy</span>
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Animation</h2>
+    <CodeExample Code="@animationCode">
+        <div class="flex flex-wrap items-center gap-6">
+            <div class="flex items-center gap-2">
+                <Status Color="StatusColor.Primary" />
+                <span>None</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <Status Color="StatusColor.Info" Animation="StatusAnimation.Ping" />
+                <span>Ping</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <Status Color="StatusColor.Success" Animation="StatusAnimation.Bounce" />
+                <span>Bounce</span>
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">In Avatar</h2>
+    <CodeExample Code="@inAvatarCode">
+        <div class="flex flex-wrap items-center gap-6">
+            <Indicator>
+                <IndicatorItem Horizontal="IndicatorHorizontal.End" Vertical="IndicatorVertical.Bottom">
+                    <Status Color="StatusColor.Success" Size="StatusSize.Small" />
+                </IndicatorItem>
+                <div class="avatar">
+                    <div class="w-12 rounded-full bg-base-300 flex items-center justify-center">
+                        <span class="text-lg">JD</span>
+                    </div>
+                </div>
+            </Indicator>
+            <Indicator>
+                <IndicatorItem Horizontal="IndicatorHorizontal.End" Vertical="IndicatorVertical.Bottom">
+                    <Status Color="StatusColor.Error" Size="StatusSize.Small" />
+                </IndicatorItem>
+                <div class="avatar">
+                    <div class="w-12 rounded-full bg-base-300 flex items-center justify-center">
+                        <span class="text-lg">AB</span>
+                    </div>
+                </div>
+            </Indicator>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private string basicCode = @"<Status />";
+
+    private string colorsCode = @"<Status />
+<Status Color=""StatusColor.Neutral"" />
+<Status Color=""StatusColor.Primary"" />
+<Status Color=""StatusColor.Secondary"" />
+<Status Color=""StatusColor.Accent"" />
+<Status Color=""StatusColor.Info"" />
+<Status Color=""StatusColor.Success"" />
+<Status Color=""StatusColor.Warning"" />
+<Status Color=""StatusColor.Error"" />";
+
+    private string sizesCode = @"<Status Size=""StatusSize.ExtraSmall"" Color=""StatusColor.Primary"" />
+<Status Size=""StatusSize.Small"" Color=""StatusColor.Primary"" />
+<Status Size=""StatusSize.Medium"" Color=""StatusColor.Primary"" />
+<Status Size=""StatusSize.Large"" Color=""StatusColor.Primary"" />
+<Status Size=""StatusSize.ExtraLarge"" Color=""StatusColor.Primary"" />";
+
+    private string withTextCode = @"<div class=""flex items-center gap-2"">
+    <Status Color=""StatusColor.Success"" Size=""StatusSize.Small"" />
+    <span>Online</span>
+</div>
+<div class=""flex items-center gap-2"">
+    <Status Color=""StatusColor.Error"" Size=""StatusSize.Small"" />
+    <span>Offline</span>
+</div>
+<div class=""flex items-center gap-2"">
+    <Status Color=""StatusColor.Warning"" Size=""StatusSize.Small"" />
+    <span>Away</span>
+</div>
+<div class=""flex items-center gap-2"">
+    <Status Color=""StatusColor.Neutral"" Size=""StatusSize.Small"" />
+    <span>Busy</span>
+</div>";
+
+    private string animationCode = @"<Status Color=""StatusColor.Primary"" />
+<Status Color=""StatusColor.Info"" Animation=""StatusAnimation.Ping"" />
+<Status Color=""StatusColor.Success"" Animation=""StatusAnimation.Bounce"" />";
+
+    private string inAvatarCode = @"<Indicator>
+    <IndicatorItem Horizontal=""IndicatorHorizontal.End"" Vertical=""IndicatorVertical.Bottom"">
+        <Status Color=""StatusColor.Success"" Size=""StatusSize.Small"" />
+    </IndicatorItem>
+    <div class=""avatar"">
+        <div class=""w-12 rounded-full bg-base-300"">
+            <span>JD</span>
+        </div>
+    </div>
+</Indicator>";
+}

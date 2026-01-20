@@ -1,0 +1,79 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+@if (Animation == StatusAnimation.Ping)
+{
+    <span class="@WrapperClass" @attributes="AdditionalAttributes">
+        <span class="@PingAnimatedClass"></span>
+        <span class="@BaseStatusClass"></span>
+    </span>
+}
+else
+{
+    <span class="@CssClass" @attributes="AdditionalAttributes"></span>
+}
+
+@code {
+    /// <summary>
+    /// The color variant of the status indicator.
+    /// </summary>
+    [Parameter]
+    public StatusColor Color { get; set; } = StatusColor.Default;
+
+    /// <summary>
+    /// The size of the status indicator.
+    /// </summary>
+    [Parameter]
+    public StatusSize Size { get; set; } = StatusSize.Medium;
+
+    /// <summary>
+    /// The animation to apply to the status indicator.
+    /// </summary>
+    [Parameter]
+    public StatusAnimation Animation { get; set; } = StatusAnimation.None;
+
+    private string CssClass => MergeClasses(
+        "status",
+        ColorClass,
+        SizeClass,
+        AnimationClass
+    );
+
+    private string WrapperClass => MergeClasses("inline-grid *:[grid-area:1/1]");
+
+    private string BaseStatusClass => string.Join(" ", new[] { "status", ColorClass, SizeClass }.Where(c => c != null));
+
+    private string PingAnimatedClass => string.Join(" ", new[] { "status", ColorClass, SizeClass, "animate-ping" }.Where(c => c != null));
+
+    private string? ColorClass => Color switch
+    {
+        StatusColor.Default => null,
+        StatusColor.Neutral => "status-neutral",
+        StatusColor.Primary => "status-primary",
+        StatusColor.Secondary => "status-secondary",
+        StatusColor.Accent => "status-accent",
+        StatusColor.Info => "status-info",
+        StatusColor.Success => "status-success",
+        StatusColor.Warning => "status-warning",
+        StatusColor.Error => "status-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+
+    private string SizeClass => Size switch
+    {
+        StatusSize.ExtraSmall => "status-xs",
+        StatusSize.Small => "status-sm",
+        StatusSize.Medium => "status-md",
+        StatusSize.Large => "status-lg",
+        StatusSize.ExtraLarge => "status-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? AnimationClass => Animation switch
+    {
+        StatusAnimation.None => null,
+        StatusAnimation.Ping => null, // Ping uses special markup structure
+        StatusAnimation.Bounce => "animate-bounce",
+        _ => throw new ArgumentOutOfRangeException(nameof(Animation), Animation, null)
+    };
+}
