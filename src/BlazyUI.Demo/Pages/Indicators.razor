@@ -1,0 +1,192 @@
+@page "/indicators"
+
+<PageTitle>Indicators</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Indicator Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <Indicator>
+            <IndicatorItem>
+                <Badge Color="BadgeColor.Secondary">new</Badge>
+            </IndicatorItem>
+            <div class="grid w-32 h-32 bg-base-300 place-items-center rounded-lg">content</div>
+        </Indicator>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Positions</h2>
+    <CodeExample Code="@positionsCode">
+        <div class="flex flex-wrap gap-8">
+            @* Top Row *@
+            <Indicator>
+                <IndicatorItem Horizontal="IndicatorHorizontal.Start" Vertical="IndicatorVertical.Top">
+                    <Badge Color="BadgeColor.Primary">TL</Badge>
+                </IndicatorItem>
+                <div class="grid w-20 h-20 bg-base-300 place-items-center rounded-lg"></div>
+            </Indicator>
+            <Indicator>
+                <IndicatorItem Horizontal="IndicatorHorizontal.Center" Vertical="IndicatorVertical.Top">
+                    <Badge Color="BadgeColor.Primary">T</Badge>
+                </IndicatorItem>
+                <div class="grid w-20 h-20 bg-base-300 place-items-center rounded-lg"></div>
+            </Indicator>
+            <Indicator>
+                <IndicatorItem Horizontal="IndicatorHorizontal.End" Vertical="IndicatorVertical.Top">
+                    <Badge Color="BadgeColor.Primary">TR</Badge>
+                </IndicatorItem>
+                <div class="grid w-20 h-20 bg-base-300 place-items-center rounded-lg"></div>
+            </Indicator>
+            @* Middle Row *@
+            <Indicator>
+                <IndicatorItem Horizontal="IndicatorHorizontal.Start" Vertical="IndicatorVertical.Middle">
+                    <Badge Color="BadgeColor.Secondary">ML</Badge>
+                </IndicatorItem>
+                <div class="grid w-20 h-20 bg-base-300 place-items-center rounded-lg"></div>
+            </Indicator>
+            <Indicator>
+                <IndicatorItem Horizontal="IndicatorHorizontal.Center" Vertical="IndicatorVertical.Middle">
+                    <Badge Color="BadgeColor.Secondary">M</Badge>
+                </IndicatorItem>
+                <div class="grid w-20 h-20 bg-base-300 place-items-center rounded-lg"></div>
+            </Indicator>
+            <Indicator>
+                <IndicatorItem Horizontal="IndicatorHorizontal.End" Vertical="IndicatorVertical.Middle">
+                    <Badge Color="BadgeColor.Secondary">MR</Badge>
+                </IndicatorItem>
+                <div class="grid w-20 h-20 bg-base-300 place-items-center rounded-lg"></div>
+            </Indicator>
+            @* Bottom Row *@
+            <Indicator>
+                <IndicatorItem Horizontal="IndicatorHorizontal.Start" Vertical="IndicatorVertical.Bottom">
+                    <Badge Color="BadgeColor.Accent">BL</Badge>
+                </IndicatorItem>
+                <div class="grid w-20 h-20 bg-base-300 place-items-center rounded-lg"></div>
+            </Indicator>
+            <Indicator>
+                <IndicatorItem Horizontal="IndicatorHorizontal.Center" Vertical="IndicatorVertical.Bottom">
+                    <Badge Color="BadgeColor.Accent">B</Badge>
+                </IndicatorItem>
+                <div class="grid w-20 h-20 bg-base-300 place-items-center rounded-lg"></div>
+            </Indicator>
+            <Indicator>
+                <IndicatorItem Horizontal="IndicatorHorizontal.End" Vertical="IndicatorVertical.Bottom">
+                    <Badge Color="BadgeColor.Accent">BR</Badge>
+                </IndicatorItem>
+                <div class="grid w-20 h-20 bg-base-300 place-items-center rounded-lg"></div>
+            </Indicator>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Multiple Indicators</h2>
+    <CodeExample Code="@multipleCode">
+        <Indicator>
+            <IndicatorItem Horizontal="IndicatorHorizontal.Start" Vertical="IndicatorVertical.Top">
+                <Badge Color="BadgeColor.Info">1</Badge>
+            </IndicatorItem>
+            <IndicatorItem Horizontal="IndicatorHorizontal.End" Vertical="IndicatorVertical.Top">
+                <Badge Color="BadgeColor.Success">2</Badge>
+            </IndicatorItem>
+            <IndicatorItem Horizontal="IndicatorHorizontal.Start" Vertical="IndicatorVertical.Bottom">
+                <Badge Color="BadgeColor.Warning">3</Badge>
+            </IndicatorItem>
+            <IndicatorItem Horizontal="IndicatorHorizontal.End" Vertical="IndicatorVertical.Bottom">
+                <Badge Color="BadgeColor.Error">4</Badge>
+            </IndicatorItem>
+            <div class="grid w-32 h-32 bg-base-300 place-items-center rounded-lg">content</div>
+        </Indicator>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Button</h2>
+    <CodeExample Code="@withButtonCode">
+        <div class="flex flex-wrap gap-4">
+            <Indicator>
+                <IndicatorItem>
+                    <Badge Color="BadgeColor.Secondary">99+</Badge>
+                </IndicatorItem>
+                <Button>Inbox</Button>
+            </Indicator>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">For Input</h2>
+    <CodeExample Code="@withInputCode">
+        <Indicator>
+            <IndicatorItem>
+                <Badge Color="BadgeColor.Secondary">Required</Badge>
+            </IndicatorItem>
+            <input type="text" placeholder="Your email" class="input w-full" />
+        </Indicator>
+    </CodeExample>
+</section>
+
+@code {
+    private string basicCode = @"<Indicator>
+    <IndicatorItem>
+        <Badge Color=""BadgeColor.Secondary"">new</Badge>
+    </IndicatorItem>
+    <div class=""grid w-32 h-32 bg-base-300 place-items-center rounded-lg"">content</div>
+</Indicator>";
+
+    private string positionsCode = @"@* Top-Left *@
+<Indicator>
+    <IndicatorItem Horizontal=""IndicatorHorizontal.Start"" Vertical=""IndicatorVertical.Top"">
+        <Badge Color=""BadgeColor.Primary"">TL</Badge>
+    </IndicatorItem>
+    <div class=""grid w-20 h-20 bg-base-300 place-items-center rounded-lg""></div>
+</Indicator>
+
+@* Top-Center *@
+<Indicator>
+    <IndicatorItem Horizontal=""IndicatorHorizontal.Center"" Vertical=""IndicatorVertical.Top"">
+        <Badge Color=""BadgeColor.Primary"">T</Badge>
+    </IndicatorItem>
+    <div class=""grid w-20 h-20 bg-base-300 place-items-center rounded-lg""></div>
+</Indicator>
+
+@* Top-Right (default) *@
+<Indicator>
+    <IndicatorItem>
+        <Badge Color=""BadgeColor.Primary"">TR</Badge>
+    </IndicatorItem>
+    <div class=""grid w-20 h-20 bg-base-300 place-items-center rounded-lg""></div>
+</Indicator>";
+
+    private string multipleCode = @"<Indicator>
+    <IndicatorItem Horizontal=""IndicatorHorizontal.Start"" Vertical=""IndicatorVertical.Top"">
+        <Badge Color=""BadgeColor.Info"">1</Badge>
+    </IndicatorItem>
+    <IndicatorItem Horizontal=""IndicatorHorizontal.End"" Vertical=""IndicatorVertical.Top"">
+        <Badge Color=""BadgeColor.Success"">2</Badge>
+    </IndicatorItem>
+    <IndicatorItem Horizontal=""IndicatorHorizontal.Start"" Vertical=""IndicatorVertical.Bottom"">
+        <Badge Color=""BadgeColor.Warning"">3</Badge>
+    </IndicatorItem>
+    <IndicatorItem Horizontal=""IndicatorHorizontal.End"" Vertical=""IndicatorVertical.Bottom"">
+        <Badge Color=""BadgeColor.Error"">4</Badge>
+    </IndicatorItem>
+    <div class=""grid w-32 h-32 bg-base-300 place-items-center rounded-lg"">content</div>
+</Indicator>";
+
+    private string withButtonCode = @"<Indicator>
+    <IndicatorItem>
+        <Badge Color=""BadgeColor.Secondary"">99+</Badge>
+    </IndicatorItem>
+    <Button>Inbox</Button>
+</Indicator>";
+
+    private string withInputCode = @"<Indicator>
+    <IndicatorItem>
+        <Badge Color=""BadgeColor.Secondary"">Required</Badge>
+    </IndicatorItem>
+    <input type=""text"" placeholder=""Your email"" class=""input w-full"" />
+</Indicator>";
+}

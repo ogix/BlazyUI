@@ -1,0 +1,39 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<span class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</span>
+
+@code {
+    [Parameter]
+    public IndicatorHorizontal Horizontal { get; set; } = IndicatorHorizontal.End;
+
+    [Parameter]
+    public IndicatorVertical Vertical { get; set; } = IndicatorVertical.Top;
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "indicator-item",
+        HorizontalClass,
+        VerticalClass
+    );
+
+    private string HorizontalClass => Horizontal switch
+    {
+        IndicatorHorizontal.Start => "indicator-start",
+        IndicatorHorizontal.Center => "indicator-center",
+        IndicatorHorizontal.End => "indicator-end",
+        _ => throw new ArgumentOutOfRangeException(nameof(Horizontal))
+    };
+
+    private string VerticalClass => Vertical switch
+    {
+        IndicatorVertical.Top => "indicator-top",
+        IndicatorVertical.Middle => "indicator-middle",
+        IndicatorVertical.Bottom => "indicator-bottom",
+        _ => throw new ArgumentOutOfRangeException(nameof(Vertical))
+    };
+}
