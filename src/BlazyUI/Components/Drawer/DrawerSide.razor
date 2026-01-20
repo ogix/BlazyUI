@@ -1,0 +1,42 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="drawer-side" @attributes="AdditionalAttributes">
+    <label for="@Context?.Id" aria-label="close sidebar" class="drawer-overlay"></label>
+    <div class="@SidebarClasses">
+        @ChildContent
+    </div>
+</div>
+
+@code {
+    /// <summary>
+    /// The drawer context provided by the parent Drawer component.
+    /// </summary>
+    [CascadingParameter]
+    public DrawerContext? Context { get; set; }
+
+    /// <summary>
+    /// The sidebar content (typically a menu or navigation).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>
+    /// Width class for the sidebar. Defaults to "w-80".
+    /// </summary>
+    [Parameter]
+    public string Width { get; set; } = "w-80";
+
+    /// <summary>
+    /// Background class for the sidebar. Defaults to "bg-base-200".
+    /// </summary>
+    [Parameter]
+    public string Background { get; set; } = "bg-base-200";
+
+    private string SidebarClasses => MergeClasses(
+        Background,
+        "min-h-full",
+        Width,
+        "p-4"
+    );
+}

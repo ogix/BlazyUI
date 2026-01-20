@@ -1,0 +1,213 @@
+@page "/drawer"
+
+<PageTitle>Drawer</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Drawer Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic Drawer</h2>
+    <p class="mb-4 text-sm opacity-70">A drawer with a toggle button and sidebar content</p>
+    <CodeExample Code="@basicCode">
+        <Drawer Class="h-52 rounded-box overflow-hidden">
+            <DrawerContent Class="flex flex-col items-center justify-center">
+                <DrawerToggle>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    Open Drawer
+                </DrawerToggle>
+            </DrawerContent>
+            <DrawerSide>
+                <ul class="menu text-base-content">
+                    <li><a>Menu Item 1</a></li>
+                    <li><a>Menu Item 2</a></li>
+                    <li><a>Menu Item 3</a></li>
+                </ul>
+            </DrawerSide>
+        </Drawer>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Right-Side Drawer</h2>
+    <p class="mb-4 text-sm opacity-70">Drawer opens from the right side using drawer-end</p>
+    <CodeExample Code="@rightSideCode">
+        <Drawer Position="DrawerPosition.End" Class="h-52 rounded-box overflow-hidden">
+            <DrawerContent Class="flex flex-col items-center justify-center">
+                <DrawerToggle>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    Open Right Drawer
+                </DrawerToggle>
+            </DrawerContent>
+            <DrawerSide>
+                <ul class="menu text-base-content">
+                    <li><a>Right Side Item 1</a></li>
+                    <li><a>Right Side Item 2</a></li>
+                    <li><a>Right Side Item 3</a></li>
+                </ul>
+            </DrawerSide>
+        </Drawer>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Responsive Drawer</h2>
+    <p class="mb-4 text-sm opacity-70">Drawer is always open on large screens (lg:drawer-open). Resize your browser to see the effect.</p>
+    <CodeExample Code="@responsiveCode">
+        <Drawer Responsive Class="h-52 rounded-box overflow-hidden border border-base-300">
+            <DrawerContent Class="flex flex-col items-center justify-center">
+                <DrawerToggle Class="lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    Toggle Menu
+                </DrawerToggle>
+                <p class="hidden lg:block">Sidebar is always visible on large screens</p>
+            </DrawerContent>
+            <DrawerSide>
+                <ul class="menu text-base-content">
+                    <li><a>Dashboard</a></li>
+                    <li><a>Settings</a></li>
+                    <li><a>Profile</a></li>
+                </ul>
+            </DrawerSide>
+        </Drawer>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Two-Way Binding</h2>
+    <p class="mb-4 text-sm opacity-70">Control the drawer state programmatically with @@bind-Open</p>
+    <CodeExample Code="@twoWayBindingCode">
+        <div class="flex flex-col gap-4">
+            <div class="flex gap-2 items-center">
+                <Button Color="ButtonColor.Primary" @onclick="() => isDrawerOpen = !isDrawerOpen">
+                    @(isDrawerOpen ? "Close" : "Open") Drawer Programmatically
+                </Button>
+                <span class="badge @(isDrawerOpen ? "badge-success" : "badge-error")">
+                    @(isDrawerOpen ? "Open" : "Closed")
+                </span>
+            </div>
+            <Drawer @bind-Open="isDrawerOpen" Class="h-52 rounded-box overflow-hidden border border-base-300">
+                <DrawerContent Class="flex flex-col items-center justify-center">
+                    <DrawerToggle>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        Toggle via Label
+                    </DrawerToggle>
+                </DrawerContent>
+                <DrawerSide>
+                    <ul class="menu text-base-content">
+                        <li><a>Bound Item 1</a></li>
+                        <li><a>Bound Item 2</a></li>
+                        <li><a>Bound Item 3</a></li>
+                    </ul>
+                </DrawerSide>
+            </Drawer>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Custom Sidebar Styling</h2>
+    <p class="mb-4 text-sm opacity-70">Customize the sidebar width and background</p>
+    <CodeExample Code="@customStylingCode">
+        <Drawer Class="h-52 rounded-box overflow-hidden">
+            <DrawerContent Class="flex flex-col items-center justify-center bg-base-100">
+                <DrawerToggle>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    Open Wide Drawer
+                </DrawerToggle>
+            </DrawerContent>
+            <DrawerSide Width="w-96" Background="bg-primary text-primary-content">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-4">Custom Styled Sidebar</h3>
+                    <p>This sidebar uses custom width (w-96) and primary color background.</p>
+                </div>
+            </DrawerSide>
+        </Drawer>
+    </CodeExample>
+</section>
+
+@code {
+    private bool isDrawerOpen;
+
+    private string basicCode = @"<Drawer>
+    <DrawerContent>
+        <DrawerToggle>
+            <!-- Hamburger icon -->
+            Open Drawer
+        </DrawerToggle>
+    </DrawerContent>
+    <DrawerSide>
+        <ul class=""menu text-base-content"">
+            <li><a>Menu Item 1</a></li>
+            <li><a>Menu Item 2</a></li>
+            <li><a>Menu Item 3</a></li>
+        </ul>
+    </DrawerSide>
+</Drawer>";
+
+    private string rightSideCode = @"<Drawer Position=""DrawerPosition.End"">
+    <DrawerContent>
+        <DrawerToggle>Open Right Drawer</DrawerToggle>
+    </DrawerContent>
+    <DrawerSide>
+        <ul class=""menu text-base-content"">
+            <li><a>Right Side Item 1</a></li>
+            <li><a>Right Side Item 2</a></li>
+        </ul>
+    </DrawerSide>
+</Drawer>";
+
+    private string responsiveCode = @"<Drawer Responsive>
+    <DrawerContent>
+        <DrawerToggle Class=""lg:hidden"">
+            Toggle Menu
+        </DrawerToggle>
+        <p class=""hidden lg:block"">Sidebar is always visible on large screens</p>
+    </DrawerContent>
+    <DrawerSide>
+        <ul class=""menu text-base-content"">
+            <li><a>Dashboard</a></li>
+            <li><a>Settings</a></li>
+        </ul>
+    </DrawerSide>
+</Drawer>";
+
+    private string twoWayBindingCode = @"<Button @onclick=""() => isDrawerOpen = !isDrawerOpen"">
+    @(isDrawerOpen ? ""Close"" : ""Open"") Drawer
+</Button>
+
+<Drawer @bind-Open=""isDrawerOpen"">
+    <DrawerContent>
+        <DrawerToggle>Toggle via Label</DrawerToggle>
+    </DrawerContent>
+    <DrawerSide>
+        <ul class=""menu text-base-content"">
+            <li><a>Bound Item 1</a></li>
+        </ul>
+    </DrawerSide>
+</Drawer>
+
+@code {
+    private bool isDrawerOpen;
+}";
+
+    private string customStylingCode = @"<Drawer>
+    <DrawerContent>
+        <DrawerToggle>Open Wide Drawer</DrawerToggle>
+    </DrawerContent>
+    <DrawerSide Width=""w-96"" Background=""bg-primary text-primary-content"">
+        <div class=""p-4"">
+            <h3>Custom Styled Sidebar</h3>
+            <p>Custom width and primary color background.</p>
+        </div>
+    </DrawerSide>
+</Drawer>";
+}
