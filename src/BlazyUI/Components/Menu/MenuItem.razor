@@ -17,14 +17,7 @@
     }
     else
     {
-        <span class="@ItemCssClass"
-              role="menuitem"
-              aria-disabled="@(Disabled ? "true" : null)"
-              tabindex="@(Disabled ? -1 : 0)"
-              @onclick="HandleClick"
-              @attributes="AdditionalAttributes">
-            @ChildContent
-        </span>
+        @ChildContent
     }
 </li>
 
