@@ -39,7 +39,10 @@
     [Parameter]
     public string? ContentClass { get; set; }
 
-    private string CssClass => MergeClasses("drawer-side");
+    private string CssClass => MergeClasses(
+        "drawer-side",
+        Context?.Contained == true ? "[&]:absolute [&]:inset-0 [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0" : null
+    );
 
     private string ContentClasses => TwMerge.Merge(
         Background,

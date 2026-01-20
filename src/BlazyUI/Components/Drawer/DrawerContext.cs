@@ -11,10 +11,16 @@ public class DrawerContext
     public string Id { get; }
 
     /// <summary>
+    /// Whether the drawer is contained within its parent (uses absolute positioning).
+    /// </summary>
+    public bool Contained { get; }
+
+    /// <summary>
     /// Creates a new DrawerContext.
     /// </summary>
-    public DrawerContext(string id)
+    public DrawerContext(string id, bool contained = false)
     {
         Id = id;
+        Contained = contained;
     }
 }
