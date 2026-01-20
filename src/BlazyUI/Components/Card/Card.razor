@@ -10,7 +10,7 @@
     /// The size of the card.
     /// </summary>
     [Parameter]
-    public CardSize Size { get; set; } = CardSize.Default;
+    public CardSize Size { get; set; } = CardSize.Medium;
 
     /// <summary>
     /// The style variant of the card.
@@ -45,11 +45,11 @@
         ImageFull ? "image-full" : null
     );
 
-    private string? SizeClass => Size switch
+    private string SizeClass => Size switch
     {
-        CardSize.Default => null,
         CardSize.ExtraSmall => "card-xs",
         CardSize.Small => "card-sm",
+        CardSize.Medium => "card-md",
         CardSize.Large => "card-lg",
         CardSize.ExtraLarge => "card-xl",
         _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)

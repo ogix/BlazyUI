@@ -5,33 +5,14 @@ namespace BlazyUI;
 /// </summary>
 public enum FileInputSize
 {
-    /// <summary>
-    /// Default size (no modifier class).
-    /// </summary>
-    Default,
-
-    /// <summary>
-    /// Extra small size (file-input-xs).
-    /// </summary>
+    /// <summary>Extra small size (file-input-xs).</summary>
     ExtraSmall,
-
-    /// <summary>
-    /// Small size (file-input-sm).
-    /// </summary>
+    /// <summary>Small size (file-input-sm).</summary>
     Small,
-
-    /// <summary>
-    /// Medium size (file-input-md).
-    /// </summary>
+    /// <summary>Medium size (file-input-md). Default.</summary>
     Medium,
-
-    /// <summary>
-    /// Large size (file-input-lg).
-    /// </summary>
+    /// <summary>Large size (file-input-lg).</summary>
     Large,
-
-    /// <summary>
-    /// Extra large size (file-input-xl).
-    /// </summary>
+    /// <summary>Extra large size (file-input-xl).</summary>
     ExtraLarge
 }

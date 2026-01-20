@@ -23,7 +23,7 @@
     /// The size of the button.
     /// </summary>
     [Parameter]
-    public ButtonSize Size { get; set; } = ButtonSize.Default;
+    public ButtonSize Size { get; set; } = ButtonSize.Medium;
 
     /// <summary>
     /// The style variant of the button.
@@ -106,11 +106,11 @@
         _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
     };
 
-    private string? SizeClass => Size switch
+    private string SizeClass => Size switch
     {
-        ButtonSize.Default => null,
         ButtonSize.ExtraSmall => "btn-xs",
         ButtonSize.Small => "btn-sm",
+        ButtonSize.Medium => "btn-md",
         ButtonSize.Large => "btn-lg",
         ButtonSize.ExtraLarge => "btn-xl",
         _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)

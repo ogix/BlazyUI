@@ -5,33 +5,14 @@ namespace BlazyUI;
 /// </summary>
 public enum SelectSize
 {
-    /// <summary>
-    /// Default size (medium, no modifier class).
-    /// </summary>
-    Default,
-
-    /// <summary>
-    /// Extra small size (select-xs).
-    /// </summary>
+    /// <summary>Extra small size (select-xs).</summary>
     ExtraSmall,
-
-    /// <summary>
-    /// Small size (select-sm).
-    /// </summary>
+    /// <summary>Small size (select-sm).</summary>
     Small,
-
-    /// <summary>
-    /// Medium size (select-md).
-    /// </summary>
+    /// <summary>Medium size (select-md). Default.</summary>
     Medium,
-
-    /// <summary>
-    /// Large size (select-lg).
-    /// </summary>
+    /// <summary>Large size (select-lg).</summary>
     Large,
-
-    /// <summary>
-    /// Extra large size (select-xl).
-    /// </summary>
+    /// <summary>Extra large size (select-xl).</summary>
     ExtraLarge
 }

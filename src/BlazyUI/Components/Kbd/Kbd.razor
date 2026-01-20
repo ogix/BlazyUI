@@ -10,7 +10,7 @@
     /// The size of the keyboard shortcut display.
     /// </summary>
     [Parameter]
-    public KbdSize Size { get; set; } = KbdSize.Default;
+    public KbdSize Size { get; set; } = KbdSize.Medium;
 
     /// <summary>
     /// The content to display inside the kbd element.
@@ -23,11 +23,11 @@
         SizeClass
     );
 
-    private string? SizeClass => Size switch
+    private string SizeClass => Size switch
     {
-        KbdSize.Default => null,
         KbdSize.ExtraSmall => "kbd-xs",
         KbdSize.Small => "kbd-sm",
+        KbdSize.Medium => "kbd-md",
         KbdSize.Large => "kbd-lg",
         KbdSize.ExtraLarge => "kbd-xl",
         _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)

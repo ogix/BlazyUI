@@ -5,33 +5,14 @@ namespace BlazyUI;
 /// </summary>
 public enum RatingSize
 {
-    /// <summary>
-    /// Default size (no modifier class).
-    /// </summary>
-    Default,
-
-    /// <summary>
-    /// Extra small size (rating-xs).
-    /// </summary>
+    /// <summary>Extra small size (rating-xs).</summary>
     ExtraSmall,
-
-    /// <summary>
-    /// Small size (rating-sm).
-    /// </summary>
+    /// <summary>Small size (rating-sm).</summary>
     Small,
-
-    /// <summary>
-    /// Medium size (rating-md).
-    /// </summary>
+    /// <summary>Medium size (rating-md). Default.</summary>
     Medium,
-
-    /// <summary>
-    /// Large size (rating-lg).
-    /// </summary>
+    /// <summary>Large size (rating-lg).</summary>
     Large,
-
-    /// <summary>
-    /// Extra large size (rating-xl).
-    /// </summary>
+    /// <summary>Extra large size (rating-xl).</summary>
     ExtraLarge
 }

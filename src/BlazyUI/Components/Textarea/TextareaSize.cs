@@ -5,33 +5,14 @@ namespace BlazyUI;
 /// </summary>
 public enum TextareaSize
 {
-    /// <summary>
-    /// Default size (medium, no modifier class).
-    /// </summary>
-    Default,
-
-    /// <summary>
-    /// Extra small size (textarea-xs).
-    /// </summary>
+    /// <summary>Extra small size (textarea-xs).</summary>
     ExtraSmall,
-
-    /// <summary>
-    /// Small size (textarea-sm).
-    /// </summary>
+    /// <summary>Small size (textarea-sm).</summary>
     Small,
-
-    /// <summary>
-    /// Medium size (textarea-md).
-    /// </summary>
+    /// <summary>Medium size (textarea-md). Default.</summary>
     Medium,
-
-    /// <summary>
-    /// Large size (textarea-lg).
-    /// </summary>
+    /// <summary>Large size (textarea-lg).</summary>
     Large,
-
-    /// <summary>
-    /// Extra large size (textarea-xl).
-    /// </summary>
+    /// <summary>Extra large size (textarea-xl).</summary>
     ExtraLarge
 }

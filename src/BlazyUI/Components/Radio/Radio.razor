@@ -27,7 +27,7 @@
     /// The size of the radio button.
     /// </summary>
     [Parameter]
-    public RadioSize Size { get; set; } = RadioSize.Default;
+    public RadioSize Size { get; set; } = RadioSize.Medium;
 
     /// <summary>
     /// The color of the radio button.
@@ -65,9 +65,8 @@
         }
     }
 
-    private string? SizeClass => Size switch
+    private string SizeClass => Size switch
     {
-        RadioSize.Default => null,
         RadioSize.ExtraSmall => "radio-xs",
         RadioSize.Small => "radio-sm",
         RadioSize.Medium => "radio-md",

@@ -5,33 +5,14 @@ namespace BlazyUI;
 /// </summary>
 public enum TextInputSize
 {
-    /// <summary>
-    /// Default size (medium, no modifier class).
-    /// </summary>
-    Default,
-
-    /// <summary>
-    /// Extra small size (input-xs).
-    /// </summary>
+    /// <summary>Extra small size (input-xs).</summary>
     ExtraSmall,
-
-    /// <summary>
-    /// Small size (input-sm).
-    /// </summary>
+    /// <summary>Small size (input-sm).</summary>
     Small,
-
-    /// <summary>
-    /// Medium size (input-md).
-    /// </summary>
+    /// <summary>Medium size (input-md). Default.</summary>
     Medium,
-
-    /// <summary>
-    /// Large size (input-lg).
-    /// </summary>
+    /// <summary>Large size (input-lg).</summary>
     Large,
-
-    /// <summary>
-    /// Extra large size (input-xl).
-    /// </summary>
+    /// <summary>Extra large size (input-xl).</summary>
     ExtraLarge
 }

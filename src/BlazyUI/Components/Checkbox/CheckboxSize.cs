@@ -5,33 +5,14 @@ namespace BlazyUI;
 /// </summary>
 public enum CheckboxSize
 {
-    /// <summary>
-    /// Default size (medium, no modifier class).
-    /// </summary>
-    Default,
-
-    /// <summary>
-    /// Extra small size (checkbox-xs).
-    /// </summary>
+    /// <summary>Extra small size (checkbox-xs).</summary>
     ExtraSmall,
-
-    /// <summary>
-    /// Small size (checkbox-sm).
-    /// </summary>
+    /// <summary>Small size (checkbox-sm).</summary>
     Small,
-
-    /// <summary>
-    /// Medium size (checkbox-md).
-    /// </summary>
+    /// <summary>Medium size (checkbox-md). Default.</summary>
     Medium,
-
-    /// <summary>
-    /// Large size (checkbox-lg).
-    /// </summary>
+    /// <summary>Large size (checkbox-lg).</summary>
     Large,
-
-    /// <summary>
-    /// Extra large size (checkbox-xl).
-    /// </summary>
+    /// <summary>Extra large size (checkbox-xl).</summary>
     ExtraLarge
 }

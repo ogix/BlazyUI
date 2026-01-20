@@ -41,7 +41,7 @@
     /// The size of the rating.
     /// </summary>
     [Parameter]
-    public RatingSize Size { get; set; } = RatingSize.Default;
+    public RatingSize Size { get; set; } = RatingSize.Medium;
 
     /// <summary>
     /// The mask/shape of the rating items.
@@ -104,9 +104,8 @@
         new[] { "mask", MaskClass, BackgroundColor }
             .Where(c => !string.IsNullOrEmpty(c)));
 
-    private string? SizeClass => Size switch
+    private string SizeClass => Size switch
     {
-        RatingSize.Default => null,
         RatingSize.ExtraSmall => "rating-xs",
         RatingSize.Small => "rating-sm",
         RatingSize.Medium => "rating-md",

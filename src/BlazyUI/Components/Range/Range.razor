@@ -35,7 +35,7 @@
     /// The size of the range slider.
     /// </summary>
     [Parameter]
-    public RangeSize Size { get; set; } = RangeSize.Default;
+    public RangeSize Size { get; set; } = RangeSize.Medium;
 
     /// <summary>
     /// The color of the range slider.
@@ -77,9 +77,8 @@
         }
     }
 
-    private string? SizeClass => Size switch
+    private string SizeClass => Size switch
     {
-        RangeSize.Default => null,
         RangeSize.ExtraSmall => "range-xs",
         RangeSize.Small => "range-sm",
         RangeSize.Medium => "range-md",

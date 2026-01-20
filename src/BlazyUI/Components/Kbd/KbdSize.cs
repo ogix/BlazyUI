@@ -5,12 +5,12 @@ namespace BlazyUI;
 /// </summary>
 public enum KbdSize
 {
-    /// <summary>No size modifier (default styling).</summary>
-    Default,
     /// <summary>Extra small size (kbd-xs).</summary>
     ExtraSmall,
     /// <summary>Small size (kbd-sm).</summary>
     Small,
+    /// <summary>Medium size (kbd-md). Default.</summary>
+    Medium,
     /// <summary>Large size (kbd-lg).</summary>
     Large,
     /// <summary>Extra large size (kbd-xl).</summary>

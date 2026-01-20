@@ -12,7 +12,7 @@
     /// The size of the textarea.
     /// </summary>
     [Parameter]
-    public TextareaSize Size { get; set; } = TextareaSize.Default;
+    public TextareaSize Size { get; set; } = TextareaSize.Medium;
 
     /// <summary>
     /// The color of the textarea.
@@ -50,9 +50,8 @@
     private void OnChange(ChangeEventArgs e)
         => CurrentValue = e.Value?.ToString();
 
-    private string? SizeClass => Size switch
+    private string SizeClass => Size switch
     {
-        TextareaSize.Default => null,
         TextareaSize.ExtraSmall => "textarea-xs",
         TextareaSize.Small => "textarea-sm",
         TextareaSize.Medium => "textarea-md",

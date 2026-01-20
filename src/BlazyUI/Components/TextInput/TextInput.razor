@@ -20,7 +20,7 @@
     /// The size of the input.
     /// </summary>
     [Parameter]
-    public TextInputSize Size { get; set; } = TextInputSize.Default;
+    public TextInputSize Size { get; set; } = TextInputSize.Medium;
 
     /// <summary>
     /// The color of the input.
@@ -58,9 +58,8 @@
     private void OnChange(ChangeEventArgs e)
         => CurrentValue = e.Value?.ToString();
 
-    private string? SizeClass => Size switch
+    private string SizeClass => Size switch
     {
-        TextInputSize.Default => null,
         TextInputSize.ExtraSmall => "input-xs",
         TextInputSize.Small => "input-sm",
         TextInputSize.Medium => "input-md",

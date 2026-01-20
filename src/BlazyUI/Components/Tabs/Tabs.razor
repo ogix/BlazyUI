@@ -21,7 +21,7 @@
     /// The size of the tabs.
     /// </summary>
     [Parameter]
-    public TabSize Size { get; set; } = TabSize.Default;
+    public TabSize Size { get; set; } = TabSize.Medium;
 
     /// <summary>
     /// The placement of the tab buttons relative to the content.
@@ -88,9 +88,8 @@
         _ => throw new ArgumentOutOfRangeException(nameof(Variant), Variant, null)
     };
 
-    private string? SizeClass => Size switch
+    private string SizeClass => Size switch
     {
-        TabSize.Default => null,
         TabSize.ExtraSmall => "tabs-xs",
         TabSize.Small => "tabs-sm",
         TabSize.Medium => "tabs-md",

@@ -30,7 +30,7 @@
     /// The size of the file input.
     /// </summary>
     [Parameter]
-    public FileInputSize Size { get; set; } = FileInputSize.Default;
+    public FileInputSize Size { get; set; } = FileInputSize.Medium;
 
     /// <summary>
     /// The color of the file input.
@@ -58,9 +58,8 @@
         ColorClass
     );
 
-    private string? SizeClass => Size switch
+    private string SizeClass => Size switch
     {
-        FileInputSize.Default => null,
         FileInputSize.ExtraSmall => "file-input-xs",
         FileInputSize.Small => "file-input-sm",
         FileInputSize.Medium => "file-input-md",

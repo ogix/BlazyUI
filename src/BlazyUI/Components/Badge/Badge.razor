@@ -16,7 +16,7 @@
     /// The size of the badge.
     /// </summary>
     [Parameter]
-    public BadgeSize Size { get; set; } = BadgeSize.Default;
+    public BadgeSize Size { get; set; } = BadgeSize.Medium;
 
     /// <summary>
     /// The style variant of the badge.
@@ -51,11 +51,11 @@
         _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
     };
 
-    private string? SizeClass => Size switch
+    private string SizeClass => Size switch
     {
-        BadgeSize.Default => null,
         BadgeSize.ExtraSmall => "badge-xs",
         BadgeSize.Small => "badge-sm",
+        BadgeSize.Medium => "badge-md",
         BadgeSize.Large => "badge-lg",
         BadgeSize.ExtraLarge => "badge-xl",
         _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)

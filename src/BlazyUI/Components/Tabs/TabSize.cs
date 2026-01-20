@@ -5,13 +5,11 @@ namespace BlazyUI;
 /// </summary>
 public enum TabSize
 {
-    /// <summary>Default size.</summary>
-    Default,
     /// <summary>Extra small tabs (tabs-xs).</summary>
     ExtraSmall,
     /// <summary>Small tabs (tabs-sm).</summary>
     Small,
-    /// <summary>Medium tabs (tabs-md).</summary>
+    /// <summary>Medium tabs (tabs-md). Default.</summary>
     Medium,
     /// <summary>Large tabs (tabs-lg).</summary>
     Large,

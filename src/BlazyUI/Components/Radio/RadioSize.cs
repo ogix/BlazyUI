@@ -5,33 +5,14 @@ namespace BlazyUI;
 /// </summary>
 public enum RadioSize
 {
-    /// <summary>
-    /// Default size (no modifier class).
-    /// </summary>
-    Default,
-
-    /// <summary>
-    /// Extra small size (radio-xs).
-    /// </summary>
+    /// <summary>Extra small size (radio-xs).</summary>
     ExtraSmall,
-
-    /// <summary>
-    /// Small size (radio-sm).
-    /// </summary>
+    /// <summary>Small size (radio-sm).</summary>
     Small,
-
-    /// <summary>
-    /// Medium size (radio-md).
-    /// </summary>
+    /// <summary>Medium size (radio-md). Default.</summary>
     Medium,
-
-    /// <summary>
-    /// Large size (radio-lg).
-    /// </summary>
+    /// <summary>Large size (radio-lg).</summary>
     Large,
-
-    /// <summary>
-    /// Extra large size (radio-xl).
-    /// </summary>
+    /// <summary>Extra large size (radio-xl).</summary>
     ExtraLarge
 }
