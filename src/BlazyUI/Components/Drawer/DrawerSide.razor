@@ -1,9 +1,9 @@
 @namespace BlazyUI
 @inherits BlazyComponentBase
 
-<div class="drawer-side" @attributes="AdditionalAttributes">
+<div class="@CssClass" @attributes="AdditionalAttributes">
     <label for="@Context?.Id" aria-label="close sidebar" class="drawer-overlay"></label>
-    <div class="@SidebarClasses">
+    <div class="@ContentClasses">
         @ChildContent
     </div>
 </div>
@@ -22,21 +22,30 @@
     public RenderFragment? ChildContent { get; set; }
 
     /// <summary>
-    /// Width class for the sidebar. Defaults to "w-80".
+    /// Width class for the sidebar content. Defaults to "w-80".
     /// </summary>
     [Parameter]
     public string Width { get; set; } = "w-80";
 
     /// <summary>
-    /// Background class for the sidebar. Defaults to "bg-base-200".
+    /// Background class for the sidebar content. Defaults to "bg-base-200".
     /// </summary>
     [Parameter]
     public string Background { get; set; } = "bg-base-200";
 
-    private string SidebarClasses => MergeClasses(
+    /// <summary>
+    /// Additional CSS classes for the inner sidebar content container.
+    /// </summary>
+    [Parameter]
+    public string? ContentClass { get; set; }
+
+    private string CssClass => MergeClasses("drawer-side");
+
+    private string ContentClasses => TwMerge.Merge(
         Background,
         "min-h-full",
         Width,
-        "p-4"
-    );
+        "p-4",
+        ContentClass
+    ) ?? string.Empty;
 }
