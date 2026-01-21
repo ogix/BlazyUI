@@ -22,6 +22,17 @@ public abstract class BlazyInputBase<T> : InputBase<T>
     public string? Class { get; set; }
 
     /// <summary>
+    /// Cascading context from FieldValidator, if present.
+    /// </summary>
+    [CascadingParameter]
+    protected FieldValidatorContext? ValidatorContext { get; set; }
+
+    /// <summary>
+    /// Whether to add the validator class (true when inside FieldValidator).
+    /// </summary>
+    protected bool ShouldShowValidatorClass => ValidatorContext?.EnableValidatorClass ?? false;
+
+    /// <summary>
     /// Gets the value to be used for the input's "id" attribute.
     /// Checks AdditionalAttributes for explicit id, otherwise sanitizes NameAttributeValue.
     /// Follows the same pattern as InputBase.IdAttributeValue (when available).
@@ -98,6 +109,7 @@ public abstract class BlazyInputBase<T> : InputBase<T>
     protected string MergeClasses(params string?[] classes)
     {
         var allClasses = classes
+            .Append(ShouldShowValidatorClass ? "validator" : null)
             .Append(ValidationColorClass)
             .Append(Class)
             .Where(c => !string.IsNullOrWhiteSpace(c))

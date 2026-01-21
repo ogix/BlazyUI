@@ -1,0 +1,82 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+@typeparam TValue
+@using System.Linq.Expressions
+
+<CascadingValue Value="_context">
+    <div class="@ComputedCssClass" @attributes="AdditionalAttributes">
+        @ChildContent
+        @if (Mode is FieldValidatorMode.Both or FieldValidatorMode.Html5Only)
+        {
+            @if (HintContent is not null)
+            {
+                <div class="@HintCssClass">@HintContent</div>
+            }
+            else if (!string.IsNullOrEmpty(Hint))
+            {
+                <div class="@HintCssClass">@Hint</div>
+            }
+        }
+        @if (Mode is FieldValidatorMode.Both or FieldValidatorMode.BlazorOnly)
+        {
+            @if (For is not null)
+            {
+                <ValidationMessage For="@For" class="text-error text-sm mt-1" />
+            }
+        }
+    </div>
+</CascadingValue>
+
+@code {
+    private readonly FieldValidatorContext _context = new(true);
+
+    /// <summary>
+    /// Expression for the field being validated. Used for Blazor ValidationMessage.
+    /// </summary>
+    [Parameter]
+    public Expression<Func<TValue>>? For { get; set; }
+
+    /// <summary>
+    /// Text hint to display when input is invalid (HTML5 validation).
+    /// </summary>
+    [Parameter]
+    public string? Hint { get; set; }
+
+    /// <summary>
+    /// Custom content to display as the validation hint.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? HintContent { get; set; }
+
+    /// <summary>
+    /// The child content (input component).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>
+    /// Determines which validation feedback is shown.
+    /// </summary>
+    [Parameter]
+    public FieldValidatorMode Mode { get; set; } = FieldValidatorMode.Both;
+
+    /// <summary>
+    /// Whether to hide the hint when the input is valid. Defaults to true.
+    /// </summary>
+    [Parameter]
+    public bool HideHintWhenValid { get; set; } = true;
+
+    /// <summary>
+    /// Additional CSS classes for the hint element.
+    /// </summary>
+    [Parameter]
+    public string? HintClass { get; set; }
+
+    private string ComputedCssClass => MergeClasses();
+
+    private string HintCssClass => TwMerge.Merge(
+        "validator-hint",
+        HideHintWhenValid ? "hidden" : null,
+        HintClass
+    ) ?? string.Empty;
+}

@@ -1,0 +1,261 @@
+@page "/fieldvalidators"
+
+<PageTitle>FieldValidator - BlazyUI</PageTitle>
+
+<h1 class="text-3xl font-bold mb-8">FieldValidator</h1>
+
+<p class="mb-8 text-base-content/70">
+    The FieldValidator component combines DaisyUI's HTML5 CSS-based validation hints with Blazor's ValidationMessage.
+    It cascades a context to child inputs, automatically enabling the <code>validator</code> CSS class for immediate visual feedback.
+</p>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Basic HTML5 Validation</h2>
+    <p class="mb-4 text-sm text-base-content/70">Uses HTML5 validation attributes (required, type="email") with immediate CSS-based feedback.</p>
+    <CodeExample Code="@basicCode">
+        <form class="max-w-xs flex flex-col gap-4">
+            <FieldValidator TValue="string" Hint="Please enter your email">
+                <TextInput @bind-Value="basicEmail" Type="email" placeholder="Email" required />
+            </FieldValidator>
+            <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
+        </form>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Blazor EditForm</h2>
+    <p class="mb-4 text-sm text-base-content/70">Combines HTML5 validation with Blazor's DataAnnotationsValidator for server-side validation.</p>
+    <CodeExample Code="@editFormCode">
+        <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
+            <DataAnnotationsValidator />
+
+            <div class="flex flex-col gap-4">
+                <FieldValidator For="@(() => formModel.Email)" Hint="Invalid email format">
+                    <TextInput @bind-Value="formModel.Email" Type="email" placeholder="Email" required />
+                </FieldValidator>
+
+                <FieldValidator For="@(() => formModel.Password)" Hint="Password is required">
+                    <TextInput @bind-Value="formModel.Password" Type="password" placeholder="Password" required minlength="6" />
+                </FieldValidator>
+
+                <Button Type="submit" Color="ButtonColor.Primary" Block>Sign In</Button>
+            </div>
+        </EditForm>
+        @if (formSubmitted)
+        {
+            <Alert Color="AlertColor.Success" class="mt-4">Form submitted successfully!</Alert>
+        }
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">HTML5 Only Mode</h2>
+    <p class="mb-4 text-sm text-base-content/70">Shows only HTML5 validation hints without Blazor ValidationMessage.</p>
+    <CodeExample Code="@html5OnlyCode">
+        <form class="max-w-xs flex flex-col gap-4">
+            <FieldValidator TValue="string" Mode="FieldValidatorMode.Html5Only" Hint="Required field">
+                <TextInput @bind-Value="html5Value" placeholder="Name" required />
+            </FieldValidator>
+            <FieldValidator TValue="string" Mode="FieldValidatorMode.Html5Only" Hint="Must be a valid URL">
+                <TextInput @bind-Value="urlValue" Type="url" placeholder="Website URL" />
+            </FieldValidator>
+            <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
+        </form>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Blazor Only Mode</h2>
+    <p class="mb-4 text-sm text-base-content/70">Shows only Blazor ValidationMessage without HTML5 hints.</p>
+    <CodeExample Code="@blazorOnlyCode">
+        <EditForm Model="@blazorOnlyModel" OnValidSubmit="@HandleBlazorOnlySubmit" class="max-w-xs">
+            <DataAnnotationsValidator />
+
+            <div class="flex flex-col gap-4">
+                <FieldValidator For="@(() => blazorOnlyModel.Username)" Mode="FieldValidatorMode.BlazorOnly">
+                    <TextInput @bind-Value="blazorOnlyModel.Username" placeholder="Username" />
+                </FieldValidator>
+                <Button Type="submit" Color="ButtonColor.Primary" Block>Submit</Button>
+            </div>
+        </EditForm>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Rich Hint Content</h2>
+    <p class="mb-4 text-sm text-base-content/70">Use HintContent for complex validation hints with formatting.</p>
+    <CodeExample Code="@richHintCode">
+        <form class="max-w-xs">
+            <FieldValidator TValue="string">
+                <ChildContent>
+                    <TextInput @bind-Value="passwordValue" Type="password" placeholder="Password" required minlength="8" />
+                </ChildContent>
+                <HintContent>
+                    <ul class="text-xs list-disc ml-4">
+                        <li>At least 8 characters</li>
+                        <li>One uppercase letter</li>
+                        <li>One number</li>
+                    </ul>
+                </HintContent>
+            </FieldValidator>
+        </form>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Select</h2>
+    <p class="mb-4 text-sm text-base-content/70">FieldValidator works with Select and other input components.</p>
+    <CodeExample Code="@selectCode">
+        <form class="max-w-xs flex flex-col gap-4">
+            <FieldValidator TValue="string" Hint="Please select a country">
+                <Select @bind-Value="selectedCountry" required>
+                    <option value="">Choose a country...</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="CA">Canada</option>
+                </Select>
+            </FieldValidator>
+            <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
+        </form>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Textarea</h2>
+    <p class="mb-4 text-sm text-base-content/70">FieldValidator also works with Textarea components.</p>
+    <CodeExample Code="@textareaCode">
+        <form class="max-w-md flex flex-col gap-4">
+            <FieldValidator TValue="string" Hint="Please enter at least 10 characters">
+                <Textarea @bind-Value="bioValue" placeholder="Tell us about yourself..." required minlength="10" rows="3" />
+            </FieldValidator>
+            <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
+        </form>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Always Show Hint</h2>
+    <p class="mb-4 text-sm text-base-content/70">Set HideHintWhenValid="false" to always show the hint regardless of validation state.</p>
+    <CodeExample Code="@alwaysShowCode">
+        <form class="max-w-xs">
+            <FieldValidator TValue="string" Hint="Enter a valid email address" HideHintWhenValid="false">
+                <TextInput @bind-Value="alwaysShowEmail" Type="email" placeholder="Email" />
+            </FieldValidator>
+        </form>
+    </CodeExample>
+</section>
+
+@code {
+    private string basicEmail = "";
+    private string html5Value = "";
+    private string urlValue = "";
+    private string passwordValue = "";
+    private string selectedCountry = "";
+    private string bioValue = "";
+    private string alwaysShowEmail = "";
+    private bool formSubmitted = false;
+
+    private FormModel formModel = new();
+    private BlazorOnlyModel blazorOnlyModel = new();
+
+    private void HandleValidSubmit()
+    {
+        formSubmitted = true;
+    }
+
+    private void HandleBlazorOnlySubmit()
+    {
+        // Handle submission
+    }
+
+    private class FormModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Email is required")]
+        [System.ComponentModel.DataAnnotations.EmailAddress(ErrorMessage = "Invalid email format")]
+        public string Email { get; set; } = "";
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Password is required")]
+        [System.ComponentModel.DataAnnotations.MinLength(6, ErrorMessage = "Password must be at least 6 characters")]
+        public string Password { get; set; } = "";
+    }
+
+    private class BlazorOnlyModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Username is required")]
+        [System.ComponentModel.DataAnnotations.StringLength(20, MinimumLength = 3, ErrorMessage = "Username must be 3-20 characters")]
+        public string Username { get; set; } = "";
+    }
+
+    private string basicCode = @"<form>
+    <FieldValidator TValue=""string"" Hint=""Please enter your email"">
+        <TextInput @bind-Value=""email"" Type=""email"" placeholder=""Email"" required />
+    </FieldValidator>
+    <Button Type=""submit"">Submit</Button>
+</form>";
+
+    private string editFormCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
+    <DataAnnotationsValidator />
+
+    <FieldValidator For=""@(() => formModel.Email)"" Hint=""Invalid email format"">
+        <TextInput @bind-Value=""formModel.Email"" Type=""email"" placeholder=""Email"" required />
+    </FieldValidator>
+
+    <FieldValidator For=""@(() => formModel.Password)"" Hint=""Password is required"">
+        <TextInput @bind-Value=""formModel.Password"" Type=""password"" placeholder=""Password"" required minlength=""6"" />
+    </FieldValidator>
+
+    <Button Type=""submit"" Color=""ButtonColor.Primary"">Sign In</Button>
+</EditForm>";
+
+    private string html5OnlyCode = @"<form>
+    <FieldValidator TValue=""string"" Mode=""FieldValidatorMode.Html5Only"" Hint=""Required field"">
+        <TextInput @bind-Value=""name"" placeholder=""Name"" required />
+    </FieldValidator>
+    <FieldValidator TValue=""string"" Mode=""FieldValidatorMode.Html5Only"" Hint=""Must be a valid URL"">
+        <TextInput @bind-Value=""url"" Type=""url"" placeholder=""Website URL"" />
+    </FieldValidator>
+</form>";
+
+    private string blazorOnlyCode = @"<EditForm Model=""@model"" OnValidSubmit=""@HandleSubmit"">
+    <DataAnnotationsValidator />
+
+    <FieldValidator For=""@(() => model.Username)"" Mode=""FieldValidatorMode.BlazorOnly"">
+        <TextInput @bind-Value=""model.Username"" placeholder=""Username"" />
+    </FieldValidator>
+
+    <Button Type=""submit"">Submit</Button>
+</EditForm>";
+
+    private string richHintCode = @"<FieldValidator TValue=""string"">
+    <ChildContent>
+        <TextInput @bind-Value=""password"" Type=""password"" placeholder=""Password"" required minlength=""8"" />
+    </ChildContent>
+    <HintContent>
+        <ul class=""text-xs list-disc ml-4"">
+            <li>At least 8 characters</li>
+            <li>One uppercase letter</li>
+            <li>One number</li>
+        </ul>
+    </HintContent>
+</FieldValidator>";
+
+    private string selectCode = @"<form>
+    <FieldValidator TValue=""string"" Hint=""Please select a country"">
+        <Select @bind-Value=""country"" required>
+            <option value="""">Choose a country...</option>
+            <option value=""US"">United States</option>
+            <option value=""UK"">United Kingdom</option>
+        </Select>
+    </FieldValidator>
+</form>";
+
+    private string textareaCode = @"<form>
+    <FieldValidator TValue=""string"" Hint=""Please enter at least 10 characters"">
+        <Textarea @bind-Value=""bio"" placeholder=""Tell us about yourself..."" required minlength=""10"" />
+    </FieldValidator>
+</form>";
+
+    private string alwaysShowCode = @"<FieldValidator TValue=""string"" Hint=""Enter a valid email address"" HideHintWhenValid=""false"">
+    <TextInput @bind-Value=""email"" Type=""email"" placeholder=""Email"" />
+</FieldValidator>";
+}
