@@ -68,6 +68,12 @@
     public bool Disabled { get; set; }
 
     /// <summary>
+    /// Shows the button in an active/pressed state. Useful for toggle buttons.
+    /// </summary>
+    [Parameter]
+    public bool Active { get; set; }
+
+    /// <summary>
     /// The content to display inside the button.
     /// </summary>
     [Parameter]
@@ -89,7 +95,8 @@
         Wide ? "btn-wide" : null,
         Block ? "btn-block" : null,
         Square ? "btn-square" : null,
-        Circle ? "btn-circle" : null
+        Circle ? "btn-circle" : null,
+        Active ? "btn-active" : null
     );
 
     private string? ColorClass => Color switch
@@ -120,6 +127,7 @@
     {
         ButtonStyle.Default => null,
         ButtonStyle.Outline => "btn-outline",
+        ButtonStyle.Dash => "btn-dash",
         ButtonStyle.Soft => "btn-soft",
         ButtonStyle.Ghost => "btn-ghost",
         ButtonStyle.Link => "btn-link",

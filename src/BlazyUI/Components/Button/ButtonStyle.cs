@@ -9,6 +9,8 @@ public enum ButtonStyle
     Default,
     /// <summary>Outline style with transparent background.</summary>
     Outline,
+    /// <summary>Dashed border style.</summary>
+    Dash,
     /// <summary>Soft style with muted background.</summary>
     Soft,
     /// <summary>Ghost style with no background.</summary>

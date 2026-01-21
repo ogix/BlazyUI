@@ -40,6 +40,7 @@
         <div class="flex flex-wrap gap-2">
             <Button Color="ButtonColor.Primary">Solid</Button>
             <Button Color="ButtonColor.Primary" Style="ButtonStyle.Outline">Outline</Button>
+            <Button Color="ButtonColor.Primary" Style="ButtonStyle.Dash">Dash</Button>
             <Button Color="ButtonColor.Primary" Style="ButtonStyle.Soft">Soft</Button>
             <Button Color="ButtonColor.Primary" Style="ButtonStyle.Ghost">Ghost</Button>
             <Button Color="ButtonColor.Primary" Style="ButtonStyle.Link">Link</Button>
@@ -73,6 +74,7 @@
     <h2 class="text-xl font-semibold mb-4">States</h2>
     <CodeExample Code="@statesCode">
         <div class="flex flex-wrap gap-2">
+            <Button Color="ButtonColor.Primary" Active>Active</Button>
             <Button Color="ButtonColor.Primary" Disabled>Disabled</Button>
             <Button Color="ButtonColor.Primary" Loading>Loading</Button>
             <Button Color="ButtonColor.Secondary" Style="ButtonStyle.Outline" Loading>Loading Outline</Button>
@@ -126,6 +128,7 @@
 
     private string stylesCode = @"<Button Color=""ButtonColor.Primary"">Solid</Button>
 <Button Color=""ButtonColor.Primary"" Style=""ButtonStyle.Outline"">Outline</Button>
+<Button Color=""ButtonColor.Primary"" Style=""ButtonStyle.Dash"">Dash</Button>
 <Button Color=""ButtonColor.Primary"" Style=""ButtonStyle.Soft"">Soft</Button>
 <Button Color=""ButtonColor.Primary"" Style=""ButtonStyle.Ghost"">Ghost</Button>
 <Button Color=""ButtonColor.Primary"" Style=""ButtonStyle.Link"">Link</Button>";
@@ -139,7 +142,8 @@
 </Button>
 <Button Color=""ButtonColor.Info"" Block>Block (Full Width)</Button>";
 
-    private string statesCode = @"<Button Color=""ButtonColor.Primary"" Disabled>Disabled</Button>
+    private string statesCode = @"<Button Color=""ButtonColor.Primary"" Active>Active</Button>
+<Button Color=""ButtonColor.Primary"" Disabled>Disabled</Button>
 <Button Color=""ButtonColor.Primary"" Loading>Loading</Button>
 <Button Color=""ButtonColor.Secondary"" Style=""ButtonStyle.Outline"" Loading>Loading Outline</Button>";
 
