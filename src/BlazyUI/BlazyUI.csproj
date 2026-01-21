@@ -11,8 +11,8 @@
     <Authors>ogix</Authors>
     <Description>A Blazor component library wrapping DaisyUI v5 with Tailwind CSS v4. Provides strongly-typed, reusable UI components for Blazor applications.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/ogix/blazy-ui</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ogix/blazy-ui</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ogix/BlazyUI</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ogix/BlazyUI</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>blazor;daisyui;tailwindcss;components;ui;razor</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
