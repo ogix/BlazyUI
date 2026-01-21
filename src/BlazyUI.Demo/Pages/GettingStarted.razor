@@ -1,0 +1,307 @@
+@page "/getting-started"
+
+<PageTitle>Getting Started - BlazyUI</PageTitle>
+
+<!-- Hero Section -->
+<div class="hero bg-gradient-to-br from-primary/10 via-base-200 to-secondary/10 rounded-box mb-8">
+    <div class="hero-content text-center py-12">
+        <div class="max-w-2xl">
+            <h1 class="text-4xl font-bold mb-4">Get Started with BlazyUI</h1>
+            <p class="text-lg text-base-content/70 mb-6">
+                Build beautiful Blazor applications with DaisyUI v5 components.
+                Strongly-typed, fully customizable, and ready for production.
+            </p>
+            <div class="flex gap-2 justify-center flex-wrap">
+                <Badge Variant="BadgeVariant.Primary" Size="BadgeSize.Large">Blazor</Badge>
+                <Badge Variant="BadgeVariant.Secondary" Size="BadgeSize.Large">DaisyUI v5</Badge>
+                <Badge Variant="BadgeVariant.Accent" Size="BadgeSize.Large">Tailwind CSS v4</Badge>
+                <Badge Variant="BadgeVariant.Ghost" Size="BadgeSize.Large">.NET 10</Badge>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <Card Class="bg-base-200">
+        <CardBody>
+            <div class="flex items-center gap-3 mb-2">
+                <div class="p-2 bg-primary/10 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h3 class="card-title text-base">Strongly Typed</h3>
+            </div>
+            <p class="text-sm text-base-content/70">Full IntelliSense support with typed parameters and enums for all component options.</p>
+        </CardBody>
+    </Card>
+    <Card Class="bg-base-200">
+        <CardBody>
+            <div class="flex items-center gap-3 mb-2">
+                <div class="p-2 bg-secondary/10 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                    </svg>
+                </div>
+                <h3 class="card-title text-base">Themeable</h3>
+            </div>
+            <p class="text-sm text-base-content/70">Built-in light and dark themes with full DaisyUI theme support.</p>
+        </CardBody>
+    </Card>
+    <Card Class="bg-base-200">
+        <CardBody>
+            <div class="flex items-center gap-3 mb-2">
+                <div class="p-2 bg-accent/10 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h3 class="card-title text-base">Form Integration</h3>
+            </div>
+            <p class="text-sm text-base-content/70">Seamless integration with Blazor EditForm and validation.</p>
+        </CardBody>
+    </Card>
+</div>
+
+<!-- Installation Section -->
+<div class="prose max-w-none mb-6">
+    <h2 class="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        Installation
+    </h2>
+</div>
+
+<div class="grid gap-4 mb-8">
+    <!-- Step 1 -->
+    <div class="flex gap-4">
+        <div class="flex-none">
+            <div class="w-10 h-10 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">1</div>
+        </div>
+        <div class="flex-1">
+            <h3 class="font-semibold mb-2">Add the NuGet Package</h3>
+            <p class="text-base-content/70 text-sm mb-3">Install BlazyUI via the .NET CLI:</p>
+            <div class="mockup-code">
+                <pre data-prefix="$"><code>dotnet add package BlazyUI</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="flex gap-4">
+        <div class="flex-none">
+            <div class="w-10 h-10 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">2</div>
+        </div>
+        <div class="flex-1">
+            <h3 class="font-semibold mb-2">Register Services</h3>
+            <p class="text-base-content/70 text-sm mb-3">Add BlazyUI services in your <code class="bg-base-300 px-1 rounded">Program.cs</code>:</p>
+            <div class="mockup-code">
+                <pre data-prefix=""><code>builder.Services.AddBlazyUI();</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="flex gap-4">
+        <div class="flex-none">
+            <div class="w-10 h-10 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">3</div>
+        </div>
+        <div class="flex-1">
+            <h3 class="font-semibold mb-2">Add the Imports</h3>
+            <p class="text-base-content/70 text-sm mb-3">Add the BlazyUI namespace to your <code class="bg-base-300 px-1 rounded">_Imports.razor</code>:</p>
+            <div class="mockup-code">
+                <pre data-prefix=""><code>@@using BlazyUI</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="flex gap-4">
+        <div class="flex-none">
+            <div class="w-10 h-10 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">4</div>
+        </div>
+        <div class="flex-1">
+            <h3 class="font-semibold mb-2">Install Tailwind CSS & DaisyUI</h3>
+            <p class="text-base-content/70 text-sm mb-3">Install the required npm packages in your Blazor project:</p>
+            <div class="mockup-code">
+                <pre data-prefix="$"><code>npm install tailwindcss@@latest @@tailwindcss/cli@@latest daisyui@@latest</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="flex gap-4">
+        <div class="flex-none">
+            <div class="w-10 h-10 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">5</div>
+        </div>
+        <div class="flex-1">
+            <h3 class="font-semibold mb-2">Configure Your CSS</h3>
+            <p class="text-base-content/70 text-sm mb-3">Create or update your CSS file (e.g., <code class="bg-base-300 px-1 rounded">wwwroot/css/app.css</code>):</p>
+            <div class="mockup-code text-xs">
+                <pre data-prefix=" 1"><code>@@import "tailwindcss";</code></pre>
+                <pre data-prefix=" 2"><code>@@plugin "daisyui";</code></pre>
+                <pre data-prefix=" 3"><code></code></pre>
+                <pre data-prefix=" 4"><code>/* Scan your project files for Tailwind classes */</code></pre>
+                <pre data-prefix=" 5"><code>@@source "../../**/*.razor";</code></pre>
+                <pre data-prefix=" 6"><code>@@source "../../**/*.cs";</code></pre>
+                <pre data-prefix=" 7"><code></code></pre>
+                <pre data-prefix=" 8"><code>/* BlazyUI required Tailwind utility classes */</code></pre>
+                <pre data-prefix=" 9"><code>@@source inline("</code></pre>
+                <pre data-prefix="10"><code>  flex flex-1 inline-grid sticky</code></pre>
+                <pre data-prefix="11"><code>  gap-4 p-4 py-4 top-0</code></pre>
+                <pre data-prefix="12"><code>  w-4 w-6 w-80 h-4 h-6 min-h-full</code></pre>
+                <pre data-prefix="13"><code>  text-lg font-bold</code></pre>
+                <pre data-prefix="14"><code>  shadow shadow-sm z-50 rounded-full</code></pre>
+                <pre data-prefix="15"><code>  justify-start justify-center justify-end</code></pre>
+                <pre data-prefix="16"><code>  animate-ping animate-bounce</code></pre>
+                <pre data-prefix="17"><code>");</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="flex gap-4">
+        <div class="flex-none">
+            <div class="w-10 h-10 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">6</div>
+        </div>
+        <div class="flex-1">
+            <h3 class="font-semibold mb-2">Add Build Scripts</h3>
+            <p class="text-base-content/70 text-sm mb-3">Add these scripts to your <code class="bg-base-300 px-1 rounded">package.json</code>:</p>
+            <div class="mockup-code text-xs">
+                <pre data-prefix="1"><code>"scripts": @("{")</code></pre>
+                <pre data-prefix="2"><code>  "build:css": "npx @@tailwindcss/cli -i ./wwwroot/css/app.css -o ./wwwroot/css/app.min.css --minify",</code></pre>
+                <pre data-prefix="3"><code>  "watch:css": "npx @@tailwindcss/cli -i ./wwwroot/css/app.css -o ./wwwroot/css/app.min.css --watch"</code></pre>
+                <pre data-prefix="4"><code>@("}")</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 7 -->
+    <div class="flex gap-4">
+        <div class="flex-none">
+            <div class="w-10 h-10 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">7</div>
+        </div>
+        <div class="flex-1">
+            <h3 class="font-semibold mb-2">Integrate with .NET Build (Optional)</h3>
+            <p class="text-base-content/70 text-sm mb-3">Add these targets to your <code class="bg-base-300 px-1 rounded">.csproj</code> to automatically build CSS:</p>
+            <div class="mockup-code text-xs">
+                <pre data-prefix=" 1"><code>&lt;!-- Tailwind CSS Build Integration --&gt;</code></pre>
+                <pre data-prefix=" 2"><code>&lt;Target Name="CheckNpmInstall" BeforeTargets="BuildTailwind"&gt;</code></pre>
+                <pre data-prefix=" 3"><code>  &lt;Exec Command="npm install" WorkingDirectory="$(MSBuildProjectDirectory)"</code></pre>
+                <pre data-prefix=" 4"><code>        Condition="!Exists('node_modules')" /&gt;</code></pre>
+                <pre data-prefix=" 5"><code>&lt;/Target&gt;</code></pre>
+                <pre data-prefix=" 6"><code></code></pre>
+                <pre data-prefix=" 7"><code>&lt;Target Name="BuildTailwind" BeforeTargets="Build"</code></pre>
+                <pre data-prefix=" 8"><code>        Condition="'$(Configuration)' == 'Release' OR !Exists('wwwroot/css/app.min.css')"&gt;</code></pre>
+                <pre data-prefix=" 9"><code>  &lt;Exec Command="npm run build:css" WorkingDirectory="$(MSBuildProjectDirectory)" /&gt;</code></pre>
+                <pre data-prefix="10"><code>&lt;/Target&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 8 -->
+    <div class="flex gap-4">
+        <div class="flex-none">
+            <div class="w-10 h-10 rounded-full bg-primary text-primary-content flex items-center justify-center font-bold">8</div>
+        </div>
+        <div class="flex-1">
+            <h3 class="font-semibold mb-2">Add Stylesheet to HTML</h3>
+            <p class="text-base-content/70 text-sm mb-3">Add the compiled stylesheet to your <code class="bg-base-300 px-1 rounded">index.html</code> or <code class="bg-base-300 px-1 rounded">App.razor</code>:</p>
+            <div class="mockup-code">
+                <pre data-prefix=""><code>&lt;link href="css/app.min.css" rel="stylesheet" /&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<Alert Variant="AlertVariant.Info" Class="mb-8">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <span>For more details on Tailwind CSS and DaisyUI setup, visit the <a href="https://daisyui.com/docs/install/" target="_blank" class="link">DaisyUI documentation</a>.</span>
+</Alert>
+
+<!-- First Component Section -->
+<div class="prose max-w-none mb-4">
+    <h2 class="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Your First Component
+    </h2>
+    <p>Once installed, you can start using BlazyUI components in your Blazor pages:</p>
+</div>
+
+<CodeExample Title="Button Example" Code="@buttonCode">
+    <Button Color="ButtonColor.Primary">Click me</Button>
+</CodeExample>
+
+<div class="prose max-w-none mb-4 mt-8">
+    <h2 class="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+        </svg>
+        Customization with Tailwind CSS
+    </h2>
+    <p>All BlazyUI components accept a <code>Class</code> parameter to add custom Tailwind CSS classes:</p>
+</div>
+
+<CodeExample Title="Custom Styling" Code="@customCode">
+    <div class="flex gap-2 flex-wrap items-center">
+        <Button Color="ButtonColor.Primary" Class="rounded-full">Rounded Full</Button>
+        <Button Color="ButtonColor.Secondary" Class="shadow-lg">With Shadow</Button>
+        <Button Color="ButtonColor.Accent" Class="uppercase tracking-wider">Uppercase</Button>
+        <Button Class="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-none">Gradient</Button>
+    </div>
+</CodeExample>
+
+<!-- Next Steps Section -->
+<div class="mt-8">
+    <div class="prose max-w-none mb-4">
+        <h2 class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+            Next Steps
+        </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <a href="buttons" class="card bg-base-200 hover:bg-base-300 transition-colors cursor-pointer">
+            <CardBody Class="p-4">
+                <h4 class="font-semibold text-sm">Buttons</h4>
+                <p class="text-xs text-base-content/60">Actions & interactions</p>
+            </CardBody>
+        </a>
+        <a href="cards" class="card bg-base-200 hover:bg-base-300 transition-colors cursor-pointer">
+            <CardBody Class="p-4">
+                <h4 class="font-semibold text-sm">Cards</h4>
+                <p class="text-xs text-base-content/60">Content containers</p>
+            </CardBody>
+        </a>
+        <a href="modals" class="card bg-base-200 hover:bg-base-300 transition-colors cursor-pointer">
+            <CardBody Class="p-4">
+                <h4 class="font-semibold text-sm">Modals</h4>
+                <p class="text-xs text-base-content/60">Dialogs & popups</p>
+            </CardBody>
+        </a>
+        <a href="textinputs" class="card bg-base-200 hover:bg-base-300 transition-colors cursor-pointer">
+            <CardBody Class="p-4">
+                <h4 class="font-semibold text-sm">Form Inputs</h4>
+                <p class="text-xs text-base-content/60">Text, select & more</p>
+            </CardBody>
+        </a>
+    </div>
+</div>
+
+@code {
+    private const string buttonCode = @"<Button Color=""ButtonColor.Primary"">Click me</Button>";
+
+    private const string customCode = @"<Button Color=""ButtonColor.Primary"" Class=""rounded-full"">Rounded Full</Button>
+<Button Color=""ButtonColor.Secondary"" Class=""shadow-lg"">With Shadow</Button>
+<Button Color=""ButtonColor.Accent"" Class=""uppercase tracking-wider"">Uppercase</Button>
+<Button Class=""bg-gradient-to-r from-purple-500 to-pink-500 text-white border-none"">Gradient</Button>";
+}
