@@ -45,13 +45,6 @@
     public bool Responsive { get; set; }
 
     /// <summary>
-    /// When true, the drawer is contained within its parent element using absolute positioning.
-    /// Useful for demo/documentation pages where multiple drawers should not overlap.
-    /// </summary>
-    [Parameter]
-    public bool Contained { get; set; }
-
-    /// <summary>
     /// The content of the drawer (typically DrawerContent and DrawerSide components).
     /// </summary>
     [Parameter]
@@ -69,7 +62,7 @@
 
     protected override void OnParametersSet()
     {
-        _context = new DrawerContext(_drawerId, Contained);
+        _context = new DrawerContext(_drawerId);
     }
 
     private async Task OnToggle(ChangeEventArgs e)
@@ -85,8 +78,7 @@
     private string CssClass => MergeClasses(
         "drawer",
         PositionClass,
-        ResponsiveClass,
-        Contained ? "relative" : null
+        ResponsiveClass
     );
 
     private string? PositionClass => Position switch

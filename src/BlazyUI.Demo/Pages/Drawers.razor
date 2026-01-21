@@ -8,7 +8,7 @@
     <h2 class="text-xl font-semibold mb-4">Basic Drawer</h2>
     <p class="mb-4 text-sm opacity-70">A drawer with a toggle button and sidebar content</p>
     <CodeExample Code="@basicCode">
-        <Drawer Contained Class="h-52 rounded-box overflow-hidden">
+        <Drawer Class="relative h-52 rounded-box overflow-hidden">
             <DrawerContent Class="flex flex-col items-center justify-center">
                 <DrawerToggle>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
@@ -17,7 +17,7 @@
                     Open Drawer
                 </DrawerToggle>
             </DrawerContent>
-            <DrawerSide>
+            <DrawerSide Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0">
                 <ul class="menu text-base-content">
                     <li><a>Menu Item 1</a></li>
                     <li><a>Menu Item 2</a></li>
@@ -32,7 +32,7 @@
     <h2 class="text-xl font-semibold mb-4">Right-Side Drawer</h2>
     <p class="mb-4 text-sm opacity-70">Drawer opens from the right side using drawer-end</p>
     <CodeExample Code="@rightSideCode">
-        <Drawer Position="DrawerPosition.End" Class="h-52 rounded-box overflow-hidden">
+        <Drawer Position="DrawerPosition.End" Class="relative h-52 rounded-box overflow-hidden">
             <DrawerContent Class="flex flex-col items-center justify-center">
                 <DrawerToggle>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
@@ -41,7 +41,7 @@
                     Open Right Drawer
                 </DrawerToggle>
             </DrawerContent>
-            <DrawerSide Class="z-[60]">
+            <DrawerSide Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0 z-[60]">
                 <ul class="menu text-base-content">
                     <li><a>Right Side Item 1</a></li>
                     <li><a>Right Side Item 2</a></li>
@@ -56,7 +56,7 @@
     <h2 class="text-xl font-semibold mb-4">Responsive Drawer</h2>
     <p class="mb-4 text-sm opacity-70">Drawer is always open on large screens (lg:drawer-open). Resize your browser to see the effect.</p>
     <CodeExample Code="@responsiveCode">
-        <Drawer Contained Responsive Class="h-52 rounded-box overflow-hidden border border-base-300">
+        <Drawer Responsive Class="relative h-52 rounded-box overflow-hidden border border-base-300">
             <DrawerContent Class="flex flex-col items-center justify-center">
                 <DrawerToggle Class="lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
@@ -66,7 +66,7 @@
                 </DrawerToggle>
                 <p class="hidden lg:block">Sidebar is always visible on large screens</p>
             </DrawerContent>
-            <DrawerSide>
+            <DrawerSide Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0">
                 <ul class="menu text-base-content">
                     <li><a>Dashboard</a></li>
                     <li><a>Settings</a></li>
@@ -90,7 +90,7 @@
                     @(isDrawerOpen ? "Open" : "Closed")
                 </span>
             </div>
-            <Drawer Contained @bind-Open="isDrawerOpen" Class="h-52 rounded-box overflow-hidden border border-base-300">
+            <Drawer @bind-Open="isDrawerOpen" Class="relative h-52 rounded-box overflow-hidden border border-base-300">
                 <DrawerContent Class="flex flex-col items-center justify-center">
                     <DrawerToggle>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
@@ -99,7 +99,7 @@
                         Toggle via Label
                     </DrawerToggle>
                 </DrawerContent>
-                <DrawerSide>
+                <DrawerSide Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0">
                     <ul class="menu text-base-content">
                         <li><a>Bound Item 1</a></li>
                         <li><a>Bound Item 2</a></li>
@@ -115,7 +115,7 @@
     <h2 class="text-xl font-semibold mb-4">Custom Sidebar Styling</h2>
     <p class="mb-4 text-sm opacity-70">Customize the sidebar width and background</p>
     <CodeExample Code="@customStylingCode">
-        <Drawer Contained Class="h-52 rounded-box overflow-hidden">
+        <Drawer Class="relative h-52 rounded-box overflow-hidden">
             <DrawerContent Class="flex flex-col items-center justify-center bg-base-100">
                 <DrawerToggle>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
@@ -124,7 +124,7 @@
                     Open Wide Drawer
                 </DrawerToggle>
             </DrawerContent>
-            <DrawerSide Width="w-96" Background="bg-primary text-primary-content">
+            <DrawerSide Width="w-96" Background="bg-primary text-primary-content" Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-4">Custom Styled Sidebar</h3>
                     <p>This sidebar uses custom width (w-96) and primary color background.</p>
