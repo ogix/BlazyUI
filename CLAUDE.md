@@ -34,8 +34,9 @@ dotnet watch --project src/BlazyUI.Demo
 Each component lives in its own folder under `Components/`:
 ```
 src/BlazyUI/Components/ComponentName/
-├── ComponentName.razor    # Component markup and code
-├── ComponentNameVariant.cs  # Enum for variant parameter
+├── ComponentName.razor      # Component markup and code
+├── ComponentNameColor.cs    # Enum for color parameter
+├── ComponentNameStyle.cs    # Enum for style parameter (if applicable)
 └── ComponentNameSize.cs     # Enum for size parameter (if applicable)
 ```
 
@@ -54,8 +55,8 @@ src/BlazyUI/Components/ComponentName/
   - `MergeClasses()` helper with automatic validation color support
 
 **Enum Conventions:**
-- Most enums include a `None` value for default/inherited behavior
-- Some enums (like LoadingType, LoadingSize) have explicit defaults without `None`
+- Most enums include a `Default` value for default/inherited behavior
+- Some enums (like LoadingType, LoadingSize) have explicit first values without `Default`
 - Switch expressions should throw `ArgumentOutOfRangeException` for unhandled values
 
 **CSS Setup:**
@@ -63,6 +64,13 @@ Tailwind CSS is configured in `src/BlazyUI.Demo/wwwroot/css/app.css` using:
 - Tailwind CSS v4 with `@import "tailwindcss"`
 - DaisyUI v5 as a plugin with light/dark theme support
 - `@source` directives to scan component files for class usage
+
+**Service Registration:**
+Consumers must register BlazyUI services in `Program.cs`:
+```csharp
+builder.Services.AddBlazyUI();
+```
+This registers TailwindMerge, IModalService, and IToastService.
 
 ## Design Documents
 
