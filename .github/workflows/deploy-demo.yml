@@ -45,7 +45,7 @@ jobs:
         run: dotnet publish src/BlazyUI.Demo/BlazyUI.Demo.csproj -c Release -o release
 
       - name: Update base href for GitHub Pages
-        run: sed -i 's|<base href="/" />|<base href="/blazy-ui/" />|g' release/wwwroot/index.html
+        run: sed -i 's|<base href="/" />|<base href="/BlazyUI/" />|g' release/wwwroot/index.html
 
       - name: Add .nojekyll file
         run: touch release/wwwroot/.nojekyll
