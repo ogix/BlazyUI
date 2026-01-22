@@ -14,8 +14,8 @@
     <p class="mb-4 text-sm text-base-content/70">Wrap any input with FormField to add a label and validation.</p>
     <CodeExample Code="@basicCode">
         <form class="max-w-sm flex flex-col gap-4">
-            <FormField TValue="string" LabelText="Email" Hint="Please enter a valid email">
-                <TextInput @bind-Value="basicEmail" Type="email" placeholder="Enter your email" required />
+            <FormField LabelText="Email" For="@(() => basicEmail)" Hint="Please enter a valid email">
+                <TextInput @bind-Value="basicEmail" id="basicEmail" Type="email" placeholder="Enter your email" required />
             </FormField>
             <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
         </form>
@@ -63,17 +63,17 @@
     <p class="mb-4 text-sm text-base-content/70">Add helper text that's always visible below the input.</p>
     <CodeExample Code="@helperTextCode">
         <div class="max-w-sm flex flex-col gap-4">
-            <FormField TValue="string"
-                       LabelText="Username"
+            <FormField LabelText="Username"
+                       For="@(() => username)"
                        HelperText="Choose a unique username (3-20 characters)"
                        Hint="Username must be 3-20 characters">
-                <TextInput @bind-Value="username" placeholder="Username" required minlength="3" maxlength="20" />
+                <TextInput @bind-Value="username" id="username" placeholder="Username" required minlength="3" maxlength="20" />
             </FormField>
 
-            <FormField TValue="string"
-                       LabelText="Website"
+            <FormField LabelText="Website"
+                       For="@(() => website)"
                        HelperText="Optional: Your personal website or portfolio">
-                <TextInput @bind-Value="website" Type="url" placeholder="https://example.com" />
+                <TextInput @bind-Value="website" id="website" Type="url" placeholder="https://example.com" />
             </FormField>
         </div>
     </CodeExample>
@@ -84,11 +84,11 @@
     <p class="mb-4 text-sm text-base-content/70">FormField works with any input component including Select.</p>
     <CodeExample Code="@selectCode">
         <div class="max-w-sm flex flex-col gap-4">
-            <FormField TValue="string"
-                       LabelText="Country"
+            <FormField LabelText="Country"
+                       For="@(() => selectedCountry)"
                        Hint="Please select a country"
                        Required>
-                <Select @bind-Value="selectedCountry" required>
+                <Select @bind-Value="selectedCountry" id="selectedCountry" required>
                     <option value="">Choose a country...</option>
                     <option value="US">United States</option>
                     <option value="UK">United Kingdom</option>
@@ -97,10 +97,10 @@
                 </Select>
             </FormField>
 
-            <FormField TValue="string"
-                       LabelText="Language"
+            <FormField LabelText="Language"
+                       For="@(() => selectedLanguage)"
                        HelperText="Select your preferred language">
-                <Select @bind-Value="selectedLanguage">
+                <Select @bind-Value="selectedLanguage" id="selectedLanguage">
                     <option value="en">English</option>
                     <option value="es">Spanish</option>
                     <option value="fr">French</option>
@@ -116,15 +116,15 @@
     <p class="mb-4 text-sm text-base-content/70">FormField also works with Checkbox and Toggle components.</p>
     <CodeExample Code="@checkboxCode">
         <div class="max-w-sm flex flex-col gap-4">
-            <FormField TValue="bool" LabelText="Notifications">
+            <FormField LabelText="Notifications" For="@(() => emailNotifications)">
                 <div class="flex items-center gap-2">
-                    <Checkbox @bind-Value="emailNotifications" Color="CheckboxColor.Primary" />
+                    <Checkbox @bind-Value="emailNotifications" id="emailNotifications" Color="CheckboxColor.Primary" />
                     <span>Email notifications</span>
                 </div>
             </FormField>
 
-            <FormField TValue="bool" LabelText="Dark Mode" HelperText="Enable dark mode for the interface">
-                <Toggle @bind-Value="darkMode" Color="ToggleColor.Primary" />
+            <FormField LabelText="Dark Mode" For="@(() => darkMode)" HelperText="Enable dark mode for the interface">
+                <Toggle @bind-Value="darkMode" id="darkMode" Color="ToggleColor.Primary" />
             </FormField>
         </div>
     </CodeExample>
@@ -135,11 +135,11 @@
     <p class="mb-4 text-sm text-base-content/70">Control which validation feedback is shown.</p>
     <CodeExample Code="@validationModesCode">
         <div class="max-w-sm flex flex-col gap-4">
-            <FormField TValue="string"
-                       LabelText="HTML5 Only"
+            <FormField LabelText="HTML5 Only"
+                       For="@(() => html5OnlyValue)"
                        ValidationMode="FieldValidatorMode.Html5Only"
                        Hint="This field is required">
-                <TextInput @bind-Value="html5OnlyValue" placeholder="HTML5 validation only" required />
+                <TextInput @bind-Value="html5OnlyValue" id="html5OnlyValue" placeholder="HTML5 validation only" required />
             </FormField>
 
             <EditForm Model="@modeModel" class="contents">
@@ -270,8 +270,8 @@
     }
 
     private string basicCode = @"<form class=""flex flex-col gap-4"">
-    <FormField TValue=""string"" LabelText=""Email"" Hint=""Please enter a valid email"">
-        <TextInput @bind-Value=""email"" Type=""email"" placeholder=""Enter your email"" required />
+    <FormField LabelText=""Email"" For=""@(() => email)"" Hint=""Please enter a valid email"">
+        <TextInput @bind-Value=""email"" id=""email"" Type=""email"" placeholder=""Enter your email"" required />
     </FormField>
     <Button Type=""submit"">Submit</Button>
 </form>";
@@ -302,51 +302,51 @@
     <Button Type=""submit"" Color=""ButtonColor.Primary"">Sign Up</Button>
 </EditForm>";
 
-    private string helperTextCode = @"<FormField TValue=""string""
-           LabelText=""Username""
+    private string helperTextCode = @"<FormField LabelText=""Username""
+           For=""@(() => username)""
            HelperText=""Choose a unique username (3-20 characters)""
            Hint=""Username must be 3-20 characters"">
-    <TextInput @bind-Value=""username"" placeholder=""Username"" required minlength=""3"" maxlength=""20"" />
+    <TextInput @bind-Value=""username"" id=""username"" placeholder=""Username"" required minlength=""3"" maxlength=""20"" />
 </FormField>
 
-<FormField TValue=""string""
-           LabelText=""Website""
+<FormField LabelText=""Website""
+           For=""@(() => website)""
            HelperText=""Optional: Your personal website or portfolio"">
-    <TextInput @bind-Value=""website"" Type=""url"" placeholder=""https://example.com"" />
+    <TextInput @bind-Value=""website"" id=""website"" Type=""url"" placeholder=""https://example.com"" />
 </FormField>";
 
-    private string selectCode = @"<FormField TValue=""string""
-           LabelText=""Country""
+    private string selectCode = @"<FormField LabelText=""Country""
+           For=""@(() => country)""
            Hint=""Please select a country""
            Required>
-    <Select @bind-Value=""country"" required>
+    <Select @bind-Value=""country"" id=""country"" required>
         <option value="""">Choose a country...</option>
         <option value=""US"">United States</option>
         <option value=""UK"">United Kingdom</option>
     </Select>
 </FormField>";
 
-    private string checkboxCode = @"<FormField TValue=""bool"" LabelText=""Notifications"">
+    private string checkboxCode = @"<FormField LabelText=""Notifications"" For=""@(() => notifications)"">
     <div class=""flex items-center gap-2"">
-        <Checkbox @bind-Value=""notifications"" Color=""CheckboxColor.Primary"" />
+        <Checkbox @bind-Value=""notifications"" id=""notifications"" Color=""CheckboxColor.Primary"" />
         <span>Email notifications</span>
     </div>
 </FormField>
 
-<FormField TValue=""bool"" LabelText=""Dark Mode"" HelperText=""Enable dark mode for the interface"">
-    <Toggle @bind-Value=""darkMode"" Color=""ToggleColor.Primary"" />
+<FormField LabelText=""Dark Mode"" For=""@(() => darkMode)"" HelperText=""Enable dark mode for the interface"">
+    <Toggle @bind-Value=""darkMode"" id=""darkMode"" Color=""ToggleColor.Primary"" />
 </FormField>";
 
-    private string validationModesCode = @"<FormField TValue=""string""
-           LabelText=""HTML5 Only""
+    private string validationModesCode = @"<FormField LabelText=""HTML5 Only""
+           For=""@(() => html5Value)""
            ValidationMode=""FieldValidatorMode.Html5Only""
            Hint=""This field is required"">
-    <TextInput @bind-Value=""value"" placeholder=""HTML5 validation only"" required />
+    <TextInput @bind-Value=""html5Value"" id=""html5Value"" placeholder=""HTML5 validation only"" required />
 </FormField>
 
 <FormField LabelText=""Blazor Only""
-           ValidationMode=""FieldValidatorMode.BlazorOnly""
-           For=""@(() => model.Value)"">
+           For=""@(() => model.Value)""
+           ValidationMode=""FieldValidatorMode.BlazorOnly"">
     <TextInput @bind-Value=""model.Value"" placeholder=""Blazor validation only"" />
 </FormField>";
 

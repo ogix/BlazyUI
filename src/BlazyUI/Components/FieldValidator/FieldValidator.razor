@@ -2,33 +2,38 @@
 @inherits BlazyComponentBase
 @typeparam TValue
 @using System.Linq.Expressions
+@using Microsoft.AspNetCore.Components.Forms
 
 <CascadingValue Value="_context">
-    <div class="@ComputedCssClass" @attributes="AdditionalAttributes">
-        @ChildContent
-        @if (Mode is FieldValidatorMode.Both or FieldValidatorMode.Html5Only)
+    @ChildContent
+    @if (Mode is FieldValidatorMode.Both or FieldValidatorMode.Html5Only)
+    {
+        @if (HintContent is not null)
         {
-            @if (HintContent is not null)
-            {
-                <div class="@HintCssClass">@HintContent</div>
-            }
-            else if (!string.IsNullOrEmpty(Hint))
-            {
-                <div class="@HintCssClass">@Hint</div>
-            }
+            <div class="@HintCssClass">@HintContent</div>
         }
-        @if (Mode is FieldValidatorMode.Both or FieldValidatorMode.BlazorOnly)
+        else if (!string.IsNullOrEmpty(Hint))
         {
-            @if (For is not null)
-            {
-                <ValidationMessage For="@For" class="text-error text-sm mt-1" />
-            }
+            <div class="@HintCssClass">@Hint</div>
         }
-    </div>
+    }
+    @if (Mode is FieldValidatorMode.Both or FieldValidatorMode.BlazorOnly)
+    {
+        @if (For is not null && EditContext is not null)
+        {
+            <ValidationMessage For="@For" class="text-error text-sm mt-1" />
+        }
+    }
 </CascadingValue>
 
 @code {
     private readonly FieldValidatorContext _context = new(true);
+
+    /// <summary>
+    /// The cascaded EditContext from an EditForm, if present.
+    /// </summary>
+    [CascadingParameter]
+    private EditContext? EditContext { get; set; }
 
     /// <summary>
     /// Expression for the field being validated. Used for Blazor ValidationMessage.
@@ -71,8 +76,6 @@
     /// </summary>
     [Parameter]
     public string? HintClass { get; set; }
-
-    private string ComputedCssClass => MergeClasses();
 
     private string HintCssClass => TwMerge.Merge(
         "validator-hint",

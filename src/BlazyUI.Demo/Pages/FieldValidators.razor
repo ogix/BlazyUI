@@ -14,9 +14,11 @@
     <p class="mb-4 text-sm text-base-content/70">Uses HTML5 validation attributes (required, type="email") with immediate CSS-based feedback.</p>
     <CodeExample Code="@basicCode">
         <form class="max-w-xs flex flex-col gap-4">
-            <FieldValidator TValue="string" Hint="Please enter your email">
-                <TextInput @bind-Value="basicEmail" Type="email" placeholder="Email" required />
-            </FieldValidator>
+            <div>
+                <FieldValidator TValue="string" Hint="Please enter your email">
+                    <TextInput @bind-Value="basicEmail" Type="email" placeholder="Email" required />
+                </FieldValidator>
+            </div>
             <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
         </form>
     </CodeExample>
@@ -30,13 +32,17 @@
             <DataAnnotationsValidator />
 
             <div class="flex flex-col gap-4">
-                <FieldValidator For="@(() => formModel.Email)" Hint="Invalid email format">
-                    <TextInput @bind-Value="formModel.Email" Type="email" placeholder="Email" required />
-                </FieldValidator>
+                <div>
+                    <FieldValidator For="@(() => formModel.Email)" Hint="Invalid email format">
+                        <TextInput @bind-Value="formModel.Email" Type="email" placeholder="Email" required />
+                    </FieldValidator>
+                </div>
 
-                <FieldValidator For="@(() => formModel.Password)" Hint="Password is required">
-                    <TextInput @bind-Value="formModel.Password" Type="password" placeholder="Password" required minlength="6" />
-                </FieldValidator>
+                <div>
+                    <FieldValidator For="@(() => formModel.Password)" Hint="Password is required">
+                        <TextInput @bind-Value="formModel.Password" Type="password" placeholder="Password" required minlength="6" />
+                    </FieldValidator>
+                </div>
 
                 <Button Type="submit" Color="ButtonColor.Primary" Block>Sign In</Button>
             </div>
@@ -53,12 +59,16 @@
     <p class="mb-4 text-sm text-base-content/70">Shows only HTML5 validation hints without Blazor ValidationMessage.</p>
     <CodeExample Code="@html5OnlyCode">
         <form class="max-w-xs flex flex-col gap-4">
-            <FieldValidator TValue="string" Mode="FieldValidatorMode.Html5Only" Hint="Required field">
-                <TextInput @bind-Value="html5Value" placeholder="Name" required />
-            </FieldValidator>
-            <FieldValidator TValue="string" Mode="FieldValidatorMode.Html5Only" Hint="Must be a valid URL">
-                <TextInput @bind-Value="urlValue" Type="url" placeholder="Website URL" />
-            </FieldValidator>
+            <div>
+                <FieldValidator TValue="string" Mode="FieldValidatorMode.Html5Only" Hint="Required field">
+                    <TextInput @bind-Value="html5Value" placeholder="Name" required />
+                </FieldValidator>
+            </div>
+            <div>
+                <FieldValidator TValue="string" Mode="FieldValidatorMode.Html5Only" Hint="Must be a valid URL">
+                    <TextInput @bind-Value="urlValue" Type="url" placeholder="Website URL" />
+                </FieldValidator>
+            </div>
             <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
         </form>
     </CodeExample>
@@ -72,9 +82,11 @@
             <DataAnnotationsValidator />
 
             <div class="flex flex-col gap-4">
-                <FieldValidator For="@(() => blazorOnlyModel.Username)" Mode="FieldValidatorMode.BlazorOnly">
-                    <TextInput @bind-Value="blazorOnlyModel.Username" placeholder="Username" />
-                </FieldValidator>
+                <div>
+                    <FieldValidator For="@(() => blazorOnlyModel.Username)" Mode="FieldValidatorMode.BlazorOnly">
+                        <TextInput @bind-Value="blazorOnlyModel.Username" placeholder="Username" />
+                    </FieldValidator>
+                </div>
                 <Button Type="submit" Color="ButtonColor.Primary" Block>Submit</Button>
             </div>
         </EditForm>
@@ -86,18 +98,20 @@
     <p class="mb-4 text-sm text-base-content/70">Use HintContent for complex validation hints with formatting.</p>
     <CodeExample Code="@richHintCode">
         <form class="max-w-xs">
-            <FieldValidator TValue="string">
-                <ChildContent>
-                    <TextInput @bind-Value="passwordValue" Type="password" placeholder="Password" required minlength="8" />
-                </ChildContent>
-                <HintContent>
-                    <ul class="text-xs list-disc ml-4">
-                        <li>At least 8 characters</li>
-                        <li>One uppercase letter</li>
-                        <li>One number</li>
-                    </ul>
-                </HintContent>
-            </FieldValidator>
+            <div>
+                <FieldValidator TValue="string">
+                    <ChildContent>
+                        <TextInput @bind-Value="passwordValue" Type="password" placeholder="Password" required minlength="8" />
+                    </ChildContent>
+                    <HintContent>
+                        <ul class="text-xs list-disc ml-4">
+                            <li>At least 8 characters</li>
+                            <li>One uppercase letter</li>
+                            <li>One number</li>
+                        </ul>
+                    </HintContent>
+                </FieldValidator>
+            </div>
         </form>
     </CodeExample>
 </section>
@@ -107,14 +121,16 @@
     <p class="mb-4 text-sm text-base-content/70">FieldValidator works with Select and other input components.</p>
     <CodeExample Code="@selectCode">
         <form class="max-w-xs flex flex-col gap-4">
-            <FieldValidator TValue="string" Hint="Please select a country">
-                <Select @bind-Value="selectedCountry" required>
-                    <option value="">Choose a country...</option>
-                    <option value="US">United States</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="CA">Canada</option>
-                </Select>
-            </FieldValidator>
+            <div>
+                <FieldValidator TValue="string" Hint="Please select a country">
+                    <Select @bind-Value="selectedCountry" required>
+                        <option value="">Choose a country...</option>
+                        <option value="US">United States</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="CA">Canada</option>
+                    </Select>
+                </FieldValidator>
+            </div>
             <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
         </form>
     </CodeExample>
@@ -125,9 +141,11 @@
     <p class="mb-4 text-sm text-base-content/70">FieldValidator also works with Textarea components.</p>
     <CodeExample Code="@textareaCode">
         <form class="max-w-md flex flex-col gap-4">
-            <FieldValidator TValue="string" Hint="Please enter at least 10 characters">
-                <Textarea @bind-Value="bioValue" placeholder="Tell us about yourself..." required minlength="10" rows="3" />
-            </FieldValidator>
+            <div>
+                <FieldValidator TValue="string" Hint="Please enter at least 10 characters">
+                    <Textarea @bind-Value="bioValue" placeholder="Tell us about yourself..." required minlength="10" rows="3" />
+                </FieldValidator>
+            </div>
             <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
         </form>
     </CodeExample>
@@ -138,9 +156,11 @@
     <p class="mb-4 text-sm text-base-content/70">Set HideHintWhenValid="false" to always show the hint regardless of validation state.</p>
     <CodeExample Code="@alwaysShowCode">
         <form class="max-w-xs">
-            <FieldValidator TValue="string" Hint="Enter a valid email address" HideHintWhenValid="false">
-                <TextInput @bind-Value="alwaysShowEmail" Type="email" placeholder="Email" />
-            </FieldValidator>
+            <div>
+                <FieldValidator TValue="string" Hint="Enter a valid email address" HideHintWhenValid="false">
+                    <TextInput @bind-Value="alwaysShowEmail" Type="email" placeholder="Email" />
+                </FieldValidator>
+            </div>
         </form>
     </CodeExample>
 </section>
