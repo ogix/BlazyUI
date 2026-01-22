@@ -1,0 +1,109 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+@typeparam TValue
+@using System.Linq.Expressions
+@using Microsoft.AspNetCore.Components.Forms
+
+<div class="@ComputedCssClass" @attributes="AdditionalAttributes">
+    @if (!string.IsNullOrEmpty(LabelText))
+    {
+        <Label For="@FieldId" Text="@LabelDisplayText" Class="@LabelClass" />
+    }
+    <FieldValidator TValue="TValue" For="@For" Hint="@Hint" Mode="@ValidationMode" HideHintWhenValid="@HideHintWhenValid" HintClass="@HintClass">
+        <ChildContent>
+            @ChildContent
+        </ChildContent>
+        <HintContent>
+            @HintContent
+        </HintContent>
+    </FieldValidator>
+    @if (!string.IsNullOrEmpty(HelperText))
+    {
+        <p class="@HelperTextCssClass">@HelperText</p>
+    }
+</div>
+
+@code {
+    /// <summary>
+    /// The label text displayed above the input.
+    /// </summary>
+    [Parameter]
+    public string? LabelText { get; set; }
+
+    /// <summary>
+    /// Expression for the field being validated. Used for both the label's for attribute and ValidationMessage.
+    /// </summary>
+    [Parameter]
+    public Expression<Func<TValue>>? For { get; set; }
+
+    /// <summary>
+    /// Additional CSS classes for the label element.
+    /// </summary>
+    [Parameter]
+    public string? LabelClass { get; set; }
+
+    private string? FieldId => For is not null ? FieldIdentifier.Create(For).FieldName : null;
+
+    private string? LabelDisplayText => Required ? $"{LabelText} *" : LabelText;
+
+    /// <summary>
+    /// Text hint to display when input is invalid (HTML5 validation).
+    /// </summary>
+    [Parameter]
+    public string? Hint { get; set; }
+
+    /// <summary>
+    /// Custom content to display as the validation hint.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? HintContent { get; set; }
+
+    /// <summary>
+    /// Determines which validation feedback is shown. Defaults to Both.
+    /// </summary>
+    [Parameter]
+    public FieldValidatorMode ValidationMode { get; set; } = FieldValidatorMode.Both;
+
+    /// <summary>
+    /// Whether to hide the hint when the input is valid. Defaults to true.
+    /// </summary>
+    [Parameter]
+    public bool HideHintWhenValid { get; set; } = true;
+
+    /// <summary>
+    /// Additional CSS classes for the hint element.
+    /// </summary>
+    [Parameter]
+    public string? HintClass { get; set; }
+
+    /// <summary>
+    /// Optional helper text displayed below the input (always visible).
+    /// </summary>
+    [Parameter]
+    public string? HelperText { get; set; }
+
+    /// <summary>
+    /// Additional CSS classes for the helper text.
+    /// </summary>
+    [Parameter]
+    public string? HelperTextClass { get; set; }
+
+    /// <summary>
+    /// The input component to wrap.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>
+    /// Whether this field is required. Adds a visual indicator to the label.
+    /// </summary>
+    [Parameter]
+    public bool Required { get; set; }
+
+    private string ComputedCssClass => MergeClasses("grid gap-4");
+
+    private string HelperTextCssClass => TwMerge.Merge(
+        "text-sm text-base-content/60 mt-1",
+        HelperTextClass
+    ) ?? string.Empty;
+}
