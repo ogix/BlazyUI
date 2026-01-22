@@ -13,13 +13,11 @@
     <h2 class="text-xl font-semibold mb-4">Basic Usage</h2>
     <p class="mb-4 text-sm text-base-content/70">Wrap any input with FormField to add a label and validation.</p>
     <CodeExample Code="@basicCode">
-        <form class="max-w-sm">
-            <Fieldset Legend="Contact" Class="flex flex-col gap-4">
-                <FormField TValue="string" LabelText="Email" Hint="Please enter a valid email">
-                    <TextInput @bind-Value="basicEmail" Type="email" placeholder="Enter your email" required />
-                </FormField>
-                <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
-            </Fieldset>
+        <form class="max-w-sm flex flex-col gap-4">
+            <FormField TValue="string" LabelText="Email" Hint="Please enter a valid email">
+                <TextInput @bind-Value="basicEmail" Type="email" placeholder="Enter your email" required />
+            </FormField>
+            <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
         </form>
     </CodeExample>
 </section>
@@ -28,32 +26,30 @@
     <h2 class="text-xl font-semibold mb-4">With Blazor EditForm</h2>
     <p class="mb-4 text-sm text-base-content/70">Combine with EditForm for full validation support including data annotations.</p>
     <CodeExample Code="@editFormCode">
-        <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-sm">
+        <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-sm flex flex-col gap-4">
             <DataAnnotationsValidator />
 
-            <Fieldset Legend="Sign Up" Class="flex flex-col gap-4">
-                <FormField LabelText="Email"
-                           For="@(() => formModel.Email)"
-                           Hint="Invalid email format"
-                           Required>
-                    <TextInput @bind-Value="formModel.Email" Type="email" placeholder="Email" required />
-                </FormField>
+            <FormField LabelText="Email"
+                       For="@(() => formModel.Email)"
+                       Hint="Invalid email format"
+                       Required>
+                <TextInput @bind-Value="formModel.Email" Type="email" placeholder="Email" required />
+            </FormField>
 
-                <FormField LabelText="Password"
-                           For="@(() => formModel.Password)"
-                           Hint="Password is required"
-                           Required>
-                    <TextInput @bind-Value="formModel.Password" Type="password" placeholder="Password" required minlength="6" />
-                </FormField>
+            <FormField LabelText="Password"
+                       For="@(() => formModel.Password)"
+                       Hint="Password is required"
+                       Required>
+                <TextInput @bind-Value="formModel.Password" Type="password" placeholder="Password" required minlength="6" />
+            </FormField>
 
-                <FormField LabelText="Bio"
-                           For="@(() => formModel.Bio)"
-                           HelperText="Tell us a bit about yourself">
-                    <Textarea @bind-Value="formModel.Bio" placeholder="Your bio..." rows="3" />
-                </FormField>
+            <FormField LabelText="Bio"
+                       For="@(() => formModel.Bio)"
+                       HelperText="Tell us a bit about yourself">
+                <Textarea @bind-Value="formModel.Bio" placeholder="Your bio..." rows="3" />
+            </FormField>
 
-                <Button Type="submit" Color="ButtonColor.Primary" Block>Sign Up</Button>
-            </Fieldset>
+            <Button Type="submit" Color="ButtonColor.Primary" Block>Sign Up</Button>
         </EditForm>
         @if (formSubmitted)
         {
@@ -66,7 +62,7 @@
     <h2 class="text-xl font-semibold mb-4">With Helper Text</h2>
     <p class="mb-4 text-sm text-base-content/70">Add helper text that's always visible below the input.</p>
     <CodeExample Code="@helperTextCode">
-        <Fieldset Legend="Profile" Class="max-w-sm flex flex-col gap-4">
+        <div class="max-w-sm flex flex-col gap-4">
             <FormField TValue="string"
                        LabelText="Username"
                        HelperText="Choose a unique username (3-20 characters)"
@@ -79,7 +75,7 @@
                        HelperText="Optional: Your personal website or portfolio">
                 <TextInput @bind-Value="website" Type="url" placeholder="https://example.com" />
             </FormField>
-        </Fieldset>
+        </div>
     </CodeExample>
 </section>
 
@@ -87,7 +83,7 @@
     <h2 class="text-xl font-semibold mb-4">With Select</h2>
     <p class="mb-4 text-sm text-base-content/70">FormField works with any input component including Select.</p>
     <CodeExample Code="@selectCode">
-        <Fieldset Legend="Preferences" Class="max-w-sm flex flex-col gap-4">
+        <div class="max-w-sm flex flex-col gap-4">
             <FormField TValue="string"
                        LabelText="Country"
                        Hint="Please select a country"
@@ -111,7 +107,7 @@
                     <option value="de">German</option>
                 </Select>
             </FormField>
-        </Fieldset>
+        </div>
     </CodeExample>
 </section>
 
@@ -119,7 +115,7 @@
     <h2 class="text-xl font-semibold mb-4">With Checkbox and Toggle</h2>
     <p class="mb-4 text-sm text-base-content/70">FormField also works with Checkbox and Toggle components.</p>
     <CodeExample Code="@checkboxCode">
-        <Fieldset Legend="Settings" Class="max-w-sm flex flex-col gap-4">
+        <div class="max-w-sm flex flex-col gap-4">
             <FormField TValue="bool" LabelText="Notifications">
                 <div class="flex items-center gap-2">
                     <Checkbox @bind-Value="emailNotifications" Color="CheckboxColor.Primary" />
@@ -130,7 +126,7 @@
             <FormField TValue="bool" LabelText="Dark Mode" HelperText="Enable dark mode for the interface">
                 <Toggle @bind-Value="darkMode" Color="ToggleColor.Primary" />
             </FormField>
-        </Fieldset>
+        </div>
     </CodeExample>
 </section>
 
@@ -162,48 +158,46 @@
     <h2 class="text-xl font-semibold mb-4">Complete Form Example</h2>
     <p class="mb-4 text-sm text-base-content/70">A complete form demonstrating various FormField configurations.</p>
     <CodeExample Code="@completeFormCode">
-        <EditForm Model="@contactModel" OnValidSubmit="@HandleContactSubmit" class="max-w-md">
+        <EditForm Model="@contactModel" OnValidSubmit="@HandleContactSubmit" class="max-w-md flex flex-col gap-4">
             <DataAnnotationsValidator />
 
-            <Fieldset Legend="Contact Us" Class="flex flex-col gap-4">
-                <div class="grid grid-cols-2 gap-4">
-                    <FormField LabelText="First Name"
-                               For="@(() => contactModel.FirstName)"
-                               Hint="Required"
-                               Required>
-                        <TextInput @bind-Value="contactModel.FirstName" placeholder="John" required />
-                    </FormField>
-
-                    <FormField LabelText="Last Name"
-                               For="@(() => contactModel.LastName)"
-                               Hint="Required"
-                               Required>
-                        <TextInput @bind-Value="contactModel.LastName" placeholder="Doe" required />
-                    </FormField>
-                </div>
-
-                <FormField LabelText="Email Address"
-                           For="@(() => contactModel.Email)"
-                           Hint="Invalid email format"
+            <div class="grid grid-cols-2 gap-4">
+                <FormField LabelText="First Name"
+                           For="@(() => contactModel.FirstName)"
+                           Hint="Required"
                            Required>
-                    <TextInput @bind-Value="contactModel.Email" Type="email" placeholder="john@example.com" required />
+                    <TextInput @bind-Value="contactModel.FirstName" placeholder="John" required />
                 </FormField>
 
-                <FormField LabelText="Phone Number"
-                           For="@(() => contactModel.Phone)"
-                           HelperText="Optional">
-                    <TextInput @bind-Value="contactModel.Phone" Type="tel" placeholder="+1 (555) 000-0000" />
-                </FormField>
-
-                <FormField LabelText="Message"
-                           For="@(() => contactModel.Message)"
-                           Hint="Please enter your message"
+                <FormField LabelText="Last Name"
+                           For="@(() => contactModel.LastName)"
+                           Hint="Required"
                            Required>
-                    <Textarea @bind-Value="contactModel.Message" placeholder="Your message..." rows="4" required />
+                    <TextInput @bind-Value="contactModel.LastName" placeholder="Doe" required />
                 </FormField>
+            </div>
 
-                <Button Type="submit" Color="ButtonColor.Primary" Block>Send Message</Button>
-            </Fieldset>
+            <FormField LabelText="Email Address"
+                       For="@(() => contactModel.Email)"
+                       Hint="Invalid email format"
+                       Required>
+                <TextInput @bind-Value="contactModel.Email" Type="email" placeholder="john@example.com" required />
+            </FormField>
+
+            <FormField LabelText="Phone Number"
+                       For="@(() => contactModel.Phone)"
+                       HelperText="Optional">
+                <TextInput @bind-Value="contactModel.Phone" Type="tel" placeholder="+1 (555) 000-0000" />
+            </FormField>
+
+            <FormField LabelText="Message"
+                       For="@(() => contactModel.Message)"
+                       Hint="Please enter your message"
+                       Required>
+                <Textarea @bind-Value="contactModel.Message" placeholder="Your message..." rows="4" required />
+            </FormField>
+
+            <Button Type="submit" Color="ButtonColor.Primary" Block>Send Message</Button>
         </EditForm>
         @if (contactSubmitted)
         {
@@ -275,39 +269,37 @@
         public string Message { get; set; } = "";
     }
 
-    private string basicCode = @"<Fieldset Legend=""Contact"">
+    private string basicCode = @"<form class=""flex flex-col gap-4"">
     <FormField TValue=""string"" LabelText=""Email"" Hint=""Please enter a valid email"">
         <TextInput @bind-Value=""email"" Type=""email"" placeholder=""Enter your email"" required />
     </FormField>
     <Button Type=""submit"">Submit</Button>
-</Fieldset>";
+</form>";
 
-    private string editFormCode = @"<EditForm Model=""@model"" OnValidSubmit=""@HandleSubmit"">
+    private string editFormCode = @"<EditForm Model=""@model"" OnValidSubmit=""@HandleSubmit"" class=""flex flex-col gap-4"">
     <DataAnnotationsValidator />
 
-    <Fieldset Legend=""Sign Up"">
-        <FormField LabelText=""Email""
-                   For=""@(() => model.Email)""
-                   Hint=""Invalid email format""
-                   Required>
-            <TextInput @bind-Value=""model.Email"" Type=""email"" placeholder=""Email"" required />
-        </FormField>
+    <FormField LabelText=""Email""
+               For=""@(() => model.Email)""
+               Hint=""Invalid email format""
+               Required>
+        <TextInput @bind-Value=""model.Email"" Type=""email"" placeholder=""Email"" required />
+    </FormField>
 
-        <FormField LabelText=""Password""
-                   For=""@(() => model.Password)""
-                   Hint=""Password is required""
-                   Required>
-            <TextInput @bind-Value=""model.Password"" Type=""password"" placeholder=""Password"" required />
-        </FormField>
+    <FormField LabelText=""Password""
+               For=""@(() => model.Password)""
+               Hint=""Password is required""
+               Required>
+        <TextInput @bind-Value=""model.Password"" Type=""password"" placeholder=""Password"" required />
+    </FormField>
 
-        <FormField LabelText=""Bio""
-                   For=""@(() => model.Bio)""
-                   HelperText=""Tell us a bit about yourself"">
-            <Textarea @bind-Value=""model.Bio"" placeholder=""Your bio..."" />
-        </FormField>
+    <FormField LabelText=""Bio""
+               For=""@(() => model.Bio)""
+               HelperText=""Tell us a bit about yourself"">
+        <Textarea @bind-Value=""model.Bio"" placeholder=""Your bio..."" />
+    </FormField>
 
-        <Button Type=""submit"" Color=""ButtonColor.Primary"">Sign Up</Button>
-    </Fieldset>
+    <Button Type=""submit"" Color=""ButtonColor.Primary"">Sign Up</Button>
 </EditForm>";
 
     private string helperTextCode = @"<FormField TValue=""string""
@@ -358,32 +350,30 @@
     <TextInput @bind-Value=""model.Value"" placeholder=""Blazor validation only"" />
 </FormField>";
 
-    private string completeFormCode = @"<EditForm Model=""@model"" OnValidSubmit=""@HandleSubmit"">
+    private string completeFormCode = @"<EditForm Model=""@model"" OnValidSubmit=""@HandleSubmit"" class=""flex flex-col gap-4"">
     <DataAnnotationsValidator />
 
-    <Fieldset Legend=""Contact Us"">
-        <div class=""grid grid-cols-2 gap-4"">
-            <FormField LabelText=""First Name"" For=""@(() => model.FirstName)"" Required>
-                <TextInput @bind-Value=""model.FirstName"" placeholder=""John"" required />
-            </FormField>
-            <FormField LabelText=""Last Name"" For=""@(() => model.LastName)"" Required>
-                <TextInput @bind-Value=""model.LastName"" placeholder=""Doe"" required />
-            </FormField>
-        </div>
-
-        <FormField LabelText=""Email"" For=""@(() => model.Email)"" Required>
-            <TextInput @bind-Value=""model.Email"" Type=""email"" placeholder=""john@example.com"" required />
+    <div class=""grid grid-cols-2 gap-4"">
+        <FormField LabelText=""First Name"" For=""@(() => model.FirstName)"" Required>
+            <TextInput @bind-Value=""model.FirstName"" placeholder=""John"" required />
         </FormField>
-
-        <FormField LabelText=""Phone"" For=""@(() => model.Phone)"" HelperText=""Optional"">
-            <TextInput @bind-Value=""model.Phone"" Type=""tel"" placeholder=""+1 (555) 000-0000"" />
+        <FormField LabelText=""Last Name"" For=""@(() => model.LastName)"" Required>
+            <TextInput @bind-Value=""model.LastName"" placeholder=""Doe"" required />
         </FormField>
+    </div>
 
-        <FormField LabelText=""Message"" For=""@(() => model.Message)"" Required>
-            <Textarea @bind-Value=""model.Message"" placeholder=""Your message..."" required />
-        </FormField>
+    <FormField LabelText=""Email"" For=""@(() => model.Email)"" Required>
+        <TextInput @bind-Value=""model.Email"" Type=""email"" placeholder=""john@example.com"" required />
+    </FormField>
 
-        <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Send Message</Button>
-    </Fieldset>
+    <FormField LabelText=""Phone"" For=""@(() => model.Phone)"" HelperText=""Optional"">
+        <TextInput @bind-Value=""model.Phone"" Type=""tel"" placeholder=""+1 (555) 000-0000"" />
+    </FormField>
+
+    <FormField LabelText=""Message"" For=""@(() => model.Message)"" Required>
+        <Textarea @bind-Value=""model.Message"" placeholder=""Your message..."" required />
+    </FormField>
+
+    <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Send Message</Button>
 </EditForm>";
 }

@@ -7,7 +7,7 @@
 <div class="@ComputedCssClass" @attributes="AdditionalAttributes">
     @if (!string.IsNullOrEmpty(LabelText))
     {
-        <Label For="@FieldId" Text="@LabelDisplayText" Class="@LabelClass" />
+        <Label For="@FieldId" Text="@LabelDisplayText" Class="@LabelCssClass" />
     }
     <FieldValidator TValue="TValue" For="@For" Hint="@Hint" Mode="@ValidationMode" HideHintWhenValid="@HideHintWhenValid" HintClass="@HintClass">
         <ChildContent>
@@ -45,6 +45,11 @@
     private string? FieldId => For is not null ? FieldIdentifier.Create(For).FieldName : null;
 
     private string? LabelDisplayText => Required ? $"{LabelText} *" : LabelText;
+
+    private string LabelCssClass => TwMerge.Merge(
+        "font-medium text-base-content text-sm",
+        LabelClass
+    ) ?? string.Empty;
 
     /// <summary>
     /// Text hint to display when input is invalid (HTML5 validation).
@@ -100,7 +105,7 @@
     [Parameter]
     public bool Required { get; set; }
 
-    private string ComputedCssClass => MergeClasses("grid gap-4");
+    private string ComputedCssClass => MergeClasses("grid gap-2");
 
     private string HelperTextCssClass => TwMerge.Merge(
         "text-sm text-base-content/60 mt-1",
