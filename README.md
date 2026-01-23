@@ -2,6 +2,8 @@
 
 **A Blazor component library wrapping DaisyUI v5 with Tailwind CSS v4**
 
+[![NuGet](https://img.shields.io/nuget/v/BlazyUI.svg)](https://www.nuget.org/packages/BlazyUI)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/BlazyUI.svg)](https://www.nuget.org/packages/BlazyUI)
 ![.NET](https://img.shields.io/badge/.NET-10.0-512BD4)
 ![DaisyUI](https://img.shields.io/badge/DaisyUI-v5-5A0EF8)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-38BDF8)
@@ -25,7 +27,6 @@ BlazyUI provides strongly-typed Blazor components built on top of [DaisyUI](http
 ### 1. Install the Package
 
 ```bash
-# Coming soon to NuGet
 dotnet add package BlazyUI
 ```
 
