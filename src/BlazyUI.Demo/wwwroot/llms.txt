@@ -1,0 +1,93 @@
+﻿# BlazyUI
+
+> A Blazor component library wrapping DaisyUI v5 with Tailwind CSS v4. Provides 34+ strongly-typed components with full IntelliSense, EditForm validation integration, TailwindMerge for class conflict resolution, and programmatic Modal/Toast services.
+
+## Documentation
+
+- [README](https://raw.githubusercontent.com/ogix/BlazyUI/main/README.md): Installation guide, usage examples, and component overview
+- [CLAUDE.md](https://raw.githubusercontent.com/ogix/BlazyUI/main/CLAUDE.md): AI instructions, architecture details, and development patterns
+
+## Core Architecture
+
+- [BlazyComponentBase](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/BlazyComponentBase.cs): Base class for non-input components (TwMerge, Class parameter, AdditionalAttributes)
+- [BlazyInputBase](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/BlazyInputBase.cs): Base class for form inputs (EditForm validation, error styling)
+- [ExpressionFormatter](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/ExpressionFormatter.cs): Expression-based field name generation for form inputs
+- [FieldIdGenerator](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/FieldIdGenerator.cs): Generates unique field IDs from expressions
+
+## Services
+
+- [IModalService](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Modal/IModalService.cs): Modal dialog API (Show, Confirm, Alert methods)
+- [IToastService](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Toast/IToastService.cs): Toast notification API (Success, Error, Info, Warning)
+- [ServiceCollectionExtensions](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Extensions/ServiceCollectionExtensions.cs): AddBlazyUI() service registration
+
+## Components - Layout
+
+- [Accordion](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Accordion/Accordion.razor): Collapsible content sections with expandable panels
+- [Card](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Card/Card.razor): Container with header, body, and action sections
+- [Collapse](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Collapse/Collapse.razor): Single collapsible panel for show/hide content
+- [Divider](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Divider/Divider.razor): Visual separator between content sections
+- [Drawer](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Drawer/Drawer.razor): Off-canvas sidebar navigation panel
+- [Join](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Join/Join.razor): Group elements together with connected styling
+- [NavBar](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/NavBar/NavBar.razor): Top navigation bar with responsive layout
+- [Tabs](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Tabs/Tabs.razor): Tabbed content panels with multiple styles
+- [Timeline](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Timeline/Timeline.razor): Chronological event display
+
+
+## Components - Form Inputs
+
+- [Checkbox](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Checkbox/Checkbox.razor): Boolean input for forms with validation support
+- [Fieldset](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Fieldset/Fieldset.razor): Form field grouping with legend support
+- [FieldValidator](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/FieldValidator/FieldValidator.razor): Validation message display for form fields
+- [FileInput](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/FileInput/FileInput.razor): File upload input with drag-and-drop
+- [FormField](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/FormField/FormField.razor): Complete form field with label, input, and validation
+- [Label](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Label/Label.razor): Form field labels with required indicator
+- [Radio](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Radio/Radio.razor): Single selection from radio button options
+- [Range](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Range/Range.razor): Slider input for numeric range selection
+- [Rating](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Rating/Rating.razor): Star rating input component
+- [Select](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Select/Select.razor): Dropdown selection with validation support
+- [Textarea](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Textarea/Textarea.razor): Multi-line text input with validation
+- [TextInput](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/TextInput/TextInput.razor): Text, email, password inputs with validation
+- [Toggle](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Toggle/Toggle.razor): Switch/toggle input for boolean values
+
+
+## Components - Visual/Feedback
+
+- [Alert](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Alert/Alert.razor): Contextual feedback messages with color variants
+- [Badge](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Badge/Badge.razor): Small status indicators and labels
+- [Button](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Button/Button.razor): Interactive buttons with colors, sizes, and states
+- [Indicator](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Indicator/Indicator.razor): Notification badge overlay for elements
+- [Kbd](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Kbd/Kbd.razor): Keyboard key styling for shortcuts
+- [Loading](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Loading/Loading.razor): Loading spinners and skeleton animations
+- [Progress](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Progress/Progress.razor): Progress bars with value indication
+- [Skeleton](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Skeleton/Skeleton.razor): Loading placeholder animations
+- [Stat](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Stat/Stat.razor): Statistical displays with title and value
+- [Status](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Status/Status.razor): Status dot indicators
+- [Tooltip](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Tooltip/Tooltip.razor): Hover information tooltips
+
+
+## Components - Dialogs/Overlays
+
+- [Modal](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Modal/Modal.razor): Dialog windows via IModalService
+- [Toast](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Toast/Toast.razor): Toast notifications via IToastService
+
+
+## Components - Navigation
+
+- [Menu](https://raw.githubusercontent.com/ogix/BlazyUI/main/src/BlazyUI/Components/Menu/Menu.razor): Vertical menu with items and nested dropdowns
+
+## Optional
+
+Design documents and implementation plans for deeper understanding:
+
+- [Alert Component Design](https://raw.githubusercontent.com/ogix/BlazyUI/main/docs/plans/2026-01-17-alert-component-design.md)
+- [Button Component Design](https://raw.githubusercontent.com/ogix/BlazyUI/main/docs/plans/2026-01-17-button-component-design.md)
+- [Code Example Component Design](https://raw.githubusercontent.com/ogix/BlazyUI/main/docs/plans/2026-01-17-code-example-component-design.md)
+- [Component Implementation Plan](https://raw.githubusercontent.com/ogix/BlazyUI/main/docs/plans/2026-01-17-component-implementation-plan.md)
+- [Loading Design](https://raw.githubusercontent.com/ogix/BlazyUI/main/docs/plans/2026-01-17-loading-design.md)
+- [Navbar Design](https://raw.githubusercontent.com/ogix/BlazyUI/main/docs/plans/2026-01-17-navbar-design.md)
+- [Phase1 Foundation](https://raw.githubusercontent.com/ogix/BlazyUI/main/docs/plans/2026-01-17-phase1-foundation.md)
+- [Tailwind Daisyui Setup Design](https://raw.githubusercontent.com/ogix/BlazyUI/main/docs/plans/2026-01-17-tailwind-daisyui-setup-design.md)
+- [Textinput Design](https://raw.githubusercontent.com/ogix/BlazyUI/main/docs/plans/2026-01-17-textinput-design.md)
+- [Modal Design](https://raw.githubusercontent.com/ogix/BlazyUI/main/docs/plans/2026-01-19-modal-design.md)
+- [Modal Implementation](https://raw.githubusercontent.com/ogix/BlazyUI/main/docs/plans/2026-01-19-modal-implementation.md)
+- [Demo Navigation Design](https://raw.githubusercontent.com/ogix/BlazyUI/main/docs/plans/2026-01-21-demo-navigation-design.md)
