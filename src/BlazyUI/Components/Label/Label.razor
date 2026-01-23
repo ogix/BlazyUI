@@ -1,16 +1,19 @@
 @namespace BlazyUI
 @inherits BlazyComponentBase
+@typeparam TValue
+@using System.Linq.Expressions
+@using BlazyUI.Components
 
 @if (Variant == LabelVariant.Standalone)
 {
-    <label class="@ComputedCssClass" for="@For" @attributes="AdditionalAttributes">
+    <label class="@ComputedCssClass" for="@FieldId" @attributes="AdditionalAttributes">
         @if (ChildContent is not null)
         {
             @ChildContent
         }
         else
         {
-            @Text
+            @DisplayText
         }
     </label>
 }
@@ -31,6 +34,9 @@ else
 }
 
 @code {
+    private string? _fieldId;
+    private string? _displayName;
+
     /// <summary>
     /// The variant determining how the label is rendered.
     /// </summary>
@@ -44,30 +50,29 @@ else
     [Parameter]
     public LabelPosition? Position { get; set; }
 
-    protected override void OnParametersSet()
-    {
-        base.OnParametersSet();
-
-        if (Position.HasValue && Variant is not (LabelVariant.Input or LabelVariant.Select))
-        {
-            throw new InvalidOperationException(
-                $"Position can only be used with {nameof(LabelVariant.Input)} or {nameof(LabelVariant.Select)} variants. " +
-                $"Current variant: {Variant}");
-        }
-    }
-
-    private LabelPosition EffectivePosition => Position ?? LabelPosition.Left;
+    /// <summary>
+    /// Cascading HTML field prefix for nested form scenarios.
+    /// </summary>
+    [CascadingParameter]
+    private HtmlFieldPrefix? FieldPrefix { get; set; }
 
     /// <summary>
-    /// The id of the input element this label is for.
-    /// Only used when Variant is Standalone.
+    /// Specifies the field expression for which the label should be rendered.
+    /// Used to generate the 'for' attribute and automatically derive the display name.
     /// </summary>
     [Parameter]
-    public string? For { get; set; }
+    public Expression<Func<TValue>>? For { get; set; }
 
     /// <summary>
-    /// The label text. Used when ChildContent is not provided (Standalone)
-    /// or as the label span text (Input/Select/Floating variants).
+    /// Explicit HTML id to use for the 'for' attribute.
+    /// Use this when associating with a plain HTML input element by its id.
+    /// Takes precedence over the expression-derived field id.
+    /// </summary>
+    [Parameter]
+    public string? Id { get; set; }
+
+    /// <summary>
+    /// The label text. If not provided and For is specified, uses the display name from the expression.
     /// </summary>
     [Parameter]
     public string? Text { get; set; }
@@ -80,6 +85,46 @@ else
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        if (Position.HasValue && Variant is not (LabelVariant.Input or LabelVariant.Select))
+        {
+            throw new InvalidOperationException(
+                $"Position can only be used with {nameof(LabelVariant.Input)} or {nameof(LabelVariant.Select)} variants. " +
+                $"Current variant: {Variant}");
+        }
+
+        // Update display name and field id from expression
+        if (For is not null)
+        {
+            _displayName = ExpressionMemberAccessor.GetDisplayName(For);
+            _fieldId = FieldIdGenerator.SanitizeHtmlId(
+                FieldPrefix != null
+                    ? FieldPrefix.GetFieldName(For)
+                    : ExpressionFormatter.FormatLambda(For));
+        }
+        else
+        {
+            _displayName = null;
+            _fieldId = null;
+        }
+    }
+
+    private LabelPosition EffectivePosition => Position ?? LabelPosition.Left;
+
+    /// <summary>
+    /// Gets the field ID for the 'for' attribute.
+    /// Uses explicit Id if provided, otherwise uses expression-derived field id.
+    /// </summary>
+    private string? FieldId => Id ?? _fieldId;
+
+    /// <summary>
+    /// Gets the display text - uses explicit Text if provided, otherwise falls back to display name from expression.
+    /// </summary>
+    private string? DisplayText => Text ?? _displayName;
+
     private string ComputedCssClass => Variant switch
     {
         LabelVariant.Standalone => MergeClasses("label"),
@@ -91,6 +136,6 @@ else
 
     private RenderFragment RenderLabelSpan() => __builder =>
     {
-        <span class="label">@Text</span>
+        <span class="label">@DisplayText</span>
     };
 }

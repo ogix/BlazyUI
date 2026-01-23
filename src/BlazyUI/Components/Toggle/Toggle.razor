@@ -2,8 +2,8 @@
 @inherits BlazyInputBase<bool>
 
 <input type="checkbox"
-       id="@IdAttributeValue"
-       name="@NameAttributeValue"
+       id="@GetFieldId()"
+       name="@GetFieldName()"
        class="@ComputedCssClass"
        checked="@CurrentValue"
        @onchange="OnChange"

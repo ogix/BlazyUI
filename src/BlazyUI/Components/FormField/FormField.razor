@@ -7,7 +7,7 @@
 <div class="@ComputedCssClass" @attributes="AdditionalAttributes">
     @if (!string.IsNullOrEmpty(Label))
     {
-        <Label For="@FieldId" Text="@LabelDisplayText" Class="@LabelCssClass" />
+        <Label TValue="TValue" For="@For" Text="@LabelDisplayText" Class="@LabelCssClass" />
     }
     <FieldValidator TValue="TValue" For="@For" Hint="@Hint" Mode="@ValidationMode" HideHintWhenValid="@HideHintWhenValid" HintClass="@HintClass">
         <ChildContent>
@@ -41,8 +41,6 @@
     /// </summary>
     [Parameter]
     public string? LabelClass { get; set; }
-
-    private string? FieldId => For is not null ? FieldIdentifier.Create(For).FieldName : null;
 
     private string? LabelDisplayText => Required ? $"{Label} *" : Label;
 

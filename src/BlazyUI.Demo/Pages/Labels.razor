@@ -9,11 +9,11 @@
     <CodeExample Code="@standaloneCode">
         <div class="flex flex-col gap-4 max-w-xs">
             <div>
-                <Label Text="Email address" For="email1" />
+                <Label TValue="string" Text="Email address" Id="email1" />
                 <input type="email" id="email1" class="input w-full" placeholder="you@example.com" />
             </div>
             <div>
-                <Label For="password1">
+                <Label TValue="string" Id="password1">
                     Password <span class="text-error">*</span>
                 </Label>
                 <input type="password" id="password1" class="input w-full" placeholder="Enter password" />
@@ -26,15 +26,15 @@
     <h2 class="text-xl font-semibold mb-4">Input Wrapper</h2>
     <CodeExample Code="@inputCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <Label Variant="LabelVariant.Input" Text="Username">
+            <Label TValue="string" Variant="LabelVariant.Input" Text="Username">
                 <input type="text" class="grow" placeholder="Enter username" @bind="username" />
             </Label>
 
-            <Label Variant="LabelVariant.Input" Text="Email">
+            <Label TValue="string" Variant="LabelVariant.Input" Text="Email">
                 <input type="email" class="grow" placeholder="Enter email" @bind="email" />
             </Label>
 
-            <Label Variant="LabelVariant.Input" Text="Search" Position="LabelPosition.Right">
+            <Label TValue="string" Variant="LabelVariant.Input" Text="Search" Position="LabelPosition.Right">
                 <input type="text" class="grow" placeholder="Type here..." />
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -48,7 +48,7 @@
     <h2 class="text-xl font-semibold mb-4">Select Wrapper</h2>
     <CodeExample Code="@selectCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <Label Variant="LabelVariant.Select" Text="Country">
+            <Label TValue="string" Variant="LabelVariant.Select" Text="Country">
                 <select class="grow" @bind="country">
                     <option disabled selected value="">Pick one</option>
                     <option value="us">United States</option>
@@ -57,7 +57,7 @@
                 </select>
             </Label>
 
-            <Label Variant="LabelVariant.Select" Text="Category" Position="LabelPosition.Right">
+            <Label TValue="string" Variant="LabelVariant.Select" Text="Category" Position="LabelPosition.Right">
                 <select class="grow" @bind="category">
                     <option disabled selected value="">Select category</option>
                     <option value="tech">Technology</option>
@@ -73,15 +73,15 @@
     <h2 class="text-xl font-semibold mb-4">Floating Label</h2>
     <CodeExample Code="@floatingCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <Label Variant="LabelVariant.Floating" Text="Username">
+            <Label TValue="string" Variant="LabelVariant.Floating" Text="Username">
                 <input type="text" class="input input-md" placeholder="Username" @bind="floatingUsername" />
             </Label>
 
-            <Label Variant="LabelVariant.Floating" Text="Email">
+            <Label TValue="string" Variant="LabelVariant.Floating" Text="Email">
                 <input type="email" class="input input-md" placeholder="Email" @bind="floatingEmail" />
             </Label>
 
-            <Label Variant="LabelVariant.Floating" Text="Country">
+            <Label TValue="string" Variant="LabelVariant.Floating" Text="Country">
                 <select class="select select-md" @bind="floatingCountry">
                     <option disabled selected value="">Pick one</option>
                     <option value="us">United States</option>
@@ -97,11 +97,11 @@
     <h2 class="text-xl font-semibold mb-4">Label Position</h2>
     <CodeExample Code="@positionCode">
         <div class="flex flex-col gap-4 max-w-md">
-            <Label Variant="LabelVariant.Input" Text="Left label" Position="LabelPosition.Left">
+            <Label TValue="string" Variant="LabelVariant.Input" Text="Left label" Position="LabelPosition.Left">
                 <input type="text" class="grow" placeholder="Label on the left" />
             </Label>
 
-            <Label Variant="LabelVariant.Input" Text="Right label" Position="LabelPosition.Right">
+            <Label TValue="string" Variant="LabelVariant.Input" Text="Right label" Position="LabelPosition.Right">
                 <input type="text" class="grow" placeholder="Label on the right" />
             </Label>
         </div>
@@ -112,14 +112,14 @@
     <h2 class="text-xl font-semibold mb-4">With Icons</h2>
     <CodeExample Code="@iconsCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <Label Variant="LabelVariant.Input" Text="Email">
+            <Label TValue="string" Variant="LabelVariant.Input" Text="Email">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <input type="email" class="grow" placeholder="you@example.com" />
             </Label>
 
-            <Label Variant="LabelVariant.Input" Text="Password">
+            <Label TValue="string" Variant="LabelVariant.Input" Text="Password">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>

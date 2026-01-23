@@ -1,3 +1,6 @@
+using System.Globalization;
+using System.Linq.Expressions;
+using BlazyUI.Components;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using TailwindMerge;
@@ -11,6 +14,9 @@ namespace BlazyUI;
 /// <typeparam name="T">The type of value the input handles.</typeparam>
 public abstract class BlazyInputBase<T> : InputBase<T>
 {
+    private string? _formattedValueExpression;
+    private Expression<Func<T>>? _previousValueExpression;
+
     [Inject]
     protected TwMerge TwMerge { get; set; } = default!;
 
@@ -33,48 +39,43 @@ public abstract class BlazyInputBase<T> : InputBase<T>
     protected bool ShouldShowValidatorClass => ValidatorContext?.EnableValidatorClass ?? false;
 
     /// <summary>
-    /// Gets the value to be used for the input's "id" attribute.
-    /// Checks AdditionalAttributes for explicit id, otherwise sanitizes NameAttributeValue.
-    /// Follows the same pattern as InputBase.IdAttributeValue (when available).
+    /// Gets the computed field name from the ValueExpression.
+    /// Always computes from ValueExpression to ensure proper form binding on Blazor WASM.
     /// </summary>
-    protected string IdAttributeValue
+    protected string GetFieldName()
     {
-        get
+        if (AdditionalAttributes?.TryGetValue("name", out var nameAttributeValue) ?? false)
         {
-            if (AdditionalAttributes?.TryGetValue("id", out var idAttributeValue) ?? false)
+            return Convert.ToString(nameAttributeValue, CultureInfo.InvariantCulture) ?? string.Empty;
+        }
+
+        if (ValueExpression is not null)
+        {
+            // Cache the formatted expression, recompute if ValueExpression changed
+            if (_formattedValueExpression is null || ValueExpression != _previousValueExpression)
             {
-                return Convert.ToString(idAttributeValue, System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty;
+                _formattedValueExpression = ExpressionFormatter.FormatLambda(ValueExpression);
+                _previousValueExpression = ValueExpression;
             }
 
-            return SanitizeHtmlId(NameAttributeValue);
+            return _formattedValueExpression;
         }
+
+        return string.Empty;
     }
 
     /// <summary>
-    /// Sanitizes a string for use as an HTML id attribute.
-    /// Replaces invalid characters with underscores.
+    /// Gets the computed field id from the ValueExpression.
+    /// Checks AdditionalAttributes for explicit id, otherwise sanitizes the field name.
     /// </summary>
-    private static string SanitizeHtmlId(string value)
+    protected string GetFieldId()
     {
-        if (string.IsNullOrEmpty(value))
-            return string.Empty;
-
-        var chars = value.ToCharArray();
-        for (var i = 0; i < chars.Length; i++)
+        if (AdditionalAttributes?.TryGetValue("id", out var idAttributeValue) ?? false)
         {
-            var c = chars[i];
-            // Valid HTML id characters: letters, digits, hyphens, underscores, periods
-            // First character must be a letter
-            if (i == 0 && !char.IsLetter(c))
-            {
-                chars[i] = '_';
-            }
-            else if (!char.IsLetterOrDigit(c) && c != '-' && c != '_' && c != '.')
-            {
-                chars[i] = '_';
-            }
+            return Convert.ToString(idAttributeValue, CultureInfo.InvariantCulture) ?? string.Empty;
         }
-        return new string(chars);
+
+        return FieldIdGenerator.SanitizeHtmlId(GetFieldName());
     }
 
     /// <summary>

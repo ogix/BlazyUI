@@ -2,8 +2,8 @@
 @inherits BlazyInputBase<int>
 
 <input type="range"
-       id="@IdAttributeValue"
-       name="@NameAttributeValue"
+       id="@GetFieldId()"
+       name="@GetFieldName()"
        class="@ComputedCssClass"
        min="@Min"
        max="@Max"

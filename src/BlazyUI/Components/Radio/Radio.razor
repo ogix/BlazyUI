@@ -2,8 +2,8 @@
 @inherits BlazyInputBase<string>
 
 <input type="radio"
-       id="@IdAttributeValue"
-       name="@(Name ?? NameAttributeValue)"
+       id="@GetFieldId()"
+       name="@(Name ?? GetFieldName())"
        class="@ComputedCssClass"
        value="@OptionValue"
        checked="@IsChecked"

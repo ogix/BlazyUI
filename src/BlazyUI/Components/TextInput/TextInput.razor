@@ -2,8 +2,8 @@
 @inherits BlazyInputBase<string>
 
 <input type="@Type"
-       id="@IdAttributeValue"
-       name="@NameAttributeValue"
+       id="@GetFieldId()"
+       name="@GetFieldName()"
        class="@ComputedCssClass"
        value="@CurrentValue"
        @onchange="OnChange"
