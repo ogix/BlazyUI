@@ -18,7 +18,7 @@
 param()
 
 # Configuration
-$RepoUrl = "https://raw.githubusercontent.com/ogix/BlazyUI/main"
+$RepoUrl = "https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main"
 $ComponentsPath = "src/BlazyUI/Components"
 $OutputPath = "src/BlazyUI.Demo/wwwroot/llms.txt"
 
