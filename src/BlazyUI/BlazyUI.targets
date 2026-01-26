@@ -2,9 +2,7 @@
 <Project>
     <!-- Allow overriding the destination folder via a property -->
     <PropertyGroup>
-        <BlazyUIDir Condition="'$(BlazyUIDir)' == ''">
-            $(MSBuildProjectDirectory)\bin\blazyui
-        </BlazyUIDir>
+        <BlazyUIDir Condition="'$(BlazyUIDir)' == ''">$(MSBuildProjectDirectory)\bin\blazyui</BlazyUIDir>
     </PropertyGroup>
 
     <Target Name="CopyContents" BeforeTargets="Build">
