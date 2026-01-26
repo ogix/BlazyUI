@@ -67,7 +67,8 @@ In your main CSS file:
 }
 
 /* Scan your project and BlazyUI components */
-@source "../../../BlazyUI/Components/**/*.razor";
+@source "../Components/**/*.razor";
+@source "../bin/blazyui/Components";
 ```
 
 ### 5. Add Providers

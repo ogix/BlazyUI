@@ -20,6 +20,9 @@
 
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <None Include="BlazyUI.targets" Pack="true" PackagePath="buildTransitive\BlazyUI.targets" />
+    <None Include="Components\**\*.razor.cs" Pack="true" PackagePath="source\Components\%(Filename)%(Extension)" />
+    <None Include="Components\**\*.razor" Pack="true" PackagePath="source\Components\%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup>

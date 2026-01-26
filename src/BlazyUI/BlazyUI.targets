@@ -1,0 +1,19 @@
+<!-- Copies style-related C# files to the specified output directory of a consuming project -->
+<Project>
+    <!-- Allow overriding the destination folder via a property -->
+    <PropertyGroup>
+        <BlazyUIDir Condition="'$(BlazyUIDir)' == ''">
+            $(MSBuildProjectDirectory)\bin\blazyui
+        </BlazyUIDir>
+    </PropertyGroup>
+
+    <Target Name="CopyContents" BeforeTargets="Build">
+        <!-- Include the files from the package `source` folder -->
+        <ItemGroup>
+            <Files Include="$(MSBuildThisFileDirectory)..\source\**\*" />
+        </ItemGroup>
+
+        <!-- Copy it to the consumer's bin\blazyui (or override location) -->
+        <Copy SourceFiles="@(Files)" DestinationFolder="$(BlazyUIDir)" SkipUnchangedFiles="true" />
+    </Target>
+</Project>
