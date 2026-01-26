@@ -13,7 +13,7 @@
             <Files Include="$(MSBuildThisFileDirectory)..\source\**\*" />
         </ItemGroup>
 
-        <!-- Copy it to the consumer's bin\blazyui (or override location) -->
-        <Copy SourceFiles="@(Files)" DestinationFolder="$(BlazyUIDir)" SkipUnchangedFiles="true" />
+        <!-- Copy it to the consumer's bin\blazyui (or override location), preserving folder structure -->
+        <Copy SourceFiles="@(Files)" DestinationFiles="@(Files->'$(BlazyUIDir)\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
     </Target>
 </Project>
