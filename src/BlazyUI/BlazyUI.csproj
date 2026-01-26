@@ -7,7 +7,7 @@
 
     <!-- NuGet Package Metadata -->
     <PackageId>BlazyUI</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>ogix</Authors>
     <Description>A Blazor component library wrapping DaisyUI v5 with Tailwind CSS v4. Provides strongly-typed, reusable UI components for Blazor applications.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -21,8 +21,6 @@
   <ItemGroup>
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
     <None Include="BlazyUI.targets" Pack="true" PackagePath="buildTransitive\BlazyUI.targets" />
-    <None Include="Components\**\*.razor.cs" Pack="true" PackagePath="source\Components\%(Filename)%(Extension)" />
-    <None Include="Components\**\*.razor" Pack="true" PackagePath="source\Components\%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,5 +31,18 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.2" />
     <PackageReference Include="TailwindMerge.NET" Version="1.*" />
   </ItemGroup>
+
+  <!-- Pack component source files for Tailwind CSS scanning -->
+  <Target Name="CopySourceFiles" BeforeTargets="GenerateNuspec">
+    <ItemGroup>
+      <SourceFiles Include="Components\**\*.razor;Components\**\*.razor.cs" />
+    </ItemGroup>
+    <Copy SourceFiles="@(SourceFiles)" DestinationFiles="@(SourceFiles->'$(IntermediateOutputPath)source\Components\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <ItemGroup>
+      <_PackageFiles Include="$(IntermediateOutputPath)source\**\*">
+        <PackagePath>source</PackagePath>
+      </_PackageFiles>
+    </ItemGroup>
+  </Target>
 
 </Project>
