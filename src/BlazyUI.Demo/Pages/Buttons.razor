@@ -83,6 +83,19 @@
 </section>
 
 <section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Link Buttons</h2>
+    <CodeExample Code="@linkButtonsCode">
+        <div class="flex flex-wrap gap-2">
+            <BlazyButton Color="BlazyButtonColor.Primary" Href="https://github.com">GitHub</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Secondary" Href="https://github.com" Target="_blank">Open in New Tab</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Accent" Href="/">Home Page</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Info" Href="https://github.com" Disabled>Disabled Link</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Warning" Href="https://github.com" Loading>Loading Link</BlazyButton>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Interactive</h2>
     <CodeExample Code="@interactiveCode">
         <div class="flex flex-wrap items-center gap-4">
@@ -146,6 +159,12 @@
 <BlazyButton Color=""BlazyButtonColor.Primary"" Disabled>Disabled</BlazyButton>
 <BlazyButton Color=""BlazyButtonColor.Primary"" Loading>Loading</BlazyButton>
 <BlazyButton Color=""BlazyButtonColor.Secondary"" Style=""BlazyButtonStyle.Outline"" Loading>Loading Outline</BlazyButton>";
+
+    private string linkButtonsCode = @"<BlazyButton Color=""BlazyButtonColor.Primary"" Href=""https://github.com"">GitHub</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Secondary"" Href=""https://github.com"" Target=""_blank"">Open in New Tab</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Accent"" Href=""/"">Home Page</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Info"" Href=""https://github.com"" Disabled>Disabled Link</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Warning"" Href=""https://github.com"" Loading>Loading Link</BlazyButton>";
 
     private string interactiveCode = @"<BlazyButton Color=""BlazyButtonColor.Primary"" OnClick=""@HandleClick"">Click me</BlazyButton>
 <span>Clicked: @clickCount times</span>

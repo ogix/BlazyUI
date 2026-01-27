@@ -1,16 +1,38 @@
 @namespace BlazyUI
 @inherits BlazyComponentBase
 
-<button class="@CssClass"
-        disabled="@IsDisabled"
-        @onclick="OnClick"
-        @attributes="AdditionalAttributes">
-    @if (Loading)
-    {
-        <span class="loading loading-spinner"></span>
-    }
-    @ChildContent
-</button>
+@if (IsLink)
+{
+    <a class="@CssClass"
+       href="@(IsDisabled ? null : Href)"
+       target="@Target"
+       rel="@EffectiveRel"
+       role="button"
+       aria-disabled="@(IsDisabled ? "true" : null)"
+       tabindex="@(IsDisabled ? "-1" : null)"
+       @onclick="HandleClick"
+       @onclick:preventDefault="@IsDisabled"
+       @attributes="AdditionalAttributes">
+        @if (Loading)
+        {
+            <span class="loading loading-spinner"></span>
+        }
+        @ChildContent
+    </a>
+}
+else
+{
+    <button class="@CssClass"
+            disabled="@IsDisabled"
+            @onclick="OnClick"
+            @attributes="AdditionalAttributes">
+        @if (Loading)
+        {
+            <span class="loading loading-spinner"></span>
+        }
+        @ChildContent
+    </button>
+}
 
 @code {
     /// <summary>
@@ -74,6 +96,24 @@
     public bool Active { get; set; }
 
     /// <summary>
+    /// When set, renders the button as an anchor element for navigation.
+    /// </summary>
+    [Parameter]
+    public string? Href { get; set; }
+
+    /// <summary>
+    /// The target attribute for the anchor element (e.g., "_blank" for new tab).
+    /// </summary>
+    [Parameter]
+    public string? Target { get; set; }
+
+    /// <summary>
+    /// The rel attribute for the anchor element. Defaults to "noopener noreferrer" when Target is "_blank".
+    /// </summary>
+    [Parameter]
+    public string? Rel { get; set; }
+
+    /// <summary>
     /// The content to display inside the button.
     /// </summary>
     [Parameter]
@@ -86,6 +126,8 @@
     public EventCallback<MouseEventArgs> OnClick { get; set; }
 
     private bool IsDisabled => Disabled || Loading;
+    private bool IsLink => !string.IsNullOrEmpty(Href);
+    private string? EffectiveRel => Rel ?? (Target == "_blank" ? "noopener noreferrer" : null);
 
     private string CssClass => MergeClasses(
         "btn",
@@ -96,8 +138,17 @@
         Block ? "btn-block" : null,
         Square ? "btn-square" : null,
         Circle ? "btn-circle" : null,
-        Active ? "btn-active" : null
+        Active ? "btn-active" : null,
+        IsLink && IsDisabled ? "btn-disabled" : null
     );
+
+    private async Task HandleClick(MouseEventArgs args)
+    {
+        if (!IsDisabled)
+        {
+            await OnClick.InvokeAsync(args);
+        }
+    }
 
     private string? ColorClass => Color switch
     {
