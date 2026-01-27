@@ -1,0 +1,141 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+@typeparam TValue
+@using System.Linq.Expressions
+@using BlazyUI.Components
+
+@if (Variant == BlazyLabelVariant.Standalone)
+{
+    <label class="@ComputedCssClass" for="@FieldId" @attributes="AdditionalAttributes">
+        @if (ChildContent is not null)
+        {
+            @ChildContent
+        }
+        else
+        {
+            @DisplayText
+        }
+    </label>
+}
+else
+{
+    <label class="@ComputedCssClass" @attributes="AdditionalAttributes">
+        @if (EffectivePosition == BlazyLabelPosition.Left)
+        {
+            @RenderLabelSpan()
+            @ChildContent
+        }
+        else
+        {
+            @ChildContent
+            @RenderLabelSpan()
+        }
+    </label>
+}
+
+@code {
+    private string? _fieldId;
+    private string? _displayName;
+
+    /// <summary>
+    /// The variant determining how the label is rendered.
+    /// </summary>
+    [Parameter]
+    public BlazyLabelVariant Variant { get; set; } = BlazyLabelVariant.Standalone;
+
+    /// <summary>
+    /// The position of the label text relative to wrapped content.
+    /// Only applies when Variant is Input or Select. Throws if used with other variants.
+    /// </summary>
+    [Parameter]
+    public BlazyLabelPosition? Position { get; set; }
+
+    /// <summary>
+    /// Cascading HTML field prefix for nested form scenarios.
+    /// </summary>
+    [CascadingParameter]
+    private HtmlFieldPrefix? FieldPrefix { get; set; }
+
+    /// <summary>
+    /// Specifies the field expression for which the label should be rendered.
+    /// Used to generate the 'for' attribute and automatically derive the display name.
+    /// </summary>
+    [Parameter]
+    public Expression<Func<TValue>>? For { get; set; }
+
+    /// <summary>
+    /// Explicit HTML id to use for the 'for' attribute.
+    /// Use this when associating with a plain HTML input element by its id.
+    /// Takes precedence over the expression-derived field id.
+    /// </summary>
+    [Parameter]
+    public string? Id { get; set; }
+
+    /// <summary>
+    /// The label text. If not provided and For is specified, uses the display name from the expression.
+    /// </summary>
+    [Parameter]
+    public string? Text { get; set; }
+
+    /// <summary>
+    /// Custom content for the label.
+    /// For Standalone: replaces Text as the label content.
+    /// For Input/Select/Floating: the wrapped input/select element.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        if (Position.HasValue && Variant is not (BlazyLabelVariant.Input or BlazyLabelVariant.Select))
+        {
+            throw new InvalidOperationException(
+                $"Position can only be used with {nameof(BlazyLabelVariant.Input)} or {nameof(BlazyLabelVariant.Select)} variants. " +
+                $"Current variant: {Variant}");
+        }
+
+        // Update display name and field id from expression
+        if (For is not null)
+        {
+            _displayName = ExpressionMemberAccessor.GetDisplayName(For);
+            _fieldId = FieldIdGenerator.SanitizeHtmlId(
+                FieldPrefix != null
+                    ? FieldPrefix.GetFieldName(For)
+                    : ExpressionFormatter.FormatLambda(For));
+        }
+        else
+        {
+            _displayName = null;
+            _fieldId = null;
+        }
+    }
+
+    private BlazyLabelPosition EffectivePosition => Position ?? BlazyLabelPosition.Left;
+
+    /// <summary>
+    /// Gets the field ID for the 'for' attribute.
+    /// Uses explicit Id if provided, otherwise uses expression-derived field id.
+    /// </summary>
+    private string? FieldId => Id ?? _fieldId;
+
+    /// <summary>
+    /// Gets the display text - uses explicit Text if provided, otherwise falls back to display name from expression.
+    /// </summary>
+    private string? DisplayText => Text ?? _displayName;
+
+    private string ComputedCssClass => Variant switch
+    {
+        BlazyLabelVariant.Standalone => MergeClasses("label"),
+        BlazyLabelVariant.Input => MergeClasses("input"),
+        BlazyLabelVariant.Select => MergeClasses("select"),
+        BlazyLabelVariant.Floating => MergeClasses("floating-label"),
+        _ => throw new ArgumentOutOfRangeException(nameof(Variant), Variant, null)
+    };
+
+    private RenderFragment RenderLabelSpan() => __builder =>
+    {
+        <span class="label">@DisplayText</span>
+    };
+}

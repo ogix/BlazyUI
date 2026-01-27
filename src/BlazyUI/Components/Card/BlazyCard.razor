@@ -1,0 +1,65 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    /// <summary>
+    /// The size of the card.
+    /// </summary>
+    [Parameter]
+    public BlazyCardSize Size { get; set; } = BlazyCardSize.Medium;
+
+    /// <summary>
+    /// The style variant of the card.
+    /// </summary>
+    [Parameter]
+    public BlazyCardStyle Style { get; set; } = BlazyCardStyle.Default;
+
+    /// <summary>
+    /// Displays the card horizontally with image on the side.
+    /// </summary>
+    [Parameter]
+    public bool Side { get; set; }
+
+    /// <summary>
+    /// Makes the image cover the entire card as background.
+    /// </summary>
+    [Parameter]
+    public bool ImageFull { get; set; }
+
+    /// <summary>
+    /// The content of the card (typically CardBody, CardFigure, etc.).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "card",
+        "bg-base-100",
+        SizeClass,
+        StyleClass,
+        Side ? "card-side" : null,
+        ImageFull ? "image-full" : null
+    );
+
+    private string SizeClass => Size switch
+    {
+        BlazyCardSize.ExtraSmall => "card-xs",
+        BlazyCardSize.Small => "card-sm",
+        BlazyCardSize.Medium => "card-md",
+        BlazyCardSize.Large => "card-lg",
+        BlazyCardSize.ExtraLarge => "card-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? StyleClass => Style switch
+    {
+        BlazyCardStyle.Default => null,
+        BlazyCardStyle.Border => "card-border",
+        BlazyCardStyle.Dash => "card-dash",
+        _ => throw new ArgumentOutOfRangeException(nameof(Style), Style, null)
+    };
+}

@@ -1,0 +1,35 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<kbd class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</kbd>
+
+@code {
+    /// <summary>
+    /// The size of the keyboard shortcut display.
+    /// </summary>
+    [Parameter]
+    public BlazyKbdSize Size { get; set; } = BlazyKbdSize.Medium;
+
+    /// <summary>
+    /// The content to display inside the kbd element.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "kbd",
+        SizeClass
+    );
+
+    private string SizeClass => Size switch
+    {
+        BlazyKbdSize.ExtraSmall => "kbd-xs",
+        BlazyKbdSize.Small => "kbd-sm",
+        BlazyKbdSize.Medium => "kbd-md",
+        BlazyKbdSize.Large => "kbd-lg",
+        BlazyKbdSize.ExtraLarge => "kbd-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+}

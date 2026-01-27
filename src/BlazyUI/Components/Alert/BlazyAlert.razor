@@ -1,0 +1,73 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div role="alert" class="@CssClass" @attributes="AdditionalAttributes">
+    @Icon
+    @ChildContent
+</div>
+
+@code {
+    /// <summary>
+    /// The color variant of the alert.
+    /// </summary>
+    [Parameter]
+    public BlazyAlertColor Color { get; set; } = BlazyAlertColor.Default;
+
+    /// <summary>
+    /// The style variant of the alert.
+    /// </summary>
+    [Parameter]
+    public BlazyAlertStyle Style { get; set; } = BlazyAlertStyle.Default;
+
+    /// <summary>
+    /// The layout direction of the alert.
+    /// </summary>
+    [Parameter]
+    public BlazyAlertLayout Layout { get; set; } = BlazyAlertLayout.Default;
+
+    /// <summary>
+    /// Optional icon to display before the content.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? Icon { get; set; }
+
+    /// <summary>
+    /// The content to display inside the alert.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "alert",
+        ColorClass,
+        StyleClass,
+        LayoutClass
+    );
+
+    private string? ColorClass => Color switch
+    {
+        BlazyAlertColor.Default => null,
+        BlazyAlertColor.Info => "alert-info",
+        BlazyAlertColor.Success => "alert-success",
+        BlazyAlertColor.Warning => "alert-warning",
+        BlazyAlertColor.Error => "alert-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+
+    private string? StyleClass => Style switch
+    {
+        BlazyAlertStyle.Default => null,
+        BlazyAlertStyle.Outline => "alert-outline",
+        BlazyAlertStyle.Dash => "alert-dash",
+        BlazyAlertStyle.Soft => "alert-soft",
+        _ => throw new ArgumentOutOfRangeException(nameof(Style), Style, null)
+    };
+
+    private string? LayoutClass => Layout switch
+    {
+        BlazyAlertLayout.Default => null,
+        BlazyAlertLayout.Vertical => "alert-vertical",
+        BlazyAlertLayout.Horizontal => "alert-horizontal",
+        _ => throw new ArgumentOutOfRangeException(nameof(Layout), Layout, null)
+    };
+}

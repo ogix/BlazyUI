@@ -157,7 +157,7 @@
                 </TemplateColumn>
                 <PropertyColumn Property="@(p => p.Email)" />
                 <TemplateColumn Title="Department">
-                    <Badge Color="@GetDepartmentColor(context.Department)">@context.Department</Badge>
+                    <BlazyBadge Color="@GetDepartmentColor(context.Department)">@context.Department</BlazyBadge>
                 </TemplateColumn>
             </QuickGrid>
         </div>
@@ -192,14 +192,14 @@
         await pagination.SetCurrentPageIndexAsync(pageIndex);
     }
 
-    private BadgeColor GetDepartmentColor(string department) => department switch
+    private BlazyBadgeColor GetDepartmentColor(string department) => department switch
     {
-        "Engineering" => BadgeColor.Primary,
-        "Marketing" => BadgeColor.Secondary,
-        "Sales" => BadgeColor.Accent,
-        "HR" => BadgeColor.Info,
-        "Finance" => BadgeColor.Success,
-        _ => BadgeColor.Default
+        "Engineering" => BlazyBadgeColor.Primary,
+        "Marketing" => BlazyBadgeColor.Secondary,
+        "Sales" => BlazyBadgeColor.Accent,
+        "HR" => BlazyBadgeColor.Info,
+        "Finance" => BlazyBadgeColor.Success,
+        _ => BlazyBadgeColor.Default
     };
 
     private string basicCode = @"<div class=""overflow-x-auto"">
@@ -285,7 +285,7 @@
     </TemplateColumn>
     <PropertyColumn Property=""@(p => p.Email)"" />
     <TemplateColumn Title=""Department"">
-        <Badge Color=""@GetDepartmentColor(context.Department)"">@context.Department</Badge>
+        <BlazyBadge Color=""@GetDepartmentColor(context.Department)"">@context.Department</BlazyBadge>
     </TemplateColumn>
 </QuickGrid>";
 }

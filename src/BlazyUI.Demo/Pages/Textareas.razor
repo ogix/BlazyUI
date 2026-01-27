@@ -7,7 +7,7 @@
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
-        <Textarea @bind-Value="basicValue" placeholder="Type something..." class="w-full max-w-xs" />
+        <BlazyTextarea @bind-Value="basicValue" placeholder="Type something..." class="w-full max-w-xs" />
         <p class="mt-2 text-sm opacity-70">Value: @basicValue</p>
     </CodeExample>
 </section>
@@ -16,11 +16,11 @@
     <h2 class="text-xl font-semibold mb-4">Sizes</h2>
     <CodeExample Code="@sizesCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <Textarea Size="TextareaSize.ExtraSmall" @bind-Value="sizeValue" placeholder="Extra Small" />
-            <Textarea Size="TextareaSize.Small" @bind-Value="sizeValue" placeholder="Small" />
-            <Textarea Size="TextareaSize.Medium" @bind-Value="sizeValue" placeholder="Default (Medium)" />
-            <Textarea Size="TextareaSize.Large" @bind-Value="sizeValue" placeholder="Large" />
-            <Textarea Size="TextareaSize.ExtraLarge" @bind-Value="sizeValue" placeholder="Extra Large" />
+            <BlazyTextarea Size="BlazyTextareaSize.ExtraSmall" @bind-Value="sizeValue" placeholder="Extra Small" />
+            <BlazyTextarea Size="BlazyTextareaSize.Small" @bind-Value="sizeValue" placeholder="Small" />
+            <BlazyTextarea Size="BlazyTextareaSize.Medium" @bind-Value="sizeValue" placeholder="Default (Medium)" />
+            <BlazyTextarea Size="BlazyTextareaSize.Large" @bind-Value="sizeValue" placeholder="Large" />
+            <BlazyTextarea Size="BlazyTextareaSize.ExtraLarge" @bind-Value="sizeValue" placeholder="Extra Large" />
         </div>
     </CodeExample>
 </section>
@@ -29,15 +29,15 @@
     <h2 class="text-xl font-semibold mb-4">Colors</h2>
     <CodeExample Code="@colorsCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <Textarea Color="TextareaColor.Default" @bind-Value="colorValue" placeholder="Default" />
-            <Textarea Color="TextareaColor.Neutral" @bind-Value="colorValue" placeholder="Neutral" />
-            <Textarea Color="TextareaColor.Primary" @bind-Value="colorValue" placeholder="Primary" />
-            <Textarea Color="TextareaColor.Secondary" @bind-Value="colorValue" placeholder="Secondary" />
-            <Textarea Color="TextareaColor.Accent" @bind-Value="colorValue" placeholder="Accent" />
-            <Textarea Color="TextareaColor.Info" @bind-Value="colorValue" placeholder="Info" />
-            <Textarea Color="TextareaColor.Success" @bind-Value="colorValue" placeholder="Success" />
-            <Textarea Color="TextareaColor.Warning" @bind-Value="colorValue" placeholder="Warning" />
-            <Textarea Color="TextareaColor.Error" @bind-Value="colorValue" placeholder="Error" />
+            <BlazyTextarea Color="BlazyTextareaColor.Default" @bind-Value="colorValue" placeholder="Default" />
+            <BlazyTextarea Color="BlazyTextareaColor.Neutral" @bind-Value="colorValue" placeholder="Neutral" />
+            <BlazyTextarea Color="BlazyTextareaColor.Primary" @bind-Value="colorValue" placeholder="Primary" />
+            <BlazyTextarea Color="BlazyTextareaColor.Secondary" @bind-Value="colorValue" placeholder="Secondary" />
+            <BlazyTextarea Color="BlazyTextareaColor.Accent" @bind-Value="colorValue" placeholder="Accent" />
+            <BlazyTextarea Color="BlazyTextareaColor.Info" @bind-Value="colorValue" placeholder="Info" />
+            <BlazyTextarea Color="BlazyTextareaColor.Success" @bind-Value="colorValue" placeholder="Success" />
+            <BlazyTextarea Color="BlazyTextareaColor.Warning" @bind-Value="colorValue" placeholder="Warning" />
+            <BlazyTextarea Color="BlazyTextareaColor.Error" @bind-Value="colorValue" placeholder="Error" />
         </div>
     </CodeExample>
 </section>
@@ -46,8 +46,8 @@
     <h2 class="text-xl font-semibold mb-4">Ghost Style</h2>
     <CodeExample Code="@ghostCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <Textarea Ghost @bind-Value="ghostValue" placeholder="Ghost textarea" />
-            <Textarea Ghost Color="TextareaColor.Primary" @bind-Value="ghostValue" placeholder="Ghost Primary" />
+            <BlazyTextarea Ghost @bind-Value="ghostValue" placeholder="Ghost textarea" />
+            <BlazyTextarea Ghost Color="BlazyTextareaColor.Primary" @bind-Value="ghostValue" placeholder="Ghost Primary" />
         </div>
     </CodeExample>
 </section>
@@ -60,15 +60,15 @@
 
             <div class="form-control mb-4">
                 <label class="label"><span class="label-text">Message</span></label>
-                <Textarea @bind-Value="formModel.Message" placeholder="Enter your message" rows="4" />
+                <BlazyTextarea @bind-Value="formModel.Message" placeholder="Enter your message" rows="4" />
                 <ValidationMessage For="@(() => formModel.Message)" class="text-error text-sm mt-1" />
             </div>
 
-            <Button Type="submit" Color="ButtonColor.Primary" Block>Submit</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Submit</BlazyButton>
         </EditForm>
         @if (formSubmitted)
         {
-            <Alert Color="AlertColor.Success" class="mt-4">Form submitted successfully!</Alert>
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">Form submitted successfully!</BlazyAlert>
         }
     </CodeExample>
 </section>
@@ -77,10 +77,10 @@
     <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
     <CodeExample Code="@attributesCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <Textarea @bind-Value="attrValue" placeholder="4 rows" rows="4" />
-            <Textarea @bind-Value="attrValue" placeholder="Max 100 chars" maxlength="100" />
-            <Textarea @bind-Value="attrValue" placeholder="Disabled" disabled />
-            <Textarea @bind-Value="attrValue" placeholder="Readonly" readonly />
+            <BlazyTextarea @bind-Value="attrValue" placeholder="4 rows" rows="4" />
+            <BlazyTextarea @bind-Value="attrValue" placeholder="Max 100 chars" maxlength="100" />
+            <BlazyTextarea @bind-Value="attrValue" placeholder="Disabled" disabled />
+            <BlazyTextarea @bind-Value="attrValue" placeholder="Readonly" readonly />
         </div>
     </CodeExample>
 </section>
@@ -107,38 +107,38 @@
         public string Message { get; set; } = "";
     }
 
-    private string basicCode = @"<Textarea @bind-Value=""value"" placeholder=""Type something..."" />";
+    private string basicCode = @"<BlazyTextarea @bind-Value=""value"" placeholder=""Type something..."" />";
 
-    private string sizesCode = @"<Textarea Size=""TextareaSize.ExtraSmall"" placeholder=""Extra Small"" />
-<Textarea Size=""TextareaSize.Small"" placeholder=""Small"" />
-<Textarea Size=""TextareaSize.Medium"" placeholder=""Default (Medium)"" />
-<Textarea Size=""TextareaSize.Large"" placeholder=""Large"" />
-<Textarea Size=""TextareaSize.ExtraLarge"" placeholder=""Extra Large"" />";
+    private string sizesCode = @"<BlazyTextarea Size=""BlazyTextareaSize.ExtraSmall"" placeholder=""Extra Small"" />
+<BlazyTextarea Size=""BlazyTextareaSize.Small"" placeholder=""Small"" />
+<BlazyTextarea Size=""BlazyTextareaSize.Medium"" placeholder=""Default (Medium)"" />
+<BlazyTextarea Size=""BlazyTextareaSize.Large"" placeholder=""Large"" />
+<BlazyTextarea Size=""BlazyTextareaSize.ExtraLarge"" placeholder=""Extra Large"" />";
 
-    private string colorsCode = @"<Textarea Color=""TextareaColor.Default"" placeholder=""Default"" />
-<Textarea Color=""TextareaColor.Primary"" placeholder=""Primary"" />
-<Textarea Color=""TextareaColor.Secondary"" placeholder=""Secondary"" />
-<Textarea Color=""TextareaColor.Accent"" placeholder=""Accent"" />
-<Textarea Color=""TextareaColor.Info"" placeholder=""Info"" />
-<Textarea Color=""TextareaColor.Success"" placeholder=""Success"" />
-<Textarea Color=""TextareaColor.Warning"" placeholder=""Warning"" />
-<Textarea Color=""TextareaColor.Error"" placeholder=""Error"" />";
+    private string colorsCode = @"<BlazyTextarea Color=""BlazyTextareaColor.Default"" placeholder=""Default"" />
+<BlazyTextarea Color=""BlazyTextareaColor.Primary"" placeholder=""Primary"" />
+<BlazyTextarea Color=""BlazyTextareaColor.Secondary"" placeholder=""Secondary"" />
+<BlazyTextarea Color=""BlazyTextareaColor.Accent"" placeholder=""Accent"" />
+<BlazyTextarea Color=""BlazyTextareaColor.Info"" placeholder=""Info"" />
+<BlazyTextarea Color=""BlazyTextareaColor.Success"" placeholder=""Success"" />
+<BlazyTextarea Color=""BlazyTextareaColor.Warning"" placeholder=""Warning"" />
+<BlazyTextarea Color=""BlazyTextareaColor.Error"" placeholder=""Error"" />";
 
-    private string ghostCode = @"<Textarea Ghost placeholder=""Ghost textarea"" />
-<Textarea Ghost Color=""TextareaColor.Primary"" placeholder=""Ghost Primary"" />";
+    private string ghostCode = @"<BlazyTextarea Ghost placeholder=""Ghost textarea"" />
+<BlazyTextarea Ghost Color=""BlazyTextareaColor.Primary"" placeholder=""Ghost Primary"" />";
 
     private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
     <DataAnnotationsValidator />
     <div class=""form-control mb-4"">
         <label class=""label""><span class=""label-text"">Message</span></label>
-        <Textarea @bind-Value=""formModel.Message"" placeholder=""Enter your message"" rows=""4"" />
+        <BlazyTextarea @bind-Value=""formModel.Message"" placeholder=""Enter your message"" rows=""4"" />
         <ValidationMessage For=""@(() => formModel.Message)"" />
     </div>
-    <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Submit</Button>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"" Block>Submit</BlazyButton>
 </EditForm>";
 
-    private string attributesCode = @"<Textarea placeholder=""4 rows"" rows=""4"" />
-<Textarea placeholder=""Max 100 chars"" maxlength=""100"" />
-<Textarea placeholder=""Disabled"" disabled />
-<Textarea placeholder=""Readonly"" readonly />";
+    private string attributesCode = @"<BlazyTextarea placeholder=""4 rows"" rows=""4"" />
+<BlazyTextarea placeholder=""Max 100 chars"" maxlength=""100"" />
+<BlazyTextarea placeholder=""Disabled"" disabled />
+<BlazyTextarea placeholder=""Readonly"" readonly />";
 }

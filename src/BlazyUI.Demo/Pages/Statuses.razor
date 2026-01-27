@@ -8,7 +8,7 @@
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
         <div class="flex flex-wrap gap-4">
-            <Status />
+            <BlazyStatus />
         </div>
     </CodeExample>
 </section>
@@ -17,15 +17,15 @@
     <h2 class="text-xl font-semibold mb-4">Colors</h2>
     <CodeExample Code="@colorsCode">
         <div class="flex flex-wrap items-center gap-4">
-            <Status />
-            <Status Color="StatusColor.Neutral" />
-            <Status Color="StatusColor.Primary" />
-            <Status Color="StatusColor.Secondary" />
-            <Status Color="StatusColor.Accent" />
-            <Status Color="StatusColor.Info" />
-            <Status Color="StatusColor.Success" />
-            <Status Color="StatusColor.Warning" />
-            <Status Color="StatusColor.Error" />
+            <BlazyStatus />
+            <BlazyStatus Color="BlazyStatusColor.Neutral" />
+            <BlazyStatus Color="BlazyStatusColor.Primary" />
+            <BlazyStatus Color="BlazyStatusColor.Secondary" />
+            <BlazyStatus Color="BlazyStatusColor.Accent" />
+            <BlazyStatus Color="BlazyStatusColor.Info" />
+            <BlazyStatus Color="BlazyStatusColor.Success" />
+            <BlazyStatus Color="BlazyStatusColor.Warning" />
+            <BlazyStatus Color="BlazyStatusColor.Error" />
         </div>
     </CodeExample>
 </section>
@@ -34,11 +34,11 @@
     <h2 class="text-xl font-semibold mb-4">Sizes</h2>
     <CodeExample Code="@sizesCode">
         <div class="flex flex-wrap items-center gap-4">
-            <Status Size="StatusSize.ExtraSmall" Color="StatusColor.Primary" />
-            <Status Size="StatusSize.Small" Color="StatusColor.Primary" />
-            <Status Size="StatusSize.Medium" Color="StatusColor.Primary" />
-            <Status Size="StatusSize.Large" Color="StatusColor.Primary" />
-            <Status Size="StatusSize.ExtraLarge" Color="StatusColor.Primary" />
+            <BlazyStatus Size="BlazyStatusSize.ExtraSmall" Color="BlazyStatusColor.Primary" />
+            <BlazyStatus Size="BlazyStatusSize.Small" Color="BlazyStatusColor.Primary" />
+            <BlazyStatus Size="BlazyStatusSize.Medium" Color="BlazyStatusColor.Primary" />
+            <BlazyStatus Size="BlazyStatusSize.Large" Color="BlazyStatusColor.Primary" />
+            <BlazyStatus Size="BlazyStatusSize.ExtraLarge" Color="BlazyStatusColor.Primary" />
         </div>
     </CodeExample>
 </section>
@@ -48,19 +48,19 @@
     <CodeExample Code="@withTextCode">
         <div class="flex flex-col gap-3">
             <div class="flex items-center gap-2">
-                <Status Color="StatusColor.Success" Size="StatusSize.Small" />
+                <BlazyStatus Color="BlazyStatusColor.Success" Size="BlazyStatusSize.Small" />
                 <span>Online</span>
             </div>
             <div class="flex items-center gap-2">
-                <Status Color="StatusColor.Error" Size="StatusSize.Small" />
+                <BlazyStatus Color="BlazyStatusColor.Error" Size="BlazyStatusSize.Small" />
                 <span>Offline</span>
             </div>
             <div class="flex items-center gap-2">
-                <Status Color="StatusColor.Warning" Size="StatusSize.Small" />
+                <BlazyStatus Color="BlazyStatusColor.Warning" Size="BlazyStatusSize.Small" />
                 <span>Away</span>
             </div>
             <div class="flex items-center gap-2">
-                <Status Color="StatusColor.Neutral" Size="StatusSize.Small" />
+                <BlazyStatus Color="BlazyStatusColor.Neutral" Size="BlazyStatusSize.Small" />
                 <span>Busy</span>
             </div>
         </div>
@@ -72,15 +72,15 @@
     <CodeExample Code="@animationCode">
         <div class="flex flex-wrap items-center gap-6">
             <div class="flex items-center gap-2">
-                <Status Color="StatusColor.Primary" />
+                <BlazyStatus Color="BlazyStatusColor.Primary" />
                 <span>None</span>
             </div>
             <div class="flex items-center gap-2">
-                <Status Color="StatusColor.Info" Animation="StatusAnimation.Ping" />
+                <BlazyStatus Color="BlazyStatusColor.Info" Animation="BlazyStatusAnimation.Ping" />
                 <span>Ping</span>
             </div>
             <div class="flex items-center gap-2">
-                <Status Color="StatusColor.Success" Animation="StatusAnimation.Bounce" />
+                <BlazyStatus Color="BlazyStatusColor.Success" Animation="BlazyStatusAnimation.Bounce" />
                 <span>Bounce</span>
             </div>
         </div>
@@ -91,78 +91,78 @@
     <h2 class="text-xl font-semibold mb-4">In Avatar</h2>
     <CodeExample Code="@inAvatarCode">
         <div class="flex flex-wrap items-center gap-6">
-            <Indicator>
-                <IndicatorItem Horizontal="IndicatorHorizontal.End" Vertical="IndicatorVertical.Bottom">
-                    <Status Color="StatusColor.Success" Size="StatusSize.Small" />
-                </IndicatorItem>
+            <BlazyIndicator>
+                <BlazyIndicatorItem Horizontal="BlazyIndicatorHorizontal.End" Vertical="BlazyIndicatorVertical.Bottom">
+                    <BlazyStatus Color="BlazyStatusColor.Success" Size="BlazyStatusSize.Small" />
+                </BlazyIndicatorItem>
                 <div class="avatar">
                     <div class="w-12 rounded-full bg-base-300 flex items-center justify-center">
                         <span class="text-lg">JD</span>
                     </div>
                 </div>
-            </Indicator>
-            <Indicator>
-                <IndicatorItem Horizontal="IndicatorHorizontal.End" Vertical="IndicatorVertical.Bottom">
-                    <Status Color="StatusColor.Error" Size="StatusSize.Small" />
-                </IndicatorItem>
+            </BlazyIndicator>
+            <BlazyIndicator>
+                <BlazyIndicatorItem Horizontal="BlazyIndicatorHorizontal.End" Vertical="BlazyIndicatorVertical.Bottom">
+                    <BlazyStatus Color="BlazyStatusColor.Error" Size="BlazyStatusSize.Small" />
+                </BlazyIndicatorItem>
                 <div class="avatar">
                     <div class="w-12 rounded-full bg-base-300 flex items-center justify-center">
                         <span class="text-lg">AB</span>
                     </div>
                 </div>
-            </Indicator>
+            </BlazyIndicator>
         </div>
     </CodeExample>
 </section>
 
 @code {
-    private string basicCode = @"<Status />";
+    private string basicCode = @"<BlazyStatus />";
 
-    private string colorsCode = @"<Status />
-<Status Color=""StatusColor.Neutral"" />
-<Status Color=""StatusColor.Primary"" />
-<Status Color=""StatusColor.Secondary"" />
-<Status Color=""StatusColor.Accent"" />
-<Status Color=""StatusColor.Info"" />
-<Status Color=""StatusColor.Success"" />
-<Status Color=""StatusColor.Warning"" />
-<Status Color=""StatusColor.Error"" />";
+    private string colorsCode = @"<BlazyStatus />
+<BlazyStatus Color=""BlazyStatusColor.Neutral"" />
+<BlazyStatus Color=""BlazyStatusColor.Primary"" />
+<BlazyStatus Color=""BlazyStatusColor.Secondary"" />
+<BlazyStatus Color=""BlazyStatusColor.Accent"" />
+<BlazyStatus Color=""BlazyStatusColor.Info"" />
+<BlazyStatus Color=""BlazyStatusColor.Success"" />
+<BlazyStatus Color=""BlazyStatusColor.Warning"" />
+<BlazyStatus Color=""BlazyStatusColor.Error"" />";
 
-    private string sizesCode = @"<Status Size=""StatusSize.ExtraSmall"" Color=""StatusColor.Primary"" />
-<Status Size=""StatusSize.Small"" Color=""StatusColor.Primary"" />
-<Status Size=""StatusSize.Medium"" Color=""StatusColor.Primary"" />
-<Status Size=""StatusSize.Large"" Color=""StatusColor.Primary"" />
-<Status Size=""StatusSize.ExtraLarge"" Color=""StatusColor.Primary"" />";
+    private string sizesCode = @"<BlazyStatus Size=""BlazyStatusSize.ExtraSmall"" Color=""BlazyStatusColor.Primary"" />
+<BlazyStatus Size=""BlazyStatusSize.Small"" Color=""BlazyStatusColor.Primary"" />
+<BlazyStatus Size=""BlazyStatusSize.Medium"" Color=""BlazyStatusColor.Primary"" />
+<BlazyStatus Size=""BlazyStatusSize.Large"" Color=""BlazyStatusColor.Primary"" />
+<BlazyStatus Size=""BlazyStatusSize.ExtraLarge"" Color=""BlazyStatusColor.Primary"" />";
 
     private string withTextCode = @"<div class=""flex items-center gap-2"">
-    <Status Color=""StatusColor.Success"" Size=""StatusSize.Small"" />
+    <BlazyStatus Color=""BlazyStatusColor.Success"" Size=""BlazyStatusSize.Small"" />
     <span>Online</span>
 </div>
 <div class=""flex items-center gap-2"">
-    <Status Color=""StatusColor.Error"" Size=""StatusSize.Small"" />
+    <BlazyStatus Color=""BlazyStatusColor.Error"" Size=""BlazyStatusSize.Small"" />
     <span>Offline</span>
 </div>
 <div class=""flex items-center gap-2"">
-    <Status Color=""StatusColor.Warning"" Size=""StatusSize.Small"" />
+    <BlazyStatus Color=""BlazyStatusColor.Warning"" Size=""BlazyStatusSize.Small"" />
     <span>Away</span>
 </div>
 <div class=""flex items-center gap-2"">
-    <Status Color=""StatusColor.Neutral"" Size=""StatusSize.Small"" />
+    <BlazyStatus Color=""BlazyStatusColor.Neutral"" Size=""BlazyStatusSize.Small"" />
     <span>Busy</span>
 </div>";
 
-    private string animationCode = @"<Status Color=""StatusColor.Primary"" />
-<Status Color=""StatusColor.Info"" Animation=""StatusAnimation.Ping"" />
-<Status Color=""StatusColor.Success"" Animation=""StatusAnimation.Bounce"" />";
+    private string animationCode = @"<BlazyStatus Color=""BlazyStatusColor.Primary"" />
+<BlazyStatus Color=""BlazyStatusColor.Info"" Animation=""BlazyStatusAnimation.Ping"" />
+<BlazyStatus Color=""BlazyStatusColor.Success"" Animation=""BlazyStatusAnimation.Bounce"" />";
 
-    private string inAvatarCode = @"<Indicator>
-    <IndicatorItem Horizontal=""IndicatorHorizontal.End"" Vertical=""IndicatorVertical.Bottom"">
-        <Status Color=""StatusColor.Success"" Size=""StatusSize.Small"" />
-    </IndicatorItem>
+    private string inAvatarCode = @"<BlazyIndicator>
+    <BlazyIndicatorItem Horizontal=""BlazyIndicatorHorizontal.End"" Vertical=""BlazyIndicatorVertical.Bottom"">
+        <BlazyStatus Color=""BlazyStatusColor.Success"" Size=""BlazyStatusSize.Small"" />
+    </BlazyIndicatorItem>
     <div class=""avatar"">
         <div class=""w-12 rounded-full bg-base-300"">
             <span>JD</span>
         </div>
     </div>
-</Indicator>";
+</BlazyIndicator>";
 }

@@ -8,14 +8,14 @@
     <h2 class="text-xl font-semibold mb-4">Basic Collapse with Arrow</h2>
     <CodeExample Code="@basicCode">
         <div class="space-y-2">
-            <Collapse Indicator="CollapseIndicator.Arrow" Class="bg-base-200">
-                <CollapseTitle Class="font-medium">
+            <BlazyCollapse Indicator="BlazyCollapseIndicator.Arrow" Class="bg-base-200">
+                <BlazyCollapseTitle Class="font-medium">
                     Click to expand/collapse
-                </CollapseTitle>
-                <CollapseContent>
+                </BlazyCollapseTitle>
+                <BlazyCollapseContent>
                     <p>This is the collapsible content. Click the title to toggle visibility.</p>
-                </CollapseContent>
-            </Collapse>
+                </BlazyCollapseContent>
+            </BlazyCollapse>
         </div>
     </CodeExample>
 </section>
@@ -24,14 +24,14 @@
     <h2 class="text-xl font-semibold mb-4">Plus/Minus Indicator</h2>
     <CodeExample Code="@plusCode">
         <div class="space-y-2">
-            <Collapse Indicator="CollapseIndicator.Plus" Class="bg-base-200">
-                <CollapseTitle Class="font-medium">
+            <BlazyCollapse Indicator="BlazyCollapseIndicator.Plus" Class="bg-base-200">
+                <BlazyCollapseTitle Class="font-medium">
                     Plus/Minus Toggle
-                </CollapseTitle>
-                <CollapseContent>
+                </BlazyCollapseTitle>
+                <BlazyCollapseContent>
                     <p>This collapse uses a plus/minus indicator instead of an arrow.</p>
-                </CollapseContent>
-            </Collapse>
+                </BlazyCollapseContent>
+            </BlazyCollapse>
         </div>
     </CodeExample>
 </section>
@@ -41,19 +41,19 @@
     <CodeExample Code="@bindingCode">
         <div class="space-y-4">
             <div class="flex gap-2">
-                <Button Color="ButtonColor.Primary" Size="ButtonSize.Small" @onclick="() => isOpen = !isOpen">
+                <BlazyButton Color="BlazyButtonColor.Primary" Size="BlazyButtonSize.Small" @onclick="() => isOpen = !isOpen">
                     Toggle Collapse
-                </Button>
+                </BlazyButton>
                 <span class="text-sm self-center">State: @(isOpen ? "Open" : "Closed")</span>
             </div>
-            <Collapse @bind-Open="isOpen" Indicator="CollapseIndicator.Arrow" Class="bg-base-200">
-                <CollapseTitle Class="font-medium">
+            <BlazyCollapse @bind-Open="isOpen" Indicator="BlazyCollapseIndicator.Arrow" Class="bg-base-200">
+                <BlazyCollapseTitle Class="font-medium">
                     Controlled Collapse
-                </CollapseTitle>
-                <CollapseContent>
+                </BlazyCollapseTitle>
+                <BlazyCollapseContent>
                     <p>This collapse is controlled via two-way binding. Use the button above to toggle it programmatically.</p>
-                </CollapseContent>
-            </Collapse>
+                </BlazyCollapseContent>
+            </BlazyCollapse>
         </div>
     </CodeExample>
 </section>
@@ -62,22 +62,22 @@
     <h2 class="text-xl font-semibold mb-4">Force Open / Force Closed</h2>
     <CodeExample Code="@forceCode">
         <div class="space-y-2">
-            <Collapse Indicator="CollapseIndicator.Arrow" ForceOpen Class="bg-base-200">
-                <CollapseTitle Class="font-medium">
+            <BlazyCollapse Indicator="BlazyCollapseIndicator.Arrow" ForceOpen Class="bg-base-200">
+                <BlazyCollapseTitle Class="font-medium">
                     Always Open (ForceOpen)
-                </CollapseTitle>
-                <CollapseContent>
+                </BlazyCollapseTitle>
+                <BlazyCollapseContent>
                     <p>This collapse is forced to stay open using the ForceOpen parameter.</p>
-                </CollapseContent>
-            </Collapse>
-            <Collapse Indicator="CollapseIndicator.Arrow" ForceClosed Class="bg-base-200">
-                <CollapseTitle Class="font-medium">
+                </BlazyCollapseContent>
+            </BlazyCollapse>
+            <BlazyCollapse Indicator="BlazyCollapseIndicator.Arrow" ForceClosed Class="bg-base-200">
+                <BlazyCollapseTitle Class="font-medium">
                     Always Closed (ForceClosed)
-                </CollapseTitle>
-                <CollapseContent>
+                </BlazyCollapseTitle>
+                <BlazyCollapseContent>
                     <p>This content is hidden because the collapse is forced closed.</p>
-                </CollapseContent>
-            </Collapse>
+                </BlazyCollapseContent>
+            </BlazyCollapse>
         </div>
     </CodeExample>
 </section>
@@ -86,14 +86,14 @@
     <h2 class="text-xl font-semibold mb-4">No Indicator</h2>
     <CodeExample Code="@noIndicatorCode">
         <div class="space-y-2">
-            <Collapse Class="bg-base-200">
-                <CollapseTitle Class="font-medium">
+            <BlazyCollapse Class="bg-base-200">
+                <BlazyCollapseTitle Class="font-medium">
                     No Visual Indicator
-                </CollapseTitle>
-                <CollapseContent>
+                </BlazyCollapseTitle>
+                <BlazyCollapseContent>
                     <p>This collapse has no arrow or plus indicator. Click the title area to toggle.</p>
-                </CollapseContent>
-            </Collapse>
+                </BlazyCollapseContent>
+            </BlazyCollapse>
         </div>
     </CodeExample>
 </section>
@@ -102,30 +102,30 @@
     <h2 class="text-xl font-semibold mb-4">Styled Collapses</h2>
     <CodeExample Code="@styledCode">
         <div class="space-y-2">
-            <Collapse Indicator="CollapseIndicator.Arrow" Class="border border-base-300 bg-base-100 rounded-box">
-                <CollapseTitle Class="font-medium">
+            <BlazyCollapse Indicator="BlazyCollapseIndicator.Arrow" Class="border border-base-300 bg-base-100 rounded-box">
+                <BlazyCollapseTitle Class="font-medium">
                     Bordered Collapse
-                </CollapseTitle>
-                <CollapseContent>
+                </BlazyCollapseTitle>
+                <BlazyCollapseContent>
                     <p>This collapse has a border and rounded corners.</p>
-                </CollapseContent>
-            </Collapse>
-            <Collapse Indicator="CollapseIndicator.Plus" Class="bg-primary text-primary-content rounded-box">
-                <CollapseTitle Class="font-medium">
+                </BlazyCollapseContent>
+            </BlazyCollapse>
+            <BlazyCollapse Indicator="BlazyCollapseIndicator.Plus" Class="bg-primary text-primary-content rounded-box">
+                <BlazyCollapseTitle Class="font-medium">
                     Primary Color
-                </CollapseTitle>
-                <CollapseContent>
+                </BlazyCollapseTitle>
+                <BlazyCollapseContent>
                     <p>This collapse uses the primary color scheme.</p>
-                </CollapseContent>
-            </Collapse>
-            <Collapse Indicator="CollapseIndicator.Arrow" Class="bg-secondary text-secondary-content rounded-box">
-                <CollapseTitle Class="font-medium">
+                </BlazyCollapseContent>
+            </BlazyCollapse>
+            <BlazyCollapse Indicator="BlazyCollapseIndicator.Arrow" Class="bg-secondary text-secondary-content rounded-box">
+                <BlazyCollapseTitle Class="font-medium">
                     Secondary Color
-                </CollapseTitle>
-                <CollapseContent>
+                </BlazyCollapseTitle>
+                <BlazyCollapseContent>
                     <p>This collapse uses the secondary color scheme.</p>
-                </CollapseContent>
-            </Collapse>
+                </BlazyCollapseContent>
+            </BlazyCollapse>
         </div>
     </CodeExample>
 </section>
@@ -133,63 +133,63 @@
 @code {
     private bool isOpen = false;
 
-    private string basicCode = @"<Collapse Indicator=""CollapseIndicator.Arrow"" Class=""bg-base-200"">
-    <CollapseTitle Class=""font-medium"">
+    private string basicCode = @"<BlazyCollapse Indicator=""BlazyCollapseIndicator.Arrow"" Class=""bg-base-200"">
+    <BlazyCollapseTitle Class=""font-medium"">
         Click to expand/collapse
-    </CollapseTitle>
-    <CollapseContent>
+    </BlazyCollapseTitle>
+    <BlazyCollapseContent>
         <p>This is the collapsible content.</p>
-    </CollapseContent>
-</Collapse>";
+    </BlazyCollapseContent>
+</BlazyCollapse>";
 
-    private string plusCode = @"<Collapse Indicator=""CollapseIndicator.Plus"" Class=""bg-base-200"">
-    <CollapseTitle Class=""font-medium"">
+    private string plusCode = @"<BlazyCollapse Indicator=""BlazyCollapseIndicator.Plus"" Class=""bg-base-200"">
+    <BlazyCollapseTitle Class=""font-medium"">
         Plus/Minus Toggle
-    </CollapseTitle>
-    <CollapseContent>
+    </BlazyCollapseTitle>
+    <BlazyCollapseContent>
         <p>Content with plus/minus indicator.</p>
-    </CollapseContent>
-</Collapse>";
+    </BlazyCollapseContent>
+</BlazyCollapse>";
 
-    private string bindingCode = @"<Button @onclick=""() => isOpen = !isOpen"">Toggle</Button>
+    private string bindingCode = @"<BlazyButton @onclick=""() => isOpen = !isOpen"">Toggle</BlazyButton>
 
-<Collapse @bind-Open=""isOpen"" Indicator=""CollapseIndicator.Arrow"">
-    <CollapseTitle>Controlled Collapse</CollapseTitle>
-    <CollapseContent>
+<BlazyCollapse @bind-Open=""isOpen"" Indicator=""BlazyCollapseIndicator.Arrow"">
+    <BlazyCollapseTitle>Controlled Collapse</BlazyCollapseTitle>
+    <BlazyCollapseContent>
         <p>Controlled via two-way binding.</p>
-    </CollapseContent>
-</Collapse>
+    </BlazyCollapseContent>
+</BlazyCollapse>
 
 @code {
     private bool isOpen = false;
 }";
 
-    private string forceCode = @"<Collapse ForceOpen Indicator=""CollapseIndicator.Arrow"">
-    <CollapseTitle>Always Open</CollapseTitle>
-    <CollapseContent>Stays open</CollapseContent>
-</Collapse>
+    private string forceCode = @"<BlazyCollapse ForceOpen Indicator=""BlazyCollapseIndicator.Arrow"">
+    <BlazyCollapseTitle>Always Open</BlazyCollapseTitle>
+    <BlazyCollapseContent>Stays open</BlazyCollapseContent>
+</BlazyCollapse>
 
-<Collapse ForceClosed Indicator=""CollapseIndicator.Arrow"">
-    <CollapseTitle>Always Closed</CollapseTitle>
-    <CollapseContent>Hidden content</CollapseContent>
-</Collapse>";
+<BlazyCollapse ForceClosed Indicator=""BlazyCollapseIndicator.Arrow"">
+    <BlazyCollapseTitle>Always Closed</BlazyCollapseTitle>
+    <BlazyCollapseContent>Hidden content</BlazyCollapseContent>
+</BlazyCollapse>";
 
-    private string noIndicatorCode = @"<Collapse Class=""bg-base-200"">
-    <CollapseTitle>No Visual Indicator</CollapseTitle>
-    <CollapseContent>
+    private string noIndicatorCode = @"<BlazyCollapse Class=""bg-base-200"">
+    <BlazyCollapseTitle>No Visual Indicator</BlazyCollapseTitle>
+    <BlazyCollapseContent>
         <p>No arrow or plus indicator.</p>
-    </CollapseContent>
-</Collapse>";
+    </BlazyCollapseContent>
+</BlazyCollapse>";
 
-    private string styledCode = @"<Collapse Indicator=""CollapseIndicator.Arrow""
+    private string styledCode = @"<BlazyCollapse Indicator=""BlazyCollapseIndicator.Arrow""
         Class=""border border-base-300 rounded-box"">
-    <CollapseTitle>Bordered</CollapseTitle>
-    <CollapseContent>Content</CollapseContent>
-</Collapse>
+    <BlazyCollapseTitle>Bordered</BlazyCollapseTitle>
+    <BlazyCollapseContent>Content</BlazyCollapseContent>
+</BlazyCollapse>
 
-<Collapse Indicator=""CollapseIndicator.Plus""
+<BlazyCollapse Indicator=""BlazyCollapseIndicator.Plus""
         Class=""bg-primary text-primary-content rounded-box"">
-    <CollapseTitle>Primary Color</CollapseTitle>
-    <CollapseContent>Content</CollapseContent>
-</Collapse>";
+    <BlazyCollapseTitle>Primary Color</BlazyCollapseTitle>
+    <BlazyCollapseContent>Content</BlazyCollapseContent>
+</BlazyCollapse>";
 }

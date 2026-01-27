@@ -8,23 +8,23 @@
     <h2 class="text-xl font-semibold mb-4">Basic Drawer</h2>
     <p class="mb-4 text-sm opacity-70">A drawer with a toggle button and sidebar content</p>
     <CodeExample Code="@basicCode">
-        <Drawer Class="relative h-52 rounded-box overflow-hidden">
-            <DrawerContent Class="flex flex-col items-center justify-center">
-                <DrawerToggle>
+        <BlazyDrawer Class="relative h-52 rounded-box overflow-hidden">
+            <BlazyDrawerContent Class="flex flex-col items-center justify-center">
+                <BlazyDrawerToggle>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                     Open Drawer
-                </DrawerToggle>
-            </DrawerContent>
-            <DrawerSide Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0">
+                </BlazyDrawerToggle>
+            </BlazyDrawerContent>
+            <BlazyDrawerSide Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0">
                 <ul class="menu text-base-content">
                     <li><a>Menu Item 1</a></li>
                     <li><a>Menu Item 2</a></li>
                     <li><a>Menu Item 3</a></li>
                 </ul>
-            </DrawerSide>
-        </Drawer>
+            </BlazyDrawerSide>
+        </BlazyDrawer>
     </CodeExample>
 </section>
 
@@ -32,23 +32,23 @@
     <h2 class="text-xl font-semibold mb-4">Right-Side Drawer</h2>
     <p class="mb-4 text-sm opacity-70">Drawer opens from the right side using drawer-end</p>
     <CodeExample Code="@rightSideCode">
-        <Drawer Position="DrawerPosition.End" Class="relative h-52 rounded-box overflow-hidden">
-            <DrawerContent Class="flex flex-col items-center justify-center">
-                <DrawerToggle>
+        <BlazyDrawer Position="BlazyDrawerPosition.End" Class="relative h-52 rounded-box overflow-hidden">
+            <BlazyDrawerContent Class="flex flex-col items-center justify-center">
+                <BlazyDrawerToggle>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                     Open Right Drawer
-                </DrawerToggle>
-            </DrawerContent>
-            <DrawerSide Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0 z-[60]">
+                </BlazyDrawerToggle>
+            </BlazyDrawerContent>
+            <BlazyDrawerSide Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0 z-[60]">
                 <ul class="menu text-base-content">
                     <li><a>Right Side Item 1</a></li>
                     <li><a>Right Side Item 2</a></li>
                     <li><a>Right Side Item 3</a></li>
                 </ul>
-            </DrawerSide>
-        </Drawer>
+            </BlazyDrawerSide>
+        </BlazyDrawer>
     </CodeExample>
 </section>
 
@@ -56,24 +56,24 @@
     <h2 class="text-xl font-semibold mb-4">Responsive Drawer</h2>
     <p class="mb-4 text-sm opacity-70">Drawer is always open on large screens (lg:drawer-open). Resize your browser to see the effect.</p>
     <CodeExample Code="@responsiveCode">
-        <Drawer Responsive Class="relative h-52 rounded-box overflow-hidden border border-base-300">
-            <DrawerContent Class="flex flex-col items-center justify-center">
-                <DrawerToggle Class="lg:hidden">
+        <BlazyDrawer Responsive Class="relative h-52 rounded-box overflow-hidden border border-base-300">
+            <BlazyDrawerContent Class="flex flex-col items-center justify-center">
+                <BlazyDrawerToggle Class="lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                     Toggle Menu
-                </DrawerToggle>
+                </BlazyDrawerToggle>
                 <p class="hidden lg:block">Sidebar is always visible on large screens</p>
-            </DrawerContent>
-            <DrawerSide Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0">
+            </BlazyDrawerContent>
+            <BlazyDrawerSide Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0">
                 <ul class="menu text-base-content">
                     <li><a>Dashboard</a></li>
                     <li><a>Settings</a></li>
                     <li><a>Profile</a></li>
                 </ul>
-            </DrawerSide>
-        </Drawer>
+            </BlazyDrawerSide>
+        </BlazyDrawer>
     </CodeExample>
 </section>
 
@@ -83,30 +83,30 @@
     <CodeExample Code="@twoWayBindingCode">
         <div class="flex flex-col gap-4">
             <div class="flex gap-2 items-center">
-                <Button Color="ButtonColor.Primary" @onclick="() => isDrawerOpen = !isDrawerOpen">
+                <BlazyButton Color="BlazyButtonColor.Primary" @onclick="() => isDrawerOpen = !isDrawerOpen">
                     @(isDrawerOpen ? "Close" : "Open") Drawer Programmatically
-                </Button>
+                </BlazyButton>
                 <span class="badge @(isDrawerOpen ? "badge-success" : "badge-error")">
                     @(isDrawerOpen ? "Open" : "Closed")
                 </span>
             </div>
-            <Drawer @bind-Open="isDrawerOpen" Class="relative h-52 rounded-box overflow-hidden border border-base-300">
-                <DrawerContent Class="flex flex-col items-center justify-center">
-                    <DrawerToggle>
+            <BlazyDrawer @bind-Open="isDrawerOpen" Class="relative h-52 rounded-box overflow-hidden border border-base-300">
+                <BlazyDrawerContent Class="flex flex-col items-center justify-center">
+                    <BlazyDrawerToggle>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                         Toggle via Label
-                    </DrawerToggle>
-                </DrawerContent>
-                <DrawerSide Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0">
+                    </BlazyDrawerToggle>
+                </BlazyDrawerContent>
+                <BlazyDrawerSide Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0">
                     <ul class="menu text-base-content">
                         <li><a>Bound Item 1</a></li>
                         <li><a>Bound Item 2</a></li>
                         <li><a>Bound Item 3</a></li>
                     </ul>
-                </DrawerSide>
-            </Drawer>
+                </BlazyDrawerSide>
+            </BlazyDrawer>
         </div>
     </CodeExample>
 </section>
@@ -115,99 +115,99 @@
     <h2 class="text-xl font-semibold mb-4">Custom Sidebar Styling</h2>
     <p class="mb-4 text-sm opacity-70">Customize the sidebar width and background</p>
     <CodeExample Code="@customStylingCode">
-        <Drawer Class="relative h-52 rounded-box overflow-hidden">
-            <DrawerContent Class="flex flex-col items-center justify-center bg-base-100">
-                <DrawerToggle>
+        <BlazyDrawer Class="relative h-52 rounded-box overflow-hidden">
+            <BlazyDrawerContent Class="flex flex-col items-center justify-center bg-base-100">
+                <BlazyDrawerToggle>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block h-5 w-5 stroke-current">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                     Open Wide Drawer
-                </DrawerToggle>
-            </DrawerContent>
-            <DrawerSide Width="w-96" Background="bg-primary text-primary-content" Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0">
+                </BlazyDrawerToggle>
+            </BlazyDrawerContent>
+            <BlazyDrawerSide Width="w-96" Background="bg-primary text-primary-content" Class="absolute! inset-0! [&_.drawer-overlay]:absolute [&_.drawer-overlay]:inset-0">
                 <div class="p-4">
                     <h3 class="font-bold text-lg mb-4">Custom Styled Sidebar</h3>
                     <p>This sidebar uses custom width (w-96) and primary color background.</p>
                 </div>
-            </DrawerSide>
-        </Drawer>
+            </BlazyDrawerSide>
+        </BlazyDrawer>
     </CodeExample>
 </section>
 
 @code {
     private bool isDrawerOpen;
 
-    private string basicCode = @"<Drawer>
-    <DrawerContent>
-        <DrawerToggle>
+    private string basicCode = @"<BlazyDrawer>
+    <BlazyDrawerContent>
+        <BlazyDrawerToggle>
             <!-- Hamburger icon -->
             Open Drawer
-        </DrawerToggle>
-    </DrawerContent>
-    <DrawerSide>
+        </BlazyDrawerToggle>
+    </BlazyDrawerContent>
+    <BlazyDrawerSide>
         <ul class=""menu text-base-content"">
             <li><a>Menu Item 1</a></li>
             <li><a>Menu Item 2</a></li>
             <li><a>Menu Item 3</a></li>
         </ul>
-    </DrawerSide>
-</Drawer>";
+    </BlazyDrawerSide>
+</BlazyDrawer>";
 
-    private string rightSideCode = @"<Drawer Position=""DrawerPosition.End"">
-    <DrawerContent>
-        <DrawerToggle>Open Right Drawer</DrawerToggle>
-    </DrawerContent>
-    <DrawerSide>
+    private string rightSideCode = @"<BlazyDrawer Position=""BlazyDrawerPosition.End"">
+    <BlazyDrawerContent>
+        <BlazyDrawerToggle>Open Right Drawer</BlazyDrawerToggle>
+    </BlazyDrawerContent>
+    <BlazyDrawerSide>
         <ul class=""menu text-base-content"">
             <li><a>Right Side Item 1</a></li>
             <li><a>Right Side Item 2</a></li>
         </ul>
-    </DrawerSide>
-</Drawer>";
+    </BlazyDrawerSide>
+</BlazyDrawer>";
 
-    private string responsiveCode = @"<Drawer Responsive>
-    <DrawerContent>
-        <DrawerToggle Class=""lg:hidden"">
+    private string responsiveCode = @"<BlazyDrawer Responsive>
+    <BlazyDrawerContent>
+        <BlazyDrawerToggle Class=""lg:hidden"">
             Toggle Menu
-        </DrawerToggle>
+        </BlazyDrawerToggle>
         <p class=""hidden lg:block"">Sidebar is always visible on large screens</p>
-    </DrawerContent>
-    <DrawerSide>
+    </BlazyDrawerContent>
+    <BlazyDrawerSide>
         <ul class=""menu text-base-content"">
             <li><a>Dashboard</a></li>
             <li><a>Settings</a></li>
         </ul>
-    </DrawerSide>
-</Drawer>";
+    </BlazyDrawerSide>
+</BlazyDrawer>";
 
-    private string twoWayBindingCode = @"<Button @onclick=""() => isDrawerOpen = !isDrawerOpen"">
+    private string twoWayBindingCode = @"<BlazyButton @onclick=""() => isDrawerOpen = !isDrawerOpen"">
     @(isDrawerOpen ? ""Close"" : ""Open"") Drawer
-</Button>
+</BlazyButton>
 
-<Drawer @bind-Open=""isDrawerOpen"">
-    <DrawerContent>
-        <DrawerToggle>Toggle via Label</DrawerToggle>
-    </DrawerContent>
-    <DrawerSide>
+<BlazyDrawer @bind-Open=""isDrawerOpen"">
+    <BlazyDrawerContent>
+        <BlazyDrawerToggle>Toggle via Label</BlazyDrawerToggle>
+    </BlazyDrawerContent>
+    <BlazyDrawerSide>
         <ul class=""menu text-base-content"">
             <li><a>Bound Item 1</a></li>
         </ul>
-    </DrawerSide>
-</Drawer>
+    </BlazyDrawerSide>
+</BlazyDrawer>
 
 @code {
     private bool isDrawerOpen;
 }";
 
-    private string customStylingCode = @"<Drawer>
-    <DrawerContent>
-        <DrawerToggle>Open Wide Drawer</DrawerToggle>
-    </DrawerContent>
-    <DrawerSide Width=""w-96"" Background=""bg-primary text-primary-content"">
+    private string customStylingCode = @"<BlazyDrawer>
+    <BlazyDrawerContent>
+        <BlazyDrawerToggle>Open Wide Drawer</BlazyDrawerToggle>
+    </BlazyDrawerContent>
+    <BlazyDrawerSide Width=""w-96"" Background=""bg-primary text-primary-content"">
         <div class=""p-4"">
             <h3>Custom Styled Sidebar</h3>
             <p>Custom width and primary color background.</p>
         </div>
-    </DrawerSide>
-</Drawer>";
+    </BlazyDrawerSide>
+</BlazyDrawer>";
 }

@@ -8,15 +8,15 @@
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
         <div class="flex flex-wrap gap-2">
-            <Button>Default</Button>
-            <Button Color="ButtonColor.Neutral">Neutral</Button>
-            <Button Color="ButtonColor.Primary">Primary</Button>
-            <Button Color="ButtonColor.Secondary">Secondary</Button>
-            <Button Color="ButtonColor.Accent">Accent</Button>
-            <Button Color="ButtonColor.Info">Info</Button>
-            <Button Color="ButtonColor.Success">Success</Button>
-            <Button Color="ButtonColor.Warning">Warning</Button>
-            <Button Color="ButtonColor.Error">Error</Button>
+            <BlazyButton>Default</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Neutral">Neutral</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Primary">Primary</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Secondary">Secondary</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Accent">Accent</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Info">Info</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Success">Success</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Warning">Warning</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Error">Error</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -25,11 +25,11 @@
     <h2 class="text-xl font-semibold mb-4">Sizes</h2>
     <CodeExample Code="@sizesCode">
         <div class="flex flex-wrap items-center gap-2">
-            <Button Size="ButtonSize.ExtraSmall">Extra Small</Button>
-            <Button Size="ButtonSize.Small">Small</Button>
-            <Button>Medium</Button>
-            <Button Size="ButtonSize.Large">Large</Button>
-            <Button Size="ButtonSize.ExtraLarge">Extra Large</Button>
+            <BlazyButton Size="BlazyButtonSize.ExtraSmall">Extra Small</BlazyButton>
+            <BlazyButton Size="BlazyButtonSize.Small">Small</BlazyButton>
+            <BlazyButton>Medium</BlazyButton>
+            <BlazyButton Size="BlazyButtonSize.Large">Large</BlazyButton>
+            <BlazyButton Size="BlazyButtonSize.ExtraLarge">Extra Large</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -38,12 +38,12 @@
     <h2 class="text-xl font-semibold mb-4">Styles</h2>
     <CodeExample Code="@stylesCode">
         <div class="flex flex-wrap gap-2">
-            <Button Color="ButtonColor.Primary">Solid</Button>
-            <Button Color="ButtonColor.Primary" Style="ButtonStyle.Outline">Outline</Button>
-            <Button Color="ButtonColor.Primary" Style="ButtonStyle.Dash">Dash</Button>
-            <Button Color="ButtonColor.Primary" Style="ButtonStyle.Soft">Soft</Button>
-            <Button Color="ButtonColor.Primary" Style="ButtonStyle.Ghost">Ghost</Button>
-            <Button Color="ButtonColor.Primary" Style="ButtonStyle.Link">Link</Button>
+            <BlazyButton Color="BlazyButtonColor.Primary">Solid</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Primary" Style="BlazyButtonStyle.Outline">Outline</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Primary" Style="BlazyButtonStyle.Dash">Dash</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Primary" Style="BlazyButtonStyle.Soft">Soft</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Primary" Style="BlazyButtonStyle.Ghost">Ghost</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Primary" Style="BlazyButtonStyle.Link">Link</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -52,20 +52,20 @@
     <h2 class="text-xl font-semibold mb-4">Modifiers</h2>
     <CodeExample Code="@modifiersCode">
         <div class="flex flex-wrap gap-4 items-start">
-            <Button Color="ButtonColor.Primary" Wide>Wide</Button>
-            <Button Color="ButtonColor.Secondary" Square>
+            <BlazyButton Color="BlazyButtonColor.Primary" Wide>Wide</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Secondary" Square>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
-            </Button>
-            <Button Color="ButtonColor.Accent" Circle>
+            </BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Accent" Circle>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
-            </Button>
+            </BlazyButton>
         </div>
         <div class="mt-4">
-            <Button Color="ButtonColor.Info" Block>Block (Full Width)</Button>
+            <BlazyButton Color="BlazyButtonColor.Info" Block>Block (Full Width)</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -74,10 +74,10 @@
     <h2 class="text-xl font-semibold mb-4">States</h2>
     <CodeExample Code="@statesCode">
         <div class="flex flex-wrap gap-2">
-            <Button Color="ButtonColor.Primary" Active>Active</Button>
-            <Button Color="ButtonColor.Primary" Disabled>Disabled</Button>
-            <Button Color="ButtonColor.Primary" Loading>Loading</Button>
-            <Button Color="ButtonColor.Secondary" Style="ButtonStyle.Outline" Loading>Loading Outline</Button>
+            <BlazyButton Color="BlazyButtonColor.Primary" Active>Active</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Primary" Disabled>Disabled</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Primary" Loading>Loading</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Secondary" Style="BlazyButtonStyle.Outline" Loading>Loading Outline</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -86,7 +86,7 @@
     <h2 class="text-xl font-semibold mb-4">Interactive</h2>
     <CodeExample Code="@interactiveCode">
         <div class="flex flex-wrap items-center gap-4">
-            <Button Color="ButtonColor.Primary" OnClick="@HandleClick">Click me</Button>
+            <BlazyButton Color="BlazyButtonColor.Primary" OnClick="@HandleClick">Click me</BlazyButton>
             <span class="text-sm">Clicked: @clickCount times</span>
         </div>
     </CodeExample>
@@ -96,8 +96,8 @@
     <h2 class="text-xl font-semibold mb-4">Custom Classes</h2>
     <CodeExample Code="@customClassesCode">
         <div class="flex flex-wrap gap-2">
-            <Button Color="ButtonColor.Primary" Class="rounded-full">Rounded Full</Button>
-            <Button Color="ButtonColor.Secondary" Class="shadow-lg">With Shadow</Button>
+            <BlazyButton Color="BlazyButtonColor.Primary" Class="rounded-full">Rounded Full</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Secondary" Class="shadow-lg">With Shadow</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -110,44 +110,44 @@
         clickCount++;
     }
 
-    private string basicCode = @"<Button>Default</Button>
-<Button Color=""ButtonColor.Neutral"">Neutral</Button>
-<Button Color=""ButtonColor.Primary"">Primary</Button>
-<Button Color=""ButtonColor.Secondary"">Secondary</Button>
-<Button Color=""ButtonColor.Accent"">Accent</Button>
-<Button Color=""ButtonColor.Info"">Info</Button>
-<Button Color=""ButtonColor.Success"">Success</Button>
-<Button Color=""ButtonColor.Warning"">Warning</Button>
-<Button Color=""ButtonColor.Error"">Error</Button>";
+    private string basicCode = @"<BlazyButton>Default</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Neutral"">Neutral</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Primary"">Primary</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Secondary"">Secondary</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Accent"">Accent</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Info"">Info</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Success"">Success</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Warning"">Warning</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Error"">Error</BlazyButton>";
 
-    private string sizesCode = @"<Button Size=""ButtonSize.ExtraSmall"">Extra Small</Button>
-<Button Size=""ButtonSize.Small"">Small</Button>
-<Button>Medium</Button>
-<Button Size=""ButtonSize.Large"">Large</Button>
-<Button Size=""ButtonSize.ExtraLarge"">Extra Large</Button>";
+    private string sizesCode = @"<BlazyButton Size=""BlazyButtonSize.ExtraSmall"">Extra Small</BlazyButton>
+<BlazyButton Size=""BlazyButtonSize.Small"">Small</BlazyButton>
+<BlazyButton>Medium</BlazyButton>
+<BlazyButton Size=""BlazyButtonSize.Large"">Large</BlazyButton>
+<BlazyButton Size=""BlazyButtonSize.ExtraLarge"">Extra Large</BlazyButton>";
 
-    private string stylesCode = @"<Button Color=""ButtonColor.Primary"">Solid</Button>
-<Button Color=""ButtonColor.Primary"" Style=""ButtonStyle.Outline"">Outline</Button>
-<Button Color=""ButtonColor.Primary"" Style=""ButtonStyle.Dash"">Dash</Button>
-<Button Color=""ButtonColor.Primary"" Style=""ButtonStyle.Soft"">Soft</Button>
-<Button Color=""ButtonColor.Primary"" Style=""ButtonStyle.Ghost"">Ghost</Button>
-<Button Color=""ButtonColor.Primary"" Style=""ButtonStyle.Link"">Link</Button>";
+    private string stylesCode = @"<BlazyButton Color=""BlazyButtonColor.Primary"">Solid</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Primary"" Style=""BlazyButtonStyle.Outline"">Outline</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Primary"" Style=""BlazyButtonStyle.Dash"">Dash</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Primary"" Style=""BlazyButtonStyle.Soft"">Soft</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Primary"" Style=""BlazyButtonStyle.Ghost"">Ghost</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Primary"" Style=""BlazyButtonStyle.Link"">Link</BlazyButton>";
 
-    private string modifiersCode = @"<Button Color=""ButtonColor.Primary"" Wide>Wide</Button>
-<Button Color=""ButtonColor.Secondary"" Square>
+    private string modifiersCode = @"<BlazyButton Color=""BlazyButtonColor.Primary"" Wide>Wide</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Secondary"" Square>
     <svg>...</svg>
-</Button>
-<Button Color=""ButtonColor.Accent"" Circle>
+</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Accent"" Circle>
     <svg>...</svg>
-</Button>
-<Button Color=""ButtonColor.Info"" Block>Block (Full Width)</Button>";
+</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Info"" Block>Block (Full Width)</BlazyButton>";
 
-    private string statesCode = @"<Button Color=""ButtonColor.Primary"" Active>Active</Button>
-<Button Color=""ButtonColor.Primary"" Disabled>Disabled</Button>
-<Button Color=""ButtonColor.Primary"" Loading>Loading</Button>
-<Button Color=""ButtonColor.Secondary"" Style=""ButtonStyle.Outline"" Loading>Loading Outline</Button>";
+    private string statesCode = @"<BlazyButton Color=""BlazyButtonColor.Primary"" Active>Active</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Primary"" Disabled>Disabled</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Primary"" Loading>Loading</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Secondary"" Style=""BlazyButtonStyle.Outline"" Loading>Loading Outline</BlazyButton>";
 
-    private string interactiveCode = @"<Button Color=""ButtonColor.Primary"" OnClick=""@HandleClick"">Click me</Button>
+    private string interactiveCode = @"<BlazyButton Color=""BlazyButtonColor.Primary"" OnClick=""@HandleClick"">Click me</BlazyButton>
 <span>Clicked: @clickCount times</span>
 
 @code {
@@ -159,6 +159,6 @@
     }
 }";
 
-    private string customClassesCode = @"<Button Color=""ButtonColor.Primary"" Class=""rounded-full"">Rounded Full</Button>
-<Button Color=""ButtonColor.Secondary"" Class=""shadow-lg"">With Shadow</Button>";
+    private string customClassesCode = @"<BlazyButton Color=""BlazyButtonColor.Primary"" Class=""rounded-full"">Rounded Full</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Secondary"" Class=""shadow-lg"">With Shadow</BlazyButton>";
 }

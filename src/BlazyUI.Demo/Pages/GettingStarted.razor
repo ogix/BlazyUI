@@ -12,10 +12,10 @@
                 Strongly-typed, fully customizable, and ready for production.
             </p>
             <div class="flex gap-2 justify-center flex-wrap">
-                <Badge Variant="BadgeVariant.Primary" Size="BadgeSize.Large">Blazor</Badge>
-                <Badge Variant="BadgeVariant.Secondary" Size="BadgeSize.Large">DaisyUI v5</Badge>
-                <Badge Variant="BadgeVariant.Accent" Size="BadgeSize.Large">Tailwind CSS v4</Badge>
-                <Badge Variant="BadgeVariant.Ghost" Size="BadgeSize.Large">.NET 10</Badge>
+                <BlazyBadge Variant="BadgeVariant.Primary" Size="BlazyBadgeSize.Large">Blazor</BlazyBadge>
+                <BlazyBadge Variant="BadgeVariant.Secondary" Size="BlazyBadgeSize.Large">DaisyUI v5</BlazyBadge>
+                <BlazyBadge Variant="BadgeVariant.Accent" Size="BlazyBadgeSize.Large">Tailwind CSS v4</BlazyBadge>
+                <BlazyBadge Variant="BadgeVariant.Ghost" Size="BlazyBadgeSize.Large">.NET 10</BlazyBadge>
             </div>
         </div>
     </div>
@@ -23,8 +23,8 @@
 
 <!-- Features Section -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-    <Card Class="bg-base-200">
-        <CardBody>
+    <BlazyCard Class="bg-base-200">
+        <BlazyCardBody>
             <div class="flex items-center gap-3 mb-2">
                 <div class="p-2 bg-primary/10 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -34,10 +34,10 @@
                 <h3 class="card-title text-base">Strongly Typed</h3>
             </div>
             <p class="text-sm text-base-content/70">Full IntelliSense support with typed parameters and enums for all component options.</p>
-        </CardBody>
-    </Card>
-    <Card Class="bg-base-200">
-        <CardBody>
+        </BlazyCardBody>
+    </BlazyCard>
+    <BlazyCard Class="bg-base-200">
+        <BlazyCardBody>
             <div class="flex items-center gap-3 mb-2">
                 <div class="p-2 bg-secondary/10 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -47,10 +47,10 @@
                 <h3 class="card-title text-base">Themeable</h3>
             </div>
             <p class="text-sm text-base-content/70">Built-in light and dark themes with full DaisyUI theme support.</p>
-        </CardBody>
-    </Card>
-    <Card Class="bg-base-200">
-        <CardBody>
+        </BlazyCardBody>
+    </BlazyCard>
+    <BlazyCard Class="bg-base-200">
+        <BlazyCardBody>
             <div class="flex items-center gap-3 mb-2">
                 <div class="p-2 bg-accent/10 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -60,8 +60,8 @@
                 <h3 class="card-title text-base">Form Integration</h3>
             </div>
             <p class="text-sm text-base-content/70">Seamless integration with Blazor EditForm and validation.</p>
-        </CardBody>
-    </Card>
+        </BlazyCardBody>
+    </BlazyCard>
 </div>
 
 <!-- Installation Section -->
@@ -208,12 +208,12 @@
     </div>
 </div>
 
-<Alert Variant="AlertVariant.Info" Class="mb-8">
+<BlazyAlert Variant="AlertVariant.Info" Class="mb-8">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
     <span>For more details on Tailwind CSS and DaisyUI setup, visit the <a href="https://daisyui.com/docs/install/" target="_blank" class="link">DaisyUI documentation</a>.</span>
-</Alert>
+</BlazyAlert>
 
 <!-- First Component Section -->
 <div class="prose max-w-none mb-4">
@@ -228,7 +228,7 @@
 </div>
 
 <CodeExample Title="Button Example" Code="@buttonCode">
-    <Button Color="ButtonColor.Primary">Click me</Button>
+    <BlazyButton Color="BlazyButtonColor.Primary">Click me</BlazyButton>
 </CodeExample>
 
 <div class="prose max-w-none mb-4 mt-8">
@@ -243,10 +243,10 @@
 
 <CodeExample Title="Custom Styling" Code="@customCode">
     <div class="flex gap-2 flex-wrap items-center">
-        <Button Color="ButtonColor.Primary" Class="rounded-full">Rounded Full</Button>
-        <Button Color="ButtonColor.Secondary" Class="shadow-lg">With Shadow</Button>
-        <Button Color="ButtonColor.Accent" Class="uppercase tracking-wider">Uppercase</Button>
-        <Button Class="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-none">Gradient</Button>
+        <BlazyButton Color="BlazyButtonColor.Primary" Class="rounded-full">Rounded Full</BlazyButton>
+        <BlazyButton Color="BlazyButtonColor.Secondary" Class="shadow-lg">With Shadow</BlazyButton>
+        <BlazyButton Color="BlazyButtonColor.Accent" Class="uppercase tracking-wider">Uppercase</BlazyButton>
+        <BlazyButton Class="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-none">Gradient</BlazyButton>
     </div>
 </CodeExample>
 
@@ -263,37 +263,37 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <a href="buttons" class="card bg-base-200 hover:bg-base-300 transition-colors cursor-pointer">
-            <CardBody Class="p-4">
+            <BlazyCardBody Class="p-4">
                 <h4 class="font-semibold text-sm">Buttons</h4>
                 <p class="text-xs text-base-content/60">Actions & interactions</p>
-            </CardBody>
+            </BlazyCardBody>
         </a>
         <a href="cards" class="card bg-base-200 hover:bg-base-300 transition-colors cursor-pointer">
-            <CardBody Class="p-4">
+            <BlazyCardBody Class="p-4">
                 <h4 class="font-semibold text-sm">Cards</h4>
                 <p class="text-xs text-base-content/60">Content containers</p>
-            </CardBody>
+            </BlazyCardBody>
         </a>
         <a href="modals" class="card bg-base-200 hover:bg-base-300 transition-colors cursor-pointer">
-            <CardBody Class="p-4">
+            <BlazyCardBody Class="p-4">
                 <h4 class="font-semibold text-sm">Modals</h4>
                 <p class="text-xs text-base-content/60">Dialogs & popups</p>
-            </CardBody>
+            </BlazyCardBody>
         </a>
         <a href="textinputs" class="card bg-base-200 hover:bg-base-300 transition-colors cursor-pointer">
-            <CardBody Class="p-4">
+            <BlazyCardBody Class="p-4">
                 <h4 class="font-semibold text-sm">Form Inputs</h4>
                 <p class="text-xs text-base-content/60">Text, select & more</p>
-            </CardBody>
+            </BlazyCardBody>
         </a>
     </div>
 </div>
 
 @code {
-    private const string buttonCode = @"<Button Color=""ButtonColor.Primary"">Click me</Button>";
+    private const string buttonCode = @"<BlazyButton Color=""BlazyButtonColor.Primary"">Click me</BlazyButton>";
 
-    private const string customCode = @"<Button Color=""ButtonColor.Primary"" Class=""rounded-full"">Rounded Full</Button>
-<Button Color=""ButtonColor.Secondary"" Class=""shadow-lg"">With Shadow</Button>
-<Button Color=""ButtonColor.Accent"" Class=""uppercase tracking-wider"">Uppercase</Button>
-<Button Class=""bg-gradient-to-r from-purple-500 to-pink-500 text-white border-none"">Gradient</Button>";
+    private const string customCode = @"<BlazyButton Color=""BlazyButtonColor.Primary"" Class=""rounded-full"">Rounded Full</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Secondary"" Class=""shadow-lg"">With Shadow</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Accent"" Class=""uppercase tracking-wider"">Uppercase</BlazyButton>
+<BlazyButton Class=""bg-gradient-to-r from-purple-500 to-pink-500 text-white border-none"">Gradient</BlazyButton>";
 }

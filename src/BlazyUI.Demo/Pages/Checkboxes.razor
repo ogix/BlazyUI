@@ -8,7 +8,7 @@
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
         <label class="flex items-center gap-2 cursor-pointer">
-            <Checkbox @bind-Value="basicValue" />
+            <BlazyCheckbox @bind-Value="basicValue" />
             <span>Accept terms and conditions</span>
         </label>
         <p class="mt-2 text-sm opacity-70">Checked: @basicValue</p>
@@ -20,23 +20,23 @@
     <CodeExample Code="@sizesCode">
         <div class="flex flex-col gap-4">
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Size="CheckboxSize.ExtraSmall" @bind-Value="sizeXs" />
+                <BlazyCheckbox Size="BlazyCheckboxSize.ExtraSmall" @bind-Value="sizeXs" />
                 <span>Extra Small</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Size="CheckboxSize.Small" @bind-Value="sizeSm" />
+                <BlazyCheckbox Size="BlazyCheckboxSize.Small" @bind-Value="sizeSm" />
                 <span>Small</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Size="CheckboxSize.Medium" @bind-Value="sizeMd" />
+                <BlazyCheckbox Size="BlazyCheckboxSize.Medium" @bind-Value="sizeMd" />
                 <span>Default (Medium)</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Size="CheckboxSize.Large" @bind-Value="sizeLg" />
+                <BlazyCheckbox Size="BlazyCheckboxSize.Large" @bind-Value="sizeLg" />
                 <span>Large</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Size="CheckboxSize.ExtraLarge" @bind-Value="sizeXl" />
+                <BlazyCheckbox Size="BlazyCheckboxSize.ExtraLarge" @bind-Value="sizeXl" />
                 <span>Extra Large</span>
             </label>
         </div>
@@ -48,39 +48,39 @@
     <CodeExample Code="@colorsCode">
         <div class="flex flex-col gap-4">
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Color="CheckboxColor.Default" @bind-Value="colorDefault" />
+                <BlazyCheckbox Color="BlazyCheckboxColor.Default" @bind-Value="colorDefault" />
                 <span>Default</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Color="CheckboxColor.Neutral" @bind-Value="colorNeutral" />
+                <BlazyCheckbox Color="BlazyCheckboxColor.Neutral" @bind-Value="colorNeutral" />
                 <span>Neutral</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Color="CheckboxColor.Primary" @bind-Value="colorPrimary" />
+                <BlazyCheckbox Color="BlazyCheckboxColor.Primary" @bind-Value="colorPrimary" />
                 <span>Primary</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Color="CheckboxColor.Secondary" @bind-Value="colorSecondary" />
+                <BlazyCheckbox Color="BlazyCheckboxColor.Secondary" @bind-Value="colorSecondary" />
                 <span>Secondary</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Color="CheckboxColor.Accent" @bind-Value="colorAccent" />
+                <BlazyCheckbox Color="BlazyCheckboxColor.Accent" @bind-Value="colorAccent" />
                 <span>Accent</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Color="CheckboxColor.Info" @bind-Value="colorInfo" />
+                <BlazyCheckbox Color="BlazyCheckboxColor.Info" @bind-Value="colorInfo" />
                 <span>Info</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Color="CheckboxColor.Success" @bind-Value="colorSuccess" />
+                <BlazyCheckbox Color="BlazyCheckboxColor.Success" @bind-Value="colorSuccess" />
                 <span>Success</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Color="CheckboxColor.Warning" @bind-Value="colorWarning" />
+                <BlazyCheckbox Color="BlazyCheckboxColor.Warning" @bind-Value="colorWarning" />
                 <span>Warning</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox Color="CheckboxColor.Error" @bind-Value="colorError" />
+                <BlazyCheckbox Color="BlazyCheckboxColor.Error" @bind-Value="colorError" />
                 <span>Error</span>
             </label>
         </div>
@@ -95,17 +95,17 @@
 
             <div class="form-control mb-4">
                 <label class="flex items-center gap-2 cursor-pointer">
-                    <Checkbox @bind-Value="formModel.AcceptTerms" />
+                    <BlazyCheckbox @bind-Value="formModel.AcceptTerms" />
                     <span class="label-text">I accept the terms and conditions</span>
                 </label>
                 <ValidationMessage For="@(() => formModel.AcceptTerms)" class="text-error text-sm mt-1" />
             </div>
 
-            <Button Type="submit" Color="ButtonColor.Primary" Block>Submit</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Submit</BlazyButton>
         </EditForm>
         @if (formSubmitted)
         {
-            <Alert Color="AlertColor.Success" class="mt-4">Form submitted successfully!</Alert>
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">Form submitted successfully!</BlazyAlert>
         }
     </CodeExample>
 </section>
@@ -115,7 +115,7 @@
     <CodeExample Code="@attributesCode">
         <div class="flex flex-col gap-4">
             <label class="flex items-center gap-2 cursor-pointer">
-                <Checkbox @bind-Value="disabledValue" disabled />
+                <BlazyCheckbox @bind-Value="disabledValue" disabled />
                 <span class="opacity-50">Disabled</span>
             </label>
         </div>
@@ -155,36 +155,36 @@
     }
 
     private string basicCode = @"<label class=""flex items-center gap-2 cursor-pointer"">
-    <Checkbox @bind-Value=""value"" />
+    <BlazyCheckbox @bind-Value=""value"" />
     <span>Accept terms and conditions</span>
 </label>";
 
-    private string sizesCode = @"<Checkbox Size=""CheckboxSize.ExtraSmall"" />
-<Checkbox Size=""CheckboxSize.Small"" />
-<Checkbox Size=""CheckboxSize.Medium"" />
-<Checkbox Size=""CheckboxSize.Large"" />
-<Checkbox Size=""CheckboxSize.ExtraLarge"" />";
+    private string sizesCode = @"<BlazyCheckbox Size=""BlazyCheckboxSize.ExtraSmall"" />
+<BlazyCheckbox Size=""BlazyCheckboxSize.Small"" />
+<BlazyCheckbox Size=""BlazyCheckboxSize.Medium"" />
+<BlazyCheckbox Size=""BlazyCheckboxSize.Large"" />
+<BlazyCheckbox Size=""BlazyCheckboxSize.ExtraLarge"" />";
 
-    private string colorsCode = @"<Checkbox Color=""CheckboxColor.Default"" />
-<Checkbox Color=""CheckboxColor.Primary"" />
-<Checkbox Color=""CheckboxColor.Secondary"" />
-<Checkbox Color=""CheckboxColor.Accent"" />
-<Checkbox Color=""CheckboxColor.Info"" />
-<Checkbox Color=""CheckboxColor.Success"" />
-<Checkbox Color=""CheckboxColor.Warning"" />
-<Checkbox Color=""CheckboxColor.Error"" />";
+    private string colorsCode = @"<BlazyCheckbox Color=""BlazyCheckboxColor.Default"" />
+<BlazyCheckbox Color=""BlazyCheckboxColor.Primary"" />
+<BlazyCheckbox Color=""BlazyCheckboxColor.Secondary"" />
+<BlazyCheckbox Color=""BlazyCheckboxColor.Accent"" />
+<BlazyCheckbox Color=""BlazyCheckboxColor.Info"" />
+<BlazyCheckbox Color=""BlazyCheckboxColor.Success"" />
+<BlazyCheckbox Color=""BlazyCheckboxColor.Warning"" />
+<BlazyCheckbox Color=""BlazyCheckboxColor.Error"" />";
 
     private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
     <DataAnnotationsValidator />
     <div class=""form-control mb-4"">
         <label class=""flex items-center gap-2 cursor-pointer"">
-            <Checkbox @bind-Value=""formModel.AcceptTerms"" />
+            <BlazyCheckbox @bind-Value=""formModel.AcceptTerms"" />
             <span class=""label-text"">I accept the terms and conditions</span>
         </label>
         <ValidationMessage For=""@(() => formModel.AcceptTerms)"" />
     </div>
-    <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Submit</Button>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"" Block>Submit</BlazyButton>
 </EditForm>";
 
-    private string attributesCode = @"<Checkbox @bind-Value=""value"" disabled />";
+    private string attributesCode = @"<BlazyCheckbox @bind-Value=""value"" disabled />";
 }

@@ -1,0 +1,26 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter]
+    public BlazyJoinDirection Direction { get; set; } = BlazyJoinDirection.Horizontal;
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "join",
+        DirectionClass
+    );
+
+    private string DirectionClass => Direction switch
+    {
+        BlazyJoinDirection.Horizontal => "join-horizontal",
+        BlazyJoinDirection.Vertical => "join-vertical",
+        _ => throw new ArgumentOutOfRangeException(nameof(Direction))
+    };
+}

@@ -9,50 +9,50 @@
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Button Group</h2>
     <CodeExample Code="@buttonGroupCode">
-        <Join>
-            <Button Class="join-item">Button 1</Button>
-            <Button Class="join-item">Button 2</Button>
-            <Button Class="join-item">Button 3</Button>
-        </Join>
+        <BlazyJoin>
+            <BlazyButton Class="join-item">Button 1</BlazyButton>
+            <BlazyButton Class="join-item">Button 2</BlazyButton>
+            <BlazyButton Class="join-item">Button 3</BlazyButton>
+        </BlazyJoin>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Vertical Layout</h2>
     <CodeExample Code="@verticalCode">
-        <Join Direction="JoinDirection.Vertical">
-            <Button Class="join-item">Top</Button>
-            <Button Class="join-item">Middle</Button>
-            <Button Class="join-item">Bottom</Button>
-        </Join>
+        <BlazyJoin Direction="BlazyJoinDirection.Vertical">
+            <BlazyButton Class="join-item">Top</BlazyButton>
+            <BlazyButton Class="join-item">Middle</BlazyButton>
+            <BlazyButton Class="join-item">Bottom</BlazyButton>
+        </BlazyJoin>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">With Colors</h2>
     <CodeExample Code="@colorsCode">
-        <Join>
-            <Button Class="join-item" Color="ButtonColor.Primary">Primary</Button>
-            <Button Class="join-item" Color="ButtonColor.Secondary">Secondary</Button>
-            <Button Class="join-item" Color="ButtonColor.Accent">Accent</Button>
-        </Join>
+        <BlazyJoin>
+            <BlazyButton Class="join-item" Color="BlazyButtonColor.Primary">Primary</BlazyButton>
+            <BlazyButton Class="join-item" Color="BlazyButtonColor.Secondary">Secondary</BlazyButton>
+            <BlazyButton Class="join-item" Color="BlazyButtonColor.Accent">Accent</BlazyButton>
+        </BlazyJoin>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Mixed Elements - Search Input</h2>
     <CodeExample Code="@searchCode">
-        <Join>
+        <BlazyJoin>
             <input type="text" class="input join-item" placeholder="Search..." />
-            <Button Class="join-item" Color="ButtonColor.Primary">Go</Button>
-        </Join>
+            <BlazyButton Class="join-item" Color="BlazyButtonColor.Primary">Go</BlazyButton>
+        </BlazyJoin>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Select with Button</h2>
     <CodeExample Code="@selectCode">
-        <Join>
+        <BlazyJoin>
             <select class="select join-item">
                 <option selected>Category</option>
                 <option>Electronics</option>
@@ -60,47 +60,47 @@
                 <option>Books</option>
             </select>
             <input type="text" class="input join-item" placeholder="Search..." />
-            <Button Class="join-item" Color="ButtonColor.Primary">Search</Button>
-        </Join>
+            <BlazyButton Class="join-item" Color="BlazyButtonColor.Primary">Search</BlazyButton>
+        </BlazyJoin>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Radio Input Group</h2>
     <CodeExample Code="@radioCode">
-        <Join>
+        <BlazyJoin>
             <input class="join-item btn" type="radio" name="options" aria-label="Option A" />
             <input class="join-item btn" type="radio" name="options" aria-label="Option B" checked="checked" />
             <input class="join-item btn" type="radio" name="options" aria-label="Option C" />
-        </Join>
+        </BlazyJoin>
     </CodeExample>
 </section>
 
 @code {
-    private string buttonGroupCode = @"<Join>
-    <Button Class=""join-item"">Button 1</Button>
-    <Button Class=""join-item"">Button 2</Button>
-    <Button Class=""join-item"">Button 3</Button>
-</Join>";
+    private string buttonGroupCode = @"<BlazyJoin>
+    <BlazyButton Class=""join-item"">Button 1</BlazyButton>
+    <BlazyButton Class=""join-item"">Button 2</BlazyButton>
+    <BlazyButton Class=""join-item"">Button 3</BlazyButton>
+</BlazyJoin>";
 
-    private string verticalCode = @"<Join Direction=""JoinDirection.Vertical"">
-    <Button Class=""join-item"">Top</Button>
-    <Button Class=""join-item"">Middle</Button>
-    <Button Class=""join-item"">Bottom</Button>
-</Join>";
+    private string verticalCode = @"<BlazyJoin Direction=""BlazyJoinDirection.Vertical"">
+    <BlazyButton Class=""join-item"">Top</BlazyButton>
+    <BlazyButton Class=""join-item"">Middle</BlazyButton>
+    <BlazyButton Class=""join-item"">Bottom</BlazyButton>
+</BlazyJoin>";
 
-    private string colorsCode = @"<Join>
-    <Button Class=""join-item"" Color=""ButtonColor.Primary"">Primary</Button>
-    <Button Class=""join-item"" Color=""ButtonColor.Secondary"">Secondary</Button>
-    <Button Class=""join-item"" Color=""ButtonColor.Accent"">Accent</Button>
-</Join>";
+    private string colorsCode = @"<BlazyJoin>
+    <BlazyButton Class=""join-item"" Color=""BlazyButtonColor.Primary"">Primary</BlazyButton>
+    <BlazyButton Class=""join-item"" Color=""BlazyButtonColor.Secondary"">Secondary</BlazyButton>
+    <BlazyButton Class=""join-item"" Color=""BlazyButtonColor.Accent"">Accent</BlazyButton>
+</BlazyJoin>";
 
-    private string searchCode = @"<Join>
+    private string searchCode = @"<BlazyJoin>
     <input type=""text"" class=""input join-item"" placeholder=""Search..."" />
-    <Button Class=""join-item"" Color=""ButtonColor.Primary"">Go</Button>
-</Join>";
+    <BlazyButton Class=""join-item"" Color=""BlazyButtonColor.Primary"">Go</BlazyButton>
+</BlazyJoin>";
 
-    private string selectCode = @"<Join>
+    private string selectCode = @"<BlazyJoin>
     <select class=""select join-item"">
         <option selected>Category</option>
         <option>Electronics</option>
@@ -108,12 +108,12 @@
         <option>Books</option>
     </select>
     <input type=""text"" class=""input join-item"" placeholder=""Search..."" />
-    <Button Class=""join-item"" Color=""ButtonColor.Primary"">Search</Button>
-</Join>";
+    <BlazyButton Class=""join-item"" Color=""BlazyButtonColor.Primary"">Search</BlazyButton>
+</BlazyJoin>";
 
-    private string radioCode = @"<Join>
+    private string radioCode = @"<BlazyJoin>
     <input class=""join-item btn"" type=""radio"" name=""options"" aria-label=""Option A"" />
     <input class=""join-item btn"" type=""radio"" name=""options"" aria-label=""Option B"" checked=""checked"" />
     <input class=""join-item btn"" type=""radio"" name=""options"" aria-label=""Option C"" />
-</Join>";
+</BlazyJoin>";
 }

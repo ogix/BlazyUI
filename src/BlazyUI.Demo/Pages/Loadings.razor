@@ -7,7 +7,7 @@
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
-        <Loading />
+        <BlazyLoading />
     </CodeExample>
 </section>
 
@@ -16,27 +16,27 @@
     <CodeExample Code="@typesCode">
         <div class="flex flex-wrap items-center gap-4">
             <div class="flex flex-col items-center gap-2">
-                <Loading Type="LoadingType.Spinner" />
+                <BlazyLoading Type="BlazyLoadingType.Spinner" />
                 <span class="text-sm">Spinner</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-                <Loading Type="LoadingType.Dots" />
+                <BlazyLoading Type="BlazyLoadingType.Dots" />
                 <span class="text-sm">Dots</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-                <Loading Type="LoadingType.Ring" />
+                <BlazyLoading Type="BlazyLoadingType.Ring" />
                 <span class="text-sm">Ring</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-                <Loading Type="LoadingType.Ball" />
+                <BlazyLoading Type="BlazyLoadingType.Ball" />
                 <span class="text-sm">Ball</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-                <Loading Type="LoadingType.Bars" />
+                <BlazyLoading Type="BlazyLoadingType.Bars" />
                 <span class="text-sm">Bars</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-                <Loading Type="LoadingType.Infinity" />
+                <BlazyLoading Type="BlazyLoadingType.Infinity" />
                 <span class="text-sm">Infinity</span>
             </div>
         </div>
@@ -48,23 +48,23 @@
     <CodeExample Code="@sizesCode">
         <div class="flex flex-wrap items-center gap-4">
             <div class="flex flex-col items-center gap-2">
-                <Loading Size="LoadingSize.ExtraSmall" />
+                <BlazyLoading Size="BlazyLoadingSize.ExtraSmall" />
                 <span class="text-sm">XS</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-                <Loading Size="LoadingSize.Small" />
+                <BlazyLoading Size="BlazyLoadingSize.Small" />
                 <span class="text-sm">Small</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-                <Loading Size="LoadingSize.Medium" />
+                <BlazyLoading Size="BlazyLoadingSize.Medium" />
                 <span class="text-sm">Medium</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-                <Loading Size="LoadingSize.Large" />
+                <BlazyLoading Size="BlazyLoadingSize.Large" />
                 <span class="text-sm">Large</span>
             </div>
             <div class="flex flex-col items-center gap-2">
-                <Loading Size="LoadingSize.ExtraLarge" />
+                <BlazyLoading Size="BlazyLoadingSize.ExtraLarge" />
                 <span class="text-sm">XL</span>
             </div>
         </div>
@@ -75,14 +75,14 @@
     <h2 class="text-xl font-semibold mb-4">Colors</h2>
     <CodeExample Code="@colorsCode">
         <div class="flex flex-wrap items-center gap-4">
-            <Loading Color="LoadingColor.Primary" />
-            <Loading Color="LoadingColor.Secondary" />
-            <Loading Color="LoadingColor.Accent" />
-            <Loading Color="LoadingColor.Neutral" />
-            <Loading Color="LoadingColor.Info" />
-            <Loading Color="LoadingColor.Success" />
-            <Loading Color="LoadingColor.Warning" />
-            <Loading Color="LoadingColor.Error" />
+            <BlazyLoading Color="BlazyLoadingColor.Primary" />
+            <BlazyLoading Color="BlazyLoadingColor.Secondary" />
+            <BlazyLoading Color="BlazyLoadingColor.Accent" />
+            <BlazyLoading Color="BlazyLoadingColor.Neutral" />
+            <BlazyLoading Color="BlazyLoadingColor.Info" />
+            <BlazyLoading Color="BlazyLoadingColor.Success" />
+            <BlazyLoading Color="BlazyLoadingColor.Warning" />
+            <BlazyLoading Color="BlazyLoadingColor.Error" />
         </div>
     </CodeExample>
 </section>
@@ -91,12 +91,12 @@
     <h2 class="text-xl font-semibold mb-4">Colors with Different Types</h2>
     <CodeExample Code="@colorsTypesCode">
         <div class="flex flex-wrap items-center gap-4">
-            <Loading Type="LoadingType.Spinner" Color="LoadingColor.Primary" />
-            <Loading Type="LoadingType.Dots" Color="LoadingColor.Secondary" />
-            <Loading Type="LoadingType.Ring" Color="LoadingColor.Accent" />
-            <Loading Type="LoadingType.Ball" Color="LoadingColor.Success" />
-            <Loading Type="LoadingType.Bars" Color="LoadingColor.Warning" />
-            <Loading Type="LoadingType.Infinity" Color="LoadingColor.Error" />
+            <BlazyLoading Type="BlazyLoadingType.Spinner" Color="BlazyLoadingColor.Primary" />
+            <BlazyLoading Type="BlazyLoadingType.Dots" Color="BlazyLoadingColor.Secondary" />
+            <BlazyLoading Type="BlazyLoadingType.Ring" Color="BlazyLoadingColor.Accent" />
+            <BlazyLoading Type="BlazyLoadingType.Ball" Color="BlazyLoadingColor.Success" />
+            <BlazyLoading Type="BlazyLoadingType.Bars" Color="BlazyLoadingColor.Warning" />
+            <BlazyLoading Type="BlazyLoadingType.Infinity" Color="BlazyLoadingColor.Error" />
         </div>
     </CodeExample>
 </section>
@@ -106,13 +106,13 @@
     <CodeExample Code="@inheritedColorCode">
         <div class="flex flex-wrap items-center gap-4">
             <div class="text-primary">
-                <Loading />
+                <BlazyLoading />
             </div>
             <div class="text-success">
-                <Loading Type="LoadingType.Dots" />
+                <BlazyLoading Type="BlazyLoadingType.Dots" />
             </div>
             <div class="text-error">
-                <Loading Type="LoadingType.Ring" />
+                <BlazyLoading Type="BlazyLoadingType.Ring" />
             </div>
         </div>
     </CodeExample>
@@ -122,8 +122,8 @@
     <h2 class="text-xl font-semibold mb-4">With Button</h2>
     <CodeExample Code="@buttonCode">
         <div class="flex flex-wrap items-center gap-4">
-            <Button Loading>Loading...</Button>
-            <Button Color="ButtonColor.Primary" Loading>Processing</Button>
+            <BlazyButton Loading>Loading...</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Primary" Loading>Processing</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -131,54 +131,54 @@
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Custom Aria Label</h2>
     <CodeExample Code="@ariaCode">
-        <Loading aria-label="Saving your changes" />
+        <BlazyLoading aria-label="Saving your changes" />
     </CodeExample>
 </section>
 
 @code {
-    private string basicCode = @"<Loading />";
+    private string basicCode = @"<BlazyLoading />";
 
-    private string typesCode = @"<Loading Type=""LoadingType.Spinner"" />
-<Loading Type=""LoadingType.Dots"" />
-<Loading Type=""LoadingType.Ring"" />
-<Loading Type=""LoadingType.Ball"" />
-<Loading Type=""LoadingType.Bars"" />
-<Loading Type=""LoadingType.Infinity"" />";
+    private string typesCode = @"<BlazyLoading Type=""BlazyLoadingType.Spinner"" />
+<BlazyLoading Type=""BlazyLoadingType.Dots"" />
+<BlazyLoading Type=""BlazyLoadingType.Ring"" />
+<BlazyLoading Type=""BlazyLoadingType.Ball"" />
+<BlazyLoading Type=""BlazyLoadingType.Bars"" />
+<BlazyLoading Type=""BlazyLoadingType.Infinity"" />";
 
-    private string sizesCode = @"<Loading Size=""LoadingSize.ExtraSmall"" />
-<Loading Size=""LoadingSize.Small"" />
-<Loading Size=""LoadingSize.Medium"" />
-<Loading Size=""LoadingSize.Large"" />
-<Loading Size=""LoadingSize.ExtraLarge"" />";
+    private string sizesCode = @"<BlazyLoading Size=""BlazyLoadingSize.ExtraSmall"" />
+<BlazyLoading Size=""BlazyLoadingSize.Small"" />
+<BlazyLoading Size=""BlazyLoadingSize.Medium"" />
+<BlazyLoading Size=""BlazyLoadingSize.Large"" />
+<BlazyLoading Size=""BlazyLoadingSize.ExtraLarge"" />";
 
-    private string colorsCode = @"<Loading Color=""LoadingColor.Primary"" />
-<Loading Color=""LoadingColor.Secondary"" />
-<Loading Color=""LoadingColor.Accent"" />
-<Loading Color=""LoadingColor.Neutral"" />
-<Loading Color=""LoadingColor.Info"" />
-<Loading Color=""LoadingColor.Success"" />
-<Loading Color=""LoadingColor.Warning"" />
-<Loading Color=""LoadingColor.Error"" />";
+    private string colorsCode = @"<BlazyLoading Color=""BlazyLoadingColor.Primary"" />
+<BlazyLoading Color=""BlazyLoadingColor.Secondary"" />
+<BlazyLoading Color=""BlazyLoadingColor.Accent"" />
+<BlazyLoading Color=""BlazyLoadingColor.Neutral"" />
+<BlazyLoading Color=""BlazyLoadingColor.Info"" />
+<BlazyLoading Color=""BlazyLoadingColor.Success"" />
+<BlazyLoading Color=""BlazyLoadingColor.Warning"" />
+<BlazyLoading Color=""BlazyLoadingColor.Error"" />";
 
-    private string colorsTypesCode = @"<Loading Type=""LoadingType.Spinner"" Color=""LoadingColor.Primary"" />
-<Loading Type=""LoadingType.Dots"" Color=""LoadingColor.Secondary"" />
-<Loading Type=""LoadingType.Ring"" Color=""LoadingColor.Accent"" />
-<Loading Type=""LoadingType.Ball"" Color=""LoadingColor.Success"" />
-<Loading Type=""LoadingType.Bars"" Color=""LoadingColor.Warning"" />
-<Loading Type=""LoadingType.Infinity"" Color=""LoadingColor.Error"" />";
+    private string colorsTypesCode = @"<BlazyLoading Type=""BlazyLoadingType.Spinner"" Color=""BlazyLoadingColor.Primary"" />
+<BlazyLoading Type=""BlazyLoadingType.Dots"" Color=""BlazyLoadingColor.Secondary"" />
+<BlazyLoading Type=""BlazyLoadingType.Ring"" Color=""BlazyLoadingColor.Accent"" />
+<BlazyLoading Type=""BlazyLoadingType.Ball"" Color=""BlazyLoadingColor.Success"" />
+<BlazyLoading Type=""BlazyLoadingType.Bars"" Color=""BlazyLoadingColor.Warning"" />
+<BlazyLoading Type=""BlazyLoadingType.Infinity"" Color=""BlazyLoadingColor.Error"" />";
 
     private string inheritedColorCode = @"<div class=""text-primary"">
-    <Loading />
+    <BlazyLoading />
 </div>
 <div class=""text-success"">
-    <Loading Type=""LoadingType.Dots"" />
+    <BlazyLoading Type=""BlazyLoadingType.Dots"" />
 </div>
 <div class=""text-error"">
-    <Loading Type=""LoadingType.Ring"" />
+    <BlazyLoading Type=""BlazyLoadingType.Ring"" />
 </div>";
 
-    private string buttonCode = @"<Button Loading>Loading...</Button>
-<Button Color=""ButtonColor.Primary"" Loading>Processing</Button>";
+    private string buttonCode = @"<BlazyButton Loading>Loading...</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Primary"" Loading>Processing</BlazyButton>";
 
-    private string ariaCode = @"<Loading aria-label=""Saving your changes"" />";
+    private string ariaCode = @"<BlazyLoading aria-label=""Saving your changes"" />";
 }

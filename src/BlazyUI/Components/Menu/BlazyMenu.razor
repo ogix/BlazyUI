@@ -1,0 +1,40 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<ul role="menu" class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</ul>
+
+@code {
+    [Parameter]
+    public BlazyMenuSize Size { get; set; } = BlazyMenuSize.Medium;
+
+    [Parameter]
+    public BlazyMenuDirection Direction { get; set; } = BlazyMenuDirection.Vertical;
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "menu",
+        SizeClass,
+        DirectionClass
+    );
+
+    private string SizeClass => Size switch
+    {
+        BlazyMenuSize.ExtraSmall => "menu-xs",
+        BlazyMenuSize.Small => "menu-sm",
+        BlazyMenuSize.Medium => "menu-md",
+        BlazyMenuSize.Large => "menu-lg",
+        BlazyMenuSize.ExtraLarge => "menu-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size))
+    };
+
+    private string DirectionClass => Direction switch
+    {
+        BlazyMenuDirection.Vertical => "menu-vertical",
+        BlazyMenuDirection.Horizontal => "menu-horizontal",
+        _ => throw new ArgumentOutOfRangeException(nameof(Direction))
+    };
+}

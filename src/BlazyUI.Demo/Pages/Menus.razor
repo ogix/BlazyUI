@@ -9,121 +9,121 @@
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Basic Menu</h2>
     <CodeExample Code="@basicCode">
-        <Menu Class="bg-base-200 rounded-box w-56">
-            <MenuItem>
+        <BlazyMenu Class="bg-base-200 rounded-box w-56">
+            <BlazyMenuItem>
                 <a>Item 1</a>
-            </MenuItem>
-            <MenuItem>
+            </BlazyMenuItem>
+            <BlazyMenuItem>
                 <a>Item 2</a>
-            </MenuItem>
-            <MenuItem>
+            </BlazyMenuItem>
+            <BlazyMenuItem>
                 <a>Item 3</a>
-            </MenuItem>
-        </Menu>
+            </BlazyMenuItem>
+        </BlazyMenu>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Menu with Href</h2>
     <CodeExample Code="@hrefCode">
-        <Menu Class="bg-base-200 rounded-box w-56">
-            <MenuItem Href="#">Home</MenuItem>
-            <MenuItem Href="#">About</MenuItem>
-            <MenuItem Href="#">Contact</MenuItem>
-        </Menu>
+        <BlazyMenu Class="bg-base-200 rounded-box w-56">
+            <BlazyMenuItem Href="#">Home</BlazyMenuItem>
+            <BlazyMenuItem Href="#">About</BlazyMenuItem>
+            <BlazyMenuItem Href="#">Contact</BlazyMenuItem>
+        </BlazyMenu>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Active and Disabled States</h2>
     <CodeExample Code="@statesCode">
-        <Menu Class="bg-base-200 rounded-box w-56">
-            <MenuItem Href="#">Normal Item</MenuItem>
-            <MenuItem Href="#" Active="true">Active Item</MenuItem>
-            <MenuItem Href="#" Disabled="true">Disabled Item</MenuItem>
-        </Menu>
+        <BlazyMenu Class="bg-base-200 rounded-box w-56">
+            <BlazyMenuItem Href="#">Normal Item</BlazyMenuItem>
+            <BlazyMenuItem Href="#" Active="true">Active Item</BlazyMenuItem>
+            <BlazyMenuItem Href="#" Disabled="true">Disabled Item</BlazyMenuItem>
+        </BlazyMenu>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Menu with Title</h2>
     <CodeExample Code="@titleCode">
-        <Menu Class="bg-base-200 rounded-box w-56">
-            <MenuTitle>Category</MenuTitle>
-            <MenuItem Href="#">Item 1</MenuItem>
-            <MenuItem Href="#">Item 2</MenuItem>
-            <MenuItem Href="#">Item 3</MenuItem>
-        </Menu>
+        <BlazyMenu Class="bg-base-200 rounded-box w-56">
+            <BlazyMenuTitle>Category</BlazyMenuTitle>
+            <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+            <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+            <BlazyMenuItem Href="#">Item 3</BlazyMenuItem>
+        </BlazyMenu>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Multiple Sections</h2>
     <CodeExample Code="@sectionsCode">
-        <Menu Class="bg-base-200 rounded-box w-56">
-            <MenuTitle>General</MenuTitle>
-            <MenuItem Href="#">Dashboard</MenuItem>
-            <MenuItem Href="#">Analytics</MenuItem>
-            <MenuTitle>Settings</MenuTitle>
-            <MenuItem Href="#">Profile</MenuItem>
-            <MenuItem Href="#">Preferences</MenuItem>
-        </Menu>
+        <BlazyMenu Class="bg-base-200 rounded-box w-56">
+            <BlazyMenuTitle>General</BlazyMenuTitle>
+            <BlazyMenuItem Href="#">Dashboard</BlazyMenuItem>
+            <BlazyMenuItem Href="#">Analytics</BlazyMenuItem>
+            <BlazyMenuTitle>Settings</BlazyMenuTitle>
+            <BlazyMenuItem Href="#">Profile</BlazyMenuItem>
+            <BlazyMenuItem Href="#">Preferences</BlazyMenuItem>
+        </BlazyMenu>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Collapsible Submenu</h2>
     <CodeExample Code="@dropdownCode">
-        <Menu Class="bg-base-200 rounded-box w-56">
-            <MenuItem Href="#">Item 1</MenuItem>
-            <MenuDropdown Label="Parent">
-                <MenuItem Href="#">Child 1</MenuItem>
-                <MenuItem Href="#">Child 2</MenuItem>
-                <MenuItem Href="#">Child 3</MenuItem>
-            </MenuDropdown>
-            <MenuItem Href="#">Item 3</MenuItem>
-        </Menu>
+        <BlazyMenu Class="bg-base-200 rounded-box w-56">
+            <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+            <BlazyMenuDropdown Label="Parent">
+                <BlazyMenuItem Href="#">Child 1</BlazyMenuItem>
+                <BlazyMenuItem Href="#">Child 2</BlazyMenuItem>
+                <BlazyMenuItem Href="#">Child 3</BlazyMenuItem>
+            </BlazyMenuDropdown>
+            <BlazyMenuItem Href="#">Item 3</BlazyMenuItem>
+        </BlazyMenu>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Open Submenu by Default</h2>
     <CodeExample Code="@openDropdownCode">
-        <Menu Class="bg-base-200 rounded-box w-56">
-            <MenuItem Href="#">Item 1</MenuItem>
-            <MenuDropdown Label="Parent" Open="true">
-                <MenuItem Href="#">Child 1</MenuItem>
-                <MenuItem Href="#">Child 2</MenuItem>
-            </MenuDropdown>
-            <MenuItem Href="#">Item 3</MenuItem>
-        </Menu>
+        <BlazyMenu Class="bg-base-200 rounded-box w-56">
+            <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+            <BlazyMenuDropdown Label="Parent" Open="true">
+                <BlazyMenuItem Href="#">Child 1</BlazyMenuItem>
+                <BlazyMenuItem Href="#">Child 2</BlazyMenuItem>
+            </BlazyMenuDropdown>
+            <BlazyMenuItem Href="#">Item 3</BlazyMenuItem>
+        </BlazyMenu>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Nested Submenus</h2>
     <CodeExample Code="@nestedCode">
-        <Menu Class="bg-base-200 rounded-box w-56">
-            <MenuItem Href="#">Level 1</MenuItem>
-            <MenuDropdown Label="Level 1 Parent" Open="true">
-                <MenuItem Href="#">Level 2</MenuItem>
-                <MenuDropdown Label="Level 2 Parent" Open="true">
-                    <MenuItem Href="#">Level 3 Item 1</MenuItem>
-                    <MenuItem Href="#">Level 3 Item 2</MenuItem>
-                </MenuDropdown>
-            </MenuDropdown>
-        </Menu>
+        <BlazyMenu Class="bg-base-200 rounded-box w-56">
+            <BlazyMenuItem Href="#">Level 1</BlazyMenuItem>
+            <BlazyMenuDropdown Label="Level 1 Parent" Open="true">
+                <BlazyMenuItem Href="#">Level 2</BlazyMenuItem>
+                <BlazyMenuDropdown Label="Level 2 Parent" Open="true">
+                    <BlazyMenuItem Href="#">Level 3 Item 1</BlazyMenuItem>
+                    <BlazyMenuItem Href="#">Level 3 Item 2</BlazyMenuItem>
+                </BlazyMenuDropdown>
+            </BlazyMenuDropdown>
+        </BlazyMenu>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Horizontal Menu</h2>
     <CodeExample Code="@horizontalCode">
-        <Menu Direction="MenuDirection.Horizontal" Class="bg-base-200 rounded-box">
-            <MenuItem Href="#">Item 1</MenuItem>
-            <MenuItem Href="#">Item 2</MenuItem>
-            <MenuItem Href="#">Item 3</MenuItem>
-        </Menu>
+        <BlazyMenu Direction="BlazyMenuDirection.Horizontal" Class="bg-base-200 rounded-box">
+            <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+            <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+            <BlazyMenuItem Href="#">Item 3</BlazyMenuItem>
+        </BlazyMenu>
     </CodeExample>
 </section>
 
@@ -133,38 +133,38 @@
         <div class="flex flex-col gap-4">
             <div>
                 <span class="text-sm opacity-70 mb-1 block">Extra Small (menu-xs)</span>
-                <Menu Size="MenuSize.ExtraSmall" Class="bg-base-200 rounded-box w-56">
-                    <MenuItem Href="#">Item 1</MenuItem>
-                    <MenuItem Href="#">Item 2</MenuItem>
-                </Menu>
+                <BlazyMenu Size="BlazyMenuSize.ExtraSmall" Class="bg-base-200 rounded-box w-56">
+                    <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+                    <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+                </BlazyMenu>
             </div>
             <div>
                 <span class="text-sm opacity-70 mb-1 block">Small (menu-sm)</span>
-                <Menu Size="MenuSize.Small" Class="bg-base-200 rounded-box w-56">
-                    <MenuItem Href="#">Item 1</MenuItem>
-                    <MenuItem Href="#">Item 2</MenuItem>
-                </Menu>
+                <BlazyMenu Size="BlazyMenuSize.Small" Class="bg-base-200 rounded-box w-56">
+                    <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+                    <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+                </BlazyMenu>
             </div>
             <div>
                 <span class="text-sm opacity-70 mb-1 block">Medium (menu-md) - Default</span>
-                <Menu Size="MenuSize.Medium" Class="bg-base-200 rounded-box w-56">
-                    <MenuItem Href="#">Item 1</MenuItem>
-                    <MenuItem Href="#">Item 2</MenuItem>
-                </Menu>
+                <BlazyMenu Size="BlazyMenuSize.Medium" Class="bg-base-200 rounded-box w-56">
+                    <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+                    <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+                </BlazyMenu>
             </div>
             <div>
                 <span class="text-sm opacity-70 mb-1 block">Large (menu-lg)</span>
-                <Menu Size="MenuSize.Large" Class="bg-base-200 rounded-box w-56">
-                    <MenuItem Href="#">Item 1</MenuItem>
-                    <MenuItem Href="#">Item 2</MenuItem>
-                </Menu>
+                <BlazyMenu Size="BlazyMenuSize.Large" Class="bg-base-200 rounded-box w-56">
+                    <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+                    <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+                </BlazyMenu>
             </div>
             <div>
                 <span class="text-sm opacity-70 mb-1 block">Extra Large (menu-xl)</span>
-                <Menu Size="MenuSize.ExtraLarge" Class="bg-base-200 rounded-box w-56">
-                    <MenuItem Href="#">Item 1</MenuItem>
-                    <MenuItem Href="#">Item 2</MenuItem>
-                </Menu>
+                <BlazyMenu Size="BlazyMenuSize.ExtraLarge" Class="bg-base-200 rounded-box w-56">
+                    <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+                    <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+                </BlazyMenu>
             </div>
         </div>
     </CodeExample>
@@ -173,159 +173,159 @@
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Menu with Icons</h2>
     <CodeExample Code="@iconsCode">
-        <Menu Class="bg-base-200 rounded-box w-56">
-            <MenuItem Href="#">
+        <BlazyMenu Class="bg-base-200 rounded-box w-56">
+            <BlazyMenuItem Href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
                 Home
-            </MenuItem>
-            <MenuItem Href="#">
+            </BlazyMenuItem>
+            <BlazyMenuItem Href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 About
-            </MenuItem>
-            <MenuItem Href="#">
+            </BlazyMenuItem>
+            <BlazyMenuItem Href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 Settings
-            </MenuItem>
-        </Menu>
+            </BlazyMenuItem>
+        </BlazyMenu>
     </CodeExample>
 </section>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Menu with Badges</h2>
     <CodeExample Code="@badgesCode">
-        <Menu Class="bg-base-200 rounded-box w-56">
-            <MenuItem Href="#">
+        <BlazyMenu Class="bg-base-200 rounded-box w-56">
+            <BlazyMenuItem Href="#">
                 Inbox
-                <Badge Color="BadgeColor.Primary">99+</Badge>
-            </MenuItem>
-            <MenuItem Href="#">
+                <BlazyBadge Color="BlazyBadgeColor.Primary">99+</BlazyBadge>
+            </BlazyMenuItem>
+            <BlazyMenuItem Href="#">
                 Updates
-                <Badge Color="BadgeColor.Secondary">New</Badge>
-            </MenuItem>
-            <MenuItem Href="#">
+                <BlazyBadge Color="BlazyBadgeColor.Secondary">New</BlazyBadge>
+            </BlazyMenuItem>
+            <BlazyMenuItem Href="#">
                 Statistics
-                <Badge Color="BadgeColor.Info" Outline="true">Beta</Badge>
-            </MenuItem>
-        </Menu>
+                <BlazyBadge Color="BlazyBadgeColor.Info" Outline="true">Beta</BlazyBadge>
+            </BlazyMenuItem>
+        </BlazyMenu>
     </CodeExample>
 </section>
 
 @code {
-    private string basicCode = @"<Menu Class=""bg-base-200 rounded-box w-56"">
-    <MenuItem>
+    private string basicCode = @"<BlazyMenu Class=""bg-base-200 rounded-box w-56"">
+    <BlazyMenuItem>
         <a>Item 1</a>
-    </MenuItem>
-    <MenuItem>
+    </BlazyMenuItem>
+    <BlazyMenuItem>
         <a>Item 2</a>
-    </MenuItem>
-    <MenuItem>
+    </BlazyMenuItem>
+    <BlazyMenuItem>
         <a>Item 3</a>
-    </MenuItem>
-</Menu>";
+    </BlazyMenuItem>
+</BlazyMenu>";
 
-    private string hrefCode = @"<Menu Class=""bg-base-200 rounded-box w-56"">
-    <MenuItem Href=""#"">Home</MenuItem>
-    <MenuItem Href=""#"">About</MenuItem>
-    <MenuItem Href=""#"">Contact</MenuItem>
-</Menu>";
+    private string hrefCode = @"<BlazyMenu Class=""bg-base-200 rounded-box w-56"">
+    <BlazyMenuItem Href=""#"">Home</BlazyMenuItem>
+    <BlazyMenuItem Href=""#"">About</BlazyMenuItem>
+    <BlazyMenuItem Href=""#"">Contact</BlazyMenuItem>
+</BlazyMenu>";
 
-    private string statesCode = @"<Menu Class=""bg-base-200 rounded-box w-56"">
-    <MenuItem Href=""#"">Normal Item</MenuItem>
-    <MenuItem Href=""#"" Active=""true"">Active Item</MenuItem>
-    <MenuItem Href=""#"" Disabled=""true"">Disabled Item</MenuItem>
-</Menu>";
+    private string statesCode = @"<BlazyMenu Class=""bg-base-200 rounded-box w-56"">
+    <BlazyMenuItem Href=""#"">Normal Item</BlazyMenuItem>
+    <BlazyMenuItem Href=""#"" Active=""true"">Active Item</BlazyMenuItem>
+    <BlazyMenuItem Href=""#"" Disabled=""true"">Disabled Item</BlazyMenuItem>
+</BlazyMenu>";
 
-    private string titleCode = @"<Menu Class=""bg-base-200 rounded-box w-56"">
-    <MenuTitle>Category</MenuTitle>
-    <MenuItem Href=""#"">Item 1</MenuItem>
-    <MenuItem Href=""#"">Item 2</MenuItem>
-    <MenuItem Href=""#"">Item 3</MenuItem>
-</Menu>";
+    private string titleCode = @"<BlazyMenu Class=""bg-base-200 rounded-box w-56"">
+    <BlazyMenuTitle>Category</BlazyMenuTitle>
+    <BlazyMenuItem Href=""#"">Item 1</BlazyMenuItem>
+    <BlazyMenuItem Href=""#"">Item 2</BlazyMenuItem>
+    <BlazyMenuItem Href=""#"">Item 3</BlazyMenuItem>
+</BlazyMenu>";
 
-    private string sectionsCode = @"<Menu Class=""bg-base-200 rounded-box w-56"">
-    <MenuTitle>General</MenuTitle>
-    <MenuItem Href=""#"">Dashboard</MenuItem>
-    <MenuItem Href=""#"">Analytics</MenuItem>
-    <MenuTitle>Settings</MenuTitle>
-    <MenuItem Href=""#"">Profile</MenuItem>
-    <MenuItem Href=""#"">Preferences</MenuItem>
-</Menu>";
+    private string sectionsCode = @"<BlazyMenu Class=""bg-base-200 rounded-box w-56"">
+    <BlazyMenuTitle>General</BlazyMenuTitle>
+    <BlazyMenuItem Href=""#"">Dashboard</BlazyMenuItem>
+    <BlazyMenuItem Href=""#"">Analytics</BlazyMenuItem>
+    <BlazyMenuTitle>Settings</BlazyMenuTitle>
+    <BlazyMenuItem Href=""#"">Profile</BlazyMenuItem>
+    <BlazyMenuItem Href=""#"">Preferences</BlazyMenuItem>
+</BlazyMenu>";
 
-    private string dropdownCode = @"<Menu Class=""bg-base-200 rounded-box w-56"">
-    <MenuItem Href=""#"">Item 1</MenuItem>
-    <MenuDropdown Label=""Parent"">
-        <MenuItem Href=""#"">Child 1</MenuItem>
-        <MenuItem Href=""#"">Child 2</MenuItem>
-        <MenuItem Href=""#"">Child 3</MenuItem>
-    </MenuDropdown>
-    <MenuItem Href=""#"">Item 3</MenuItem>
-</Menu>";
+    private string dropdownCode = @"<BlazyMenu Class=""bg-base-200 rounded-box w-56"">
+    <BlazyMenuItem Href=""#"">Item 1</BlazyMenuItem>
+    <BlazyMenuDropdown Label=""Parent"">
+        <BlazyMenuItem Href=""#"">Child 1</BlazyMenuItem>
+        <BlazyMenuItem Href=""#"">Child 2</BlazyMenuItem>
+        <BlazyMenuItem Href=""#"">Child 3</BlazyMenuItem>
+    </BlazyMenuDropdown>
+    <BlazyMenuItem Href=""#"">Item 3</BlazyMenuItem>
+</BlazyMenu>";
 
-    private string openDropdownCode = @"<Menu Class=""bg-base-200 rounded-box w-56"">
-    <MenuItem Href=""#"">Item 1</MenuItem>
-    <MenuDropdown Label=""Parent"" Open=""true"">
-        <MenuItem Href=""#"">Child 1</MenuItem>
-        <MenuItem Href=""#"">Child 2</MenuItem>
-    </MenuDropdown>
-    <MenuItem Href=""#"">Item 3</MenuItem>
-</Menu>";
+    private string openDropdownCode = @"<BlazyMenu Class=""bg-base-200 rounded-box w-56"">
+    <BlazyMenuItem Href=""#"">Item 1</BlazyMenuItem>
+    <BlazyMenuDropdown Label=""Parent"" Open=""true"">
+        <BlazyMenuItem Href=""#"">Child 1</BlazyMenuItem>
+        <BlazyMenuItem Href=""#"">Child 2</BlazyMenuItem>
+    </BlazyMenuDropdown>
+    <BlazyMenuItem Href=""#"">Item 3</BlazyMenuItem>
+</BlazyMenu>";
 
-    private string nestedCode = @"<Menu Class=""bg-base-200 rounded-box w-56"">
-    <MenuItem Href=""#"">Level 1</MenuItem>
-    <MenuDropdown Label=""Level 1 Parent"" Open=""true"">
-        <MenuItem Href=""#"">Level 2</MenuItem>
-        <MenuDropdown Label=""Level 2 Parent"" Open=""true"">
-            <MenuItem Href=""#"">Level 3 Item 1</MenuItem>
-            <MenuItem Href=""#"">Level 3 Item 2</MenuItem>
-        </MenuDropdown>
-    </MenuDropdown>
-</Menu>";
+    private string nestedCode = @"<BlazyMenu Class=""bg-base-200 rounded-box w-56"">
+    <BlazyMenuItem Href=""#"">Level 1</BlazyMenuItem>
+    <BlazyMenuDropdown Label=""Level 1 Parent"" Open=""true"">
+        <BlazyMenuItem Href=""#"">Level 2</BlazyMenuItem>
+        <BlazyMenuDropdown Label=""Level 2 Parent"" Open=""true"">
+            <BlazyMenuItem Href=""#"">Level 3 Item 1</BlazyMenuItem>
+            <BlazyMenuItem Href=""#"">Level 3 Item 2</BlazyMenuItem>
+        </BlazyMenuDropdown>
+    </BlazyMenuDropdown>
+</BlazyMenu>";
 
-    private string horizontalCode = @"<Menu Direction=""MenuDirection.Horizontal"" Class=""bg-base-200 rounded-box"">
-    <MenuItem Href=""#"">Item 1</MenuItem>
-    <MenuItem Href=""#"">Item 2</MenuItem>
-    <MenuItem Href=""#"">Item 3</MenuItem>
-</Menu>";
+    private string horizontalCode = @"<BlazyMenu Direction=""BlazyMenuDirection.Horizontal"" Class=""bg-base-200 rounded-box"">
+    <BlazyMenuItem Href=""#"">Item 1</BlazyMenuItem>
+    <BlazyMenuItem Href=""#"">Item 2</BlazyMenuItem>
+    <BlazyMenuItem Href=""#"">Item 3</BlazyMenuItem>
+</BlazyMenu>";
 
-    private string sizesCode = @"<Menu Size=""MenuSize.ExtraSmall"" Class=""bg-base-200 rounded-box w-56"">
-    <MenuItem Href=""#"">Item 1</MenuItem>
-    <MenuItem Href=""#"">Item 2</MenuItem>
-</Menu>
+    private string sizesCode = @"<BlazyMenu Size=""BlazyMenuSize.ExtraSmall"" Class=""bg-base-200 rounded-box w-56"">
+    <BlazyMenuItem Href=""#"">Item 1</BlazyMenuItem>
+    <BlazyMenuItem Href=""#"">Item 2</BlazyMenuItem>
+</BlazyMenu>
 
-<Menu Size=""MenuSize.Small"" Class=""bg-base-200 rounded-box w-56"">...</Menu>
-<Menu Size=""MenuSize.Medium"" Class=""bg-base-200 rounded-box w-56"">...</Menu>
-<Menu Size=""MenuSize.Large"" Class=""bg-base-200 rounded-box w-56"">...</Menu>
-<Menu Size=""MenuSize.ExtraLarge"" Class=""bg-base-200 rounded-box w-56"">...</Menu>";
+<BlazyMenu Size=""BlazyMenuSize.Small"" Class=""bg-base-200 rounded-box w-56"">...</BlazyMenu>
+<BlazyMenu Size=""BlazyMenuSize.Medium"" Class=""bg-base-200 rounded-box w-56"">...</BlazyMenu>
+<BlazyMenu Size=""BlazyMenuSize.Large"" Class=""bg-base-200 rounded-box w-56"">...</BlazyMenu>
+<BlazyMenu Size=""BlazyMenuSize.ExtraLarge"" Class=""bg-base-200 rounded-box w-56"">...</BlazyMenu>";
 
-    private string iconsCode = @"<Menu Class=""bg-base-200 rounded-box w-56"">
-    <MenuItem Href=""#"">
+    private string iconsCode = @"<BlazyMenu Class=""bg-base-200 rounded-box w-56"">
+    <BlazyMenuItem Href=""#"">
         <svg xmlns=""http://www.w3.org/2000/svg"" class=""h-5 w-5"" fill=""none"" viewBox=""0 0 24 24"" stroke=""currentColor"">
             <path stroke-linecap=""round"" stroke-linejoin=""round"" stroke-width=""2"" d=""M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"" />
         </svg>
         Home
-    </MenuItem>
+    </BlazyMenuItem>
     ...
-</Menu>";
+</BlazyMenu>";
 
-    private string badgesCode = @"<Menu Class=""bg-base-200 rounded-box w-56"">
-    <MenuItem Href=""#"">
+    private string badgesCode = @"<BlazyMenu Class=""bg-base-200 rounded-box w-56"">
+    <BlazyMenuItem Href=""#"">
         Inbox
-        <Badge Color=""BadgeColor.Primary"">99+</Badge>
-    </MenuItem>
-    <MenuItem Href=""#"">
+        <BlazyBadge Color=""BlazyBadgeColor.Primary"">99+</BlazyBadge>
+    </BlazyMenuItem>
+    <BlazyMenuItem Href=""#"">
         Updates
-        <Badge Color=""BadgeColor.Secondary"">New</Badge>
-    </MenuItem>
-    <MenuItem Href=""#"">
+        <BlazyBadge Color=""BlazyBadgeColor.Secondary"">New</BlazyBadge>
+    </BlazyMenuItem>
+    <BlazyMenuItem Href=""#"">
         Statistics
-        <Badge Color=""BadgeColor.Info"" Outline=""true"">Beta</Badge>
-    </MenuItem>
-</Menu>";
+        <BlazyBadge Color=""BlazyBadgeColor.Info"" Outline=""true"">Beta</BlazyBadge>
+    </BlazyMenuItem>
+</BlazyMenu>";
 }

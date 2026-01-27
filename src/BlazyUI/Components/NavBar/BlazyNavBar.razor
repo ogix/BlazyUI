@@ -1,0 +1,50 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<nav class="@CssClass"
+     @attributes="AdditionalAttributes">
+    @ChildContent
+</nav>
+
+@code {
+    /// <summary>
+    /// The color variant of the navbar.
+    /// </summary>
+    [Parameter]
+    public BlazyNavBarColor Color { get; set; } = BlazyNavBarColor.Default;
+
+    /// <summary>
+    /// Makes the navbar sticky at the top of the viewport.
+    /// </summary>
+    [Parameter]
+    public bool Sticky { get; set; }
+
+    /// <summary>
+    /// Adds a subtle shadow to the navbar.
+    /// </summary>
+    [Parameter]
+    public bool Shadow { get; set; }
+
+    /// <summary>
+    /// The content to display inside the navbar.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "navbar",
+        ColorClass,
+        Sticky ? "sticky top-0 z-50" : null,
+        Shadow ? "shadow-sm" : null
+    );
+
+    private string? ColorClass => Color switch
+    {
+        BlazyNavBarColor.Default => null,
+        BlazyNavBarColor.Neutral => "bg-neutral text-neutral-content",
+        BlazyNavBarColor.Primary => "bg-primary text-primary-content",
+        BlazyNavBarColor.Secondary => "bg-secondary text-secondary-content",
+        BlazyNavBarColor.Accent => "bg-accent text-accent-content",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+}

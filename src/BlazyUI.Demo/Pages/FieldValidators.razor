@@ -15,11 +15,11 @@
     <CodeExample Code="@basicCode">
         <form class="max-w-xs flex flex-col gap-4">
             <div>
-                <FieldValidator TValue="string" Hint="Please enter your email">
-                    <TextInput @bind-Value="basicEmail" Type="email" placeholder="Email" required />
-                </FieldValidator>
+                <BlazyFieldValidator TValue="string" Hint="Please enter your email">
+                    <BlazyTextInput @bind-Value="basicEmail" Type="email" placeholder="Email" required />
+                </BlazyFieldValidator>
             </div>
-            <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary">Submit</BlazyButton>
         </form>
     </CodeExample>
 </section>
@@ -33,23 +33,23 @@
 
             <div class="flex flex-col gap-4">
                 <div>
-                    <FieldValidator For="@(() => formModel.Email)" Hint="Invalid email format">
-                        <TextInput @bind-Value="formModel.Email" Type="email" placeholder="Email" required />
-                    </FieldValidator>
+                    <BlazyFieldValidator For="@(() => formModel.Email)" Hint="Invalid email format">
+                        <BlazyTextInput @bind-Value="formModel.Email" Type="email" placeholder="Email" required />
+                    </BlazyFieldValidator>
                 </div>
 
                 <div>
-                    <FieldValidator For="@(() => formModel.Password)" Hint="Password is required">
-                        <TextInput @bind-Value="formModel.Password" Type="password" placeholder="Password" required minlength="6" />
-                    </FieldValidator>
+                    <BlazyFieldValidator For="@(() => formModel.Password)" Hint="Password is required">
+                        <BlazyTextInput @bind-Value="formModel.Password" Type="password" placeholder="Password" required minlength="6" />
+                    </BlazyFieldValidator>
                 </div>
 
-                <Button Type="submit" Color="ButtonColor.Primary" Block>Sign In</Button>
+                <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Sign In</BlazyButton>
             </div>
         </EditForm>
         @if (formSubmitted)
         {
-            <Alert Color="AlertColor.Success" class="mt-4">Form submitted successfully!</Alert>
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">Form submitted successfully!</BlazyAlert>
         }
     </CodeExample>
 </section>
@@ -60,16 +60,16 @@
     <CodeExample Code="@html5OnlyCode">
         <form class="max-w-xs flex flex-col gap-4">
             <div>
-                <FieldValidator TValue="string" Mode="FieldValidatorMode.Html5Only" Hint="Required field">
-                    <TextInput @bind-Value="html5Value" placeholder="Name" required />
-                </FieldValidator>
+                <BlazyFieldValidator TValue="string" Mode="BlazyFieldValidatorMode.Html5Only" Hint="Required field">
+                    <BlazyTextInput @bind-Value="html5Value" placeholder="Name" required />
+                </BlazyFieldValidator>
             </div>
             <div>
-                <FieldValidator TValue="string" Mode="FieldValidatorMode.Html5Only" Hint="Must be a valid URL">
-                    <TextInput @bind-Value="urlValue" Type="url" placeholder="Website URL" />
-                </FieldValidator>
+                <BlazyFieldValidator TValue="string" Mode="BlazyFieldValidatorMode.Html5Only" Hint="Must be a valid URL">
+                    <BlazyTextInput @bind-Value="urlValue" Type="url" placeholder="Website URL" />
+                </BlazyFieldValidator>
             </div>
-            <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary">Submit</BlazyButton>
         </form>
     </CodeExample>
 </section>
@@ -83,11 +83,11 @@
 
             <div class="flex flex-col gap-4">
                 <div>
-                    <FieldValidator For="@(() => blazorOnlyModel.Username)" Mode="FieldValidatorMode.BlazorOnly">
-                        <TextInput @bind-Value="blazorOnlyModel.Username" placeholder="Username" />
-                    </FieldValidator>
+                    <BlazyFieldValidator For="@(() => blazorOnlyModel.Username)" Mode="BlazyFieldValidatorMode.BlazorOnly">
+                        <BlazyTextInput @bind-Value="blazorOnlyModel.Username" placeholder="Username" />
+                    </BlazyFieldValidator>
                 </div>
-                <Button Type="submit" Color="ButtonColor.Primary" Block>Submit</Button>
+                <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Submit</BlazyButton>
             </div>
         </EditForm>
     </CodeExample>
@@ -99,9 +99,9 @@
     <CodeExample Code="@richHintCode">
         <form class="max-w-xs">
             <div>
-                <FieldValidator TValue="string">
+                <BlazyFieldValidator TValue="string">
                     <ChildContent>
-                        <TextInput @bind-Value="passwordValue" Type="password" placeholder="Password" required minlength="8" />
+                        <BlazyTextInput @bind-Value="passwordValue" Type="password" placeholder="Password" required minlength="8" />
                     </ChildContent>
                     <HintContent>
                         <ul class="text-xs list-disc ml-4">
@@ -110,7 +110,7 @@
                             <li>One number</li>
                         </ul>
                     </HintContent>
-                </FieldValidator>
+                </BlazyFieldValidator>
             </div>
         </form>
     </CodeExample>
@@ -122,16 +122,16 @@
     <CodeExample Code="@selectCode">
         <form class="max-w-xs flex flex-col gap-4">
             <div>
-                <FieldValidator TValue="string" Hint="Please select a country">
-                    <Select @bind-Value="selectedCountry" required>
+                <BlazyFieldValidator TValue="string" Hint="Please select a country">
+                    <BlazySelect @bind-Value="selectedCountry" required>
                         <option value="">Choose a country...</option>
                         <option value="US">United States</option>
                         <option value="UK">United Kingdom</option>
                         <option value="CA">Canada</option>
-                    </Select>
-                </FieldValidator>
+                    </BlazySelect>
+                </BlazyFieldValidator>
             </div>
-            <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary">Submit</BlazyButton>
         </form>
     </CodeExample>
 </section>
@@ -142,11 +142,11 @@
     <CodeExample Code="@textareaCode">
         <form class="max-w-md flex flex-col gap-4">
             <div>
-                <FieldValidator TValue="string" Hint="Please enter at least 10 characters">
-                    <Textarea @bind-Value="bioValue" placeholder="Tell us about yourself..." required minlength="10" rows="3" />
-                </FieldValidator>
+                <BlazyFieldValidator TValue="string" Hint="Please enter at least 10 characters">
+                    <BlazyTextarea @bind-Value="bioValue" placeholder="Tell us about yourself..." required minlength="10" rows="3" />
+                </BlazyFieldValidator>
             </div>
-            <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary">Submit</BlazyButton>
         </form>
     </CodeExample>
 </section>
@@ -157,9 +157,9 @@
     <CodeExample Code="@alwaysShowCode">
         <form class="max-w-xs">
             <div>
-                <FieldValidator TValue="string" Hint="Enter a valid email address" HideHintWhenValid="false">
-                    <TextInput @bind-Value="alwaysShowEmail" Type="email" placeholder="Email" />
-                </FieldValidator>
+                <BlazyFieldValidator TValue="string" Hint="Enter a valid email address" HideHintWhenValid="false">
+                    <BlazyTextInput @bind-Value="alwaysShowEmail" Type="email" placeholder="Email" />
+                </BlazyFieldValidator>
             </div>
         </form>
     </CodeExample>
@@ -207,48 +207,48 @@
     }
 
     private string basicCode = @"<form>
-    <FieldValidator TValue=""string"" Hint=""Please enter your email"">
-        <TextInput @bind-Value=""email"" Type=""email"" placeholder=""Email"" required />
-    </FieldValidator>
-    <Button Type=""submit"">Submit</Button>
+    <BlazyFieldValidator TValue=""string"" Hint=""Please enter your email"">
+        <BlazyTextInput @bind-Value=""email"" Type=""email"" placeholder=""Email"" required />
+    </BlazyFieldValidator>
+    <BlazyButton Type=""submit"">Submit</BlazyButton>
 </form>";
 
     private string editFormCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
     <DataAnnotationsValidator />
 
-    <FieldValidator For=""@(() => formModel.Email)"" Hint=""Invalid email format"">
-        <TextInput @bind-Value=""formModel.Email"" Type=""email"" placeholder=""Email"" required />
-    </FieldValidator>
+    <BlazyFieldValidator For=""@(() => formModel.Email)"" Hint=""Invalid email format"">
+        <BlazyTextInput @bind-Value=""formModel.Email"" Type=""email"" placeholder=""Email"" required />
+    </BlazyFieldValidator>
 
-    <FieldValidator For=""@(() => formModel.Password)"" Hint=""Password is required"">
-        <TextInput @bind-Value=""formModel.Password"" Type=""password"" placeholder=""Password"" required minlength=""6"" />
-    </FieldValidator>
+    <BlazyFieldValidator For=""@(() => formModel.Password)"" Hint=""Password is required"">
+        <BlazyTextInput @bind-Value=""formModel.Password"" Type=""password"" placeholder=""Password"" required minlength=""6"" />
+    </BlazyFieldValidator>
 
-    <Button Type=""submit"" Color=""ButtonColor.Primary"">Sign In</Button>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"">Sign In</BlazyButton>
 </EditForm>";
 
     private string html5OnlyCode = @"<form>
-    <FieldValidator TValue=""string"" Mode=""FieldValidatorMode.Html5Only"" Hint=""Required field"">
-        <TextInput @bind-Value=""name"" placeholder=""Name"" required />
-    </FieldValidator>
-    <FieldValidator TValue=""string"" Mode=""FieldValidatorMode.Html5Only"" Hint=""Must be a valid URL"">
-        <TextInput @bind-Value=""url"" Type=""url"" placeholder=""Website URL"" />
-    </FieldValidator>
+    <BlazyFieldValidator TValue=""string"" Mode=""BlazyFieldValidatorMode.Html5Only"" Hint=""Required field"">
+        <BlazyTextInput @bind-Value=""name"" placeholder=""Name"" required />
+    </BlazyFieldValidator>
+    <BlazyFieldValidator TValue=""string"" Mode=""BlazyFieldValidatorMode.Html5Only"" Hint=""Must be a valid URL"">
+        <BlazyTextInput @bind-Value=""url"" Type=""url"" placeholder=""Website URL"" />
+    </BlazyFieldValidator>
 </form>";
 
     private string blazorOnlyCode = @"<EditForm Model=""@model"" OnValidSubmit=""@HandleSubmit"">
     <DataAnnotationsValidator />
 
-    <FieldValidator For=""@(() => model.Username)"" Mode=""FieldValidatorMode.BlazorOnly"">
-        <TextInput @bind-Value=""model.Username"" placeholder=""Username"" />
-    </FieldValidator>
+    <BlazyFieldValidator For=""@(() => model.Username)"" Mode=""BlazyFieldValidatorMode.BlazorOnly"">
+        <BlazyTextInput @bind-Value=""model.Username"" placeholder=""Username"" />
+    </BlazyFieldValidator>
 
-    <Button Type=""submit"">Submit</Button>
+    <BlazyButton Type=""submit"">Submit</BlazyButton>
 </EditForm>";
 
-    private string richHintCode = @"<FieldValidator TValue=""string"">
+    private string richHintCode = @"<BlazyFieldValidator TValue=""string"">
     <ChildContent>
-        <TextInput @bind-Value=""password"" Type=""password"" placeholder=""Password"" required minlength=""8"" />
+        <BlazyTextInput @bind-Value=""password"" Type=""password"" placeholder=""Password"" required minlength=""8"" />
     </ChildContent>
     <HintContent>
         <ul class=""text-xs list-disc ml-4"">
@@ -257,25 +257,25 @@
             <li>One number</li>
         </ul>
     </HintContent>
-</FieldValidator>";
+</BlazyFieldValidator>";
 
     private string selectCode = @"<form>
-    <FieldValidator TValue=""string"" Hint=""Please select a country"">
-        <Select @bind-Value=""country"" required>
+    <BlazyFieldValidator TValue=""string"" Hint=""Please select a country"">
+        <BlazySelect @bind-Value=""country"" required>
             <option value="""">Choose a country...</option>
             <option value=""US"">United States</option>
             <option value=""UK"">United Kingdom</option>
-        </Select>
-    </FieldValidator>
+        </BlazySelect>
+    </BlazyFieldValidator>
 </form>";
 
     private string textareaCode = @"<form>
-    <FieldValidator TValue=""string"" Hint=""Please enter at least 10 characters"">
-        <Textarea @bind-Value=""bio"" placeholder=""Tell us about yourself..."" required minlength=""10"" />
-    </FieldValidator>
+    <BlazyFieldValidator TValue=""string"" Hint=""Please enter at least 10 characters"">
+        <BlazyTextarea @bind-Value=""bio"" placeholder=""Tell us about yourself..."" required minlength=""10"" />
+    </BlazyFieldValidator>
 </form>";
 
-    private string alwaysShowCode = @"<FieldValidator TValue=""string"" Hint=""Enter a valid email address"" HideHintWhenValid=""false"">
-    <TextInput @bind-Value=""email"" Type=""email"" placeholder=""Email"" />
-</FieldValidator>";
+    private string alwaysShowCode = @"<BlazyFieldValidator TValue=""string"" Hint=""Enter a valid email address"" HideHintWhenValid=""false"">
+    <BlazyTextInput @bind-Value=""email"" Type=""email"" placeholder=""Email"" />
+</BlazyFieldValidator>";
 }

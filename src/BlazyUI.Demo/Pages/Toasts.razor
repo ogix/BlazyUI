@@ -5,16 +5,16 @@
 
 <h1 class="text-3xl font-bold mb-6">Toast Component</h1>
 
-<Alert Color="AlertColor.Info" Class="mb-6"><span><strong>Setup:</strong> Add <Kbd>&lt;ToastProvider /&gt;</Kbd> to your MainLayout.razor or App.razor to enable toast notifications.</span></Alert>
+<BlazyAlert Color="BlazyAlertColor.Info" Class="mb-6"><span><strong>Setup:</strong> Add <BlazyKbd>&lt;ToastProvider /&gt;</BlazyKbd> to your MainLayout.razor or App.razor to enable toast notifications.</span></BlazyAlert>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Simple Toasts</h2>
     <CodeExample Code="@simpleToastsCode">
         <div class="flex flex-wrap gap-2">
-            <Button Color="ButtonColor.Info" OnClick="ShowInfo">Info</Button>
-            <Button Color="ButtonColor.Success" OnClick="ShowSuccess">Success</Button>
-            <Button Color="ButtonColor.Warning" OnClick="ShowWarning">Warning</Button>
-            <Button Color="ButtonColor.Error" OnClick="ShowError">Error</Button>
+            <BlazyButton Color="BlazyButtonColor.Info" OnClick="ShowInfo">Info</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Success" OnClick="ShowSuccess">Success</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Warning" OnClick="ShowWarning">Warning</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Error" OnClick="ShowError">Error</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -23,8 +23,8 @@
     <h2 class="text-xl font-semibold mb-4">Custom Duration</h2>
     <CodeExample Code="@customDurationCode">
         <div class="flex flex-wrap gap-2">
-            <Button Color="ButtonColor.Primary" OnClick="ShowShortDuration">Short (2s)</Button>
-            <Button Color="ButtonColor.Secondary" OnClick="ShowLongDuration">Long (10s)</Button>
+            <BlazyButton Color="BlazyButtonColor.Primary" OnClick="ShowShortDuration">Short (2s)</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Secondary" OnClick="ShowLongDuration">Long (10s)</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -33,10 +33,10 @@
     <h2 class="text-xl font-semibold mb-4">Custom Position</h2>
     <CodeExample Code="@customPositionCode">
         <div class="flex flex-wrap gap-2">
-            <Button Color="ButtonColor.Accent" OnClick="ShowTopStart">Top Start</Button>
-            <Button Color="ButtonColor.Accent" OnClick="ShowTopCenter">Top Center</Button>
-            <Button Color="ButtonColor.Accent" OnClick="ShowTopEnd">Top End</Button>
-            <Button Color="ButtonColor.Accent" OnClick="ShowMiddleCenter">Middle Center</Button>
+            <BlazyButton Color="BlazyButtonColor.Accent" OnClick="ShowTopStart">Top Start</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Accent" OnClick="ShowTopCenter">Top Center</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Accent" OnClick="ShowTopEnd">Top End</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Accent" OnClick="ShowMiddleCenter">Middle Center</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -45,7 +45,7 @@
     <h2 class="text-xl font-semibold mb-4">No Auto-Dismiss</h2>
     <CodeExample Code="@noAutoDismissCode">
         <div class="flex flex-wrap gap-2">
-            <Button Color="ButtonColor.Neutral" OnClick="ShowPersistent">Persistent Toast</Button>
+            <BlazyButton Color="BlazyButtonColor.Neutral" OnClick="ShowPersistent">Persistent Toast</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -54,7 +54,7 @@
     <h2 class="text-xl font-semibold mb-4">Clear All</h2>
     <CodeExample Code="@clearAllCode">
         <div class="flex flex-wrap gap-2">
-            <Button Color="ButtonColor.Error" Variant="ButtonVariant.Outline" OnClick="ClearAll">Clear All Toasts</Button>
+            <BlazyButton Color="BlazyButtonColor.Error" Variant="ButtonVariant.Outline" OnClick="ClearAll">Clear All Toasts</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -143,10 +143,10 @@
 
     private string simpleToastsCode = @"@inject IToastService ToastService
 
-<Button Color=""ButtonColor.Info"" OnClick=""ShowInfo"">Info</Button>
-<Button Color=""ButtonColor.Success"" OnClick=""ShowSuccess"">Success</Button>
-<Button Color=""ButtonColor.Warning"" OnClick=""ShowWarning"">Warning</Button>
-<Button Color=""ButtonColor.Error"" OnClick=""ShowError"">Error</Button>
+<BlazyButton Color=""BlazyButtonColor.Info"" OnClick=""ShowInfo"">Info</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Success"" OnClick=""ShowSuccess"">Success</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Warning"" OnClick=""ShowWarning"">Warning</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Error"" OnClick=""ShowError"">Error</BlazyButton>
 
 @code {
     private void ShowInfo()

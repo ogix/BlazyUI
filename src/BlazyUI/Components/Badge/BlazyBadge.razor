@@ -1,0 +1,73 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<span class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</span>
+
+@code {
+    /// <summary>
+    /// The color variant of the badge.
+    /// </summary>
+    [Parameter]
+    public BlazyBadgeColor Color { get; set; } = BlazyBadgeColor.Default;
+
+    /// <summary>
+    /// The size of the badge.
+    /// </summary>
+    [Parameter]
+    public BlazyBadgeSize Size { get; set; } = BlazyBadgeSize.Medium;
+
+    /// <summary>
+    /// The style variant of the badge.
+    /// </summary>
+    [Parameter]
+    public BlazyBadgeStyle Style { get; set; } = BlazyBadgeStyle.Default;
+
+    /// <summary>
+    /// The content to display inside the badge.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "badge",
+        ColorClass,
+        SizeClass,
+        StyleClass
+    );
+
+    private string? ColorClass => Color switch
+    {
+        BlazyBadgeColor.Default => null,
+        BlazyBadgeColor.Neutral => "badge-neutral",
+        BlazyBadgeColor.Primary => "badge-primary",
+        BlazyBadgeColor.Secondary => "badge-secondary",
+        BlazyBadgeColor.Accent => "badge-accent",
+        BlazyBadgeColor.Info => "badge-info",
+        BlazyBadgeColor.Success => "badge-success",
+        BlazyBadgeColor.Warning => "badge-warning",
+        BlazyBadgeColor.Error => "badge-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+
+    private string SizeClass => Size switch
+    {
+        BlazyBadgeSize.ExtraSmall => "badge-xs",
+        BlazyBadgeSize.Small => "badge-sm",
+        BlazyBadgeSize.Medium => "badge-md",
+        BlazyBadgeSize.Large => "badge-lg",
+        BlazyBadgeSize.ExtraLarge => "badge-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? StyleClass => Style switch
+    {
+        BlazyBadgeStyle.Default => null,
+        BlazyBadgeStyle.Outline => "badge-outline",
+        BlazyBadgeStyle.Dash => "badge-dash",
+        BlazyBadgeStyle.Soft => "badge-soft",
+        BlazyBadgeStyle.Ghost => "badge-ghost",
+        _ => throw new ArgumentOutOfRangeException(nameof(Style), Style, null)
+    };
+}

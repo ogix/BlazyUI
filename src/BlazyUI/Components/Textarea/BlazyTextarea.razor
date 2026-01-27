@@ -1,0 +1,76 @@
+@namespace BlazyUI
+@inherits BlazyInputBase<string>
+
+<textarea id="@GetFieldId()"
+          name="@GetFieldName()"
+          class="@ComputedCssClass"
+          @onchange="OnChange"
+          @attributes="AdditionalAttributes">@CurrentValue</textarea>
+
+@code {
+    /// <summary>
+    /// The size of the textarea.
+    /// </summary>
+    [Parameter]
+    public BlazyTextareaSize Size { get; set; } = BlazyTextareaSize.Medium;
+
+    /// <summary>
+    /// The color of the textarea.
+    /// </summary>
+    [Parameter]
+    public BlazyTextareaColor Color { get; set; } = BlazyTextareaColor.Default;
+
+    /// <summary>
+    /// Applies ghost styling (no background).
+    /// </summary>
+    [Parameter]
+    public bool Ghost { get; set; }
+
+    /// <inheritdoc />
+    protected override string GetErrorColorClass() => "textarea-error";
+
+    /// <inheritdoc />
+    protected override bool TryParseValueFromString(
+        string? value,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out string? result,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        result = value ?? string.Empty;
+        validationErrorMessage = null;
+        return true;
+    }
+
+    private string ComputedCssClass => MergeClasses(
+        "textarea",
+        SizeClass,
+        ColorClass,
+        Ghost ? "textarea-ghost" : null
+    );
+
+    private void OnChange(ChangeEventArgs e)
+        => CurrentValue = e.Value?.ToString();
+
+    private string SizeClass => Size switch
+    {
+        BlazyTextareaSize.ExtraSmall => "textarea-xs",
+        BlazyTextareaSize.Small => "textarea-sm",
+        BlazyTextareaSize.Medium => "textarea-md",
+        BlazyTextareaSize.Large => "textarea-lg",
+        BlazyTextareaSize.ExtraLarge => "textarea-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? ColorClass => Color switch
+    {
+        BlazyTextareaColor.Default => null,
+        BlazyTextareaColor.Neutral => "textarea-neutral",
+        BlazyTextareaColor.Primary => "textarea-primary",
+        BlazyTextareaColor.Secondary => "textarea-secondary",
+        BlazyTextareaColor.Accent => "textarea-accent",
+        BlazyTextareaColor.Info => "textarea-info",
+        BlazyTextareaColor.Success => "textarea-success",
+        BlazyTextareaColor.Warning => "textarea-warning",
+        BlazyTextareaColor.Error => "textarea-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+}

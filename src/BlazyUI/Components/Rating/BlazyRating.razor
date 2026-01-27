@@ -1,0 +1,124 @@
+@namespace BlazyUI
+@inherits BlazyInputBase<int>
+
+<div id="@GetFieldId()" class="@ContainerCssClass" @attributes="AdditionalAttributes">
+    @if (AllowClear)
+    {
+        <input type="radio"
+               name="@Name"
+               class="rating-hidden"
+               checked="@(CurrentValue == 0)"
+               @onchange="@(() => CurrentValue = 0)" />
+    }
+    @for (int i = 1; i <= Max; i++)
+    {
+        var value = i;
+        <input type="radio"
+               name="@Name"
+               class="@ItemCssClass"
+               checked="@(CurrentValue == value)"
+               @onchange="@(() => CurrentValue = value)" />
+    }
+</div>
+
+@code {
+    private static int _instanceCounter;
+    private string _name = default!;
+
+    /// <summary>
+    /// The name attribute for the radio group. Auto-generated if not specified.
+    /// </summary>
+    [Parameter]
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// The maximum rating value. Default is 5.
+    /// </summary>
+    [Parameter]
+    public int Max { get; set; } = 5;
+
+    /// <summary>
+    /// The size of the rating.
+    /// </summary>
+    [Parameter]
+    public BlazyRatingSize Size { get; set; } = BlazyRatingSize.Medium;
+
+    /// <summary>
+    /// The mask/shape of the rating items.
+    /// </summary>
+    [Parameter]
+    public BlazyRatingMask Mask { get; set; } = BlazyRatingMask.Star2;
+
+    /// <summary>
+    /// Whether to show half ratings. Note: Visual only, value is still integer.
+    /// </summary>
+    [Parameter]
+    public bool Half { get; set; }
+
+    /// <summary>
+    /// The background color class for the rating items (e.g., "bg-orange-400", "bg-yellow-400").
+    /// </summary>
+    [Parameter]
+    public string? BackgroundColor { get; set; }
+
+    /// <summary>
+    /// Whether to allow clearing the rating (selecting 0).
+    /// </summary>
+    [Parameter]
+    public bool AllowClear { get; set; }
+
+    /// <inheritdoc />
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _name = Name ?? GetFieldName() ?? $"rating-{++_instanceCounter}";
+    }
+
+    /// <inheritdoc />
+    protected override string GetErrorColorClass() => "rating-error";
+
+    /// <inheritdoc />
+    protected override bool TryParseValueFromString(
+        string? value,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out int result,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        if (int.TryParse(value, out result))
+        {
+            validationErrorMessage = null;
+            return true;
+        }
+
+        result = 0;
+        validationErrorMessage = $"The value '{value}' is not a valid integer.";
+        return false;
+    }
+
+    private string ContainerCssClass => MergeClasses(
+        "rating",
+        Half ? "rating-half" : null,
+        SizeClass
+    );
+
+    private string ItemCssClass => string.Join(" ",
+        new[] { "mask", MaskClass, BackgroundColor }
+            .Where(c => !string.IsNullOrEmpty(c)));
+
+    private string SizeClass => Size switch
+    {
+        BlazyRatingSize.ExtraSmall => "rating-xs",
+        BlazyRatingSize.Small => "rating-sm",
+        BlazyRatingSize.Medium => "rating-md",
+        BlazyRatingSize.Large => "rating-lg",
+        BlazyRatingSize.ExtraLarge => "rating-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string MaskClass => Mask switch
+    {
+        BlazyRatingMask.Star => "mask-star",
+        BlazyRatingMask.Star2 => "mask-star-2",
+        BlazyRatingMask.Heart => "mask-heart",
+        _ => throw new ArgumentOutOfRangeException(nameof(Mask), Mask, null)
+    };
+}

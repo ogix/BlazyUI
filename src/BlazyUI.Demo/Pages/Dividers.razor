@@ -9,7 +9,7 @@
     <CodeExample Code="@basicCode">
         <div class="flex flex-col w-full">
             <div>Content above</div>
-            <Divider />
+            <BlazyDivider />
             <div>Content below</div>
         </div>
     </CodeExample>
@@ -20,7 +20,7 @@
     <CodeExample Code="@withTextCode">
         <div class="flex flex-col w-full">
             <div>Content above</div>
-            <Divider>OR</Divider>
+            <BlazyDivider>OR</BlazyDivider>
             <div>Content below</div>
         </div>
     </CodeExample>
@@ -30,15 +30,15 @@
     <h2 class="text-xl font-semibold mb-4">Colors</h2>
     <CodeExample Code="@colorsCode">
         <div class="flex flex-col w-full gap-2">
-            <Divider>Default</Divider>
-            <Divider Color="DividerColor.Neutral">Neutral</Divider>
-            <Divider Color="DividerColor.Primary">Primary</Divider>
-            <Divider Color="DividerColor.Secondary">Secondary</Divider>
-            <Divider Color="DividerColor.Accent">Accent</Divider>
-            <Divider Color="DividerColor.Info">Info</Divider>
-            <Divider Color="DividerColor.Success">Success</Divider>
-            <Divider Color="DividerColor.Warning">Warning</Divider>
-            <Divider Color="DividerColor.Error">Error</Divider>
+            <BlazyDivider>Default</BlazyDivider>
+            <BlazyDivider Color="BlazyDividerColor.Neutral">Neutral</BlazyDivider>
+            <BlazyDivider Color="BlazyDividerColor.Primary">Primary</BlazyDivider>
+            <BlazyDivider Color="BlazyDividerColor.Secondary">Secondary</BlazyDivider>
+            <BlazyDivider Color="BlazyDividerColor.Accent">Accent</BlazyDivider>
+            <BlazyDivider Color="BlazyDividerColor.Info">Info</BlazyDivider>
+            <BlazyDivider Color="BlazyDividerColor.Success">Success</BlazyDivider>
+            <BlazyDivider Color="BlazyDividerColor.Warning">Warning</BlazyDivider>
+            <BlazyDivider Color="BlazyDividerColor.Error">Error</BlazyDivider>
         </div>
     </CodeExample>
 </section>
@@ -47,9 +47,9 @@
     <h2 class="text-xl font-semibold mb-4">Text Position</h2>
     <CodeExample Code="@positionCode">
         <div class="flex flex-col w-full gap-2">
-            <Divider Position="DividerPosition.Start">Start</Divider>
-            <Divider>Center (Default)</Divider>
-            <Divider Position="DividerPosition.End">End</Divider>
+            <BlazyDivider Position="BlazyDividerPosition.Start">Start</BlazyDivider>
+            <BlazyDivider>Center (Default)</BlazyDivider>
+            <BlazyDivider Position="BlazyDividerPosition.End">End</BlazyDivider>
         </div>
     </CodeExample>
 </section>
@@ -60,7 +60,7 @@
     <CodeExample Code="@horizontalCode">
         <div class="flex w-full">
             <div class="card bg-base-300 rounded-box grid h-20 grow place-items-center">Left</div>
-            <Divider Horizontal />
+            <BlazyDivider Horizontal />
             <div class="card bg-base-300 rounded-box grid h-20 grow place-items-center">Right</div>
         </div>
     </CodeExample>
@@ -71,7 +71,7 @@
     <CodeExample Code="@horizontalTextCode">
         <div class="flex w-full">
             <div class="card bg-base-300 rounded-box grid h-20 grow place-items-center">Left</div>
-            <Divider Horizontal>OR</Divider>
+            <BlazyDivider Horizontal>OR</BlazyDivider>
             <div class="card bg-base-300 rounded-box grid h-20 grow place-items-center">Right</div>
         </div>
     </CodeExample>
@@ -80,43 +80,43 @@
 @code {
     private string basicCode = @"<div class=""flex flex-col w-full"">
     <div>Content above</div>
-    <Divider />
+    <BlazyDivider />
     <div>Content below</div>
 </div>";
 
     private string withTextCode = @"<div class=""flex flex-col w-full"">
     <div>Content above</div>
-    <Divider>OR</Divider>
+    <BlazyDivider>OR</BlazyDivider>
     <div>Content below</div>
 </div>";
 
     private string colorsCode = @"<div class=""flex flex-col w-full gap-2"">
-    <Divider>Default</Divider>
-    <Divider Color=""DividerColor.Neutral"">Neutral</Divider>
-    <Divider Color=""DividerColor.Primary"">Primary</Divider>
-    <Divider Color=""DividerColor.Secondary"">Secondary</Divider>
-    <Divider Color=""DividerColor.Accent"">Accent</Divider>
-    <Divider Color=""DividerColor.Info"">Info</Divider>
-    <Divider Color=""DividerColor.Success"">Success</Divider>
-    <Divider Color=""DividerColor.Warning"">Warning</Divider>
-    <Divider Color=""DividerColor.Error"">Error</Divider>
+    <BlazyDivider>Default</BlazyDivider>
+    <BlazyDivider Color=""BlazyDividerColor.Neutral"">Neutral</BlazyDivider>
+    <BlazyDivider Color=""BlazyDividerColor.Primary"">Primary</BlazyDivider>
+    <BlazyDivider Color=""BlazyDividerColor.Secondary"">Secondary</BlazyDivider>
+    <BlazyDivider Color=""BlazyDividerColor.Accent"">Accent</BlazyDivider>
+    <BlazyDivider Color=""BlazyDividerColor.Info"">Info</BlazyDivider>
+    <BlazyDivider Color=""BlazyDividerColor.Success"">Success</BlazyDivider>
+    <BlazyDivider Color=""BlazyDividerColor.Warning"">Warning</BlazyDivider>
+    <BlazyDivider Color=""BlazyDividerColor.Error"">Error</BlazyDivider>
 </div>";
 
     private string positionCode = @"<div class=""flex flex-col w-full gap-2"">
-    <Divider Position=""DividerPosition.Start"">Start</Divider>
-    <Divider>Center (Default)</Divider>
-    <Divider Position=""DividerPosition.End"">End</Divider>
+    <BlazyDivider Position=""BlazyDividerPosition.Start"">Start</BlazyDivider>
+    <BlazyDivider>Center (Default)</BlazyDivider>
+    <BlazyDivider Position=""BlazyDividerPosition.End"">End</BlazyDivider>
 </div>";
 
     private string horizontalCode = @"<div class=""flex w-full"">
     <div class=""card bg-base-300 rounded-box grid h-20 grow place-items-center"">Left</div>
-    <Divider Horizontal />
+    <BlazyDivider Horizontal />
     <div class=""card bg-base-300 rounded-box grid h-20 grow place-items-center"">Right</div>
 </div>";
 
     private string horizontalTextCode = @"<div class=""flex w-full"">
     <div class=""card bg-base-300 rounded-box grid h-20 grow place-items-center"">Left</div>
-    <Divider Horizontal>OR</Divider>
+    <BlazyDivider Horizontal>OR</BlazyDivider>
     <div class=""card bg-base-300 rounded-box grid h-20 grow place-items-center"">Right</div>
 </div>";
 }

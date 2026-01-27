@@ -1,0 +1,61 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<span role="status" aria-label="Loading" class="@CssClass" @attributes="AdditionalAttributes"></span>
+
+@code {
+    /// <summary>
+    /// The type of loading animation to display.
+    /// </summary>
+    [Parameter]
+    public BlazyLoadingType Type { get; set; } = BlazyLoadingType.Spinner;
+
+    /// <summary>
+    /// The size of the loading indicator.
+    /// </summary>
+    [Parameter]
+    public BlazyLoadingSize Size { get; set; } = BlazyLoadingSize.Medium;
+
+    /// <summary>
+    /// The color of the loading indicator. None inherits from parent.
+    /// </summary>
+    [Parameter]
+    public BlazyLoadingColor Color { get; set; } = BlazyLoadingColor.None;
+
+    private string CssClass => MergeClasses("loading", TypeClass, SizeClass, ColorClass);
+
+    private string TypeClass => Type switch
+    {
+        BlazyLoadingType.Spinner => "loading-spinner",
+        BlazyLoadingType.Dots => "loading-dots",
+        BlazyLoadingType.Ring => "loading-ring",
+        BlazyLoadingType.Ball => "loading-ball",
+        BlazyLoadingType.Bars => "loading-bars",
+        BlazyLoadingType.Infinity => "loading-infinity",
+        _ => throw new ArgumentOutOfRangeException(nameof(Type), Type, "Unknown loading type")
+    };
+
+    private string SizeClass => Size switch
+    {
+        BlazyLoadingSize.ExtraSmall => "loading-xs",
+        BlazyLoadingSize.Small => "loading-sm",
+        BlazyLoadingSize.Medium => "loading-md",
+        BlazyLoadingSize.Large => "loading-lg",
+        BlazyLoadingSize.ExtraLarge => "loading-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, "Unknown loading size")
+    };
+
+    private string? ColorClass => Color switch
+    {
+        BlazyLoadingColor.None => null,
+        BlazyLoadingColor.Primary => "text-primary",
+        BlazyLoadingColor.Secondary => "text-secondary",
+        BlazyLoadingColor.Accent => "text-accent",
+        BlazyLoadingColor.Neutral => "text-neutral",
+        BlazyLoadingColor.Info => "text-info",
+        BlazyLoadingColor.Success => "text-success",
+        BlazyLoadingColor.Warning => "text-warning",
+        BlazyLoadingColor.Error => "text-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, "Unknown loading color")
+    };
+}

@@ -1,0 +1,61 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    /// <summary>
+    /// The color variant of the divider.
+    /// </summary>
+    [Parameter]
+    public BlazyDividerColor Color { get; set; } = BlazyDividerColor.Default;
+
+    /// <summary>
+    /// The text position of the divider.
+    /// </summary>
+    [Parameter]
+    public BlazyDividerPosition Position { get; set; } = BlazyDividerPosition.Default;
+
+    /// <summary>
+    /// When true, renders a horizontal divider (for flex-row containers).
+    /// </summary>
+    [Parameter]
+    public bool Horizontal { get; set; }
+
+    /// <summary>
+    /// The content to display inside the divider.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "divider",
+        Horizontal ? "divider-horizontal" : null,
+        ColorClass,
+        PositionClass
+    );
+
+    private string? ColorClass => Color switch
+    {
+        BlazyDividerColor.Default => null,
+        BlazyDividerColor.Neutral => "divider-neutral",
+        BlazyDividerColor.Primary => "divider-primary",
+        BlazyDividerColor.Secondary => "divider-secondary",
+        BlazyDividerColor.Accent => "divider-accent",
+        BlazyDividerColor.Info => "divider-info",
+        BlazyDividerColor.Success => "divider-success",
+        BlazyDividerColor.Warning => "divider-warning",
+        BlazyDividerColor.Error => "divider-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+
+    private string? PositionClass => Position switch
+    {
+        BlazyDividerPosition.Default => null,
+        BlazyDividerPosition.Start => "divider-start",
+        BlazyDividerPosition.End => "divider-end",
+        _ => throw new ArgumentOutOfRangeException(nameof(Position), Position, null)
+    };
+}

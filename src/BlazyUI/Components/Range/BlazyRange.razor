@@ -1,0 +1,103 @@
+@namespace BlazyUI
+@inherits BlazyInputBase<int>
+
+<input type="range"
+       id="@GetFieldId()"
+       name="@GetFieldName()"
+       class="@ComputedCssClass"
+       min="@Min"
+       max="@Max"
+       step="@Step"
+       value="@CurrentValue"
+       @oninput="OnInput"
+       @attributes="AdditionalAttributes" />
+
+@code {
+    /// <summary>
+    /// The minimum value. Default is 0.
+    /// </summary>
+    [Parameter]
+    public int Min { get; set; } = 0;
+
+    /// <summary>
+    /// The maximum value. Default is 100.
+    /// </summary>
+    [Parameter]
+    public int Max { get; set; } = 100;
+
+    /// <summary>
+    /// The step increment. Default is 1.
+    /// </summary>
+    [Parameter]
+    public int Step { get; set; } = 1;
+
+    /// <summary>
+    /// The size of the range slider.
+    /// </summary>
+    [Parameter]
+    public BlazyRangeSize Size { get; set; } = BlazyRangeSize.Medium;
+
+    /// <summary>
+    /// The color of the range slider.
+    /// </summary>
+    [Parameter]
+    public BlazyRangeColor Color { get; set; } = BlazyRangeColor.Default;
+
+    /// <inheritdoc />
+    protected override string GetErrorColorClass() => "range-error";
+
+    /// <inheritdoc />
+    protected override bool TryParseValueFromString(
+        string? value,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out int result,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        if (int.TryParse(value, out result))
+        {
+            validationErrorMessage = null;
+            return true;
+        }
+
+        result = 0;
+        validationErrorMessage = $"The value '{value}' is not a valid integer.";
+        return false;
+    }
+
+    private string ComputedCssClass => MergeClasses(
+        "range",
+        SizeClass,
+        ColorClass
+    );
+
+    private void OnInput(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out var value))
+        {
+            CurrentValue = value;
+        }
+    }
+
+    private string SizeClass => Size switch
+    {
+        BlazyRangeSize.ExtraSmall => "range-xs",
+        BlazyRangeSize.Small => "range-sm",
+        BlazyRangeSize.Medium => "range-md",
+        BlazyRangeSize.Large => "range-lg",
+        BlazyRangeSize.ExtraLarge => "range-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? ColorClass => Color switch
+    {
+        BlazyRangeColor.Default => null,
+        BlazyRangeColor.Neutral => "range-neutral",
+        BlazyRangeColor.Primary => "range-primary",
+        BlazyRangeColor.Secondary => "range-secondary",
+        BlazyRangeColor.Accent => "range-accent",
+        BlazyRangeColor.Info => "range-info",
+        BlazyRangeColor.Success => "range-success",
+        BlazyRangeColor.Warning => "range-warning",
+        BlazyRangeColor.Error => "range-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+}

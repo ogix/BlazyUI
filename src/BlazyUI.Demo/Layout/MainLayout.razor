@@ -1,10 +1,10 @@
 @inherits LayoutComponentBase
 
-<ModalProvider />
-<ToastProvider />
+<BlazyModalProvider />
+<BlazyToastProvider />
 
 <!-- Navbar (fixed at top) -->
-<NavBar Color="NavBarColor.Primary" Class="fixed top-0 left-0 right-0 z-50">
+<BlazyNavBar Color="BlazyNavBarColor.Primary" Class="fixed top-0 left-0 right-0 z-50">
     <div class="flex-none lg:hidden">
         <label for="main-drawer" class="btn btn-square btn-ghost">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current">
@@ -22,20 +22,20 @@
             </svg>
         </a>
     </div>
-</NavBar>
+</BlazyNavBar>
 
 <!-- Drawer with sidebar and content -->
-<Drawer Responsive Id="main-drawer" Class="pt-16">
-    <DrawerContent Class="lg:ml-64">
+<BlazyDrawer Responsive Id="main-drawer" Class="pt-16">
+    <BlazyDrawerContent Class="lg:ml-64">
         <main class="p-6">
             @Body
         </main>
-    </DrawerContent>
+    </BlazyDrawerContent>
 
-    <DrawerSide Width="w-64" Background="bg-base-200" Class="fixed top-16 h-[calc(100vh-4rem)] z-40" ContentClass="h-full overflow-y-auto">
+    <BlazyDrawerSide Width="w-64" Background="bg-base-200" Class="fixed top-16 h-[calc(100vh-4rem)] z-40" ContentClass="h-full overflow-y-auto">
         <NavMenu />
-    </DrawerSide>
-</Drawer>
+    </BlazyDrawerSide>
+</BlazyDrawer>
 
 <div id="blazor-error-ui" class="hidden fixed bottom-0 left-0 right-0 bg-error text-error-content p-4 text-center">
     An unhandled error has occurred.

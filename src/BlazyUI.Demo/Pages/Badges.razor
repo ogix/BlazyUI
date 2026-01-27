@@ -8,7 +8,7 @@
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
         <div class="flex flex-wrap gap-4">
-            <Badge>Badge</Badge>
+            <BlazyBadge>Badge</BlazyBadge>
         </div>
     </CodeExample>
 </section>
@@ -17,15 +17,15 @@
     <h2 class="text-xl font-semibold mb-4">Colors</h2>
     <CodeExample Code="@colorsCode">
         <div class="flex flex-wrap gap-4">
-            <Badge>Default</Badge>
-            <Badge Color="BadgeColor.Neutral">Neutral</Badge>
-            <Badge Color="BadgeColor.Primary">Primary</Badge>
-            <Badge Color="BadgeColor.Secondary">Secondary</Badge>
-            <Badge Color="BadgeColor.Accent">Accent</Badge>
-            <Badge Color="BadgeColor.Info">Info</Badge>
-            <Badge Color="BadgeColor.Success">Success</Badge>
-            <Badge Color="BadgeColor.Warning">Warning</Badge>
-            <Badge Color="BadgeColor.Error">Error</Badge>
+            <BlazyBadge>Default</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Neutral">Neutral</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Primary">Primary</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Secondary">Secondary</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Accent">Accent</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Info">Info</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Success">Success</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Warning">Warning</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Error">Error</BlazyBadge>
         </div>
     </CodeExample>
 </section>
@@ -34,11 +34,11 @@
     <h2 class="text-xl font-semibold mb-4">Sizes</h2>
     <CodeExample Code="@sizesCode">
         <div class="flex flex-wrap items-center gap-4">
-            <Badge Size="BadgeSize.ExtraSmall">XS</Badge>
-            <Badge Size="BadgeSize.Small">SM</Badge>
-            <Badge>Default</Badge>
-            <Badge Size="BadgeSize.Large">LG</Badge>
-            <Badge Size="BadgeSize.ExtraLarge">XL</Badge>
+            <BlazyBadge Size="BlazyBadgeSize.ExtraSmall">XS</BlazyBadge>
+            <BlazyBadge Size="BlazyBadgeSize.Small">SM</BlazyBadge>
+            <BlazyBadge>Default</BlazyBadge>
+            <BlazyBadge Size="BlazyBadgeSize.Large">LG</BlazyBadge>
+            <BlazyBadge Size="BlazyBadgeSize.ExtraLarge">XL</BlazyBadge>
         </div>
     </CodeExample>
 </section>
@@ -47,11 +47,11 @@
     <h2 class="text-xl font-semibold mb-4">Styles</h2>
     <CodeExample Code="@stylesCode">
         <div class="flex flex-wrap gap-4">
-            <Badge Color="BadgeColor.Primary">Default</Badge>
-            <Badge Color="BadgeColor.Primary" Style="BadgeStyle.Outline">Outline</Badge>
-            <Badge Color="BadgeColor.Primary" Style="BadgeStyle.Dash">Dash</Badge>
-            <Badge Color="BadgeColor.Primary" Style="BadgeStyle.Soft">Soft</Badge>
-            <Badge Color="BadgeColor.Primary" Style="BadgeStyle.Ghost">Ghost</Badge>
+            <BlazyBadge Color="BlazyBadgeColor.Primary">Default</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Primary" Style="BlazyBadgeStyle.Outline">Outline</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Primary" Style="BlazyBadgeStyle.Dash">Dash</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Primary" Style="BlazyBadgeStyle.Soft">Soft</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Primary" Style="BlazyBadgeStyle.Ghost">Ghost</BlazyBadge>
         </div>
     </CodeExample>
 </section>
@@ -62,7 +62,7 @@
         <div class="flex flex-wrap items-center gap-2">
             <h2 class="text-lg font-semibold">
                 Inbox
-                <Badge Color="BadgeColor.Secondary">99+</Badge>
+                <BlazyBadge Color="BlazyBadgeColor.Secondary">99+</BlazyBadge>
             </h2>
         </div>
     </CodeExample>
@@ -72,54 +72,54 @@
     <h2 class="text-xl font-semibold mb-4">With Button</h2>
     <CodeExample Code="@withButtonCode">
         <div class="flex flex-wrap gap-4">
-            <Button>
+            <BlazyButton>
                 Notifications
-                <Badge Color="BadgeColor.Secondary">8</Badge>
-            </Button>
-            <Button Color="ButtonColor.Primary">
+                <BlazyBadge Color="BlazyBadgeColor.Secondary">8</BlazyBadge>
+            </BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Primary">
                 Messages
-                <Badge Style="BadgeStyle.Outline">New</Badge>
-            </Button>
+                <BlazyBadge Style="BlazyBadgeStyle.Outline">New</BlazyBadge>
+            </BlazyButton>
         </div>
     </CodeExample>
 </section>
 
 @code {
-    private string basicCode = @"<Badge>Badge</Badge>";
+    private string basicCode = @"<BlazyBadge>Badge</BlazyBadge>";
 
-    private string colorsCode = @"<Badge>Default</Badge>
-<Badge Color=""BadgeColor.Neutral"">Neutral</Badge>
-<Badge Color=""BadgeColor.Primary"">Primary</Badge>
-<Badge Color=""BadgeColor.Secondary"">Secondary</Badge>
-<Badge Color=""BadgeColor.Accent"">Accent</Badge>
-<Badge Color=""BadgeColor.Info"">Info</Badge>
-<Badge Color=""BadgeColor.Success"">Success</Badge>
-<Badge Color=""BadgeColor.Warning"">Warning</Badge>
-<Badge Color=""BadgeColor.Error"">Error</Badge>";
+    private string colorsCode = @"<BlazyBadge>Default</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Neutral"">Neutral</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Primary"">Primary</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Secondary"">Secondary</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Accent"">Accent</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Info"">Info</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Success"">Success</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Warning"">Warning</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Error"">Error</BlazyBadge>";
 
-    private string sizesCode = @"<Badge Size=""BadgeSize.ExtraSmall"">XS</Badge>
-<Badge Size=""BadgeSize.Small"">SM</Badge>
-<Badge>Default</Badge>
-<Badge Size=""BadgeSize.Large"">LG</Badge>
-<Badge Size=""BadgeSize.ExtraLarge"">XL</Badge>";
+    private string sizesCode = @"<BlazyBadge Size=""BlazyBadgeSize.ExtraSmall"">XS</BlazyBadge>
+<BlazyBadge Size=""BlazyBadgeSize.Small"">SM</BlazyBadge>
+<BlazyBadge>Default</BlazyBadge>
+<BlazyBadge Size=""BlazyBadgeSize.Large"">LG</BlazyBadge>
+<BlazyBadge Size=""BlazyBadgeSize.ExtraLarge"">XL</BlazyBadge>";
 
-    private string stylesCode = @"<Badge Color=""BadgeColor.Primary"">Default</Badge>
-<Badge Color=""BadgeColor.Primary"" Style=""BadgeStyle.Outline"">Outline</Badge>
-<Badge Color=""BadgeColor.Primary"" Style=""BadgeStyle.Dash"">Dash</Badge>
-<Badge Color=""BadgeColor.Primary"" Style=""BadgeStyle.Soft"">Soft</Badge>
-<Badge Color=""BadgeColor.Primary"" Style=""BadgeStyle.Ghost"">Ghost</Badge>";
+    private string stylesCode = @"<BlazyBadge Color=""BlazyBadgeColor.Primary"">Default</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Primary"" Style=""BlazyBadgeStyle.Outline"">Outline</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Primary"" Style=""BlazyBadgeStyle.Dash"">Dash</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Primary"" Style=""BlazyBadgeStyle.Soft"">Soft</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Primary"" Style=""BlazyBadgeStyle.Ghost"">Ghost</BlazyBadge>";
 
     private string inTextCode = @"<h2>
     Inbox
-    <Badge Color=""BadgeColor.Secondary"">99+</Badge>
+    <BlazyBadge Color=""BlazyBadgeColor.Secondary"">99+</BlazyBadge>
 </h2>";
 
-    private string withButtonCode = @"<Button>
+    private string withButtonCode = @"<BlazyButton>
     Notifications
-    <Badge Color=""BadgeColor.Secondary"">8</Badge>
-</Button>
-<Button Color=""ButtonColor.Primary"">
+    <BlazyBadge Color=""BlazyBadgeColor.Secondary"">8</BlazyBadge>
+</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Primary"">
     Messages
-    <Badge Style=""BadgeStyle.Outline"">New</Badge>
-</Button>";
+    <BlazyBadge Style=""BlazyBadgeStyle.Outline"">New</BlazyBadge>
+</BlazyButton>";
 }

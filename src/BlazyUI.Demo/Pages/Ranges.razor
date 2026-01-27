@@ -8,7 +8,7 @@
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
         <div class="w-full max-w-xs">
-            <Range @bind-Value="basicValue" />
+            <BlazyRange @bind-Value="basicValue" />
             <p class="mt-2 text-sm opacity-70">Value: @basicValue</p>
         </div>
     </CodeExample>
@@ -18,7 +18,7 @@
     <h2 class="text-xl font-semibold mb-4">With Min/Max/Step</h2>
     <CodeExample Code="@minMaxCode">
         <div class="w-full max-w-xs">
-            <Range @bind-Value="customValue" Min="0" Max="50" Step="5" Color="RangeColor.Primary" />
+            <BlazyRange @bind-Value="customValue" Min="0" Max="50" Step="5" Color="BlazyRangeColor.Primary" />
             <p class="mt-2 text-sm opacity-70">Value: @customValue (0-50, step 5)</p>
         </div>
     </CodeExample>
@@ -30,23 +30,23 @@
         <div class="flex flex-col gap-4 max-w-xs">
             <div>
                 <label class="label-text">Extra Small</label>
-                <Range Size="RangeSize.ExtraSmall" @bind-Value="sizeXs" />
+                <BlazyRange Size="BlazyRangeSize.ExtraSmall" @bind-Value="sizeXs" />
             </div>
             <div>
                 <label class="label-text">Small</label>
-                <Range Size="RangeSize.Small" @bind-Value="sizeSm" />
+                <BlazyRange Size="BlazyRangeSize.Small" @bind-Value="sizeSm" />
             </div>
             <div>
                 <label class="label-text">Default (Medium)</label>
-                <Range Size="RangeSize.Medium" @bind-Value="sizeMd" />
+                <BlazyRange Size="BlazyRangeSize.Medium" @bind-Value="sizeMd" />
             </div>
             <div>
                 <label class="label-text">Large</label>
-                <Range Size="RangeSize.Large" @bind-Value="sizeLg" />
+                <BlazyRange Size="BlazyRangeSize.Large" @bind-Value="sizeLg" />
             </div>
             <div>
                 <label class="label-text">Extra Large</label>
-                <Range Size="RangeSize.ExtraLarge" @bind-Value="sizeXl" />
+                <BlazyRange Size="BlazyRangeSize.ExtraLarge" @bind-Value="sizeXl" />
             </div>
         </div>
     </CodeExample>
@@ -58,39 +58,39 @@
         <div class="flex flex-col gap-4 max-w-xs">
             <div>
                 <label class="label-text">Default</label>
-                <Range Color="RangeColor.Default" @bind-Value="colorDefault" />
+                <BlazyRange Color="BlazyRangeColor.Default" @bind-Value="colorDefault" />
             </div>
             <div>
                 <label class="label-text">Neutral</label>
-                <Range Color="RangeColor.Neutral" @bind-Value="colorNeutral" />
+                <BlazyRange Color="BlazyRangeColor.Neutral" @bind-Value="colorNeutral" />
             </div>
             <div>
                 <label class="label-text">Primary</label>
-                <Range Color="RangeColor.Primary" @bind-Value="colorPrimary" />
+                <BlazyRange Color="BlazyRangeColor.Primary" @bind-Value="colorPrimary" />
             </div>
             <div>
                 <label class="label-text">Secondary</label>
-                <Range Color="RangeColor.Secondary" @bind-Value="colorSecondary" />
+                <BlazyRange Color="BlazyRangeColor.Secondary" @bind-Value="colorSecondary" />
             </div>
             <div>
                 <label class="label-text">Accent</label>
-                <Range Color="RangeColor.Accent" @bind-Value="colorAccent" />
+                <BlazyRange Color="BlazyRangeColor.Accent" @bind-Value="colorAccent" />
             </div>
             <div>
                 <label class="label-text">Info</label>
-                <Range Color="RangeColor.Info" @bind-Value="colorInfo" />
+                <BlazyRange Color="BlazyRangeColor.Info" @bind-Value="colorInfo" />
             </div>
             <div>
                 <label class="label-text">Success</label>
-                <Range Color="RangeColor.Success" @bind-Value="colorSuccess" />
+                <BlazyRange Color="BlazyRangeColor.Success" @bind-Value="colorSuccess" />
             </div>
             <div>
                 <label class="label-text">Warning</label>
-                <Range Color="RangeColor.Warning" @bind-Value="colorWarning" />
+                <BlazyRange Color="BlazyRangeColor.Warning" @bind-Value="colorWarning" />
             </div>
             <div>
                 <label class="label-text">Error</label>
-                <Range Color="RangeColor.Error" @bind-Value="colorError" />
+                <BlazyRange Color="BlazyRangeColor.Error" @bind-Value="colorError" />
             </div>
         </div>
     </CodeExample>
@@ -106,18 +106,18 @@
                 <label class="label">
                     <span class="label-text">Volume (10-90)</span>
                 </label>
-                <Range @bind-Value="formModel.Volume" Min="0" Max="100" Color="RangeColor.Primary" />
+                <BlazyRange @bind-Value="formModel.Volume" Min="0" Max="100" Color="BlazyRangeColor.Primary" />
                 <label class="label">
                     <span class="label-text-alt">Current: @formModel.Volume</span>
                 </label>
                 <ValidationMessage For="@(() => formModel.Volume)" class="text-error text-sm" />
             </div>
 
-            <Button Type="submit" Color="ButtonColor.Primary" Block>Save Settings</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Save Settings</BlazyButton>
         </EditForm>
         @if (formSubmitted)
         {
-            <Alert Color="AlertColor.Success" class="mt-4">Settings saved! Volume: @formModel.Volume</Alert>
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">Settings saved! Volume: @formModel.Volume</BlazyAlert>
         }
     </CodeExample>
 </section>
@@ -126,7 +126,7 @@
     <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
     <CodeExample Code="@attributesCode">
         <div class="w-full max-w-xs">
-            <Range @bind-Value="disabledValue" disabled class="opacity-50" />
+            <BlazyRange @bind-Value="disabledValue" disabled class="opacity-50" />
             <p class="mt-2 text-sm opacity-50">Disabled</p>
         </div>
     </CodeExample>
@@ -165,24 +165,24 @@
         public int Volume { get; set; } = 50;
     }
 
-    private string basicCode = @"<Range @bind-Value=""value"" />";
+    private string basicCode = @"<BlazyRange @bind-Value=""value"" />";
 
-    private string minMaxCode = @"<Range @bind-Value=""value"" Min=""0"" Max=""50"" Step=""5"" Color=""RangeColor.Primary"" />";
+    private string minMaxCode = @"<BlazyRange @bind-Value=""value"" Min=""0"" Max=""50"" Step=""5"" Color=""BlazyRangeColor.Primary"" />";
 
-    private string sizesCode = @"<Range Size=""RangeSize.ExtraSmall"" />
-<Range Size=""RangeSize.Small"" />
-<Range Size=""RangeSize.Medium"" />
-<Range Size=""RangeSize.Large"" />
-<Range Size=""RangeSize.ExtraLarge"" />";
+    private string sizesCode = @"<BlazyRange Size=""BlazyRangeSize.ExtraSmall"" />
+<BlazyRange Size=""BlazyRangeSize.Small"" />
+<BlazyRange Size=""BlazyRangeSize.Medium"" />
+<BlazyRange Size=""BlazyRangeSize.Large"" />
+<BlazyRange Size=""BlazyRangeSize.ExtraLarge"" />";
 
-    private string colorsCode = @"<Range Color=""RangeColor.Default"" />
-<Range Color=""RangeColor.Primary"" />
-<Range Color=""RangeColor.Secondary"" />
-<Range Color=""RangeColor.Accent"" />
-<Range Color=""RangeColor.Info"" />
-<Range Color=""RangeColor.Success"" />
-<Range Color=""RangeColor.Warning"" />
-<Range Color=""RangeColor.Error"" />";
+    private string colorsCode = @"<BlazyRange Color=""BlazyRangeColor.Default"" />
+<BlazyRange Color=""BlazyRangeColor.Primary"" />
+<BlazyRange Color=""BlazyRangeColor.Secondary"" />
+<BlazyRange Color=""BlazyRangeColor.Accent"" />
+<BlazyRange Color=""BlazyRangeColor.Info"" />
+<BlazyRange Color=""BlazyRangeColor.Success"" />
+<BlazyRange Color=""BlazyRangeColor.Warning"" />
+<BlazyRange Color=""BlazyRangeColor.Error"" />";
 
     private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
     <DataAnnotationsValidator />
@@ -190,11 +190,11 @@
         <label class=""label"">
             <span class=""label-text"">Volume (10-90)</span>
         </label>
-        <Range @bind-Value=""formModel.Volume"" Min=""0"" Max=""100"" Color=""RangeColor.Primary"" />
+        <BlazyRange @bind-Value=""formModel.Volume"" Min=""0"" Max=""100"" Color=""BlazyRangeColor.Primary"" />
         <ValidationMessage For=""@(() => formModel.Volume)"" />
     </div>
-    <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Save Settings</Button>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"" Block>Save Settings</BlazyButton>
 </EditForm>";
 
-    private string attributesCode = @"<Range @bind-Value=""value"" disabled />";
+    private string attributesCode = @"<BlazyRange @bind-Value=""value"" disabled />";
 }

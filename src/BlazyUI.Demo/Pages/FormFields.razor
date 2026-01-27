@@ -14,10 +14,10 @@
     <p class="mb-4 text-sm text-base-content/70">Wrap any input with FormField to add a label and validation.</p>
     <CodeExample Code="@basicCode">
         <form class="max-w-sm flex flex-col gap-4">
-            <FormField Label="Email" For="@(() => basicEmail)" Hint="Please enter a valid email">
-                <TextInput @bind-Value="basicEmail" Type="email" placeholder="Enter your email" required />
-            </FormField>
-            <Button Type="submit" Color="ButtonColor.Primary">Submit</Button>
+            <BlazyFormField Label="Email" For="@(() => basicEmail)" Hint="Please enter a valid email">
+                <BlazyTextInput @bind-Value="basicEmail" Type="email" placeholder="Enter your email" required />
+            </BlazyFormField>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary">Submit</BlazyButton>
         </form>
     </CodeExample>
 </section>
@@ -29,31 +29,31 @@
         <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-sm flex flex-col gap-4">
             <DataAnnotationsValidator />
 
-            <FormField Label="Email"
+            <BlazyFormField Label="Email"
                        For="@(() => formModel.Email)"
                        Hint="Invalid email format"
                        Required>
-                <TextInput @bind-Value="formModel.Email" Type="email" placeholder="Email" required />
-            </FormField>
+                <BlazyTextInput @bind-Value="formModel.Email" Type="email" placeholder="Email" required />
+            </BlazyFormField>
 
-            <FormField Label="Password"
+            <BlazyFormField Label="Password"
                        For="@(() => formModel.Password)"
                        Hint="Password is required"
                        Required>
-                <TextInput @bind-Value="formModel.Password" Type="password" placeholder="Password" required minlength="6" />
-            </FormField>
+                <BlazyTextInput @bind-Value="formModel.Password" Type="password" placeholder="Password" required minlength="6" />
+            </BlazyFormField>
 
-            <FormField Label="Bio"
+            <BlazyFormField Label="Bio"
                        For="@(() => formModel.Bio)"
                        HelperText="Tell us a bit about yourself">
-                <Textarea @bind-Value="formModel.Bio" placeholder="Your bio..." rows="3" />
-            </FormField>
+                <BlazyTextarea @bind-Value="formModel.Bio" placeholder="Your bio..." rows="3" />
+            </BlazyFormField>
 
-            <Button Type="submit" Color="ButtonColor.Primary" Block>Sign Up</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Sign Up</BlazyButton>
         </EditForm>
         @if (formSubmitted)
         {
-            <Alert Color="AlertColor.Success" class="mt-4">Form submitted successfully!</Alert>
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">Form submitted successfully!</BlazyAlert>
         }
     </CodeExample>
 </section>
@@ -63,18 +63,18 @@
     <p class="mb-4 text-sm text-base-content/70">Add helper text that's always visible below the input.</p>
     <CodeExample Code="@helperTextCode">
         <div class="max-w-sm flex flex-col gap-4">
-            <FormField Label="Username"
+            <BlazyFormField Label="Username"
                        For="@(() => username)"
                        HelperText="Choose a unique username (3-20 characters)"
                        Hint="Username must be 3-20 characters">
-                <TextInput @bind-Value="username" placeholder="Username" required minlength="3" maxlength="20" />
-            </FormField>
+                <BlazyTextInput @bind-Value="username" placeholder="Username" required minlength="3" maxlength="20" />
+            </BlazyFormField>
 
-            <FormField Label="Website"
+            <BlazyFormField Label="Website"
                        For="@(() => website)"
                        HelperText="Optional: Your personal website or portfolio">
-                <TextInput @bind-Value="website" Type="url" placeholder="https://example.com" />
-            </FormField>
+                <BlazyTextInput @bind-Value="website" Type="url" placeholder="https://example.com" />
+            </BlazyFormField>
         </div>
     </CodeExample>
 </section>
@@ -84,29 +84,29 @@
     <p class="mb-4 text-sm text-base-content/70">FormField works with any input component including Select.</p>
     <CodeExample Code="@selectCode">
         <div class="max-w-sm flex flex-col gap-4">
-            <FormField Label="Country"
+            <BlazyFormField Label="Country"
                        For="@(() => selectedCountry)"
                        Hint="Please select a country"
                        Required>
-                <Select @bind-Value="selectedCountry" required>
+                <BlazySelect @bind-Value="selectedCountry" required>
                     <option value="">Choose a country...</option>
                     <option value="US">United States</option>
                     <option value="UK">United Kingdom</option>
                     <option value="CA">Canada</option>
                     <option value="AU">Australia</option>
-                </Select>
-            </FormField>
+                </BlazySelect>
+            </BlazyFormField>
 
-            <FormField Label="Language"
+            <BlazyFormField Label="Language"
                        For="@(() => selectedLanguage)"
                        HelperText="Select your preferred language">
-                <Select @bind-Value="selectedLanguage">
+                <BlazySelect @bind-Value="selectedLanguage">
                     <option value="en">English</option>
                     <option value="es">Spanish</option>
                     <option value="fr">French</option>
                     <option value="de">German</option>
-                </Select>
-            </FormField>
+                </BlazySelect>
+            </BlazyFormField>
         </div>
     </CodeExample>
 </section>
@@ -116,16 +116,16 @@
     <p class="mb-4 text-sm text-base-content/70">FormField also works with Checkbox and Toggle components.</p>
     <CodeExample Code="@checkboxCode">
         <div class="max-w-sm flex flex-col gap-4">
-            <FormField Label="Notifications" For="@(() => emailNotifications)">
+            <BlazyFormField Label="Notifications" For="@(() => emailNotifications)">
                 <div class="flex items-center gap-2">
-                    <Checkbox @bind-Value="emailNotifications" Color="CheckboxColor.Primary" />
+                    <BlazyCheckbox @bind-Value="emailNotifications" Color="BlazyCheckboxColor.Primary" />
                     <span>Email notifications</span>
                 </div>
-            </FormField>
+            </BlazyFormField>
 
-            <FormField Label="Dark Mode" For="@(() => darkMode)" HelperText="Enable dark mode for the interface">
-                <Toggle @bind-Value="darkMode" Color="ToggleColor.Primary" />
-            </FormField>
+            <BlazyFormField Label="Dark Mode" For="@(() => darkMode)" HelperText="Enable dark mode for the interface">
+                <BlazyToggle @bind-Value="darkMode" Color="BlazyToggleColor.Primary" />
+            </BlazyFormField>
         </div>
     </CodeExample>
 </section>
@@ -135,20 +135,20 @@
     <p class="mb-4 text-sm text-base-content/70">Control which validation feedback is shown.</p>
     <CodeExample Code="@validationModesCode">
         <div class="max-w-sm flex flex-col gap-4">
-            <FormField Label="HTML5 Only"
+            <BlazyFormField Label="HTML5 Only"
                        For="@(() => html5OnlyValue)"
-                       ValidationMode="FieldValidatorMode.Html5Only"
+                       ValidationMode="BlazyFieldValidatorMode.Html5Only"
                        Hint="This field is required">
-                <TextInput @bind-Value="html5OnlyValue" placeholder="HTML5 validation only" required />
-            </FormField>
+                <BlazyTextInput @bind-Value="html5OnlyValue" placeholder="HTML5 validation only" required />
+            </BlazyFormField>
 
             <EditForm Model="@modeModel" class="contents">
                 <DataAnnotationsValidator />
-                <FormField Label="Blazor Only"
-                           ValidationMode="FieldValidatorMode.BlazorOnly"
+                <BlazyFormField Label="Blazor Only"
+                           ValidationMode="BlazyFieldValidatorMode.BlazorOnly"
                            For="@(() => modeModel.Value)">
-                    <TextInput @bind-Value="modeModel.Value" placeholder="Blazor validation only" />
-                </FormField>
+                    <BlazyTextInput @bind-Value="modeModel.Value" placeholder="Blazor validation only" />
+                </BlazyFormField>
             </EditForm>
         </div>
     </CodeExample>
@@ -162,46 +162,46 @@
             <DataAnnotationsValidator />
 
             <div class="grid grid-cols-2 gap-4">
-                <FormField Label="First Name"
+                <BlazyFormField Label="First Name"
                            For="@(() => contactModel.FirstName)"
                            Hint="Required"
                            Required>
-                    <TextInput @bind-Value="contactModel.FirstName" placeholder="John" required />
-                </FormField>
+                    <BlazyTextInput @bind-Value="contactModel.FirstName" placeholder="John" required />
+                </BlazyFormField>
 
-                <FormField Label="Last Name"
+                <BlazyFormField Label="Last Name"
                            For="@(() => contactModel.LastName)"
                            Hint="Required"
                            Required>
-                    <TextInput @bind-Value="contactModel.LastName" placeholder="Doe" required />
-                </FormField>
+                    <BlazyTextInput @bind-Value="contactModel.LastName" placeholder="Doe" required />
+                </BlazyFormField>
             </div>
 
-            <FormField Label="Email Address"
+            <BlazyFormField Label="Email Address"
                        For="@(() => contactModel.Email)"
                        Hint="Invalid email format"
                        Required>
-                <TextInput @bind-Value="contactModel.Email" Type="email" placeholder="john@example.com" required />
-            </FormField>
+                <BlazyTextInput @bind-Value="contactModel.Email" Type="email" placeholder="john@example.com" required />
+            </BlazyFormField>
 
-            <FormField Label="Phone Number"
+            <BlazyFormField Label="Phone Number"
                        For="@(() => contactModel.Phone)"
                        HelperText="Optional">
-                <TextInput @bind-Value="contactModel.Phone" Type="tel" placeholder="+1 (555) 000-0000" />
-            </FormField>
+                <BlazyTextInput @bind-Value="contactModel.Phone" Type="tel" placeholder="+1 (555) 000-0000" />
+            </BlazyFormField>
 
-            <FormField Label="Message"
+            <BlazyFormField Label="Message"
                        For="@(() => contactModel.Message)"
                        Hint="Please enter your message"
                        Required>
-                <Textarea @bind-Value="contactModel.Message" placeholder="Your message..." rows="4" required />
-            </FormField>
+                <BlazyTextarea @bind-Value="contactModel.Message" placeholder="Your message..." rows="4" required />
+            </BlazyFormField>
 
-            <Button Type="submit" Color="ButtonColor.Primary" Block>Send Message</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Send Message</BlazyButton>
         </EditForm>
         @if (contactSubmitted)
         {
-            <Alert Color="AlertColor.Success" class="mt-4">Message sent successfully!</Alert>
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">Message sent successfully!</BlazyAlert>
         }
     </CodeExample>
 </section>
@@ -270,110 +270,110 @@
     }
 
     private string basicCode = @"<form class=""flex flex-col gap-4"">
-    <FormField Label=""Email"" For=""@(() => email)"" Hint=""Please enter a valid email"">
-        <TextInput @bind-Value=""email"" Type=""email"" placeholder=""Enter your email"" required />
-    </FormField>
-    <Button Type=""submit"">Submit</Button>
+    <BlazyFormField Label=""Email"" For=""@(() => email)"" Hint=""Please enter a valid email"">
+        <BlazyTextInput @bind-Value=""email"" Type=""email"" placeholder=""Enter your email"" required />
+    </BlazyFormField>
+    <BlazyButton Type=""submit"">Submit</BlazyButton>
 </form>";
 
     private string editFormCode = @"<EditForm Model=""@model"" OnValidSubmit=""@HandleSubmit"" class=""flex flex-col gap-4"">
     <DataAnnotationsValidator />
 
-    <FormField Label=""Email""
+    <BlazyFormField Label=""Email""
                For=""@(() => model.Email)""
                Hint=""Invalid email format""
                Required>
-        <TextInput @bind-Value=""model.Email"" Type=""email"" placeholder=""Email"" required />
-    </FormField>
+        <BlazyTextInput @bind-Value=""model.Email"" Type=""email"" placeholder=""Email"" required />
+    </BlazyFormField>
 
-    <FormField Label=""Password""
+    <BlazyFormField Label=""Password""
                For=""@(() => model.Password)""
                Hint=""Password is required""
                Required>
-        <TextInput @bind-Value=""model.Password"" Type=""password"" placeholder=""Password"" required />
-    </FormField>
+        <BlazyTextInput @bind-Value=""model.Password"" Type=""password"" placeholder=""Password"" required />
+    </BlazyFormField>
 
-    <FormField Label=""Bio""
+    <BlazyFormField Label=""Bio""
                For=""@(() => model.Bio)""
                HelperText=""Tell us a bit about yourself"">
-        <Textarea @bind-Value=""model.Bio"" placeholder=""Your bio..."" />
-    </FormField>
+        <BlazyTextarea @bind-Value=""model.Bio"" placeholder=""Your bio..."" />
+    </BlazyFormField>
 
-    <Button Type=""submit"" Color=""ButtonColor.Primary"">Sign Up</Button>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"">Sign Up</BlazyButton>
 </EditForm>";
 
-    private string helperTextCode = @"<FormField Label=""Username""
+    private string helperTextCode = @"<BlazyFormField Label=""Username""
            For=""@(() => username)""
            HelperText=""Choose a unique username (3-20 characters)""
            Hint=""Username must be 3-20 characters"">
-    <TextInput @bind-Value=""username"" placeholder=""Username"" required minlength=""3"" maxlength=""20"" />
-</FormField>
+    <BlazyTextInput @bind-Value=""username"" placeholder=""Username"" required minlength=""3"" maxlength=""20"" />
+</BlazyFormField>
 
-<FormField Label=""Website""
+<BlazyFormField Label=""Website""
            For=""@(() => website)""
            HelperText=""Optional: Your personal website or portfolio"">
-    <TextInput @bind-Value=""website"" Type=""url"" placeholder=""https://example.com"" />
-</FormField>";
+    <BlazyTextInput @bind-Value=""website"" Type=""url"" placeholder=""https://example.com"" />
+</BlazyFormField>";
 
-    private string selectCode = @"<FormField Label=""Country""
+    private string selectCode = @"<BlazyFormField Label=""Country""
            For=""@(() => country)""
            Hint=""Please select a country""
            Required>
-    <Select @bind-Value=""country"" required>
+    <BlazySelect @bind-Value=""country"" required>
         <option value="""">Choose a country...</option>
         <option value=""US"">United States</option>
         <option value=""UK"">United Kingdom</option>
-    </Select>
-</FormField>";
+    </BlazySelect>
+</BlazyFormField>";
 
-    private string checkboxCode = @"<FormField Label=""Notifications"" For=""@(() => notifications)"">
+    private string checkboxCode = @"<BlazyFormField Label=""Notifications"" For=""@(() => notifications)"">
     <div class=""flex items-center gap-2"">
-        <Checkbox @bind-Value=""notifications"" Color=""CheckboxColor.Primary"" />
+        <BlazyCheckbox @bind-Value=""notifications"" Color=""BlazyCheckboxColor.Primary"" />
         <span>Email notifications</span>
     </div>
-</FormField>
+</BlazyFormField>
 
-<FormField Label=""Dark Mode"" For=""@(() => darkMode)"" HelperText=""Enable dark mode for the interface"">
-    <Toggle @bind-Value=""darkMode"" Color=""ToggleColor.Primary"" />
-</FormField>";
+<BlazyFormField Label=""Dark Mode"" For=""@(() => darkMode)"" HelperText=""Enable dark mode for the interface"">
+    <BlazyToggle @bind-Value=""darkMode"" Color=""BlazyToggleColor.Primary"" />
+</BlazyFormField>";
 
-    private string validationModesCode = @"<FormField Label=""HTML5 Only""
+    private string validationModesCode = @"<BlazyFormField Label=""HTML5 Only""
            For=""@(() => html5Value)""
-           ValidationMode=""FieldValidatorMode.Html5Only""
+           ValidationMode=""BlazyFieldValidatorMode.Html5Only""
            Hint=""This field is required"">
-    <TextInput @bind-Value=""html5Value"" placeholder=""HTML5 validation only"" required />
-</FormField>
+    <BlazyTextInput @bind-Value=""html5Value"" placeholder=""HTML5 validation only"" required />
+</BlazyFormField>
 
-<FormField Label=""Blazor Only""
+<BlazyFormField Label=""Blazor Only""
            For=""@(() => model.Value)""
-           ValidationMode=""FieldValidatorMode.BlazorOnly"">
-    <TextInput @bind-Value=""model.Value"" placeholder=""Blazor validation only"" />
-</FormField>";
+           ValidationMode=""BlazyFieldValidatorMode.BlazorOnly"">
+    <BlazyTextInput @bind-Value=""model.Value"" placeholder=""Blazor validation only"" />
+</BlazyFormField>";
 
     private string completeFormCode = @"<EditForm Model=""@model"" OnValidSubmit=""@HandleSubmit"" class=""flex flex-col gap-4"">
     <DataAnnotationsValidator />
 
     <div class=""grid grid-cols-2 gap-4"">
-        <FormField Label=""First Name"" For=""@(() => model.FirstName)"" Required>
-            <TextInput @bind-Value=""model.FirstName"" placeholder=""John"" required />
-        </FormField>
-        <FormField Label=""Last Name"" For=""@(() => model.LastName)"" Required>
-            <TextInput @bind-Value=""model.LastName"" placeholder=""Doe"" required />
-        </FormField>
+        <BlazyFormField Label=""First Name"" For=""@(() => model.FirstName)"" Required>
+            <BlazyTextInput @bind-Value=""model.FirstName"" placeholder=""John"" required />
+        </BlazyFormField>
+        <BlazyFormField Label=""Last Name"" For=""@(() => model.LastName)"" Required>
+            <BlazyTextInput @bind-Value=""model.LastName"" placeholder=""Doe"" required />
+        </BlazyFormField>
     </div>
 
-    <FormField Label=""Email"" For=""@(() => model.Email)"" Required>
-        <TextInput @bind-Value=""model.Email"" Type=""email"" placeholder=""john@example.com"" required />
-    </FormField>
+    <BlazyFormField Label=""Email"" For=""@(() => model.Email)"" Required>
+        <BlazyTextInput @bind-Value=""model.Email"" Type=""email"" placeholder=""john@example.com"" required />
+    </BlazyFormField>
 
-    <FormField Label=""Phone"" For=""@(() => model.Phone)"" HelperText=""Optional"">
-        <TextInput @bind-Value=""model.Phone"" Type=""tel"" placeholder=""+1 (555) 000-0000"" />
-    </FormField>
+    <BlazyFormField Label=""Phone"" For=""@(() => model.Phone)"" HelperText=""Optional"">
+        <BlazyTextInput @bind-Value=""model.Phone"" Type=""tel"" placeholder=""+1 (555) 000-0000"" />
+    </BlazyFormField>
 
-    <FormField Label=""Message"" For=""@(() => model.Message)"" Required>
-        <Textarea @bind-Value=""model.Message"" placeholder=""Your message..."" required />
-    </FormField>
+    <BlazyFormField Label=""Message"" For=""@(() => model.Message)"" Required>
+        <BlazyTextarea @bind-Value=""model.Message"" placeholder=""Your message..."" required />
+    </BlazyFormField>
 
-    <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Send Message</Button>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"" Block>Send Message</BlazyButton>
 </EditForm>";
 }

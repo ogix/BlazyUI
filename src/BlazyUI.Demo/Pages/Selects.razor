@@ -7,12 +7,12 @@
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
-        <Select @bind-Value="basicValue" class="w-full max-w-xs">
+        <BlazySelect @bind-Value="basicValue" class="w-full max-w-xs">
             <option value="" disabled selected>Pick a color</option>
             <option value="red">Red</option>
             <option value="green">Green</option>
             <option value="blue">Blue</option>
-        </Select>
+        </BlazySelect>
         <p class="mt-2 text-sm opacity-70">Selected: @basicValue</p>
     </CodeExample>
 </section>
@@ -21,31 +21,31 @@
     <h2 class="text-xl font-semibold mb-4">Sizes</h2>
     <CodeExample Code="@sizesCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <Select Size="SelectSize.ExtraSmall" @bind-Value="sizeValue">
+            <BlazySelect Size="BlazySelectSize.ExtraSmall" @bind-Value="sizeValue">
                 <option value="" disabled selected>Extra Small</option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
-            </Select>
-            <Select Size="SelectSize.Small" @bind-Value="sizeValue">
+            </BlazySelect>
+            <BlazySelect Size="BlazySelectSize.Small" @bind-Value="sizeValue">
                 <option value="" disabled selected>Small</option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
-            </Select>
-            <Select Size="SelectSize.Medium" @bind-Value="sizeValue">
+            </BlazySelect>
+            <BlazySelect Size="BlazySelectSize.Medium" @bind-Value="sizeValue">
                 <option value="" disabled selected>Default (Medium)</option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
-            </Select>
-            <Select Size="SelectSize.Large" @bind-Value="sizeValue">
+            </BlazySelect>
+            <BlazySelect Size="BlazySelectSize.Large" @bind-Value="sizeValue">
                 <option value="" disabled selected>Large</option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
-            </Select>
-            <Select Size="SelectSize.ExtraLarge" @bind-Value="sizeValue">
+            </BlazySelect>
+            <BlazySelect Size="BlazySelectSize.ExtraLarge" @bind-Value="sizeValue">
                 <option value="" disabled selected>Extra Large</option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
-            </Select>
+            </BlazySelect>
         </div>
     </CodeExample>
 </section>
@@ -54,42 +54,42 @@
     <h2 class="text-xl font-semibold mb-4">Colors</h2>
     <CodeExample Code="@colorsCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <Select Color="SelectColor.Default" @bind-Value="colorValue">
+            <BlazySelect Color="BlazySelectColor.Default" @bind-Value="colorValue">
                 <option value="" disabled selected>Default</option>
                 <option value="1">Option 1</option>
-            </Select>
-            <Select Color="SelectColor.Neutral" @bind-Value="colorValue">
+            </BlazySelect>
+            <BlazySelect Color="BlazySelectColor.Neutral" @bind-Value="colorValue">
                 <option value="" disabled selected>Neutral</option>
                 <option value="1">Option 1</option>
-            </Select>
-            <Select Color="SelectColor.Primary" @bind-Value="colorValue">
+            </BlazySelect>
+            <BlazySelect Color="BlazySelectColor.Primary" @bind-Value="colorValue">
                 <option value="" disabled selected>Primary</option>
                 <option value="1">Option 1</option>
-            </Select>
-            <Select Color="SelectColor.Secondary" @bind-Value="colorValue">
+            </BlazySelect>
+            <BlazySelect Color="BlazySelectColor.Secondary" @bind-Value="colorValue">
                 <option value="" disabled selected>Secondary</option>
                 <option value="1">Option 1</option>
-            </Select>
-            <Select Color="SelectColor.Accent" @bind-Value="colorValue">
+            </BlazySelect>
+            <BlazySelect Color="BlazySelectColor.Accent" @bind-Value="colorValue">
                 <option value="" disabled selected>Accent</option>
                 <option value="1">Option 1</option>
-            </Select>
-            <Select Color="SelectColor.Info" @bind-Value="colorValue">
+            </BlazySelect>
+            <BlazySelect Color="BlazySelectColor.Info" @bind-Value="colorValue">
                 <option value="" disabled selected>Info</option>
                 <option value="1">Option 1</option>
-            </Select>
-            <Select Color="SelectColor.Success" @bind-Value="colorValue">
+            </BlazySelect>
+            <BlazySelect Color="BlazySelectColor.Success" @bind-Value="colorValue">
                 <option value="" disabled selected>Success</option>
                 <option value="1">Option 1</option>
-            </Select>
-            <Select Color="SelectColor.Warning" @bind-Value="colorValue">
+            </BlazySelect>
+            <BlazySelect Color="BlazySelectColor.Warning" @bind-Value="colorValue">
                 <option value="" disabled selected>Warning</option>
                 <option value="1">Option 1</option>
-            </Select>
-            <Select Color="SelectColor.Error" @bind-Value="colorValue">
+            </BlazySelect>
+            <BlazySelect Color="BlazySelectColor.Error" @bind-Value="colorValue">
                 <option value="" disabled selected>Error</option>
                 <option value="1">Option 1</option>
-            </Select>
+            </BlazySelect>
         </div>
     </CodeExample>
 </section>
@@ -98,16 +98,16 @@
     <h2 class="text-xl font-semibold mb-4">Ghost Style</h2>
     <CodeExample Code="@ghostCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <Select Ghost @bind-Value="ghostValue">
+            <BlazySelect Ghost @bind-Value="ghostValue">
                 <option value="" disabled selected>Ghost select</option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
-            </Select>
-            <Select Ghost Color="SelectColor.Primary" @bind-Value="ghostValue">
+            </BlazySelect>
+            <BlazySelect Ghost Color="BlazySelectColor.Primary" @bind-Value="ghostValue">
                 <option value="" disabled selected>Ghost Primary</option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
-            </Select>
+            </BlazySelect>
         </div>
     </CodeExample>
 </section>
@@ -120,21 +120,21 @@
 
             <div class="form-control mb-4">
                 <label class="label"><span class="label-text">Country</span></label>
-                <Select @bind-Value="formModel.Country">
+                <BlazySelect @bind-Value="formModel.Country">
                     <option value="">Select a country</option>
                     <option value="us">United States</option>
                     <option value="uk">United Kingdom</option>
                     <option value="ca">Canada</option>
                     <option value="au">Australia</option>
-                </Select>
+                </BlazySelect>
                 <ValidationMessage For="@(() => formModel.Country)" class="text-error text-sm mt-1" />
             </div>
 
-            <Button Type="submit" Color="ButtonColor.Primary" Block>Submit</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Submit</BlazyButton>
         </EditForm>
         @if (formSubmitted)
         {
-            <Alert Color="AlertColor.Success" class="mt-4">Form submitted! Country: @formModel.Country</Alert>
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">Form submitted! Country: @formModel.Country</BlazyAlert>
         }
     </CodeExample>
 </section>
@@ -143,10 +143,10 @@
     <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
     <CodeExample Code="@attributesCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <Select @bind-Value="attrValue" disabled>
+            <BlazySelect @bind-Value="attrValue" disabled>
                 <option value="" disabled selected>Disabled</option>
                 <option value="1">Option 1</option>
-            </Select>
+            </BlazySelect>
         </div>
     </CodeExample>
 </section>
@@ -172,46 +172,46 @@
         public string Country { get; set; } = "";
     }
 
-    private string basicCode = @"<Select @bind-Value=""value"">
+    private string basicCode = @"<BlazySelect @bind-Value=""value"">
     <option value="""" disabled selected>Pick a color</option>
     <option value=""red"">Red</option>
     <option value=""green"">Green</option>
     <option value=""blue"">Blue</option>
-</Select>";
+</BlazySelect>";
 
-    private string sizesCode = @"<Select Size=""SelectSize.ExtraSmall"">...</Select>
-<Select Size=""SelectSize.Small"">...</Select>
-<Select Size=""SelectSize.Medium"">...</Select>
-<Select Size=""SelectSize.Large"">...</Select>
-<Select Size=""SelectSize.ExtraLarge"">...</Select>";
+    private string sizesCode = @"<BlazySelect Size=""BlazySelectSize.ExtraSmall"">...</BlazySelect>
+<BlazySelect Size=""BlazySelectSize.Small"">...</BlazySelect>
+<BlazySelect Size=""BlazySelectSize.Medium"">...</BlazySelect>
+<BlazySelect Size=""BlazySelectSize.Large"">...</BlazySelect>
+<BlazySelect Size=""BlazySelectSize.ExtraLarge"">...</BlazySelect>";
 
-    private string colorsCode = @"<Select Color=""SelectColor.Default"">...</Select>
-<Select Color=""SelectColor.Primary"">...</Select>
-<Select Color=""SelectColor.Secondary"">...</Select>
-<Select Color=""SelectColor.Accent"">...</Select>
-<Select Color=""SelectColor.Info"">...</Select>
-<Select Color=""SelectColor.Success"">...</Select>
-<Select Color=""SelectColor.Warning"">...</Select>
-<Select Color=""SelectColor.Error"">...</Select>";
+    private string colorsCode = @"<BlazySelect Color=""BlazySelectColor.Default"">...</BlazySelect>
+<BlazySelect Color=""BlazySelectColor.Primary"">...</BlazySelect>
+<BlazySelect Color=""BlazySelectColor.Secondary"">...</BlazySelect>
+<BlazySelect Color=""BlazySelectColor.Accent"">...</BlazySelect>
+<BlazySelect Color=""BlazySelectColor.Info"">...</BlazySelect>
+<BlazySelect Color=""BlazySelectColor.Success"">...</BlazySelect>
+<BlazySelect Color=""BlazySelectColor.Warning"">...</BlazySelect>
+<BlazySelect Color=""BlazySelectColor.Error"">...</BlazySelect>";
 
-    private string ghostCode = @"<Select Ghost>...</Select>
-<Select Ghost Color=""SelectColor.Primary"">...</Select>";
+    private string ghostCode = @"<BlazySelect Ghost>...</BlazySelect>
+<BlazySelect Ghost Color=""BlazySelectColor.Primary"">...</BlazySelect>";
 
     private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
     <DataAnnotationsValidator />
     <div class=""form-control mb-4"">
         <label class=""label""><span class=""label-text"">Country</span></label>
-        <Select @bind-Value=""formModel.Country"">
+        <BlazySelect @bind-Value=""formModel.Country"">
             <option value="""">Select a country</option>
             <option value=""us"">United States</option>
-        </Select>
+        </BlazySelect>
         <ValidationMessage For=""@(() => formModel.Country)"" />
     </div>
-    <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Submit</Button>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"" Block>Submit</BlazyButton>
 </EditForm>";
 
-    private string attributesCode = @"<Select disabled>
+    private string attributesCode = @"<BlazySelect disabled>
     <option value="""" disabled selected>Disabled</option>
     <option value=""1"">Option 1</option>
-</Select>";
+</BlazySelect>";
 }

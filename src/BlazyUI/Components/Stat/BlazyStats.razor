@@ -1,0 +1,40 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    /// <summary>
+    /// The direction/layout of the stats.
+    /// </summary>
+    [Parameter]
+    public BlazyStatsDirection Direction { get; set; } = BlazyStatsDirection.Default;
+
+    /// <summary>
+    /// Adds a shadow to the stats container.
+    /// </summary>
+    [Parameter]
+    public bool Shadow { get; set; }
+
+    /// <summary>
+    /// The content of the stats container (typically Stat components).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "stats",
+        DirectionClass,
+        Shadow ? "shadow" : null
+    );
+
+    private string? DirectionClass => Direction switch
+    {
+        BlazyStatsDirection.Default => null,
+        BlazyStatsDirection.Horizontal => "stats-horizontal",
+        BlazyStatsDirection.Vertical => "stats-vertical",
+        _ => throw new ArgumentOutOfRangeException(nameof(Direction), Direction, null)
+    };
+}

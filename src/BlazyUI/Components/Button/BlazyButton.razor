@@ -1,0 +1,136 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<button class="@CssClass"
+        disabled="@IsDisabled"
+        @onclick="OnClick"
+        @attributes="AdditionalAttributes">
+    @if (Loading)
+    {
+        <span class="loading loading-spinner"></span>
+    }
+    @ChildContent
+</button>
+
+@code {
+    /// <summary>
+    /// The color variant of the button.
+    /// </summary>
+    [Parameter]
+    public BlazyButtonColor Color { get; set; } = BlazyButtonColor.Default;
+
+    /// <summary>
+    /// The size of the button.
+    /// </summary>
+    [Parameter]
+    public BlazyButtonSize Size { get; set; } = BlazyButtonSize.Medium;
+
+    /// <summary>
+    /// The style variant of the button.
+    /// </summary>
+    [Parameter]
+    public BlazyButtonStyle Style { get; set; } = BlazyButtonStyle.Default;
+
+    /// <summary>
+    /// Makes the button wider than normal.
+    /// </summary>
+    [Parameter]
+    public bool Wide { get; set; }
+
+    /// <summary>
+    /// Makes the button full width (block-level).
+    /// </summary>
+    [Parameter]
+    public bool Block { get; set; }
+
+    /// <summary>
+    /// Makes the button square (equal width and height).
+    /// </summary>
+    [Parameter]
+    public bool Square { get; set; }
+
+    /// <summary>
+    /// Makes the button circular.
+    /// </summary>
+    [Parameter]
+    public bool Circle { get; set; }
+
+    /// <summary>
+    /// Shows a loading spinner. Automatically disables the button.
+    /// </summary>
+    [Parameter]
+    public bool Loading { get; set; }
+
+    /// <summary>
+    /// Disables the button.
+    /// </summary>
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    /// <summary>
+    /// Shows the button in an active/pressed state. Useful for toggle buttons.
+    /// </summary>
+    [Parameter]
+    public bool Active { get; set; }
+
+    /// <summary>
+    /// The content to display inside the button.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>
+    /// Callback when the button is clicked.
+    /// </summary>
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+    private bool IsDisabled => Disabled || Loading;
+
+    private string CssClass => MergeClasses(
+        "btn",
+        ColorClass,
+        SizeClass,
+        StyleClass,
+        Wide ? "btn-wide" : null,
+        Block ? "btn-block" : null,
+        Square ? "btn-square" : null,
+        Circle ? "btn-circle" : null,
+        Active ? "btn-active" : null
+    );
+
+    private string? ColorClass => Color switch
+    {
+        BlazyButtonColor.Default => null,
+        BlazyButtonColor.Neutral => "btn-neutral",
+        BlazyButtonColor.Primary => "btn-primary",
+        BlazyButtonColor.Secondary => "btn-secondary",
+        BlazyButtonColor.Accent => "btn-accent",
+        BlazyButtonColor.Info => "btn-info",
+        BlazyButtonColor.Success => "btn-success",
+        BlazyButtonColor.Warning => "btn-warning",
+        BlazyButtonColor.Error => "btn-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+
+    private string SizeClass => Size switch
+    {
+        BlazyButtonSize.ExtraSmall => "btn-xs",
+        BlazyButtonSize.Small => "btn-sm",
+        BlazyButtonSize.Medium => "btn-md",
+        BlazyButtonSize.Large => "btn-lg",
+        BlazyButtonSize.ExtraLarge => "btn-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? StyleClass => Style switch
+    {
+        BlazyButtonStyle.Default => null,
+        BlazyButtonStyle.Outline => "btn-outline",
+        BlazyButtonStyle.Dash => "btn-dash",
+        BlazyButtonStyle.Soft => "btn-soft",
+        BlazyButtonStyle.Ghost => "btn-ghost",
+        BlazyButtonStyle.Link => "btn-link",
+        _ => throw new ArgumentOutOfRangeException(nameof(Style), Style, null)
+    };
+}

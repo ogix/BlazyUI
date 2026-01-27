@@ -1,0 +1,84 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<InputFile class="@ComputedCssClass"
+           OnChange="@OnChange"
+           multiple="@Multiple"
+           accept="@Accept"
+           @attributes="AdditionalAttributes" />
+
+@code {
+    /// <summary>
+    /// Event callback when files are selected.
+    /// </summary>
+    [Parameter]
+    public EventCallback<InputFileChangeEventArgs> OnChange { get; set; }
+
+    /// <summary>
+    /// Whether multiple files can be selected.
+    /// </summary>
+    [Parameter]
+    public bool Multiple { get; set; }
+
+    /// <summary>
+    /// The accepted file types (e.g., ".jpg,.png" or "image/*").
+    /// </summary>
+    [Parameter]
+    public string? Accept { get; set; }
+
+    /// <summary>
+    /// The size of the file input.
+    /// </summary>
+    [Parameter]
+    public BlazyFileInputSize Size { get; set; } = BlazyFileInputSize.Medium;
+
+    /// <summary>
+    /// The color of the file input.
+    /// </summary>
+    [Parameter]
+    public BlazyFileInputColor Color { get; set; } = BlazyFileInputColor.Default;
+
+    /// <summary>
+    /// Whether to use the ghost style (no background).
+    /// </summary>
+    [Parameter]
+    public bool Ghost { get; set; }
+
+    /// <summary>
+    /// Whether the file input has a bordered style.
+    /// </summary>
+    [Parameter]
+    public bool Bordered { get; set; }
+
+    private string ComputedCssClass => MergeClasses(
+        "file-input",
+        Bordered ? "file-input-bordered" : null,
+        Ghost ? "file-input-ghost" : null,
+        SizeClass,
+        ColorClass
+    );
+
+    private string SizeClass => Size switch
+    {
+        BlazyFileInputSize.ExtraSmall => "file-input-xs",
+        BlazyFileInputSize.Small => "file-input-sm",
+        BlazyFileInputSize.Medium => "file-input-md",
+        BlazyFileInputSize.Large => "file-input-lg",
+        BlazyFileInputSize.ExtraLarge => "file-input-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? ColorClass => Color switch
+    {
+        BlazyFileInputColor.Default => null,
+        BlazyFileInputColor.Neutral => "file-input-neutral",
+        BlazyFileInputColor.Primary => "file-input-primary",
+        BlazyFileInputColor.Secondary => "file-input-secondary",
+        BlazyFileInputColor.Accent => "file-input-accent",
+        BlazyFileInputColor.Info => "file-input-info",
+        BlazyFileInputColor.Success => "file-input-success",
+        BlazyFileInputColor.Warning => "file-input-warning",
+        BlazyFileInputColor.Error => "file-input-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+}

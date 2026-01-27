@@ -5,15 +5,15 @@
 
 <h1 class="text-3xl font-bold mb-6">Modal Component</h1>
 
-<Alert Color="AlertColor.Info" Class="mb-6"><span><strong>Setup:</strong> Add <Kbd>&lt;ModalProvider /&gt;</Kbd> to your MainLayout.razor or App.razor to enable modal dialogs.</span></Alert>
+<BlazyAlert Color="BlazyAlertColor.Info" Class="mb-6"><span><strong>Setup:</strong> Add <BlazyKbd>&lt;ModalProvider /&gt;</BlazyKbd> to your MainLayout.razor or App.razor to enable modal dialogs.</span></BlazyAlert>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Simple Dialogs</h2>
     <CodeExample Code="@simpleDialogsCode">
         <div class="flex flex-wrap gap-2">
-            <Button Color="ButtonColor.Info" OnClick="ShowInfo">Info</Button>
-            <Button Color="ButtonColor.Warning" OnClick="ShowWarning">Warning</Button>
-            <Button Color="ButtonColor.Error" OnClick="ShowError">Error</Button>
+            <BlazyButton Color="BlazyButtonColor.Info" OnClick="ShowInfo">Info</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Warning" OnClick="ShowWarning">Warning</BlazyButton>
+            <BlazyButton Color="BlazyButtonColor.Error" OnClick="ShowError">Error</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -22,7 +22,7 @@
     <h2 class="text-xl font-semibold mb-4">Confirmation Dialog</h2>
     <CodeExample Code="@confirmDialogCode">
         <div class="flex flex-wrap items-center gap-4">
-            <Button Color="ButtonColor.Primary" OnClick="ShowConfirm">Delete Item</Button>
+            <BlazyButton Color="BlazyButtonColor.Primary" OnClick="ShowConfirm">Delete Item</BlazyButton>
             @if (confirmResult != null)
             {
                 <span class="text-sm">
@@ -37,7 +37,7 @@
     <h2 class="text-xl font-semibold mb-4">Custom Button Text</h2>
     <CodeExample Code="@customButtonsCode">
         <div class="flex flex-wrap gap-2">
-            <Button Color="ButtonColor.Success" OnClick="ShowCustomButtons">Save Changes</Button>
+            <BlazyButton Color="BlazyButtonColor.Success" OnClick="ShowCustomButtons">Save Changes</BlazyButton>
         </div>
     </CodeExample>
 </section>
@@ -46,7 +46,7 @@
     <h2 class="text-xl font-semibold mb-4">Custom Component Modal</h2>
     <CodeExample Code="@customComponentCode">
         <div class="flex flex-wrap items-center gap-4">
-            <Button Color="ButtonColor.Secondary" OnClick="ShowEditUser">Edit User</Button>
+            <BlazyButton Color="BlazyButtonColor.Secondary" OnClick="ShowEditUser">Edit User</BlazyButton>
             @if (!string.IsNullOrEmpty(editedUserName))
             {
                 <span class="text-sm">
@@ -111,9 +111,9 @@
 
     private string simpleDialogsCode = @"@inject IModalService ModalService
 
-<Button Color=""ButtonColor.Info"" OnClick=""ShowInfo"">Info</Button>
-<Button Color=""ButtonColor.Warning"" OnClick=""ShowWarning"">Warning</Button>
-<Button Color=""ButtonColor.Error"" OnClick=""ShowError"">Error</Button>
+<BlazyButton Color=""BlazyButtonColor.Info"" OnClick=""ShowInfo"">Info</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Warning"" OnClick=""ShowWarning"">Warning</BlazyButton>
+<BlazyButton Color=""BlazyButtonColor.Error"" OnClick=""ShowError"">Error</BlazyButton>
 
 @code {
     private async Task ShowInfo()
@@ -134,7 +134,7 @@
 
     private string confirmDialogCode = @"@inject IModalService ModalService
 
-<Button Color=""ButtonColor.Primary"" OnClick=""ShowConfirm"">Delete Item</Button>
+<BlazyButton Color=""BlazyButtonColor.Primary"" OnClick=""ShowConfirm"">Delete Item</BlazyButton>
 <span>Result: @(confirmResult.Value ? ""Confirmed"" : ""Cancelled"")</span>
 
 @code {

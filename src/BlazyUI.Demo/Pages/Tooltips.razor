@@ -8,9 +8,9 @@
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
         <div class="flex flex-wrap gap-4 py-8">
-            <Tooltip Text="Hello, I'm a tooltip!">
-                <Button>Hover me</Button>
-            </Tooltip>
+            <BlazyTooltip Text="Hello, I'm a tooltip!">
+                <BlazyButton>Hover me</BlazyButton>
+            </BlazyTooltip>
         </div>
     </CodeExample>
 </section>
@@ -19,18 +19,18 @@
     <h2 class="text-xl font-semibold mb-4">Positions</h2>
     <CodeExample Code="@positionsCode">
         <div class="flex flex-wrap gap-4 py-8">
-            <Tooltip Text="Top tooltip" Position="TooltipPosition.Top">
-                <Button>Top</Button>
-            </Tooltip>
-            <Tooltip Text="Bottom tooltip" Position="TooltipPosition.Bottom">
-                <Button>Bottom</Button>
-            </Tooltip>
-            <Tooltip Text="Left tooltip" Position="TooltipPosition.Left">
-                <Button>Left</Button>
-            </Tooltip>
-            <Tooltip Text="Right tooltip" Position="TooltipPosition.Right">
-                <Button>Right</Button>
-            </Tooltip>
+            <BlazyTooltip Text="Top tooltip" Position="BlazyTooltipPosition.Top">
+                <BlazyButton>Top</BlazyButton>
+            </BlazyTooltip>
+            <BlazyTooltip Text="Bottom tooltip" Position="BlazyTooltipPosition.Bottom">
+                <BlazyButton>Bottom</BlazyButton>
+            </BlazyTooltip>
+            <BlazyTooltip Text="Left tooltip" Position="BlazyTooltipPosition.Left">
+                <BlazyButton>Left</BlazyButton>
+            </BlazyTooltip>
+            <BlazyTooltip Text="Right tooltip" Position="BlazyTooltipPosition.Right">
+                <BlazyButton>Right</BlazyButton>
+            </BlazyTooltip>
         </div>
     </CodeExample>
 </section>
@@ -39,32 +39,32 @@
     <h2 class="text-xl font-semibold mb-4">Colors</h2>
     <CodeExample Code="@colorsCode">
         <div class="flex flex-wrap gap-16 py-8">
-            <Tooltip Text="Neutral tooltip" Color="TooltipColor.Neutral" Open>
-                <Button Color="ButtonColor.Neutral">Neutral</Button>
-            </Tooltip>
-            <Tooltip Text="Primary tooltip" Color="TooltipColor.Primary" Open>
-                <Button Color="ButtonColor.Primary">Primary</Button>
-            </Tooltip>
-            <Tooltip Text="Secondary tooltip" Color="TooltipColor.Secondary" Open>
-                <Button Color="ButtonColor.Secondary">Secondary</Button>
-            </Tooltip>
-            <Tooltip Text="Accent tooltip" Color="TooltipColor.Accent" Open>
-                <Button Color="ButtonColor.Accent">Accent</Button>
-            </Tooltip>
+            <BlazyTooltip Text="Neutral tooltip" Color="BlazyTooltipColor.Neutral" Open>
+                <BlazyButton Color="BlazyButtonColor.Neutral">Neutral</BlazyButton>
+            </BlazyTooltip>
+            <BlazyTooltip Text="Primary tooltip" Color="BlazyTooltipColor.Primary" Open>
+                <BlazyButton Color="BlazyButtonColor.Primary">Primary</BlazyButton>
+            </BlazyTooltip>
+            <BlazyTooltip Text="Secondary tooltip" Color="BlazyTooltipColor.Secondary" Open>
+                <BlazyButton Color="BlazyButtonColor.Secondary">Secondary</BlazyButton>
+            </BlazyTooltip>
+            <BlazyTooltip Text="Accent tooltip" Color="BlazyTooltipColor.Accent" Open>
+                <BlazyButton Color="BlazyButtonColor.Accent">Accent</BlazyButton>
+            </BlazyTooltip>
         </div>
         <div class="flex flex-wrap gap-16 py-8">
-            <Tooltip Text="Info tooltip" Color="TooltipColor.Info" Open>
-                <Button Color="ButtonColor.Info">Info</Button>
-            </Tooltip>
-            <Tooltip Text="Success tooltip" Color="TooltipColor.Success" Open>
-                <Button Color="ButtonColor.Success">Success</Button>
-            </Tooltip>
-            <Tooltip Text="Warning tooltip" Color="TooltipColor.Warning" Open>
-                <Button Color="ButtonColor.Warning">Warning</Button>
-            </Tooltip>
-            <Tooltip Text="Error tooltip" Color="TooltipColor.Error" Open>
-                <Button Color="ButtonColor.Error">Error</Button>
-            </Tooltip>
+            <BlazyTooltip Text="Info tooltip" Color="BlazyTooltipColor.Info" Open>
+                <BlazyButton Color="BlazyButtonColor.Info">Info</BlazyButton>
+            </BlazyTooltip>
+            <BlazyTooltip Text="Success tooltip" Color="BlazyTooltipColor.Success" Open>
+                <BlazyButton Color="BlazyButtonColor.Success">Success</BlazyButton>
+            </BlazyTooltip>
+            <BlazyTooltip Text="Warning tooltip" Color="BlazyTooltipColor.Warning" Open>
+                <BlazyButton Color="BlazyButtonColor.Warning">Warning</BlazyButton>
+            </BlazyTooltip>
+            <BlazyTooltip Text="Error tooltip" Color="BlazyTooltipColor.Error" Open>
+                <BlazyButton Color="BlazyButtonColor.Error">Error</BlazyButton>
+            </BlazyTooltip>
         </div>
     </CodeExample>
 </section>
@@ -73,9 +73,9 @@
     <h2 class="text-xl font-semibold mb-4">Force Open</h2>
     <CodeExample Code="@forceOpenCode">
         <div class="flex flex-wrap gap-4 py-4">
-            <Tooltip Text="I'm always visible!" Open>
-                <Button Color="ButtonColor.Primary">Always Open</Button>
-            </Tooltip>
+            <BlazyTooltip Text="I'm always visible!" Open>
+                <BlazyButton Color="BlazyButtonColor.Primary">Always Open</BlazyButton>
+            </BlazyTooltip>
         </div>
     </CodeExample>
 </section>
@@ -84,7 +84,7 @@
     <h2 class="text-xl font-semibold mb-4">Custom HTML Content</h2>
     <CodeExample Code="@customContentCode">
         <div class="flex flex-wrap gap-4 py-8">
-            <Tooltip>
+            <BlazyTooltip>
                 <TooltipContent>
                     <div class="p-2">
                         <strong>Rich Content</strong>
@@ -92,9 +92,9 @@
                     </div>
                 </TooltipContent>
                 <ChildContent>
-                    <Button Color="ButtonColor.Secondary">Custom Content</Button>
+                    <BlazyButton Color="BlazyButtonColor.Secondary">Custom Content</BlazyButton>
                 </ChildContent>
-            </Tooltip>
+            </BlazyTooltip>
         </div>
     </CodeExample>
 </section>
@@ -103,52 +103,52 @@
     <h2 class="text-xl font-semibold mb-4">With Different Elements</h2>
     <CodeExample Code="@withElementsCode">
         <div class="flex flex-wrap items-center gap-4 py-8">
-            <Tooltip Text="This is a text tooltip">
+            <BlazyTooltip Text="This is a text tooltip">
                 <span class="underline decoration-dotted cursor-help">Hover over this text</span>
-            </Tooltip>
-            <Tooltip Text="Badge information" Color="TooltipColor.Info">
+            </BlazyTooltip>
+            <BlazyTooltip Text="Badge information" Color="BlazyTooltipColor.Info">
                 <span class="badge badge-info">Info Badge</span>
-            </Tooltip>
-            <Tooltip Text="Click to see more" Position="TooltipPosition.Bottom">
+            </BlazyTooltip>
+            <BlazyTooltip Text="Click to see more" Position="BlazyTooltipPosition.Bottom">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-            </Tooltip>
+            </BlazyTooltip>
         </div>
     </CodeExample>
 </section>
 
 @code {
-    private string basicCode = @"<Tooltip Text=""Hello, I'm a tooltip!"">
-    <Button>Hover me</Button>
-</Tooltip>";
+    private string basicCode = @"<BlazyTooltip Text=""Hello, I'm a tooltip!"">
+    <BlazyButton>Hover me</BlazyButton>
+</BlazyTooltip>";
 
-    private string positionsCode = @"<Tooltip Text=""Top tooltip"" Position=""TooltipPosition.Top"">
-    <Button>Top</Button>
-</Tooltip>
-<Tooltip Text=""Bottom tooltip"" Position=""TooltipPosition.Bottom"">
-    <Button>Bottom</Button>
-</Tooltip>
-<Tooltip Text=""Left tooltip"" Position=""TooltipPosition.Left"">
-    <Button>Left</Button>
-</Tooltip>
-<Tooltip Text=""Right tooltip"" Position=""TooltipPosition.Right"">
-    <Button>Right</Button>
-</Tooltip>";
+    private string positionsCode = @"<BlazyTooltip Text=""Top tooltip"" Position=""BlazyTooltipPosition.Top"">
+    <BlazyButton>Top</BlazyButton>
+</BlazyTooltip>
+<BlazyTooltip Text=""Bottom tooltip"" Position=""BlazyTooltipPosition.Bottom"">
+    <BlazyButton>Bottom</BlazyButton>
+</BlazyTooltip>
+<BlazyTooltip Text=""Left tooltip"" Position=""BlazyTooltipPosition.Left"">
+    <BlazyButton>Left</BlazyButton>
+</BlazyTooltip>
+<BlazyTooltip Text=""Right tooltip"" Position=""BlazyTooltipPosition.Right"">
+    <BlazyButton>Right</BlazyButton>
+</BlazyTooltip>";
 
-    private string colorsCode = @"<Tooltip Text=""Neutral tooltip"" Color=""TooltipColor.Neutral"" Open>
-    <Button Color=""ButtonColor.Neutral"">Neutral</Button>
-</Tooltip>
-<Tooltip Text=""Primary tooltip"" Color=""TooltipColor.Primary"" Open>
-    <Button Color=""ButtonColor.Primary"">Primary</Button>
-</Tooltip>
+    private string colorsCode = @"<BlazyTooltip Text=""Neutral tooltip"" Color=""BlazyTooltipColor.Neutral"" Open>
+    <BlazyButton Color=""BlazyButtonColor.Neutral"">Neutral</BlazyButton>
+</BlazyTooltip>
+<BlazyTooltip Text=""Primary tooltip"" Color=""BlazyTooltipColor.Primary"" Open>
+    <BlazyButton Color=""BlazyButtonColor.Primary"">Primary</BlazyButton>
+</BlazyTooltip>
 <!-- ... other colors ... -->";
 
-    private string forceOpenCode = @"<Tooltip Text=""I'm always visible!"" Open>
-    <Button Color=""ButtonColor.Primary"">Always Open</Button>
-</Tooltip>";
+    private string forceOpenCode = @"<BlazyTooltip Text=""I'm always visible!"" Open>
+    <BlazyButton Color=""BlazyButtonColor.Primary"">Always Open</BlazyButton>
+</BlazyTooltip>";
 
-    private string customContentCode = @"<Tooltip>
+    private string customContentCode = @"<BlazyTooltip>
     <TooltipContent>
         <div class=""p-2"">
             <strong>Rich Content</strong>
@@ -156,14 +156,14 @@
         </div>
     </TooltipContent>
     <ChildContent>
-        <Button Color=""ButtonColor.Secondary"">Custom Content</Button>
+        <BlazyButton Color=""BlazyButtonColor.Secondary"">Custom Content</BlazyButton>
     </ChildContent>
-</Tooltip>";
+</BlazyTooltip>";
 
-    private string withElementsCode = @"<Tooltip Text=""This is a text tooltip"">
+    private string withElementsCode = @"<BlazyTooltip Text=""This is a text tooltip"">
     <span class=""underline decoration-dotted cursor-help"">Hover over this text</span>
-</Tooltip>
-<Tooltip Text=""Badge information"" Color=""TooltipColor.Info"">
+</BlazyTooltip>
+<BlazyTooltip Text=""Badge information"" Color=""BlazyTooltipColor.Info"">
     <span class=""badge badge-info"">Info Badge</span>
-</Tooltip>";
+</BlazyTooltip>";
 }

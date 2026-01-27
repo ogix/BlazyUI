@@ -1,0 +1,107 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<CascadingValue Value="_context">
+    <div role="tablist" class="@CssClass" @attributes="AdditionalAttributes">
+        @ChildContent
+    </div>
+</CascadingValue>
+
+@code {
+    private BlazyTabsContext _context = default!;
+    private string _groupName = default!;
+
+    /// <summary>
+    /// The style variant of the tabs.
+    /// </summary>
+    [Parameter]
+    public BlazyTabVariant Variant { get; set; } = BlazyTabVariant.Default;
+
+    /// <summary>
+    /// The size of the tabs.
+    /// </summary>
+    [Parameter]
+    public BlazyTabSize Size { get; set; } = BlazyTabSize.Medium;
+
+    /// <summary>
+    /// The placement of the tab buttons relative to the content.
+    /// </summary>
+    [Parameter]
+    public BlazyTabPlacement Placement { get; set; } = BlazyTabPlacement.Top;
+
+    /// <summary>
+    /// The radio group name. If not provided, a unique name is auto-generated.
+    /// </summary>
+    [Parameter]
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// The currently active tab ID for two-way binding.
+    /// </summary>
+    [Parameter]
+    public string? ActiveTab { get; set; }
+
+    /// <summary>
+    /// Callback when the active tab changes.
+    /// </summary>
+    [Parameter]
+    public EventCallback<string?> ActiveTabChanged { get; set; }
+
+    /// <summary>
+    /// The content of the tabs (typically TabItem components).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        _groupName = Name ?? $"tabs-{Guid.NewGuid():N}";
+    }
+
+    protected override void OnParametersSet()
+    {
+        _context = new BlazyTabsContext(_groupName, ActiveTab, OnTabSelected);
+    }
+
+    private void OnTabSelected(string? tabId)
+    {
+        if (ActiveTab != tabId)
+        {
+            ActiveTab = tabId;
+            ActiveTabChanged.InvokeAsync(tabId);
+        }
+    }
+
+    private string CssClass => MergeClasses(
+        "tabs",
+        VariantClass,
+        SizeClass,
+        PlacementClass
+    );
+
+    private string? VariantClass => Variant switch
+    {
+        BlazyTabVariant.Default => null,
+        BlazyTabVariant.Border => "tabs-border",
+        BlazyTabVariant.Lift => "tabs-lift",
+        BlazyTabVariant.Box => "tabs-box",
+        _ => throw new ArgumentOutOfRangeException(nameof(Variant), Variant, null)
+    };
+
+    private string SizeClass => Size switch
+    {
+        BlazyTabSize.ExtraSmall => "tabs-xs",
+        BlazyTabSize.Small => "tabs-sm",
+        BlazyTabSize.Medium => "tabs-md",
+        BlazyTabSize.Large => "tabs-lg",
+        BlazyTabSize.ExtraLarge => "tabs-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? PlacementClass => Placement switch
+    {
+        BlazyTabPlacement.Top => "tabs-top",
+        BlazyTabPlacement.Bottom => "tabs-bottom",
+        _ => throw new ArgumentOutOfRangeException(nameof(Placement), Placement, null)
+    };
+}

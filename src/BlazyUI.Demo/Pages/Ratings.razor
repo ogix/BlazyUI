@@ -8,7 +8,7 @@
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
         <div class="flex flex-col gap-2">
-            <Rating @bind-Value="basicValue" />
+            <BlazyRating @bind-Value="basicValue" />
             <p class="text-sm opacity-70">Rating: @basicValue / 5</p>
         </div>
     </CodeExample>
@@ -18,7 +18,7 @@
     <h2 class="text-xl font-semibold mb-4">With Clear Option</h2>
     <CodeExample Code="@clearableCode">
         <div class="flex flex-col gap-2">
-            <Rating @bind-Value="clearableValue" AllowClear />
+            <BlazyRating @bind-Value="clearableValue" AllowClear />
             <p class="text-sm opacity-70">Rating: @clearableValue / 5 (click selected star to clear)</p>
         </div>
     </CodeExample>
@@ -30,11 +30,11 @@
         <div class="flex flex-col gap-4">
             <div>
                 <label class="label-text">3 stars</label>
-                <Rating @bind-Value="max3Value" Max="3" />
+                <BlazyRating @bind-Value="max3Value" Max="3" />
             </div>
             <div>
                 <label class="label-text">10 stars</label>
-                <Rating @bind-Value="max10Value" Max="10" />
+                <BlazyRating @bind-Value="max10Value" Max="10" />
             </div>
         </div>
     </CodeExample>
@@ -46,15 +46,15 @@
         <div class="flex flex-col gap-4">
             <div>
                 <label class="label-text">Star (outline)</label>
-                <Rating @bind-Value="maskStarValue" Mask="RatingMask.Star" />
+                <BlazyRating @bind-Value="maskStarValue" Mask="BlazyRatingMask.Star" />
             </div>
             <div>
                 <label class="label-text">Star 2 (filled)</label>
-                <Rating @bind-Value="maskStar2Value" Mask="RatingMask.Star2" />
+                <BlazyRating @bind-Value="maskStar2Value" Mask="BlazyRatingMask.Star2" />
             </div>
             <div>
                 <label class="label-text">Heart</label>
-                <Rating @bind-Value="maskHeartValue" Mask="RatingMask.Heart" BackgroundColor="bg-red-400" />
+                <BlazyRating @bind-Value="maskHeartValue" Mask="BlazyRatingMask.Heart" BackgroundColor="bg-red-400" />
             </div>
         </div>
     </CodeExample>
@@ -66,23 +66,23 @@
         <div class="flex flex-col gap-4">
             <div>
                 <label class="label-text">Extra Small</label>
-                <Rating Size="RatingSize.ExtraSmall" @bind-Value="sizeXs" />
+                <BlazyRating Size="BlazyRatingSize.ExtraSmall" @bind-Value="sizeXs" />
             </div>
             <div>
                 <label class="label-text">Small</label>
-                <Rating Size="RatingSize.Small" @bind-Value="sizeSm" />
+                <BlazyRating Size="BlazyRatingSize.Small" @bind-Value="sizeSm" />
             </div>
             <div>
                 <label class="label-text">Default (Medium)</label>
-                <Rating Size="RatingSize.Medium" @bind-Value="sizeMd" />
+                <BlazyRating Size="BlazyRatingSize.Medium" @bind-Value="sizeMd" />
             </div>
             <div>
                 <label class="label-text">Large</label>
-                <Rating Size="RatingSize.Large" @bind-Value="sizeLg" />
+                <BlazyRating Size="BlazyRatingSize.Large" @bind-Value="sizeLg" />
             </div>
             <div>
                 <label class="label-text">Extra Large</label>
-                <Rating Size="RatingSize.ExtraLarge" @bind-Value="sizeXl" />
+                <BlazyRating Size="BlazyRatingSize.ExtraLarge" @bind-Value="sizeXl" />
             </div>
         </div>
     </CodeExample>
@@ -94,23 +94,23 @@
         <div class="flex flex-col gap-4">
             <div>
                 <label class="label-text">Orange</label>
-                <Rating @bind-Value="colorOrange" BackgroundColor="bg-orange-400" />
+                <BlazyRating @bind-Value="colorOrange" BackgroundColor="bg-orange-400" />
             </div>
             <div>
                 <label class="label-text">Yellow</label>
-                <Rating @bind-Value="colorYellow" BackgroundColor="bg-yellow-400" />
+                <BlazyRating @bind-Value="colorYellow" BackgroundColor="bg-yellow-400" />
             </div>
             <div>
                 <label class="label-text">Green</label>
-                <Rating @bind-Value="colorGreen" BackgroundColor="bg-green-500" />
+                <BlazyRating @bind-Value="colorGreen" BackgroundColor="bg-green-500" />
             </div>
             <div>
                 <label class="label-text">Blue</label>
-                <Rating @bind-Value="colorBlue" BackgroundColor="bg-blue-500" />
+                <BlazyRating @bind-Value="colorBlue" BackgroundColor="bg-blue-500" />
             </div>
             <div>
                 <label class="label-text">Purple</label>
-                <Rating @bind-Value="colorPurple" BackgroundColor="bg-purple-500" />
+                <BlazyRating @bind-Value="colorPurple" BackgroundColor="bg-purple-500" />
             </div>
         </div>
     </CodeExample>
@@ -126,15 +126,15 @@
                 <label class="label">
                     <span class="label-text">Rate your experience (required)</span>
                 </label>
-                <Rating @bind-Value="formModel.Rating" BackgroundColor="bg-yellow-400" />
+                <BlazyRating @bind-Value="formModel.Rating" BackgroundColor="bg-yellow-400" />
                 <ValidationMessage For="@(() => formModel.Rating)" class="text-error text-sm mt-1" />
             </div>
 
-            <Button Type="submit" Color="ButtonColor.Primary" Block>Submit Review</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Submit Review</BlazyButton>
         </EditForm>
         @if (formSubmitted)
         {
-            <Alert Color="AlertColor.Success" class="mt-4">Thank you! You rated us @formModel.Rating stars.</Alert>
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">Thank you! You rated us @formModel.Rating stars.</BlazyAlert>
         }
     </CodeExample>
 </section>
@@ -143,7 +143,7 @@
     <h2 class="text-xl font-semibold mb-4">Read-only Display</h2>
     <CodeExample Code="@readonlyCode">
         <div class="flex items-center gap-2">
-            <Rating @bind-Value="readOnlyValue" BackgroundColor="bg-yellow-400" class="pointer-events-none" />
+            <BlazyRating @bind-Value="readOnlyValue" BackgroundColor="bg-yellow-400" class="pointer-events-none" />
             <span class="text-sm opacity-70">4.5 average (read-only)</span>
         </div>
     </CodeExample>
@@ -183,28 +183,28 @@
         public int Rating { get; set; } = 0;
     }
 
-    private string basicCode = @"<Rating @bind-Value=""value"" />";
+    private string basicCode = @"<BlazyRating @bind-Value=""value"" />";
 
-    private string clearableCode = @"<Rating @bind-Value=""value"" AllowClear />";
+    private string clearableCode = @"<BlazyRating @bind-Value=""value"" AllowClear />";
 
-    private string maxCode = @"<Rating @bind-Value=""value"" Max=""3"" />
-<Rating @bind-Value=""value"" Max=""10"" />";
+    private string maxCode = @"<BlazyRating @bind-Value=""value"" Max=""3"" />
+<BlazyRating @bind-Value=""value"" Max=""10"" />";
 
-    private string maskCode = @"<Rating Mask=""RatingMask.Star"" />
-<Rating Mask=""RatingMask.Star2"" />
-<Rating Mask=""RatingMask.Heart"" BackgroundColor=""bg-red-400"" />";
+    private string maskCode = @"<BlazyRating Mask=""BlazyRatingMask.Star"" />
+<BlazyRating Mask=""BlazyRatingMask.Star2"" />
+<BlazyRating Mask=""BlazyRatingMask.Heart"" BackgroundColor=""bg-red-400"" />";
 
-    private string sizesCode = @"<Rating Size=""RatingSize.ExtraSmall"" />
-<Rating Size=""RatingSize.Small"" />
-<Rating Size=""RatingSize.Medium"" />
-<Rating Size=""RatingSize.Large"" />
-<Rating Size=""RatingSize.ExtraLarge"" />";
+    private string sizesCode = @"<BlazyRating Size=""BlazyRatingSize.ExtraSmall"" />
+<BlazyRating Size=""BlazyRatingSize.Small"" />
+<BlazyRating Size=""BlazyRatingSize.Medium"" />
+<BlazyRating Size=""BlazyRatingSize.Large"" />
+<BlazyRating Size=""BlazyRatingSize.ExtraLarge"" />";
 
-    private string colorsCode = @"<Rating BackgroundColor=""bg-orange-400"" />
-<Rating BackgroundColor=""bg-yellow-400"" />
-<Rating BackgroundColor=""bg-green-500"" />
-<Rating BackgroundColor=""bg-blue-500"" />
-<Rating BackgroundColor=""bg-purple-500"" />";
+    private string colorsCode = @"<BlazyRating BackgroundColor=""bg-orange-400"" />
+<BlazyRating BackgroundColor=""bg-yellow-400"" />
+<BlazyRating BackgroundColor=""bg-green-500"" />
+<BlazyRating BackgroundColor=""bg-blue-500"" />
+<BlazyRating BackgroundColor=""bg-purple-500"" />";
 
     private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
     <DataAnnotationsValidator />
@@ -212,11 +212,11 @@
         <label class=""label"">
             <span class=""label-text"">Rate your experience (required)</span>
         </label>
-        <Rating @bind-Value=""formModel.Rating"" BackgroundColor=""bg-yellow-400"" />
+        <BlazyRating @bind-Value=""formModel.Rating"" BackgroundColor=""bg-yellow-400"" />
         <ValidationMessage For=""@(() => formModel.Rating)"" />
     </div>
-    <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Submit Review</Button>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"" Block>Submit Review</BlazyButton>
 </EditForm>";
 
-    private string readonlyCode = @"<Rating @bind-Value=""value"" BackgroundColor=""bg-yellow-400"" class=""pointer-events-none"" />";
+    private string readonlyCode = @"<BlazyRating @bind-Value=""value"" BackgroundColor=""bg-yellow-400"" class=""pointer-events-none"" />";
 }

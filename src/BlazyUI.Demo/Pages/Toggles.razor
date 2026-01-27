@@ -8,7 +8,7 @@
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
         <label class="flex items-center gap-2 cursor-pointer">
-            <Toggle @bind-Value="basicValue" />
+            <BlazyToggle @bind-Value="basicValue" />
             <span>Enable notifications</span>
         </label>
         <p class="mt-2 text-sm opacity-70">Enabled: @basicValue</p>
@@ -20,23 +20,23 @@
     <CodeExample Code="@sizesCode">
         <div class="flex flex-col gap-4">
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Size="ToggleSize.ExtraSmall" @bind-Value="sizeXs" />
+                <BlazyToggle Size="BlazyToggleSize.ExtraSmall" @bind-Value="sizeXs" />
                 <span>Extra Small</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Size="ToggleSize.Small" @bind-Value="sizeSm" />
+                <BlazyToggle Size="BlazyToggleSize.Small" @bind-Value="sizeSm" />
                 <span>Small</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Size="ToggleSize.Medium" @bind-Value="sizeMd" />
+                <BlazyToggle Size="BlazyToggleSize.Medium" @bind-Value="sizeMd" />
                 <span>Default (Medium)</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Size="ToggleSize.Large" @bind-Value="sizeLg" />
+                <BlazyToggle Size="BlazyToggleSize.Large" @bind-Value="sizeLg" />
                 <span>Large</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Size="ToggleSize.ExtraLarge" @bind-Value="sizeXl" />
+                <BlazyToggle Size="BlazyToggleSize.ExtraLarge" @bind-Value="sizeXl" />
                 <span>Extra Large</span>
             </label>
         </div>
@@ -48,39 +48,39 @@
     <CodeExample Code="@colorsCode">
         <div class="flex flex-col gap-4">
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Color="ToggleColor.Default" @bind-Value="colorDefault" />
+                <BlazyToggle Color="BlazyToggleColor.Default" @bind-Value="colorDefault" />
                 <span>Default</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Color="ToggleColor.Neutral" @bind-Value="colorNeutral" />
+                <BlazyToggle Color="BlazyToggleColor.Neutral" @bind-Value="colorNeutral" />
                 <span>Neutral</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Color="ToggleColor.Primary" @bind-Value="colorPrimary" />
+                <BlazyToggle Color="BlazyToggleColor.Primary" @bind-Value="colorPrimary" />
                 <span>Primary</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Color="ToggleColor.Secondary" @bind-Value="colorSecondary" />
+                <BlazyToggle Color="BlazyToggleColor.Secondary" @bind-Value="colorSecondary" />
                 <span>Secondary</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Color="ToggleColor.Accent" @bind-Value="colorAccent" />
+                <BlazyToggle Color="BlazyToggleColor.Accent" @bind-Value="colorAccent" />
                 <span>Accent</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Color="ToggleColor.Info" @bind-Value="colorInfo" />
+                <BlazyToggle Color="BlazyToggleColor.Info" @bind-Value="colorInfo" />
                 <span>Info</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Color="ToggleColor.Success" @bind-Value="colorSuccess" />
+                <BlazyToggle Color="BlazyToggleColor.Success" @bind-Value="colorSuccess" />
                 <span>Success</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Color="ToggleColor.Warning" @bind-Value="colorWarning" />
+                <BlazyToggle Color="BlazyToggleColor.Warning" @bind-Value="colorWarning" />
                 <span>Warning</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle Color="ToggleColor.Error" @bind-Value="colorError" />
+                <BlazyToggle Color="BlazyToggleColor.Error" @bind-Value="colorError" />
                 <span>Error</span>
             </label>
         </div>
@@ -95,17 +95,17 @@
 
             <div class="form-control mb-4">
                 <label class="flex items-center gap-2 cursor-pointer">
-                    <Toggle @bind-Value="formModel.AcceptMarketing" Color="ToggleColor.Primary" />
+                    <BlazyToggle @bind-Value="formModel.AcceptMarketing" Color="BlazyToggleColor.Primary" />
                     <span class="label-text">Receive marketing emails</span>
                 </label>
                 <ValidationMessage For="@(() => formModel.AcceptMarketing)" class="text-error text-sm mt-1" />
             </div>
 
-            <Button Type="submit" Color="ButtonColor.Primary" Block>Save Preferences</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Save Preferences</BlazyButton>
         </EditForm>
         @if (formSubmitted)
         {
-            <Alert Color="AlertColor.Success" class="mt-4">Preferences saved!</Alert>
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">Preferences saved!</BlazyAlert>
         }
     </CodeExample>
 </section>
@@ -115,7 +115,7 @@
     <CodeExample Code="@attributesCode">
         <div class="flex flex-col gap-4">
             <label class="flex items-center gap-2 cursor-pointer">
-                <Toggle @bind-Value="disabledValue" disabled />
+                <BlazyToggle @bind-Value="disabledValue" disabled />
                 <span class="opacity-50">Disabled</span>
             </label>
         </div>
@@ -154,35 +154,35 @@
     }
 
     private string basicCode = @"<label class=""flex items-center gap-2 cursor-pointer"">
-    <Toggle @bind-Value=""value"" />
+    <BlazyToggle @bind-Value=""value"" />
     <span>Enable notifications</span>
 </label>";
 
-    private string sizesCode = @"<Toggle Size=""ToggleSize.ExtraSmall"" />
-<Toggle Size=""ToggleSize.Small"" />
-<Toggle Size=""ToggleSize.Medium"" />
-<Toggle Size=""ToggleSize.Large"" />
-<Toggle Size=""ToggleSize.ExtraLarge"" />";
+    private string sizesCode = @"<BlazyToggle Size=""BlazyToggleSize.ExtraSmall"" />
+<BlazyToggle Size=""BlazyToggleSize.Small"" />
+<BlazyToggle Size=""BlazyToggleSize.Medium"" />
+<BlazyToggle Size=""BlazyToggleSize.Large"" />
+<BlazyToggle Size=""BlazyToggleSize.ExtraLarge"" />";
 
-    private string colorsCode = @"<Toggle Color=""ToggleColor.Default"" />
-<Toggle Color=""ToggleColor.Primary"" />
-<Toggle Color=""ToggleColor.Secondary"" />
-<Toggle Color=""ToggleColor.Accent"" />
-<Toggle Color=""ToggleColor.Info"" />
-<Toggle Color=""ToggleColor.Success"" />
-<Toggle Color=""ToggleColor.Warning"" />
-<Toggle Color=""ToggleColor.Error"" />";
+    private string colorsCode = @"<BlazyToggle Color=""BlazyToggleColor.Default"" />
+<BlazyToggle Color=""BlazyToggleColor.Primary"" />
+<BlazyToggle Color=""BlazyToggleColor.Secondary"" />
+<BlazyToggle Color=""BlazyToggleColor.Accent"" />
+<BlazyToggle Color=""BlazyToggleColor.Info"" />
+<BlazyToggle Color=""BlazyToggleColor.Success"" />
+<BlazyToggle Color=""BlazyToggleColor.Warning"" />
+<BlazyToggle Color=""BlazyToggleColor.Error"" />";
 
     private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
     <DataAnnotationsValidator />
     <div class=""form-control mb-4"">
         <label class=""flex items-center gap-2 cursor-pointer"">
-            <Toggle @bind-Value=""formModel.AcceptMarketing"" Color=""ToggleColor.Primary"" />
+            <BlazyToggle @bind-Value=""formModel.AcceptMarketing"" Color=""BlazyToggleColor.Primary"" />
             <span class=""label-text"">Receive marketing emails</span>
         </label>
     </div>
-    <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Save Preferences</Button>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"" Block>Save Preferences</BlazyButton>
 </EditForm>";
 
-    private string attributesCode = @"<Toggle @bind-Value=""value"" disabled />";
+    private string attributesCode = @"<BlazyToggle @bind-Value=""value"" disabled />";
 }

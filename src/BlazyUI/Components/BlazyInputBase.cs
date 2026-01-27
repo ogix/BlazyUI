@@ -31,7 +31,7 @@ public abstract class BlazyInputBase<T> : InputBase<T>
     /// Cascading context from FieldValidator, if present.
     /// </summary>
     [CascadingParameter]
-    protected FieldValidatorContext? ValidatorContext { get; set; }
+    protected BlazyFieldValidatorContext? ValidatorContext { get; set; }
 
     /// <summary>
     /// Whether to add the validator class (true when inside FieldValidator).

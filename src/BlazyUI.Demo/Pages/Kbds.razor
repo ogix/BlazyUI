@@ -8,7 +8,7 @@
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
         <div class="flex flex-wrap gap-4">
-            <Kbd>A</Kbd>
+            <BlazyKbd>A</BlazyKbd>
         </div>
     </CodeExample>
 </section>
@@ -17,11 +17,11 @@
     <h2 class="text-xl font-semibold mb-4">Sizes</h2>
     <CodeExample Code="@sizesCode">
         <div class="flex flex-wrap items-center gap-4">
-            <Kbd Size="KbdSize.ExtraSmall">XS</Kbd>
-            <Kbd Size="KbdSize.Small">SM</Kbd>
-            <Kbd>Default</Kbd>
-            <Kbd Size="KbdSize.Large">LG</Kbd>
-            <Kbd Size="KbdSize.ExtraLarge">XL</Kbd>
+            <BlazyKbd Size="BlazyKbdSize.ExtraSmall">XS</BlazyKbd>
+            <BlazyKbd Size="BlazyKbdSize.Small">SM</BlazyKbd>
+            <BlazyKbd>Default</BlazyKbd>
+            <BlazyKbd Size="BlazyKbdSize.Large">LG</BlazyKbd>
+            <BlazyKbd Size="BlazyKbdSize.ExtraLarge">XL</BlazyKbd>
         </div>
     </CodeExample>
 </section>
@@ -30,14 +30,14 @@
     <h2 class="text-xl font-semibold mb-4">Keyboard Shortcuts</h2>
     <CodeExample Code="@shortcutsCode">
         <div class="flex flex-wrap items-center gap-2">
-            <Kbd>Ctrl</Kbd>
+            <BlazyKbd>Ctrl</BlazyKbd>
             <span>+</span>
-            <Kbd>C</Kbd>
+            <BlazyKbd>C</BlazyKbd>
             <span class="mx-4">to copy</span>
 
-            <Kbd>Ctrl</Kbd>
+            <BlazyKbd>Ctrl</BlazyKbd>
             <span>+</span>
-            <Kbd>V</Kbd>
+            <BlazyKbd>V</BlazyKbd>
             <span class="mx-4">to paste</span>
         </div>
     </CodeExample>
@@ -47,16 +47,16 @@
     <h2 class="text-xl font-semibold mb-4">Full Keyboard Row</h2>
     <CodeExample Code="@keyboardRowCode">
         <div class="flex flex-wrap justify-center gap-1">
-            <Kbd>q</Kbd>
-            <Kbd>w</Kbd>
-            <Kbd>e</Kbd>
-            <Kbd>r</Kbd>
-            <Kbd>t</Kbd>
-            <Kbd>y</Kbd>
-            <Kbd>u</Kbd>
-            <Kbd>i</Kbd>
-            <Kbd>o</Kbd>
-            <Kbd>p</Kbd>
+            <BlazyKbd>q</BlazyKbd>
+            <BlazyKbd>w</BlazyKbd>
+            <BlazyKbd>e</BlazyKbd>
+            <BlazyKbd>r</BlazyKbd>
+            <BlazyKbd>t</BlazyKbd>
+            <BlazyKbd>y</BlazyKbd>
+            <BlazyKbd>u</BlazyKbd>
+            <BlazyKbd>i</BlazyKbd>
+            <BlazyKbd>o</BlazyKbd>
+            <BlazyKbd>p</BlazyKbd>
         </div>
     </CodeExample>
 </section>
@@ -65,35 +65,35 @@
     <h2 class="text-xl font-semibold mb-4">Arrow Keys</h2>
     <CodeExample Code="@arrowKeysCode">
         <div class="flex flex-col items-center gap-1">
-            <Kbd>▲</Kbd>
+            <BlazyKbd>▲</BlazyKbd>
             <div class="flex gap-10">
-                <Kbd>◀</Kbd>
-                <Kbd>▼</Kbd>
-                <Kbd>▶</Kbd>
+                <BlazyKbd>◀</BlazyKbd>
+                <BlazyKbd>▼</BlazyKbd>
+                <BlazyKbd>▶</BlazyKbd>
             </div>
         </div>
     </CodeExample>
 </section>
 
 @code {
-    private string basicCode = @"<Kbd>A</Kbd>";
+    private string basicCode = @"<BlazyKbd>A</BlazyKbd>";
 
-    private string sizesCode = @"<Kbd Size=""KbdSize.ExtraSmall"">XS</Kbd>
-<Kbd Size=""KbdSize.Small"">SM</Kbd>
-<Kbd>Default</Kbd>
-<Kbd Size=""KbdSize.Large"">LG</Kbd>
-<Kbd Size=""KbdSize.ExtraLarge"">XL</Kbd>";
+    private string sizesCode = @"<BlazyKbd Size=""BlazyKbdSize.ExtraSmall"">XS</BlazyKbd>
+<BlazyKbd Size=""BlazyKbdSize.Small"">SM</BlazyKbd>
+<BlazyKbd>Default</BlazyKbd>
+<BlazyKbd Size=""BlazyKbdSize.Large"">LG</BlazyKbd>
+<BlazyKbd Size=""BlazyKbdSize.ExtraLarge"">XL</BlazyKbd>";
 
-    private string shortcutsCode = @"<Kbd>Ctrl</Kbd> + <Kbd>C</Kbd> to copy
-<Kbd>Ctrl</Kbd> + <Kbd>V</Kbd> to paste";
+    private string shortcutsCode = @"<BlazyKbd>Ctrl</BlazyKbd> + <BlazyKbd>C</BlazyKbd> to copy
+<BlazyKbd>Ctrl</BlazyKbd> + <BlazyKbd>V</BlazyKbd> to paste";
 
-    private string keyboardRowCode = @"<Kbd>q</Kbd>
-<Kbd>w</Kbd>
-<Kbd>e</Kbd>
+    private string keyboardRowCode = @"<BlazyKbd>q</BlazyKbd>
+<BlazyKbd>w</BlazyKbd>
+<BlazyKbd>e</BlazyKbd>
 <!-- ... other keys ... -->";
 
-    private string arrowKeysCode = @"<Kbd>▲</Kbd>
-<Kbd>◀</Kbd>
-<Kbd>▼</Kbd>
-<Kbd>▶</Kbd>";
+    private string arrowKeysCode = @"<BlazyKbd>▲</BlazyKbd>
+<BlazyKbd>◀</BlazyKbd>
+<BlazyKbd>▼</BlazyKbd>
+<BlazyKbd>▶</BlazyKbd>";
 }

@@ -1,0 +1,67 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="@CssClass" @attributes="AdditionalAttributes">
+    @if (!string.IsNullOrEmpty(EffectiveName))
+    {
+        <input type="radio" name="@EffectiveName" checked="@Open" />
+    }
+    else
+    {
+        <input type="checkbox" checked="@Open" />
+    }
+    @ChildContent
+</div>
+
+@code {
+    /// <summary>
+    /// The indicator style for the accordion item.
+    /// </summary>
+    [Parameter]
+    public BlazyAccordionIndicator Indicator { get; set; } = BlazyAccordionIndicator.None;
+
+    /// <summary>
+    /// Forces the accordion item to be open.
+    /// </summary>
+    [Parameter]
+    public bool Open { get; set; }
+
+    /// <summary>
+    /// Forces the accordion item to be closed (overrides other states).
+    /// </summary>
+    [Parameter]
+    public bool Closed { get; set; }
+
+    /// <summary>
+    /// The name for the radio group. When set, enables exclusive behavior.
+    /// Can also be inherited from parent Accordion via CascadingValue.
+    /// </summary>
+    [Parameter]
+    public string? Name { get; set; }
+
+    /// <summary>
+    /// The content of the accordion item (typically AccordionTitle and AccordionContent).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [CascadingParameter(Name = "AccordionGroupName")]
+    private string? CascadedGroupName { get; set; }
+
+    private string? EffectiveName => Name ?? CascadedGroupName;
+
+    private string CssClass => MergeClasses(
+        "collapse",
+        IndicatorClass,
+        Open ? "collapse-open" : null,
+        Closed ? "collapse-close" : null
+    );
+
+    private string? IndicatorClass => Indicator switch
+    {
+        BlazyAccordionIndicator.None => null,
+        BlazyAccordionIndicator.Arrow => "collapse-arrow",
+        BlazyAccordionIndicator.Plus => "collapse-plus",
+        _ => throw new ArgumentOutOfRangeException(nameof(Indicator), Indicator, null)
+    };
+}

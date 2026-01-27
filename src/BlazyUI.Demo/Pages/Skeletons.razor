@@ -8,7 +8,7 @@
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
         <div class="w-full max-w-md">
-            <Skeleton Class="w-full h-32" />
+            <BlazySkeleton Class="w-full h-32" />
         </div>
     </CodeExample>
 </section>
@@ -17,10 +17,10 @@
     <h2 class="text-xl font-semibold mb-4">Different Sizes</h2>
     <CodeExample Code="@sizesCode">
         <div class="w-full max-w-md space-y-4">
-            <Skeleton Class="w-full h-4" />
-            <Skeleton Class="w-full h-8" />
-            <Skeleton Class="w-full h-16" />
-            <Skeleton Class="w-full h-32" />
+            <BlazySkeleton Class="w-full h-4" />
+            <BlazySkeleton Class="w-full h-8" />
+            <BlazySkeleton Class="w-full h-16" />
+            <BlazySkeleton Class="w-full h-32" />
         </div>
     </CodeExample>
 </section>
@@ -30,10 +30,10 @@
     <p class="text-sm text-base-content/70 mb-4">Use the Text modifier for text-like placeholders with optimized sizing.</p>
     <CodeExample Code="@textCode">
         <div class="w-full max-w-md space-y-2">
-            <Skeleton Text Class="w-full" />
-            <Skeleton Text Class="w-4/5" />
-            <Skeleton Text Class="w-3/4" />
-            <Skeleton Text Class="w-1/2" />
+            <BlazySkeleton Text Class="w-full" />
+            <BlazySkeleton Text Class="w-4/5" />
+            <BlazySkeleton Text Class="w-3/4" />
+            <BlazySkeleton Text Class="w-1/2" />
         </div>
     </CodeExample>
 </section>
@@ -42,10 +42,10 @@
     <h2 class="text-xl font-semibold mb-4">Circle Skeleton</h2>
     <CodeExample Code="@circleCode">
         <div class="flex flex-wrap items-center gap-4">
-            <Skeleton Circle Class="w-8 h-8" />
-            <Skeleton Circle Class="w-12 h-12" />
-            <Skeleton Circle Class="w-16 h-16" />
-            <Skeleton Circle Class="w-24 h-24" />
+            <BlazySkeleton Circle Class="w-8 h-8" />
+            <BlazySkeleton Circle Class="w-12 h-12" />
+            <BlazySkeleton Circle Class="w-16 h-16" />
+            <BlazySkeleton Circle Class="w-24 h-24" />
         </div>
     </CodeExample>
 </section>
@@ -56,17 +56,17 @@
         <div class="w-full max-w-sm">
             <div class="card bg-base-200 shadow-xl">
                 <figure>
-                    <Skeleton Class="w-full h-48" />
+                    <BlazySkeleton Class="w-full h-48" />
                 </figure>
                 <div class="card-body">
-                    <Skeleton Text Class="w-3/4 h-6" />
+                    <BlazySkeleton Text Class="w-3/4 h-6" />
                     <div class="space-y-2">
-                        <Skeleton Text Class="w-full" />
-                        <Skeleton Text Class="w-full" />
-                        <Skeleton Text Class="w-2/3" />
+                        <BlazySkeleton Text Class="w-full" />
+                        <BlazySkeleton Text Class="w-full" />
+                        <BlazySkeleton Text Class="w-2/3" />
                     </div>
                     <div class="card-actions justify-end mt-4">
-                        <Skeleton Class="w-24 h-10 rounded-lg" />
+                        <BlazySkeleton Class="w-24 h-10 rounded-lg" />
                     </div>
                 </div>
             </div>
@@ -81,10 +81,10 @@
             @for (int i = 0; i < 3; i++)
             {
                 <div class="flex items-center gap-4 p-4 bg-base-200 rounded-lg">
-                    <Skeleton Circle Class="w-12 h-12 shrink-0" />
+                    <BlazySkeleton Circle Class="w-12 h-12 shrink-0" />
                     <div class="flex-1 space-y-2">
-                        <Skeleton Text Class="w-3/4" />
-                        <Skeleton Text Class="w-1/2" />
+                        <BlazySkeleton Text Class="w-3/4" />
+                        <BlazySkeleton Text Class="w-1/2" />
                     </div>
                 </div>
             }
@@ -96,10 +96,10 @@
     <h2 class="text-xl font-semibold mb-4">Avatar with Text Pattern</h2>
     <CodeExample Code="@avatarPatternCode">
         <div class="flex items-center gap-4">
-            <Skeleton Circle Class="w-16 h-16 shrink-0" />
+            <BlazySkeleton Circle Class="w-16 h-16 shrink-0" />
             <div class="flex-1 space-y-2">
-                <Skeleton Text Class="w-32" />
-                <Skeleton Text Class="w-48" />
+                <BlazySkeleton Text Class="w-32" />
+                <BlazySkeleton Text Class="w-48" />
             </div>
         </div>
     </CodeExample>
@@ -112,18 +112,18 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th><Skeleton Text Class="w-16" /></th>
-                        <th><Skeleton Text Class="w-24" /></th>
-                        <th><Skeleton Text Class="w-20" /></th>
+                        <th><BlazySkeleton Text Class="w-16" /></th>
+                        <th><BlazySkeleton Text Class="w-24" /></th>
+                        <th><BlazySkeleton Text Class="w-20" /></th>
                     </tr>
                 </thead>
                 <tbody>
                     @for (int i = 0; i < 4; i++)
                     {
                         <tr>
-                            <td><Skeleton Text Class="w-20" /></td>
-                            <td><Skeleton Text Class="w-32" /></td>
-                            <td><Skeleton Text Class="w-16" /></td>
+                            <td><BlazySkeleton Text Class="w-20" /></td>
+                            <td><BlazySkeleton Text Class="w-32" /></td>
+                            <td><BlazySkeleton Text Class="w-16" /></td>
                         </tr>
                     }
                 </tbody>
@@ -133,69 +133,69 @@
 </section>
 
 @code {
-    private string basicCode = @"<Skeleton Class=""w-full h-32"" />";
+    private string basicCode = @"<BlazySkeleton Class=""w-full h-32"" />";
 
-    private string sizesCode = @"<Skeleton Class=""w-full h-4"" />
-<Skeleton Class=""w-full h-8"" />
-<Skeleton Class=""w-full h-16"" />
-<Skeleton Class=""w-full h-32"" />";
+    private string sizesCode = @"<BlazySkeleton Class=""w-full h-4"" />
+<BlazySkeleton Class=""w-full h-8"" />
+<BlazySkeleton Class=""w-full h-16"" />
+<BlazySkeleton Class=""w-full h-32"" />";
 
-    private string textCode = @"<Skeleton Text Class=""w-full"" />
-<Skeleton Text Class=""w-4/5"" />
-<Skeleton Text Class=""w-3/4"" />
-<Skeleton Text Class=""w-1/2"" />";
+    private string textCode = @"<BlazySkeleton Text Class=""w-full"" />
+<BlazySkeleton Text Class=""w-4/5"" />
+<BlazySkeleton Text Class=""w-3/4"" />
+<BlazySkeleton Text Class=""w-1/2"" />";
 
-    private string circleCode = @"<Skeleton Circle Class=""w-8 h-8"" />
-<Skeleton Circle Class=""w-12 h-12"" />
-<Skeleton Circle Class=""w-16 h-16"" />
-<Skeleton Circle Class=""w-24 h-24"" />";
+    private string circleCode = @"<BlazySkeleton Circle Class=""w-8 h-8"" />
+<BlazySkeleton Circle Class=""w-12 h-12"" />
+<BlazySkeleton Circle Class=""w-16 h-16"" />
+<BlazySkeleton Circle Class=""w-24 h-24"" />";
 
     private string cardPatternCode = @"<div class=""card bg-base-200 shadow-xl"">
     <figure>
-        <Skeleton Class=""w-full h-48"" />
+        <BlazySkeleton Class=""w-full h-48"" />
     </figure>
     <div class=""card-body"">
-        <Skeleton Text Class=""w-3/4 h-6"" />
+        <BlazySkeleton Text Class=""w-3/4 h-6"" />
         <div class=""space-y-2"">
-            <Skeleton Text Class=""w-full"" />
-            <Skeleton Text Class=""w-full"" />
-            <Skeleton Text Class=""w-2/3"" />
+            <BlazySkeleton Text Class=""w-full"" />
+            <BlazySkeleton Text Class=""w-full"" />
+            <BlazySkeleton Text Class=""w-2/3"" />
         </div>
         <div class=""card-actions justify-end mt-4"">
-            <Skeleton Class=""w-24 h-10 rounded-lg"" />
+            <BlazySkeleton Class=""w-24 h-10 rounded-lg"" />
         </div>
     </div>
 </div>";
 
     private string listPatternCode = @"<div class=""flex items-center gap-4 p-4 bg-base-200 rounded-lg"">
-    <Skeleton Circle Class=""w-12 h-12 shrink-0"" />
+    <BlazySkeleton Circle Class=""w-12 h-12 shrink-0"" />
     <div class=""flex-1 space-y-2"">
-        <Skeleton Text Class=""w-3/4"" />
-        <Skeleton Text Class=""w-1/2"" />
+        <BlazySkeleton Text Class=""w-3/4"" />
+        <BlazySkeleton Text Class=""w-1/2"" />
     </div>
 </div>";
 
     private string avatarPatternCode = @"<div class=""flex items-center gap-4"">
-    <Skeleton Circle Class=""w-16 h-16 shrink-0"" />
+    <BlazySkeleton Circle Class=""w-16 h-16 shrink-0"" />
     <div class=""flex-1 space-y-2"">
-        <Skeleton Text Class=""w-32"" />
-        <Skeleton Text Class=""w-48"" />
+        <BlazySkeleton Text Class=""w-32"" />
+        <BlazySkeleton Text Class=""w-48"" />
     </div>
 </div>";
 
     private string tablePatternCode = @"<table class=""table"">
     <thead>
         <tr>
-            <th><Skeleton Text Class=""w-16"" /></th>
-            <th><Skeleton Text Class=""w-24"" /></th>
-            <th><Skeleton Text Class=""w-20"" /></th>
+            <th><BlazySkeleton Text Class=""w-16"" /></th>
+            <th><BlazySkeleton Text Class=""w-24"" /></th>
+            <th><BlazySkeleton Text Class=""w-20"" /></th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><Skeleton Text Class=""w-20"" /></td>
-            <td><Skeleton Text Class=""w-32"" /></td>
-            <td><Skeleton Text Class=""w-16"" /></td>
+            <td><BlazySkeleton Text Class=""w-20"" /></td>
+            <td><BlazySkeleton Text Class=""w-32"" /></td>
+            <td><BlazySkeleton Text Class=""w-16"" /></td>
         </tr>
         <!-- more rows... -->
     </tbody>

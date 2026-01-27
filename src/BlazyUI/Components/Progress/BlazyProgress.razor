@@ -1,0 +1,47 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<progress class="@CssClass"
+          value="@Value"
+          max="@Max"
+          @attributes="AdditionalAttributes"></progress>
+
+@code {
+    /// <summary>
+    /// The current value of the progress bar.
+    /// When null, the progress bar shows an indeterminate state (animated).
+    /// </summary>
+    [Parameter]
+    public int? Value { get; set; }
+
+    /// <summary>
+    /// The maximum value of the progress bar.
+    /// </summary>
+    [Parameter]
+    public int Max { get; set; } = 100;
+
+    /// <summary>
+    /// The color variant of the progress bar.
+    /// </summary>
+    [Parameter]
+    public BlazyProgressColor Color { get; set; } = BlazyProgressColor.Default;
+
+    private string CssClass => MergeClasses(
+        "progress",
+        ColorClass
+    );
+
+    private string? ColorClass => Color switch
+    {
+        BlazyProgressColor.Default => null,
+        BlazyProgressColor.Neutral => "progress-neutral",
+        BlazyProgressColor.Primary => "progress-primary",
+        BlazyProgressColor.Secondary => "progress-secondary",
+        BlazyProgressColor.Accent => "progress-accent",
+        BlazyProgressColor.Info => "progress-info",
+        BlazyProgressColor.Success => "progress-success",
+        BlazyProgressColor.Warning => "progress-warning",
+        BlazyProgressColor.Error => "progress-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+}

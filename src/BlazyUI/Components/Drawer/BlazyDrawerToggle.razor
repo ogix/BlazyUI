@@ -1,0 +1,24 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<label for="@Context?.Id" class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</label>
+
+@code {
+    /// <summary>
+    /// The drawer context provided by the parent Drawer component.
+    /// </summary>
+    [CascadingParameter]
+    public BlazyDrawerContext? Context { get; set; }
+
+    /// <summary>
+    /// The content of the toggle (typically a button or icon).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "btn btn-ghost drawer-button"
+    );
+}

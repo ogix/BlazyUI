@@ -7,7 +7,7 @@
 <section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">Basic</h2>
     <CodeExample Code="@basicCode">
-        <TextInput @bind-Value="basicValue" placeholder="Type something..." />
+        <BlazyTextInput @bind-Value="basicValue" placeholder="Type something..." />
         <p class="mt-2 text-sm opacity-70">Value: @basicValue</p>
     </CodeExample>
 </section>
@@ -16,13 +16,13 @@
     <h2 class="text-xl font-semibold mb-4">Input Types</h2>
     <CodeExample Code="@typesCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <TextInput Type="text" @bind-Value="textValue" placeholder="Text" />
-            <TextInput Type="password" @bind-Value="passwordValue" placeholder="Password" />
-            <TextInput Type="email" @bind-Value="emailValue" placeholder="Email" />
-            <TextInput Type="number" @bind-Value="numberValue" placeholder="Number" />
-            <TextInput Type="search" @bind-Value="searchValue" placeholder="Search" />
-            <TextInput Type="tel" @bind-Value="telValue" placeholder="Phone" />
-            <TextInput Type="url" @bind-Value="urlValue" placeholder="URL" />
+            <BlazyTextInput Type="text" @bind-Value="textValue" placeholder="Text" />
+            <BlazyTextInput Type="password" @bind-Value="passwordValue" placeholder="Password" />
+            <BlazyTextInput Type="email" @bind-Value="emailValue" placeholder="Email" />
+            <BlazyTextInput Type="number" @bind-Value="numberValue" placeholder="Number" />
+            <BlazyTextInput Type="search" @bind-Value="searchValue" placeholder="Search" />
+            <BlazyTextInput Type="tel" @bind-Value="telValue" placeholder="Phone" />
+            <BlazyTextInput Type="url" @bind-Value="urlValue" placeholder="URL" />
         </div>
     </CodeExample>
 </section>
@@ -31,11 +31,11 @@
     <h2 class="text-xl font-semibold mb-4">Sizes</h2>
     <CodeExample Code="@sizesCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <TextInput Size="TextInputSize.ExtraSmall" @bind-Value="sizeValue" placeholder="Extra Small" />
-            <TextInput Size="TextInputSize.Small" @bind-Value="sizeValue" placeholder="Small" />
-            <TextInput Size="TextInputSize.Medium" @bind-Value="sizeValue" placeholder="Default (Medium)" />
-            <TextInput Size="TextInputSize.Large" @bind-Value="sizeValue" placeholder="Large" />
-            <TextInput Size="TextInputSize.ExtraLarge" @bind-Value="sizeValue" placeholder="Extra Large" />
+            <BlazyTextInput Size="BlazyTextInputSize.ExtraSmall" @bind-Value="sizeValue" placeholder="Extra Small" />
+            <BlazyTextInput Size="BlazyTextInputSize.Small" @bind-Value="sizeValue" placeholder="Small" />
+            <BlazyTextInput Size="BlazyTextInputSize.Medium" @bind-Value="sizeValue" placeholder="Default (Medium)" />
+            <BlazyTextInput Size="BlazyTextInputSize.Large" @bind-Value="sizeValue" placeholder="Large" />
+            <BlazyTextInput Size="BlazyTextInputSize.ExtraLarge" @bind-Value="sizeValue" placeholder="Extra Large" />
         </div>
     </CodeExample>
 </section>
@@ -44,15 +44,15 @@
     <h2 class="text-xl font-semibold mb-4">Colors</h2>
     <CodeExample Code="@colorsCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <TextInput Color="TextInputColor.Default" @bind-Value="colorValue" placeholder="Default" />
-            <TextInput Color="TextInputColor.Neutral" @bind-Value="colorValue" placeholder="Neutral" />
-            <TextInput Color="TextInputColor.Primary" @bind-Value="colorValue" placeholder="Primary" />
-            <TextInput Color="TextInputColor.Secondary" @bind-Value="colorValue" placeholder="Secondary" />
-            <TextInput Color="TextInputColor.Accent" @bind-Value="colorValue" placeholder="Accent" />
-            <TextInput Color="TextInputColor.Info" @bind-Value="colorValue" placeholder="Info" />
-            <TextInput Color="TextInputColor.Success" @bind-Value="colorValue" placeholder="Success" />
-            <TextInput Color="TextInputColor.Warning" @bind-Value="colorValue" placeholder="Warning" />
-            <TextInput Color="TextInputColor.Error" @bind-Value="colorValue" placeholder="Error" />
+            <BlazyTextInput Color="BlazyTextInputColor.Default" @bind-Value="colorValue" placeholder="Default" />
+            <BlazyTextInput Color="BlazyTextInputColor.Neutral" @bind-Value="colorValue" placeholder="Neutral" />
+            <BlazyTextInput Color="BlazyTextInputColor.Primary" @bind-Value="colorValue" placeholder="Primary" />
+            <BlazyTextInput Color="BlazyTextInputColor.Secondary" @bind-Value="colorValue" placeholder="Secondary" />
+            <BlazyTextInput Color="BlazyTextInputColor.Accent" @bind-Value="colorValue" placeholder="Accent" />
+            <BlazyTextInput Color="BlazyTextInputColor.Info" @bind-Value="colorValue" placeholder="Info" />
+            <BlazyTextInput Color="BlazyTextInputColor.Success" @bind-Value="colorValue" placeholder="Success" />
+            <BlazyTextInput Color="BlazyTextInputColor.Warning" @bind-Value="colorValue" placeholder="Warning" />
+            <BlazyTextInput Color="BlazyTextInputColor.Error" @bind-Value="colorValue" placeholder="Error" />
         </div>
     </CodeExample>
 </section>
@@ -61,8 +61,8 @@
     <h2 class="text-xl font-semibold mb-4">Ghost Style</h2>
     <CodeExample Code="@ghostCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <TextInput Ghost @bind-Value="ghostValue" placeholder="Ghost input" />
-            <TextInput Ghost Color="TextInputColor.Primary" @bind-Value="ghostValue" placeholder="Ghost Primary" />
+            <BlazyTextInput Ghost @bind-Value="ghostValue" placeholder="Ghost input" />
+            <BlazyTextInput Ghost Color="BlazyTextInputColor.Primary" @bind-Value="ghostValue" placeholder="Ghost Primary" />
         </div>
     </CodeExample>
 </section>
@@ -75,21 +75,21 @@
 
             <div class="form-control mb-4">
                 <label class="label"><span class="label-text">Email</span></label>
-                <TextInput Type="email" @bind-Value="formModel.Email" placeholder="Enter email" />
+                <BlazyTextInput Type="email" @bind-Value="formModel.Email" placeholder="Enter email" />
                 <ValidationMessage For="@(() => formModel.Email)" class="text-error text-sm mt-1" />
             </div>
 
             <div class="form-control mb-4">
                 <label class="label"><span class="label-text">Password</span></label>
-                <TextInput Type="password" @bind-Value="formModel.Password" placeholder="Enter password" />
+                <BlazyTextInput Type="password" @bind-Value="formModel.Password" placeholder="Enter password" />
                 <ValidationMessage For="@(() => formModel.Password)" class="text-error text-sm mt-1" />
             </div>
 
-            <Button Type="submit" Color="ButtonColor.Primary" Block>Sign In</Button>
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Sign In</BlazyButton>
         </EditForm>
         @if (formSubmitted)
         {
-            <Alert Color="AlertColor.Success" class="mt-4">Form submitted successfully!</Alert>
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">Form submitted successfully!</BlazyAlert>
         }
     </CodeExample>
 </section>
@@ -98,9 +98,9 @@
     <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
     <CodeExample Code="@attributesCode">
         <div class="flex flex-col gap-4 max-w-xs">
-            <TextInput @bind-Value="attrValue" placeholder="Max 10 chars" maxlength="10" />
-            <TextInput @bind-Value="attrValue" placeholder="Disabled" disabled />
-            <TextInput @bind-Value="attrValue" placeholder="Readonly" readonly />
+            <BlazyTextInput @bind-Value="attrValue" placeholder="Max 10 chars" maxlength="10" />
+            <BlazyTextInput @bind-Value="attrValue" placeholder="Disabled" disabled />
+            <BlazyTextInput @bind-Value="attrValue" placeholder="Readonly" readonly />
         </div>
     </CodeExample>
 </section>
@@ -138,50 +138,50 @@
         public string Password { get; set; } = "";
     }
 
-    private string basicCode = @"<TextInput @bind-Value=""value"" placeholder=""Type something..."" />";
+    private string basicCode = @"<BlazyTextInput @bind-Value=""value"" placeholder=""Type something..."" />";
 
-    private string typesCode = @"<TextInput Type=""text"" @bind-Value=""value"" placeholder=""Text"" />
-<TextInput Type=""password"" @bind-Value=""value"" placeholder=""Password"" />
-<TextInput Type=""email"" @bind-Value=""value"" placeholder=""Email"" />
-<TextInput Type=""number"" @bind-Value=""value"" placeholder=""Number"" />
-<TextInput Type=""search"" @bind-Value=""value"" placeholder=""Search"" />
-<TextInput Type=""tel"" @bind-Value=""value"" placeholder=""Phone"" />
-<TextInput Type=""url"" @bind-Value=""value"" placeholder=""URL"" />";
+    private string typesCode = @"<BlazyTextInput Type=""text"" @bind-Value=""value"" placeholder=""Text"" />
+<BlazyTextInput Type=""password"" @bind-Value=""value"" placeholder=""Password"" />
+<BlazyTextInput Type=""email"" @bind-Value=""value"" placeholder=""Email"" />
+<BlazyTextInput Type=""number"" @bind-Value=""value"" placeholder=""Number"" />
+<BlazyTextInput Type=""search"" @bind-Value=""value"" placeholder=""Search"" />
+<BlazyTextInput Type=""tel"" @bind-Value=""value"" placeholder=""Phone"" />
+<BlazyTextInput Type=""url"" @bind-Value=""value"" placeholder=""URL"" />";
 
-    private string sizesCode = @"<TextInput Size=""TextInputSize.ExtraSmall"" placeholder=""Extra Small"" />
-<TextInput Size=""TextInputSize.Small"" placeholder=""Small"" />
-<TextInput Size=""TextInputSize.Medium"" placeholder=""Default (Medium)"" />
-<TextInput Size=""TextInputSize.Large"" placeholder=""Large"" />
-<TextInput Size=""TextInputSize.ExtraLarge"" placeholder=""Extra Large"" />";
+    private string sizesCode = @"<BlazyTextInput Size=""BlazyTextInputSize.ExtraSmall"" placeholder=""Extra Small"" />
+<BlazyTextInput Size=""BlazyTextInputSize.Small"" placeholder=""Small"" />
+<BlazyTextInput Size=""BlazyTextInputSize.Medium"" placeholder=""Default (Medium)"" />
+<BlazyTextInput Size=""BlazyTextInputSize.Large"" placeholder=""Large"" />
+<BlazyTextInput Size=""BlazyTextInputSize.ExtraLarge"" placeholder=""Extra Large"" />";
 
-    private string colorsCode = @"<TextInput Color=""TextInputColor.Default"" placeholder=""Default"" />
-<TextInput Color=""TextInputColor.Primary"" placeholder=""Primary"" />
-<TextInput Color=""TextInputColor.Secondary"" placeholder=""Secondary"" />
-<TextInput Color=""TextInputColor.Accent"" placeholder=""Accent"" />
-<TextInput Color=""TextInputColor.Info"" placeholder=""Info"" />
-<TextInput Color=""TextInputColor.Success"" placeholder=""Success"" />
-<TextInput Color=""TextInputColor.Warning"" placeholder=""Warning"" />
-<TextInput Color=""TextInputColor.Error"" placeholder=""Error"" />";
+    private string colorsCode = @"<BlazyTextInput Color=""BlazyTextInputColor.Default"" placeholder=""Default"" />
+<BlazyTextInput Color=""BlazyTextInputColor.Primary"" placeholder=""Primary"" />
+<BlazyTextInput Color=""BlazyTextInputColor.Secondary"" placeholder=""Secondary"" />
+<BlazyTextInput Color=""BlazyTextInputColor.Accent"" placeholder=""Accent"" />
+<BlazyTextInput Color=""BlazyTextInputColor.Info"" placeholder=""Info"" />
+<BlazyTextInput Color=""BlazyTextInputColor.Success"" placeholder=""Success"" />
+<BlazyTextInput Color=""BlazyTextInputColor.Warning"" placeholder=""Warning"" />
+<BlazyTextInput Color=""BlazyTextInputColor.Error"" placeholder=""Error"" />";
 
-    private string ghostCode = @"<TextInput Ghost placeholder=""Ghost input"" />
-<TextInput Ghost Color=""TextInputColor.Primary"" placeholder=""Ghost Primary"" />";
+    private string ghostCode = @"<BlazyTextInput Ghost placeholder=""Ghost input"" />
+<BlazyTextInput Ghost Color=""BlazyTextInputColor.Primary"" placeholder=""Ghost Primary"" />";
 
     private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
     <DataAnnotationsValidator />
     <div class=""form-control mb-4"">
         <label class=""label""><span class=""label-text"">Email</span></label>
-        <TextInput Type=""email"" @bind-Value=""formModel.Email"" placeholder=""Enter email"" />
+        <BlazyTextInput Type=""email"" @bind-Value=""formModel.Email"" placeholder=""Enter email"" />
         <ValidationMessage For=""@(() => formModel.Email)"" />
     </div>
     <div class=""form-control mb-4"">
         <label class=""label""><span class=""label-text"">Password</span></label>
-        <TextInput Type=""password"" @bind-Value=""formModel.Password"" placeholder=""Enter password"" />
+        <BlazyTextInput Type=""password"" @bind-Value=""formModel.Password"" placeholder=""Enter password"" />
         <ValidationMessage For=""@(() => formModel.Password)"" />
     </div>
-    <Button Type=""submit"" Color=""ButtonColor.Primary"" Block>Sign In</Button>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"" Block>Sign In</BlazyButton>
 </EditForm>";
 
-    private string attributesCode = @"<TextInput placeholder=""Max 10 chars"" maxlength=""10"" />
-<TextInput placeholder=""Disabled"" disabled />
-<TextInput placeholder=""Readonly"" readonly />";
+    private string attributesCode = @"<BlazyTextInput placeholder=""Max 10 chars"" maxlength=""10"" />
+<BlazyTextInput placeholder=""Disabled"" disabled />
+<BlazyTextInput placeholder=""Readonly"" readonly />";
 }
