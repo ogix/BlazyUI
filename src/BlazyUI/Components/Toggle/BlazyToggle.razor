@@ -2,12 +2,13 @@
 @inherits BlazyInputBase<bool>
 
 <input type="checkbox"
+       @attributes="AdditionalAttributes"
        id="@GetFieldId()"
        name="@GetFieldName()"
        class="@ComputedCssClass"
        checked="@CurrentValue"
-       @onchange="OnChange"
-       @attributes="AdditionalAttributes" />
+       value="true"
+       @onchange="EventCallback.Factory.CreateBinder<bool>(this, __value => CurrentValue = __value, CurrentValue)" />
 
 @code {
     /// <summary>
@@ -30,26 +31,13 @@
         string? value,
         [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out bool result,
         [System.Diagnostics.CodeAnalysis.NotNullWhen(false)] out string? validationErrorMessage)
-    {
-        if (bool.TryParse(value, out result))
-        {
-            validationErrorMessage = null;
-            return true;
-        }
-
-        result = false;
-        validationErrorMessage = $"The value '{value}' is not a valid boolean.";
-        return false;
-    }
+        => throw new NotSupportedException($"This component does not parse string inputs. Bind to the '{nameof(CurrentValue)}' property, not '{nameof(CurrentValueAsString)}'.");
 
     private string ComputedCssClass => MergeClasses(
         "toggle",
         SizeClass,
         ColorClass
     );
-
-    private void OnChange(ChangeEventArgs e)
-        => CurrentValue = (bool)(e.Value ?? false);
 
     private string SizeClass => Size switch
     {
