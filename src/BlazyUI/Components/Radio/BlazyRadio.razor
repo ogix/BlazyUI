@@ -59,10 +59,8 @@
 
     private void OnChange(ChangeEventArgs e)
     {
-        if ((bool)(e.Value ?? false))
-        {
-            CurrentValue = OptionValue ?? string.Empty;
-        }
+        // onchange only fires when radio is selected, so just set the value
+        CurrentValue = OptionValue ?? string.Empty;
     }
 
     private string SizeClass => Size switch
