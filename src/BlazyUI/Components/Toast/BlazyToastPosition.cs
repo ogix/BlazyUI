@@ -1,6 +1,6 @@
 namespace BlazyUI;
 
-public enum ToastPosition
+public enum BlazyToastPosition
 {
     TopStart,
     TopCenter,

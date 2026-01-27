@@ -8,8 +8,8 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddBlazyUI(this IServiceCollection services)
     {
         services.AddTailwindMerge();
-        services.AddScoped<IModalService, ModalService>();
-        services.AddScoped<IToastService, ToastService>();
+        services.AddScoped<IBlazyModalService, BlazyModalService>();
+        services.AddScoped<IBlazyToastService, BlazyToastService>();
         return services;
     }
 }

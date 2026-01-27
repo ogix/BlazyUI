@@ -1,6 +1,6 @@
 namespace BlazyUI;
 
-public enum ToastType
+public enum BlazyToastType
 {
     Info,
     Success,

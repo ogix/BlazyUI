@@ -15,7 +15,7 @@
 </div>
 
 @code {
-    [CascadingParameter] public ModalInstance Modal { get; set; } = default!;
+    [CascadingParameter] public BlazyModalInstance Modal { get; set; } = default!;
     [Parameter] public string UserName { get; set; } = "";
 
     private string userName = "";

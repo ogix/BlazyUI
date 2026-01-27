@@ -1,7 +1,7 @@
-// src/BlazyUI/Components/Modal/ModalType.cs
+// src/BlazyUI/Components/Modal/BlazyModalType.cs
 namespace BlazyUI;
 
-public enum ModalType
+public enum BlazyModalType
 {
     Info,
     Warning,

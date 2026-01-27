@@ -1,9 +1,9 @@
-// src/BlazyUI/Components/Modal/IModalService.cs
+// src/BlazyUI/Components/Modal/IBlazyModalService.cs
 using Microsoft.AspNetCore.Components;
 
 namespace BlazyUI;
 
-public interface IModalService
+public interface IBlazyModalService
 {
     /// <summary>
     /// Event raised when modals collection changes.
@@ -37,16 +37,16 @@ public interface IModalService
     /// <summary>
     /// Shows a custom component modal and returns the typed result.
     /// </summary>
-    Task<ModalResult<TResult>> Show<TComponent, TResult>(
+    Task<BlazyModalResult<TResult>> Show<TComponent, TResult>(
         Dictionary<string, object>? parameters = null,
-        Action<ModalOptions>? configure = null)
+        Action<BlazyModalOptions>? configure = null)
         where TComponent : IComponent;
 
     /// <summary>
     /// Shows a custom component modal and waits for it to close.
     /// </summary>
-    Task<ModalResult> Show<TComponent>(
+    Task<BlazyModalResult> Show<TComponent>(
         Dictionary<string, object>? parameters = null,
-        Action<ModalOptions>? configure = null)
+        Action<BlazyModalOptions>? configure = null)
         where TComponent : IComponent;
 }

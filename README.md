@@ -76,65 +76,65 @@ In your main CSS file:
 In your `MainLayout.razor` or `App.razor`:
 
 ```razor
-<ModalProvider />
-<ToastProvider />
+<BlazyModalProvider />
+<BlazyToastProvider />
 ```
 
 ## Available Components
 
 ### Layout & Structure
-- **Card** - Container with header, body, and actions
-- **Accordion** - Collapsible content sections
-- **Collapse** - Single collapsible panel
-- **Divider** - Visual separator
-- **Drawer** - Off-canvas sidebar
-- **Join** - Group elements together
-- **NavBar** - Top navigation bar
-- **Tabs** - Tabbed content panels
+- **BlazyCard** - Container with header, body, and actions
+- **BlazyAccordion** - Collapsible content sections
+- **BlazyCollapse** - Single collapsible panel
+- **BlazyDivider** - Visual separator
+- **BlazyDrawer** - Off-canvas sidebar
+- **BlazyJoin** - Group elements together
+- **BlazyNavBar** - Top navigation bar
+- **BlazyTabs** - Tabbed content panels
 
 ### Form Inputs
-- **TextInput** - Text, email, password inputs
-- **Textarea** - Multi-line text input
-- **Select** - Dropdown selection
-- **Checkbox** - Boolean input
-- **Radio** - Single selection from options
-- **Toggle** - Switch input
-- **Range** - Slider input
-- **Rating** - Star rating input
-- **FileInput** - File upload input
-- **Fieldset** - Form field grouping
-- **Label** - Form field labels
+- **BlazyTextInput** - Text, email, password inputs
+- **BlazyTextarea** - Multi-line text input
+- **BlazySelect** - Dropdown selection
+- **BlazyCheckbox** - Boolean input
+- **BlazyRadio** - Single selection from options
+- **BlazyToggle** - Switch input
+- **BlazyRange** - Slider input
+- **BlazyRating** - Star rating input
+- **BlazyFileInput** - File upload input
+- **BlazyFieldset** - Form field grouping
+- **BlazyLabel** - Form field labels
 
 ### Visual & Feedback
-- **Alert** - Contextual messages
-- **Badge** - Status indicators
-- **Button** - Interactive buttons
-- **Loading** - Loading spinners
-- **Progress** - Progress bars
-- **Skeleton** - Loading placeholders
-- **Stats** - Statistical displays
-- **Status** - Status dot indicators
-- **Tooltip** - Hover information
-- **Kbd** - Keyboard key styling
-- **Indicator** - Notification badges
-- **Timeline** - Chronological events
+- **BlazyAlert** - Contextual messages
+- **BlazyBadge** - Status indicators
+- **BlazyButton** - Interactive buttons
+- **BlazyLoading** - Loading spinners
+- **BlazyProgress** - Progress bars
+- **BlazySkeleton** - Loading placeholders
+- **BlazyStats** - Statistical displays
+- **BlazyStatus** - Status dot indicators
+- **BlazyTooltip** - Hover information
+- **BlazyKbd** - Keyboard key styling
+- **BlazyIndicator** - Notification badges
+- **BlazyTimeline** - Chronological events
 
 ### Dialogs & Overlays
-- **Modal** - Dialog windows (via `IModalService`)
-- **Toast** - Toast notifications (via `IToastService`)
+- **BlazyModalProvider** - Dialog windows (via `IBlazyModalService`)
+- **BlazyToastProvider** - Toast notifications (via `IBlazyToastService`)
 
 ### Navigation
-- **Menu** - Vertical menu with items and dropdowns
+- **BlazyMenu** - Vertical menu with items and dropdowns
 
 ## Usage Examples
 
 ### Button Component
 
 ```razor
-<Button Color="ButtonColor.Primary">Primary</Button>
-<Button Color="ButtonColor.Secondary" Style="ButtonStyle.Outline">Outline</Button>
-<Button Color="ButtonColor.Accent" Size="ButtonSize.Large">Large</Button>
-<Button Loading="true">Loading...</Button>
+<BlazyButton Color="BlazyButtonColor.Primary">Primary</BlazyButton>
+<BlazyButton Color="BlazyButtonColor.Secondary" Style="BlazyButtonStyle.Outline">Outline</BlazyButton>
+<BlazyButton Color="BlazyButtonColor.Accent" Size="BlazyButtonSize.Large">Large</BlazyButton>
+<BlazyButton Loading="true">Loading...</BlazyButton>
 ```
 
 ### Form with Validation
@@ -143,28 +143,28 @@ In your `MainLayout.razor` or `App.razor`:
 <EditForm Model="model" OnValidSubmit="HandleSubmit">
     <DataAnnotationsValidator />
 
-    <Fieldset Legend="User Information">
-        <Label Text="Email">
-            <TextInput @bind-Value="model.Email" Type="email" placeholder="Enter email" />
+    <BlazyFieldset Legend="User Information">
+        <BlazyLabel Text="Email">
+            <BlazyTextInput @bind-Value="model.Email" Type="email" placeholder="Enter email" />
             <ValidationMessage For="@(() => model.Email)" />
-        </Label>
+        </BlazyLabel>
 
-        <Label Text="Password">
-            <TextInput @bind-Value="model.Password" Type="password" />
+        <BlazyLabel Text="Password">
+            <BlazyTextInput @bind-Value="model.Password" Type="password" />
             <ValidationMessage For="@(() => model.Password)" />
-        </Label>
-    </Fieldset>
+        </BlazyLabel>
+    </BlazyFieldset>
 
-    <Button type="submit" Color="ButtonColor.Primary">Submit</Button>
+    <BlazyButton type="submit" Color="BlazyButtonColor.Primary">Submit</BlazyButton>
 </EditForm>
 ```
 
 ### Modal Service
 
 ```razor
-@inject IModalService ModalService
+@inject IBlazyModalService ModalService
 
-<Button OnClick="ShowConfirm">Delete Item</Button>
+<BlazyButton OnClick="ShowConfirm">Delete Item</BlazyButton>
 
 @code {
     private async Task ShowConfirm()
@@ -185,9 +185,9 @@ In your `MainLayout.razor` or `App.razor`:
 ### Toast Notifications
 
 ```razor
-@inject IToastService ToastService
+@inject IBlazyToastService ToastService
 
-<Button OnClick="ShowToast">Show Toast</Button>
+<BlazyButton OnClick="ShowToast">Show Toast</BlazyButton>
 
 @code {
     private void ShowToast()
@@ -204,15 +204,15 @@ In your `MainLayout.razor` or `App.razor`:
 Override component styles using the `Class` parameter. TailwindMerge handles class conflicts automatically:
 
 ```razor
-<Button Class="rounded-full shadow-lg" Color="ButtonColor.Primary">
+<BlazyButton Class="rounded-full shadow-lg" Color="BlazyButtonColor.Primary">
     Custom Styled
-</Button>
+</BlazyButton>
 
-<Card Class="bg-gradient-to-r from-purple-500 to-pink-500">
-    <CardBody>
+<BlazyCard Class="bg-gradient-to-r from-purple-500 to-pink-500">
+    <BlazyCardBody>
         <p class="text-white">Gradient card</p>
-    </CardBody>
-</Card>
+    </BlazyCardBody>
+</BlazyCard>
 ```
 
 ## Development Setup

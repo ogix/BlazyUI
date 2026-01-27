@@ -10,16 +10,16 @@
                 <Icon>
                     @switch (toast.Type)
                     {
-                        case ToastType.Info:
+                        case BlazyToastType.Info:
                             <InfoIcon Class="w-6 h-6" />
                             break;
-                        case ToastType.Success:
+                        case BlazyToastType.Success:
                             <SuccessIcon Class="w-6 h-6" />
                             break;
-                        case ToastType.Warning:
+                        case BlazyToastType.Warning:
                             <WarningIcon Class="w-6 h-6" />
                             break;
-                        case ToastType.Error:
+                        case BlazyToastType.Error:
                             <ErrorIcon Class="w-6 h-6" />
                             break;
                     }
@@ -41,15 +41,15 @@
 }
 
 @code {
-    [Inject] private IToastService ToastService { get; set; } = default!;
+    [Inject] private IBlazyToastService ToastService { get; set; } = default!;
 
-    private ToastService? _service;
-    private IReadOnlyList<ToastReference> _toasts = Array.Empty<ToastReference>();
+    private BlazyToastService? _service;
+    private IReadOnlyList<BlazyToastReference> _toasts = Array.Empty<BlazyToastReference>();
     private readonly Dictionary<Guid, Timer> _timers = new();
 
     protected override void OnInitialized()
     {
-        _service = ToastService as ToastService;
+        _service = ToastService as BlazyToastService;
         if (_service != null)
         {
             _toasts = _service.Toasts;
@@ -86,26 +86,26 @@
         _service?.Remove(id);
     }
 
-    private static string GetPositionClasses(ToastPosition position) => position switch
+    private static string GetPositionClasses(BlazyToastPosition position) => position switch
     {
-        ToastPosition.TopStart => "toast-start toast-top",
-        ToastPosition.TopCenter => "toast-center toast-top",
-        ToastPosition.TopEnd => "toast-end toast-top",
-        ToastPosition.MiddleStart => "toast-start toast-middle",
-        ToastPosition.MiddleCenter => "toast-center toast-middle",
-        ToastPosition.MiddleEnd => "toast-end toast-middle",
-        ToastPosition.BottomStart => "toast-start toast-bottom",
-        ToastPosition.BottomCenter => "toast-center toast-bottom",
-        ToastPosition.BottomEnd => "toast-end toast-bottom",
+        BlazyToastPosition.TopStart => "toast-start toast-top",
+        BlazyToastPosition.TopCenter => "toast-center toast-top",
+        BlazyToastPosition.TopEnd => "toast-end toast-top",
+        BlazyToastPosition.MiddleStart => "toast-start toast-middle",
+        BlazyToastPosition.MiddleCenter => "toast-center toast-middle",
+        BlazyToastPosition.MiddleEnd => "toast-end toast-middle",
+        BlazyToastPosition.BottomStart => "toast-start toast-bottom",
+        BlazyToastPosition.BottomCenter => "toast-center toast-bottom",
+        BlazyToastPosition.BottomEnd => "toast-end toast-bottom",
         _ => throw new ArgumentOutOfRangeException(nameof(position))
     };
 
-    private static BlazyAlertColor GetBlazyAlertColor(ToastType type) => type switch
+    private static BlazyAlertColor GetBlazyAlertColor(BlazyToastType type) => type switch
     {
-        ToastType.Info => BlazyAlertColor.Info,
-        ToastType.Success => BlazyAlertColor.Success,
-        ToastType.Warning => BlazyAlertColor.Warning,
-        ToastType.Error => BlazyAlertColor.Error,
+        BlazyToastType.Info => BlazyAlertColor.Info,
+        BlazyToastType.Success => BlazyAlertColor.Success,
+        BlazyToastType.Warning => BlazyAlertColor.Warning,
+        BlazyToastType.Error => BlazyAlertColor.Error,
         _ => throw new ArgumentOutOfRangeException(nameof(type))
     };
 

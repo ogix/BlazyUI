@@ -31,23 +31,23 @@ dotnet watch --project src/BlazyUI.Demo
 - `src/BlazyUI.Demo/` - Blazor WebAssembly demo site showcasing components
 
 **Component Pattern:**
-Each component lives in its own folder under `Components/`:
+Each component lives in its own folder under `Components/`. All components and enums use the "Blazy" prefix:
 ```
-src/BlazyUI/Components/ComponentName/
-├── ComponentName.razor      # Component markup and code
-├── ComponentNameColor.cs    # Enum for color parameter
-├── ComponentNameStyle.cs    # Enum for style parameter (if applicable)
-└── ComponentNameSize.cs     # Enum for size parameter (if applicable)
+src/BlazyUI/Components/Button/
+├── BlazyButton.razor           # Component markup and code
+├── BlazyButtonColor.cs         # Enum for color parameter
+├── BlazyButtonStyle.cs         # Enum for style parameter (if applicable)
+└── BlazyButtonSize.cs          # Enum for size parameter (if applicable)
 ```
 
 **Base Classes:**
-- `BlazyComponentBase` - For non-input components (Button, Alert, etc.)
+- `BlazyComponentBase` - For non-input components (BlazyButton, BlazyAlert, etc.)
   - `TwMerge` injection for intelligent Tailwind class conflict resolution
   - `Class` parameter for consumer CSS overrides
   - `AdditionalAttributes` for capturing unmatched HTML attributes
   - `MergeClasses()` helper method
 
-- `BlazyInputBase<T>` - For form input components (TextInput, Select, etc.)
+- `BlazyInputBase<T>` - For form input components (BlazyTextInput, BlazySelect, etc.)
   - Inherits from Blazor's `InputBase<T>` for EditForm validation integration
   - `TwMerge` injection for class merging
   - `Class` parameter for consumer CSS overrides
@@ -56,7 +56,7 @@ src/BlazyUI/Components/ComponentName/
 
 **Enum Conventions:**
 - Most enums include a `Default` value for default/inherited behavior
-- Some enums (like LoadingType, LoadingSize) have explicit first values without `Default`
+- Some enums (like BlazyLoadingType, BlazyLoadingSize) have explicit first values without `Default`
 - Switch expressions should throw `ArgumentOutOfRangeException` for unhandled values
 
 **CSS Setup:**
@@ -70,7 +70,7 @@ Consumers must register BlazyUI services in `Program.cs`:
 ```csharp
 builder.Services.AddBlazyUI();
 ```
-This registers TailwindMerge, IModalService, and IToastService.
+This registers TailwindMerge, IBlazyModalService, and IBlazyToastService.
 
 ## Design Documents
 

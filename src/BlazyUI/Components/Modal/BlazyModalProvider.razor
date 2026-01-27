@@ -5,7 +5,7 @@
 {
     <dialog class="modal @(modal.IsClosing ? "" : "modal-open")">
         <div class="modal-box @modal.CssClass">
-            @if (modal.Type == ModalType.Custom)
+            @if (modal.Type == BlazyModalType.Custom)
             {
                 <CascadingValue Value="modal.Instance">
                     <DynamicComponent Type="@modal.ComponentType" Parameters="@modal.Parameters" />
@@ -17,16 +17,16 @@
                     <div class="@GetIconColorClass(modal.Type)">
                         @switch (modal.Type)
                         {
-                            case ModalType.Info:
+                            case BlazyModalType.Info:
                                 <InfoIcon Class="w-6 h-6" />
                                 break;
-                            case ModalType.Warning:
+                            case BlazyModalType.Warning:
                                 <WarningIcon Class="w-6 h-6" />
                                 break;
-                            case ModalType.Error:
+                            case BlazyModalType.Error:
                                 <ErrorIcon Class="w-6 h-6" />
                                 break;
-                            case ModalType.Confirm:
+                            case BlazyModalType.Confirm:
                                 <QuestionIcon Class="w-6 h-6" />
                                 break;
                         }
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="modal-action">
-                    @if (modal.Type == ModalType.Confirm)
+                    @if (modal.Type == BlazyModalType.Confirm)
                     {
                         <button class="btn" @onclick="() => Close(modal, false)">
                             @modal.CancelText
@@ -63,14 +63,14 @@
 }
 
 @code {
-    [Inject] private IModalService ModalService { get; set; } = default!;
+    [Inject] private IBlazyModalService ModalService { get; set; } = default!;
 
-    private ModalService? _service;
-    private IReadOnlyList<ModalReference> _modals = Array.Empty<ModalReference>();
+    private BlazyModalService? _service;
+    private IReadOnlyList<BlazyModalReference> _modals = Array.Empty<BlazyModalReference>();
 
     protected override void OnInitialized()
     {
-        _service = ModalService as ModalService;
+        _service = ModalService as BlazyModalService;
         if (_service != null)
         {
             _modals = _service.Modals;
@@ -87,7 +87,7 @@
         InvokeAsync(StateHasChanged);
     }
 
-    private async Task Close(ModalReference modal, bool confirmed)
+    private async Task Close(BlazyModalReference modal, bool confirmed)
     {
         modal.IsClosing = true;
         StateHasChanged();
@@ -95,12 +95,12 @@
         _service?.CloseModalById(modal.Id, confirmed);
     }
 
-    private static string GetIconColorClass(ModalType type) => type switch
+    private static string GetIconColorClass(BlazyModalType type) => type switch
     {
-        ModalType.Info => "text-info",
-        ModalType.Warning => "text-warning",
-        ModalType.Error => "text-error",
-        ModalType.Confirm => "text-base-content",
+        BlazyModalType.Info => "text-info",
+        BlazyModalType.Warning => "text-warning",
+        BlazyModalType.Error => "text-error",
+        BlazyModalType.Confirm => "text-base-content",
         _ => ""
     };
 

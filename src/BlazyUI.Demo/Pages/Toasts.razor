@@ -1,11 +1,11 @@
 @page "/toasts"
-@inject IToastService ToastService
+@inject IBlazyToastService ToastService
 
 <PageTitle>Toasts</PageTitle>
 
 <h1 class="text-3xl font-bold mb-6">Toast Component</h1>
 
-<BlazyAlert Color="BlazyAlertColor.Info" Class="mb-6"><span><strong>Setup:</strong> Add <BlazyKbd>&lt;ToastProvider /&gt;</BlazyKbd> to your MainLayout.razor or App.razor to enable toast notifications.</span></BlazyAlert>
+<BlazyAlert Color="BlazyAlertColor.Info" Class="mb-6"><span><strong>Setup:</strong> Add <BlazyKbd>&lt;BlazyToastProvider /&gt;</BlazyKbd> to your MainLayout.razor or App.razor to enable toast notifications.</span></BlazyAlert>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Simple Toasts</h2>
@@ -100,7 +100,7 @@
     {
         ToastService.Success("Top Start position!", options =>
         {
-            options.Position = ToastPosition.TopStart;
+            options.Position = BlazyToastPosition.TopStart;
         });
     }
 
@@ -108,7 +108,7 @@
     {
         ToastService.Success("Top Center position!", options =>
         {
-            options.Position = ToastPosition.TopCenter;
+            options.Position = BlazyToastPosition.TopCenter;
         });
     }
 
@@ -116,7 +116,7 @@
     {
         ToastService.Success("Top End position!", options =>
         {
-            options.Position = ToastPosition.TopEnd;
+            options.Position = BlazyToastPosition.TopEnd;
         });
     }
 
@@ -124,7 +124,7 @@
     {
         ToastService.Success("Middle Center position!", options =>
         {
-            options.Position = ToastPosition.MiddleCenter;
+            options.Position = BlazyToastPosition.MiddleCenter;
         });
     }
 
@@ -141,7 +141,7 @@
         ToastService.Clear();
     }
 
-    private string simpleToastsCode = @"@inject IToastService ToastService
+    private string simpleToastsCode = @"@inject IBlazyToastService ToastService
 
 <BlazyButton Color=""BlazyButtonColor.Info"" OnClick=""ShowInfo"">Info</BlazyButton>
 <BlazyButton Color=""BlazyButtonColor.Success"" OnClick=""ShowSuccess"">Success</BlazyButton>
@@ -185,25 +185,25 @@ ToastService.Info(""This toast stays longer."", options =>
     private string customPositionCode = @"// Top Start
 ToastService.Success(""Top Start position!"", options =>
 {
-    options.Position = ToastPosition.TopStart;
+    options.Position = BlazyToastPosition.TopStart;
 });
 
 // Top Center
 ToastService.Success(""Top Center position!"", options =>
 {
-    options.Position = ToastPosition.TopCenter;
+    options.Position = BlazyToastPosition.TopCenter;
 });
 
 // Top End
 ToastService.Success(""Top End position!"", options =>
 {
-    options.Position = ToastPosition.TopEnd;
+    options.Position = BlazyToastPosition.TopEnd;
 });
 
 // Middle Center
 ToastService.Success(""Middle Center position!"", options =>
 {
-    options.Position = ToastPosition.MiddleCenter;
+    options.Position = BlazyToastPosition.MiddleCenter;
 });";
 
     private string noAutoDismissCode = @"// Duration = 0 means the toast won't auto-dismiss

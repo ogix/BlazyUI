@@ -1,29 +1,29 @@
-// src/BlazyUI/Components/Modal/ModalService.cs
+// src/BlazyUI/Components/Modal/BlazyModalService.cs
 using Microsoft.AspNetCore.Components;
 
 namespace BlazyUI;
 
-public class ModalService : IModalService
+public class BlazyModalService : IBlazyModalService
 {
-    private readonly List<ModalReference> _modals = new();
+    private readonly List<BlazyModalReference> _modals = new();
 
     public event Action? OnChange;
 
-    internal IReadOnlyList<ModalReference> Modals => _modals;
+    internal IReadOnlyList<BlazyModalReference> Modals => _modals;
 
     public Task Info(string title, string message, string? okText = "OK")
     {
-        return ShowSimpleDialog(ModalType.Info, title, message, okText ?? "OK", closeOnBackdropClick: true);
+        return ShowSimpleDialog(BlazyModalType.Info, title, message, okText ?? "OK", closeOnBackdropClick: true);
     }
 
     public Task Warning(string title, string message, string? okText = "OK")
     {
-        return ShowSimpleDialog(ModalType.Warning, title, message, okText ?? "OK", closeOnBackdropClick: true);
+        return ShowSimpleDialog(BlazyModalType.Warning, title, message, okText ?? "OK", closeOnBackdropClick: true);
     }
 
     public Task Error(string title, string message, string? okText = "OK")
     {
-        return ShowSimpleDialog(ModalType.Error, title, message, okText ?? "OK", closeOnBackdropClick: true);
+        return ShowSimpleDialog(BlazyModalType.Error, title, message, okText ?? "OK", closeOnBackdropClick: true);
     }
 
     public async Task<bool> Confirm(
@@ -32,11 +32,11 @@ public class ModalService : IModalService
         string? confirmText = "Confirm",
         string? cancelText = "Cancel")
     {
-        var tcs = new TaskCompletionSource<ModalResult>();
+        var tcs = new TaskCompletionSource<BlazyModalResult>();
 
-        var modalRef = new ModalReference
+        var modalRef = new BlazyModalReference
         {
-            Type = ModalType.Confirm,
+            Type = BlazyModalType.Confirm,
             Title = title,
             Message = message,
             OkText = confirmText ?? "Confirm",
@@ -52,33 +52,33 @@ public class ModalService : IModalService
         return result.Confirmed;
     }
 
-    public Task<ModalResult<TResult>> Show<TComponent, TResult>(
+    public Task<BlazyModalResult<TResult>> Show<TComponent, TResult>(
         Dictionary<string, object>? parameters = null,
-        Action<ModalOptions>? configure = null)
+        Action<BlazyModalOptions>? configure = null)
         where TComponent : IComponent
     {
         return ShowCustomModal<TComponent, TResult>(parameters, configure);
     }
 
-    public async Task<ModalResult> Show<TComponent>(
+    public async Task<BlazyModalResult> Show<TComponent>(
         Dictionary<string, object>? parameters = null,
-        Action<ModalOptions>? configure = null)
+        Action<BlazyModalOptions>? configure = null)
         where TComponent : IComponent
     {
         var result = await ShowCustomModal<TComponent, object>(parameters, configure);
-        return new ModalResult { Confirmed = result.Confirmed };
+        return new BlazyModalResult { Confirmed = result.Confirmed };
     }
 
     private async Task ShowSimpleDialog(
-        ModalType type,
+        BlazyModalType type,
         string title,
         string message,
         string okText,
         bool closeOnBackdropClick)
     {
-        var tcs = new TaskCompletionSource<ModalResult>();
+        var tcs = new TaskCompletionSource<BlazyModalResult>();
 
-        var modalRef = new ModalReference
+        var modalRef = new BlazyModalReference
         {
             Type = type,
             Title = title,
@@ -94,19 +94,19 @@ public class ModalService : IModalService
         await tcs.Task;
     }
 
-    private async Task<ModalResult<TResult>> ShowCustomModal<TComponent, TResult>(
+    private async Task<BlazyModalResult<TResult>> ShowCustomModal<TComponent, TResult>(
         Dictionary<string, object>? parameters,
-        Action<ModalOptions>? configure)
+        Action<BlazyModalOptions>? configure)
         where TComponent : IComponent
     {
-        var options = new ModalOptions();
+        var options = new BlazyModalOptions();
         configure?.Invoke(options);
 
-        var tcs = new TaskCompletionSource<ModalResult>();
+        var tcs = new TaskCompletionSource<BlazyModalResult>();
 
-        var modalRef = new ModalReference
+        var modalRef = new BlazyModalReference
         {
-            Type = ModalType.Custom,
+            Type = BlazyModalType.Custom,
             ComponentType = typeof(TComponent),
             Parameters = parameters,
             CloseOnBackdropClick = options.CloseOnBackdropClick,
@@ -114,28 +114,28 @@ public class ModalService : IModalService
             TaskCompletionSource = tcs
         };
 
-        modalRef.Instance = new ModalInstance(tcs, CloseModal);
+        modalRef.Instance = new BlazyModalInstance(tcs, CloseModal);
 
         _modals.Add(modalRef);
         OnChange?.Invoke();
 
         var result = await tcs.Task;
 
-        if (result is ModalResult<TResult> typedResult)
+        if (result is BlazyModalResult<TResult> typedResult)
         {
             return typedResult;
         }
 
-        return new ModalResult<TResult> { Confirmed = result.Confirmed };
+        return new BlazyModalResult<TResult> { Confirmed = result.Confirmed };
     }
 
-    internal void CloseModal(ModalReference modal, bool confirmed)
+    internal void CloseModal(BlazyModalReference modal, bool confirmed)
     {
-        modal.TaskCompletionSource.TrySetResult(new ModalResult { Confirmed = confirmed });
+        modal.TaskCompletionSource.TrySetResult(new BlazyModalResult { Confirmed = confirmed });
         CloseModal(modal.Instance!);
     }
 
-    private async void CloseModal(ModalInstance instance)
+    private async void CloseModal(BlazyModalInstance instance)
     {
         var modal = _modals.FirstOrDefault(m => m.Instance == instance);
         if (modal != null)
@@ -153,7 +153,7 @@ public class ModalService : IModalService
         var modal = _modals.FirstOrDefault(m => m.Id == id);
         if (modal != null)
         {
-            modal.TaskCompletionSource.TrySetResult(new ModalResult { Confirmed = confirmed });
+            modal.TaskCompletionSource.TrySetResult(new BlazyModalResult { Confirmed = confirmed });
             _modals.Remove(modal);
             OnChange?.Invoke();
         }

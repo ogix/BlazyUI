@@ -1,11 +1,11 @@
 @page "/modals"
-@inject IModalService ModalService
+@inject IBlazyModalService ModalService
 
 <PageTitle>Modals</PageTitle>
 
 <h1 class="text-3xl font-bold mb-6">Modal Component</h1>
 
-<BlazyAlert Color="BlazyAlertColor.Info" Class="mb-6"><span><strong>Setup:</strong> Add <BlazyKbd>&lt;ModalProvider /&gt;</BlazyKbd> to your MainLayout.razor or App.razor to enable modal dialogs.</span></BlazyAlert>
+<BlazyAlert Color="BlazyAlertColor.Info" Class="mb-6"><span><strong>Setup:</strong> Add <BlazyKbd>&lt;BlazyModalProvider /&gt;</BlazyKbd> to your MainLayout.razor or App.razor to enable modal dialogs.</span></BlazyAlert>
 
 <section class="mb-8">
     <h2 class="text-xl font-semibold mb-4">Simple Dialogs</h2>
@@ -109,7 +109,7 @@
         }
     }
 
-    private string simpleDialogsCode = @"@inject IModalService ModalService
+    private string simpleDialogsCode = @"@inject IBlazyModalService ModalService
 
 <BlazyButton Color=""BlazyButtonColor.Info"" OnClick=""ShowInfo"">Info</BlazyButton>
 <BlazyButton Color=""BlazyButtonColor.Warning"" OnClick=""ShowWarning"">Warning</BlazyButton>
@@ -132,7 +132,7 @@
     }
 }";
 
-    private string confirmDialogCode = @"@inject IModalService ModalService
+    private string confirmDialogCode = @"@inject IBlazyModalService ModalService
 
 <BlazyButton Color=""BlazyButtonColor.Primary"" OnClick=""ShowConfirm"">Delete Item</BlazyButton>
 <span>Result: @(confirmResult.Value ? ""Confirmed"" : ""Cancelled"")</span>
@@ -156,7 +156,7 @@
 
     private string customComponentCode = @"// EditUserModal.razor - Custom modal component
 @code {
-    [CascadingParameter] public ModalInstance Modal { get; set; } = default!;
+    [CascadingParameter] public BlazyModalInstance Modal { get; set; } = default!;
     [Parameter] public string UserName { get; set; } = """";
 
     private void Save()
