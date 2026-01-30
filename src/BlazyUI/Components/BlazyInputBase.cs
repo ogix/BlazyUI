@@ -16,6 +16,7 @@ public abstract class BlazyInputBase<T> : InputBase<T>
 {
     private string? _formattedValueExpression;
     private Expression<Func<T>>? _previousValueExpression;
+    private T? _disabledValue = default;
 
     [Inject]
     protected TwMerge TwMerge { get; set; } = default!;
@@ -28,6 +29,13 @@ public abstract class BlazyInputBase<T> : InputBase<T>
     public string? Class { get; set; }
 
     /// <summary>
+    /// Whether the input is disabled. When true, the input cannot be modified.
+    /// Also allows standalone usage without @bind-Value by generating a mock ValueExpression.
+    /// </summary>
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    /// <summary>
     /// Cascading context from FieldValidator, if present.
     /// </summary>
     [CascadingParameter]
@@ -37,6 +45,30 @@ public abstract class BlazyInputBase<T> : InputBase<T>
     /// Whether to add the validator class (true when inside FieldValidator).
     /// </summary>
     protected bool ShouldShowValidatorClass => ValidatorContext?.EnableValidatorClass ?? false;
+
+    /// <inheritdoc />
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        // Check if Disabled=true and no ValueExpression provided
+        var hasValueExpression = false;
+        var isDisabled = false;
+
+        foreach (var parameter in parameters)
+        {
+            if (parameter.Name == nameof(ValueExpression))
+                hasValueExpression = parameter.Value is not null;
+            else if (parameter.Name == nameof(Disabled))
+                isDisabled = parameter.Value is bool b && b;
+        }
+
+        // Create mock ValueExpression to allow standalone disabled usage
+        if (isDisabled && !hasValueExpression)
+        {
+            ValueExpression = () => _disabledValue!;
+        }
+
+        await base.SetParametersAsync(parameters);
+    }
 
     /// <summary>
     /// Gets the computed field name from the ValueExpression.

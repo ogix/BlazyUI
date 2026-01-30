@@ -95,6 +95,17 @@
 </section>
 
 <section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Disabled State</h2>
+    <CodeExample Code="@disabledCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <BlazyTextInput Disabled="true" Value="Standalone disabled (no binding)" placeholder="Standalone" />
+            <BlazyTextInput @bind-Value="disabledValue" Disabled="true" placeholder="Disabled with binding" />
+            <BlazyTextInput @bind-Value="disabledValue" Disabled="false" placeholder="Not disabled" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
     <h2 class="text-xl font-semibold mb-4">With HTML Attributes</h2>
     <CodeExample Code="@attributesCode">
         <div class="flex flex-col gap-4 max-w-xs">
@@ -117,6 +128,7 @@
     private string sizeValue = "";
     private string colorValue = "";
     private string ghostValue = "";
+    private string disabledValue = "This is disabled";
     private string attrValue = "";
     private bool formSubmitted = false;
 
@@ -165,6 +177,15 @@
 
     private string ghostCode = @"<BlazyTextInput Ghost placeholder=""Ghost input"" />
 <BlazyTextInput Ghost Color=""BlazyTextInputColor.Primary"" placeholder=""Ghost Primary"" />";
+
+    private string disabledCode = @"@* Standalone disabled - no binding required *@
+<BlazyTextInput Disabled=""true"" Value=""Standalone disabled"" />
+
+@* Disabled with binding *@
+<BlazyTextInput @bind-Value=""value"" Disabled=""true"" />
+
+@* Dynamic disabled state *@
+<BlazyTextInput @bind-Value=""value"" Disabled=""@isDisabled"" />";
 
     private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
     <DataAnnotationsValidator />

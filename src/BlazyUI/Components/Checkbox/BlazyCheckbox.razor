@@ -8,6 +8,7 @@
        class="@ComputedCssClass"
        checked="@CurrentValue"
        value="true"
+       disabled="@Disabled"
        @onchange="EventCallback.Factory.CreateBinder<bool>(this, __value => CurrentValue = __value, CurrentValue)" />
 
 @code {

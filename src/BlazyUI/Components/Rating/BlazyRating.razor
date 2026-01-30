@@ -8,6 +8,7 @@
                name="@Name"
                class="rating-hidden"
                checked="@(CurrentValue == 0)"
+               disabled="@Disabled"
                @onchange="@(() => CurrentValue = 0)" />
     }
     @for (int i = 1; i <= Max; i++)
@@ -17,6 +18,7 @@
                name="@Name"
                class="@ItemCssClass"
                checked="@(CurrentValue == value)"
+               disabled="@Disabled"
                @onchange="@(() => CurrentValue = value)" />
     }
 </div>
