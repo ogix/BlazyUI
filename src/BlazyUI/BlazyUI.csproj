@@ -7,7 +7,7 @@
 
     <!-- NuGet Package Metadata -->
     <PackageId>BlazyUI</PackageId>
-    <Version>0.4.1</Version>
+    <Version>0.4.2</Version>
     <Authors>ogix</Authors>
     <Description>A Blazor component library wrapping DaisyUI v5 with Tailwind CSS v4. Provides strongly-typed, reusable UI components for Blazor applications.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
