@@ -42,22 +42,22 @@
     }
 
     /// <summary>
-    /// The minimum allowed value.
+    /// The minimum allowed value. Set to null (default) for no minimum constraint.
     /// </summary>
     [Parameter]
-    public T? Min { get; set; }
+    public object? Min { get; set; }
 
     /// <summary>
-    /// The maximum allowed value.
+    /// The maximum allowed value. Set to null (default) for no maximum constraint.
     /// </summary>
     [Parameter]
-    public T? Max { get; set; }
+    public object? Max { get; set; }
 
     /// <summary>
-    /// The step increment for the input.
+    /// The step increment for the input. Set to null (default) to allow any value.
     /// </summary>
     [Parameter]
-    public T? Step { get; set; }
+    public object? Step { get; set; }
 
     /// <summary>
     /// Placeholder text displayed when the input is empty.
@@ -144,7 +144,7 @@
         CurrentValueAsString = e.Value?.ToString();
     }
 
-    private string? FormatNumber<TNumber>(TNumber? value)
+    private string? FormatNumber(object? value)
     {
         // Use the same formatting logic as FormatValueAsString for consistency
         return value switch
