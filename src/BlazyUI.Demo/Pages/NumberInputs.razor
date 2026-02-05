@@ -1,0 +1,232 @@
+@page "/numberinputs"
+
+<PageTitle>NumberInput - BlazyUI</PageTitle>
+
+<h1 class="text-3xl font-bold mb-8">NumberInput</h1>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Basic Usage</h2>
+    <CodeExample Code="@basicCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <BlazyNumberInput @bind-Value="intValue" placeholder="Enter an integer" />
+            <p class="text-sm opacity-70">Integer value: @intValue</p>
+
+            <BlazyNumberInput @bind-Value="decimalValue" placeholder="Enter a decimal" />
+            <p class="text-sm opacity-70">Decimal value: @decimalValue</p>
+
+            <BlazyNumberInput @bind-Value="doubleValue" placeholder="Enter a double" />
+            <p class="text-sm opacity-70">Double value: @doubleValue</p>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Min, Max, and Step</h2>
+    <CodeExample Code="@minMaxStepCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <label class="text-sm">Integer (Min: 0, Max: 100, Step: 5)</label>
+            <BlazyNumberInput @bind-Value="constrainedInt" Min="0" Max="100" Step="5" />
+            <p class="text-sm opacity-70">Value: @constrainedInt</p>
+
+            <label class="text-sm">Decimal (Min: 0.0, Max: 10.0, Step: 0.1)</label>
+            <BlazyNumberInput @bind-Value="constrainedDecimal" Min="0.0m" Max="10.0m" Step="0.1m" />
+            <p class="text-sm opacity-70">Value: @constrainedDecimal</p>
+
+            <label class="text-sm">Double (Min: -1.0, Max: 1.0, Step: 0.01)</label>
+            <BlazyNumberInput @bind-Value="constrainedDouble" Min="-1.0" Max="1.0" Step="0.01" />
+            <p class="text-sm opacity-70">Value: @constrainedDouble</p>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <CodeExample Code="@sizesCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <BlazyNumberInput Size="BlazyNumberInputSize.ExtraSmall" @bind-Value="sizeValue" placeholder="Extra Small" />
+            <BlazyNumberInput Size="BlazyNumberInputSize.Small" @bind-Value="sizeValue" placeholder="Small" />
+            <BlazyNumberInput Size="BlazyNumberInputSize.Medium" @bind-Value="sizeValue" placeholder="Default (Medium)" />
+            <BlazyNumberInput Size="BlazyNumberInputSize.Large" @bind-Value="sizeValue" placeholder="Large" />
+            <BlazyNumberInput Size="BlazyNumberInputSize.ExtraLarge" @bind-Value="sizeValue" placeholder="Extra Large" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <BlazyNumberInput Color="BlazyNumberInputColor.Default" @bind-Value="colorValue" placeholder="Default" />
+            <BlazyNumberInput Color="BlazyNumberInputColor.Neutral" @bind-Value="colorValue" placeholder="Neutral" />
+            <BlazyNumberInput Color="BlazyNumberInputColor.Primary" @bind-Value="colorValue" placeholder="Primary" />
+            <BlazyNumberInput Color="BlazyNumberInputColor.Secondary" @bind-Value="colorValue" placeholder="Secondary" />
+            <BlazyNumberInput Color="BlazyNumberInputColor.Accent" @bind-Value="colorValue" placeholder="Accent" />
+            <BlazyNumberInput Color="BlazyNumberInputColor.Info" @bind-Value="colorValue" placeholder="Info" />
+            <BlazyNumberInput Color="BlazyNumberInputColor.Success" @bind-Value="colorValue" placeholder="Success" />
+            <BlazyNumberInput Color="BlazyNumberInputColor.Warning" @bind-Value="colorValue" placeholder="Warning" />
+            <BlazyNumberInput Color="BlazyNumberInputColor.Error" @bind-Value="colorValue" placeholder="Error" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Ghost Style</h2>
+    <CodeExample Code="@ghostCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <BlazyNumberInput Ghost @bind-Value="ghostValue" placeholder="Ghost input" />
+            <BlazyNumberInput Ghost Color="BlazyNumberInputColor.Primary" @bind-Value="ghostValue" placeholder="Ghost Primary" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Validation</h2>
+    <CodeExample Code="@validationCode">
+        <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
+            <DataAnnotationsValidator />
+
+            <div class="form-control mb-4">
+                <label class="label"><span class="label-text">Age (Required)</span></label>
+                <BlazyNumberInput @bind-Value="formModel.Age" Min="0" Max="150" placeholder="Enter your age" />
+                <ValidationMessage For="@(() => formModel.Age)" class="text-error text-sm mt-1" />
+            </div>
+
+            <div class="form-control mb-4">
+                <label class="label"><span class="label-text">Price (0.01 - 9999.99)</span></label>
+                <BlazyNumberInput @bind-Value="formModel.Price" Min="0.01m" Max="9999.99m" Step="0.01m" placeholder="Enter price" />
+                <ValidationMessage For="@(() => formModel.Price)" class="text-error text-sm mt-1" />
+            </div>
+
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Submit</BlazyButton>
+        </EditForm>
+        @if (formSubmitted)
+        {
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">Form submitted! Age: @formModel.Age, Price: @formModel.Price</BlazyAlert>
+        }
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Disabled State</h2>
+    <CodeExample Code="@disabledCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <BlazyNumberInput Disabled="true" Value="42" placeholder="Standalone disabled" />
+            <BlazyNumberInput @bind-Value="disabledValue" Disabled="true" placeholder="Disabled with binding" />
+            <BlazyNumberInput @bind-Value="disabledValue" Disabled="false" placeholder="Not disabled" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Nullable Types</h2>
+    <CodeExample Code="@nullableCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <BlazyNumberInput @bind-Value="nullableInt" placeholder="Nullable int (clear to set null)" />
+            <p class="text-sm opacity-70">Value: @(nullableInt?.ToString() ?? "null")</p>
+
+            <BlazyNumberInput @bind-Value="nullableDecimal" placeholder="Nullable decimal" />
+            <p class="text-sm opacity-70">Value: @(nullableDecimal?.ToString() ?? "null")</p>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private int intValue = 0;
+    private decimal decimalValue = 0.0m;
+    private double doubleValue = 0.0;
+
+    private int constrainedInt = 50;
+    private decimal constrainedDecimal = 5.0m;
+    private double constrainedDouble = 0.0;
+
+    private int sizeValue = 0;
+    private int colorValue = 0;
+    private int ghostValue = 0;
+    private int disabledValue = 100;
+
+    private int? nullableInt = null;
+    private decimal? nullableDecimal = null;
+
+    private bool formSubmitted = false;
+    private FormModel formModel = new();
+
+    private void HandleValidSubmit()
+    {
+        formSubmitted = true;
+    }
+
+    private class FormModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Age is required")]
+        [System.ComponentModel.DataAnnotations.Range(0, 150, ErrorMessage = "Age must be between 0 and 150")]
+        public int Age { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Price is required")]
+        [System.ComponentModel.DataAnnotations.Range(0.01, 9999.99, ErrorMessage = "Price must be between 0.01 and 9999.99")]
+        public decimal Price { get; set; }
+    }
+
+    private string basicCode = @"<BlazyNumberInput @bind-Value=""intValue"" placeholder=""Enter an integer"" />
+<BlazyNumberInput @bind-Value=""decimalValue"" placeholder=""Enter a decimal"" />
+<BlazyNumberInput @bind-Value=""doubleValue"" placeholder=""Enter a double"" />
+
+@code {
+    private int intValue = 0;
+    private decimal decimalValue = 0.0m;
+    private double doubleValue = 0.0;
+}";
+
+    private string minMaxStepCode = @"<BlazyNumberInput @bind-Value=""intValue"" Min=""0"" Max=""100"" Step=""5"" />
+<BlazyNumberInput @bind-Value=""decimalValue"" Min=""0.0m"" Max=""10.0m"" Step=""0.1m"" />
+<BlazyNumberInput @bind-Value=""doubleValue"" Min=""-1.0"" Max=""1.0"" Step=""0.01"" />";
+
+    private string sizesCode = @"<BlazyNumberInput Size=""BlazyNumberInputSize.ExtraSmall"" placeholder=""Extra Small"" />
+<BlazyNumberInput Size=""BlazyNumberInputSize.Small"" placeholder=""Small"" />
+<BlazyNumberInput Size=""BlazyNumberInputSize.Medium"" placeholder=""Default (Medium)"" />
+<BlazyNumberInput Size=""BlazyNumberInputSize.Large"" placeholder=""Large"" />
+<BlazyNumberInput Size=""BlazyNumberInputSize.ExtraLarge"" placeholder=""Extra Large"" />";
+
+    private string colorsCode = @"<BlazyNumberInput Color=""BlazyNumberInputColor.Default"" placeholder=""Default"" />
+<BlazyNumberInput Color=""BlazyNumberInputColor.Primary"" placeholder=""Primary"" />
+<BlazyNumberInput Color=""BlazyNumberInputColor.Secondary"" placeholder=""Secondary"" />
+<BlazyNumberInput Color=""BlazyNumberInputColor.Accent"" placeholder=""Accent"" />
+<BlazyNumberInput Color=""BlazyNumberInputColor.Info"" placeholder=""Info"" />
+<BlazyNumberInput Color=""BlazyNumberInputColor.Success"" placeholder=""Success"" />
+<BlazyNumberInput Color=""BlazyNumberInputColor.Warning"" placeholder=""Warning"" />
+<BlazyNumberInput Color=""BlazyNumberInputColor.Error"" placeholder=""Error"" />";
+
+    private string ghostCode = @"<BlazyNumberInput Ghost placeholder=""Ghost input"" />
+<BlazyNumberInput Ghost Color=""BlazyNumberInputColor.Primary"" placeholder=""Ghost Primary"" />";
+
+    private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
+    <DataAnnotationsValidator />
+    <div class=""form-control mb-4"">
+        <label class=""label""><span class=""label-text"">Age</span></label>
+        <BlazyNumberInput @bind-Value=""formModel.Age"" Min=""0"" Max=""150"" />
+        <ValidationMessage For=""@(() => formModel.Age)"" />
+    </div>
+    <div class=""form-control mb-4"">
+        <label class=""label""><span class=""label-text"">Price</span></label>
+        <BlazyNumberInput @bind-Value=""formModel.Price"" Min=""0.01m"" Max=""9999.99m"" Step=""0.01m"" />
+        <ValidationMessage For=""@(() => formModel.Price)"" />
+    </div>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"" Block>Submit</BlazyButton>
+</EditForm>";
+
+    private string disabledCode = @"@* Standalone disabled - no binding required *@
+<BlazyNumberInput Disabled=""true"" Value=""42"" />
+
+@* Disabled with binding *@
+<BlazyNumberInput @bind-Value=""value"" Disabled=""true"" />
+
+@* Dynamic disabled state *@
+<BlazyNumberInput @bind-Value=""value"" Disabled=""@isDisabled"" />";
+
+    private string nullableCode = @"<BlazyNumberInput @bind-Value=""nullableInt"" placeholder=""Nullable int"" />
+<BlazyNumberInput @bind-Value=""nullableDecimal"" placeholder=""Nullable decimal"" />
+
+@code {
+    private int? nullableInt = null;
+    private decimal? nullableDecimal = null;
+}";
+}
