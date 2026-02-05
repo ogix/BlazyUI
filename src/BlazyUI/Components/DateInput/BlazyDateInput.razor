@@ -1,0 +1,148 @@
+@namespace BlazyUI
+@using System.Diagnostics.CodeAnalysis
+@using System.Globalization
+@typeparam TValue
+@inherits BlazyInputBase<TValue>
+
+<input type="@_typeAttributeValue"
+       id="@GetFieldId()"
+       name="@GetFieldName()"
+       class="@ComputedCssClass"
+       value="@CurrentValueAsString"
+       disabled="@Disabled"
+       @onchange="OnChange"
+       @attributes="AdditionalAttributes" />
+
+@code {
+    private const string DateFormat = "yyyy-MM-dd";
+    private const string DateTimeLocalFormat = "yyyy-MM-ddTHH:mm:ss";
+    private const string MonthFormat = "yyyy-MM";
+    private const string TimeFormat = "HH:mm:ss";
+
+    private string _typeAttributeValue = "date";
+    private string _format = DateFormat;
+    private string _parsingErrorMessage = "The {0} field must be a date.";
+
+    /// <summary>
+    /// The type of date input to render.
+    /// </summary>
+    [Parameter]
+    public BlazyDateInputType Type { get; set; } = BlazyDateInputType.Date;
+
+    /// <summary>
+    /// The size of the input.
+    /// </summary>
+    [Parameter]
+    public BlazyDateInputSize Size { get; set; } = BlazyDateInputSize.Medium;
+
+    /// <summary>
+    /// The color of the input.
+    /// </summary>
+    [Parameter]
+    public BlazyDateInputColor Color { get; set; } = BlazyDateInputColor.Default;
+
+    /// <summary>
+    /// Applies ghost styling (no background).
+    /// </summary>
+    [Parameter]
+    public bool Ghost { get; set; }
+
+    /// <summary>
+    /// Gets or sets the error message used when displaying a parsing error.
+    /// </summary>
+    [Parameter]
+    public string ParsingErrorMessage { get; set; } = string.Empty;
+
+    /// <inheritdoc />
+    protected override string GetErrorColorClass() => "input-error";
+
+    /// <inheritdoc />
+    protected override void OnParametersSet()
+    {
+        var type = Nullable.GetUnderlyingType(typeof(TValue)) ?? typeof(TValue);
+
+        if (type != typeof(DateTime) &&
+            type != typeof(DateTimeOffset) &&
+            type != typeof(DateOnly) &&
+            type != typeof(TimeOnly))
+        {
+            throw new InvalidOperationException($"Unsupported type parameter '{type}'. Supported types are DateTime, DateTimeOffset, DateOnly, and TimeOnly.");
+        }
+
+        (_typeAttributeValue, _format, var formatDescription) = Type switch
+        {
+            BlazyDateInputType.Date => ("date", DateFormat, "date"),
+            BlazyDateInputType.DateTimeLocal => ("datetime-local", DateTimeLocalFormat, "date and time"),
+            BlazyDateInputType.Month => ("month", MonthFormat, "year and month"),
+            BlazyDateInputType.Time => ("time", TimeFormat, "time"),
+            _ => throw new ArgumentOutOfRangeException(nameof(Type), Type, null)
+        };
+
+        _parsingErrorMessage = string.IsNullOrEmpty(ParsingErrorMessage)
+            ? $"The {{0}} field must be a {formatDescription}."
+            : ParsingErrorMessage;
+    }
+
+    /// <inheritdoc />
+    protected override string? FormatValueAsString(TValue? value)
+        => value switch
+        {
+            DateTime dateTimeValue => BindConverter.FormatValue(dateTimeValue, _format, CultureInfo.InvariantCulture),
+            DateTimeOffset dateTimeOffsetValue => BindConverter.FormatValue(dateTimeOffsetValue, _format, CultureInfo.InvariantCulture),
+            DateOnly dateOnlyValue => BindConverter.FormatValue(dateOnlyValue, _format, CultureInfo.InvariantCulture),
+            TimeOnly timeOnlyValue => BindConverter.FormatValue(timeOnlyValue, _format, CultureInfo.InvariantCulture),
+            _ => string.Empty
+        };
+
+    /// <inheritdoc />
+    protected override bool TryParseValueFromString(
+        string? value,
+        [MaybeNullWhen(false)] out TValue result,
+        [NotNullWhen(false)] out string? validationErrorMessage)
+    {
+        if (BindConverter.TryConvertTo(value, CultureInfo.InvariantCulture, out result))
+        {
+            validationErrorMessage = null;
+            return true;
+        }
+        else
+        {
+            validationErrorMessage = string.Format(CultureInfo.InvariantCulture, _parsingErrorMessage, FieldIdentifier.FieldName);
+            return false;
+        }
+    }
+
+    private string ComputedCssClass => MergeClasses(
+        "input",
+        SizeClass,
+        ColorClass,
+        Ghost ? "input-ghost" : null
+    );
+
+    private void OnChange(ChangeEventArgs e)
+        => CurrentValueAsString = e.Value?.ToString();
+
+    private string SizeClass => Size switch
+    {
+        BlazyDateInputSize.ExtraSmall => "input-xs",
+        BlazyDateInputSize.Small => "input-sm",
+        BlazyDateInputSize.Medium => "input-md",
+        BlazyDateInputSize.Large => "input-lg",
+        BlazyDateInputSize.ExtraLarge => "input-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? ColorClass => Color switch
+    {
+        BlazyDateInputColor.Default => null,
+        BlazyDateInputColor.Neutral => "input-neutral",
+        BlazyDateInputColor.Primary => "input-primary",
+        BlazyDateInputColor.Secondary => "input-secondary",
+        BlazyDateInputColor.Accent => "input-accent",
+        BlazyDateInputColor.Info => "input-info",
+        BlazyDateInputColor.Success => "input-success",
+        BlazyDateInputColor.Warning => "input-warning",
+        BlazyDateInputColor.Error => "input-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+}

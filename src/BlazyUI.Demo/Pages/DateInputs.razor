@@ -1,0 +1,251 @@
+@page "/dateinputs"
+
+<PageTitle>DateInput - BlazyUI</PageTitle>
+
+<h1 class="text-3xl font-bold mb-8">DateInput</h1>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Basic Date</h2>
+    <CodeExample Code="@basicDateCode">
+        <BlazyDateInput TValue="DateOnly?" @bind-Value="basicDate" />
+        <p class="mt-2 text-sm opacity-70">Value: @(basicDate?.ToString("yyyy-MM-dd") ?? "null")</p>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Input Types</h2>
+    <CodeExample Code="@typesCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <div>
+                <label class="label"><span class="label-text">Date (DateOnly)</span></label>
+                <BlazyDateInput TValue="DateOnly?" Type="BlazyDateInputType.Date" @bind-Value="dateValue" />
+                <p class="text-xs opacity-70 mt-1">Value: @(dateValue?.ToString("yyyy-MM-dd") ?? "null")</p>
+            </div>
+            <div>
+                <label class="label"><span class="label-text">DateTime Local (DateTime)</span></label>
+                <BlazyDateInput TValue="DateTime?" Type="BlazyDateInputType.DateTimeLocal" @bind-Value="dateTimeValue" />
+                <p class="text-xs opacity-70 mt-1">Value: @(dateTimeValue?.ToString("yyyy-MM-dd HH:mm:ss") ?? "null")</p>
+            </div>
+            <div>
+                <label class="label"><span class="label-text">Month (DateOnly)</span></label>
+                <BlazyDateInput TValue="DateOnly?" Type="BlazyDateInputType.Month" @bind-Value="monthValue" />
+                <p class="text-xs opacity-70 mt-1">Value: @(monthValue?.ToString("yyyy-MM") ?? "null")</p>
+            </div>
+            <div>
+                <label class="label"><span class="label-text">Time (TimeOnly)</span></label>
+                <BlazyDateInput TValue="TimeOnly?" Type="BlazyDateInputType.Time" @bind-Value="timeValue" />
+                <p class="text-xs opacity-70 mt-1">Value: @(timeValue?.ToString("HH:mm:ss") ?? "null")</p>
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Supported Types</h2>
+    <CodeExample Code="@supportedTypesCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <div>
+                <label class="label"><span class="label-text">DateOnly (non-nullable)</span></label>
+                <BlazyDateInput TValue="DateOnly" @bind-Value="dateOnlyNonNull" />
+                <p class="text-xs opacity-70 mt-1">Value: @dateOnlyNonNull.ToString("yyyy-MM-dd")</p>
+            </div>
+            <div>
+                <label class="label"><span class="label-text">DateTime (non-nullable)</span></label>
+                <BlazyDateInput TValue="DateTime" Type="BlazyDateInputType.DateTimeLocal" @bind-Value="dateTimeNonNull" />
+                <p class="text-xs opacity-70 mt-1">Value: @dateTimeNonNull.ToString("yyyy-MM-dd HH:mm:ss")</p>
+            </div>
+            <div>
+                <label class="label"><span class="label-text">DateTimeOffset (nullable)</span></label>
+                <BlazyDateInput TValue="DateTimeOffset?" Type="BlazyDateInputType.DateTimeLocal" @bind-Value="dateTimeOffsetValue" />
+                <p class="text-xs opacity-70 mt-1">Value: @(dateTimeOffsetValue?.ToString("yyyy-MM-dd HH:mm:ss zzz") ?? "null")</p>
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <CodeExample Code="@sizesCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <BlazyDateInput TValue="DateOnly?" Size="BlazyDateInputSize.ExtraSmall" @bind-Value="sizeValue" />
+            <BlazyDateInput TValue="DateOnly?" Size="BlazyDateInputSize.Small" @bind-Value="sizeValue" />
+            <BlazyDateInput TValue="DateOnly?" Size="BlazyDateInputSize.Medium" @bind-Value="sizeValue" />
+            <BlazyDateInput TValue="DateOnly?" Size="BlazyDateInputSize.Large" @bind-Value="sizeValue" />
+            <BlazyDateInput TValue="DateOnly?" Size="BlazyDateInputSize.ExtraLarge" @bind-Value="sizeValue" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <BlazyDateInput TValue="DateOnly?" Color="BlazyDateInputColor.Default" @bind-Value="colorValue" />
+            <BlazyDateInput TValue="DateOnly?" Color="BlazyDateInputColor.Neutral" @bind-Value="colorValue" />
+            <BlazyDateInput TValue="DateOnly?" Color="BlazyDateInputColor.Primary" @bind-Value="colorValue" />
+            <BlazyDateInput TValue="DateOnly?" Color="BlazyDateInputColor.Secondary" @bind-Value="colorValue" />
+            <BlazyDateInput TValue="DateOnly?" Color="BlazyDateInputColor.Accent" @bind-Value="colorValue" />
+            <BlazyDateInput TValue="DateOnly?" Color="BlazyDateInputColor.Info" @bind-Value="colorValue" />
+            <BlazyDateInput TValue="DateOnly?" Color="BlazyDateInputColor.Success" @bind-Value="colorValue" />
+            <BlazyDateInput TValue="DateOnly?" Color="BlazyDateInputColor.Warning" @bind-Value="colorValue" />
+            <BlazyDateInput TValue="DateOnly?" Color="BlazyDateInputColor.Error" @bind-Value="colorValue" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Ghost Style</h2>
+    <CodeExample Code="@ghostCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <BlazyDateInput TValue="DateOnly?" Ghost @bind-Value="ghostValue" />
+            <BlazyDateInput TValue="DateOnly?" Ghost Color="BlazyDateInputColor.Primary" @bind-Value="ghostValue" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Validation</h2>
+    <CodeExample Code="@validationCode">
+        <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-xs">
+            <DataAnnotationsValidator />
+
+            <div class="form-control mb-4">
+                <label class="label"><span class="label-text">Birth Date</span></label>
+                <BlazyDateInput TValue="DateOnly?" @bind-Value="formModel.BirthDate" />
+                <ValidationMessage For="@(() => formModel.BirthDate)" class="text-error text-sm mt-1" />
+            </div>
+
+            <div class="form-control mb-4">
+                <label class="label"><span class="label-text">Appointment Date & Time</span></label>
+                <BlazyDateInput TValue="DateTime?" Type="BlazyDateInputType.DateTimeLocal" @bind-Value="formModel.AppointmentDateTime" />
+                <ValidationMessage For="@(() => formModel.AppointmentDateTime)" class="text-error text-sm mt-1" />
+            </div>
+
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Submit</BlazyButton>
+        </EditForm>
+        @if (formSubmitted)
+        {
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">Form submitted successfully!</BlazyAlert>
+        }
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Disabled State</h2>
+    <CodeExample Code="@disabledCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <BlazyDateInput TValue="DateOnly?" Disabled="true" Value="@(new DateOnly(2024, 1, 15))" />
+            <BlazyDateInput TValue="DateOnly?" @bind-Value="disabledValue" Disabled="true" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Min/Max Constraints</h2>
+    <CodeExample Code="@constraintsCode">
+        <div class="flex flex-col gap-4 max-w-xs">
+            <div>
+                <label class="label"><span class="label-text">Select a date (Jan 2024 - Dec 2024)</span></label>
+                <BlazyDateInput TValue="DateOnly?" @bind-Value="constrainedValue" min="2024-01-01" max="2024-12-31" />
+                <p class="text-xs opacity-70 mt-1">Value: @(constrainedValue?.ToString("yyyy-MM-dd") ?? "null")</p>
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private DateOnly? basicDate;
+    private DateOnly? dateValue;
+    private DateTime? dateTimeValue;
+    private DateOnly? monthValue;
+    private TimeOnly? timeValue;
+    private DateOnly dateOnlyNonNull = DateOnly.FromDateTime(DateTime.Today);
+    private DateTime dateTimeNonNull = DateTime.Now;
+    private DateTimeOffset? dateTimeOffsetValue;
+    private DateOnly? sizeValue;
+    private DateOnly? colorValue;
+    private DateOnly? ghostValue;
+    private DateOnly? disabledValue = new DateOnly(2024, 6, 15);
+    private DateOnly? constrainedValue;
+    private bool formSubmitted = false;
+
+    private FormModel formModel = new();
+
+    private void HandleValidSubmit()
+    {
+        formSubmitted = true;
+    }
+
+    private class FormModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Birth date is required")]
+        public DateOnly? BirthDate { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Appointment date & time is required")]
+        public DateTime? AppointmentDateTime { get; set; }
+    }
+
+    private string basicDateCode = @"<BlazyDateInput TValue=""DateOnly?"" @bind-Value=""dateValue"" />";
+
+    private string typesCode = @"@* Date input (DateOnly) *@
+<BlazyDateInput TValue=""DateOnly?"" Type=""BlazyDateInputType.Date"" @bind-Value=""dateValue"" />
+
+@* DateTime local input (DateTime) *@
+<BlazyDateInput TValue=""DateTime?"" Type=""BlazyDateInputType.DateTimeLocal"" @bind-Value=""dateTimeValue"" />
+
+@* Month input (DateOnly) *@
+<BlazyDateInput TValue=""DateOnly?"" Type=""BlazyDateInputType.Month"" @bind-Value=""monthValue"" />
+
+@* Time input (TimeOnly) *@
+<BlazyDateInput TValue=""TimeOnly?"" Type=""BlazyDateInputType.Time"" @bind-Value=""timeValue"" />";
+
+    private string supportedTypesCode = @"@* DateOnly (non-nullable) *@
+<BlazyDateInput TValue=""DateOnly"" @bind-Value=""dateOnlyValue"" />
+
+@* DateTime (non-nullable) *@
+<BlazyDateInput TValue=""DateTime"" Type=""BlazyDateInputType.DateTimeLocal"" @bind-Value=""dateTimeValue"" />
+
+@* DateTimeOffset (nullable) *@
+<BlazyDateInput TValue=""DateTimeOffset?"" Type=""BlazyDateInputType.DateTimeLocal"" @bind-Value=""dateTimeOffsetValue"" />";
+
+    private string sizesCode = @"<BlazyDateInput TValue=""DateOnly?"" Size=""BlazyDateInputSize.ExtraSmall"" />
+<BlazyDateInput TValue=""DateOnly?"" Size=""BlazyDateInputSize.Small"" />
+<BlazyDateInput TValue=""DateOnly?"" Size=""BlazyDateInputSize.Medium"" />
+<BlazyDateInput TValue=""DateOnly?"" Size=""BlazyDateInputSize.Large"" />
+<BlazyDateInput TValue=""DateOnly?"" Size=""BlazyDateInputSize.ExtraLarge"" />";
+
+    private string colorsCode = @"<BlazyDateInput TValue=""DateOnly?"" Color=""BlazyDateInputColor.Default"" />
+<BlazyDateInput TValue=""DateOnly?"" Color=""BlazyDateInputColor.Primary"" />
+<BlazyDateInput TValue=""DateOnly?"" Color=""BlazyDateInputColor.Secondary"" />
+<BlazyDateInput TValue=""DateOnly?"" Color=""BlazyDateInputColor.Accent"" />
+<BlazyDateInput TValue=""DateOnly?"" Color=""BlazyDateInputColor.Info"" />
+<BlazyDateInput TValue=""DateOnly?"" Color=""BlazyDateInputColor.Success"" />
+<BlazyDateInput TValue=""DateOnly?"" Color=""BlazyDateInputColor.Warning"" />
+<BlazyDateInput TValue=""DateOnly?"" Color=""BlazyDateInputColor.Error"" />";
+
+    private string ghostCode = @"<BlazyDateInput TValue=""DateOnly?"" Ghost />
+<BlazyDateInput TValue=""DateOnly?"" Ghost Color=""BlazyDateInputColor.Primary"" />";
+
+    private string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
+    <DataAnnotationsValidator />
+    <div class=""form-control mb-4"">
+        <label class=""label""><span class=""label-text"">Birth Date</span></label>
+        <BlazyDateInput TValue=""DateOnly?"" @bind-Value=""formModel.BirthDate"" />
+        <ValidationMessage For=""@(() => formModel.BirthDate)"" />
+    </div>
+    <div class=""form-control mb-4"">
+        <label class=""label""><span class=""label-text"">Appointment Date & Time</span></label>
+        <BlazyDateInput TValue=""DateTime?"" Type=""BlazyDateInputType.DateTimeLocal"" @bind-Value=""formModel.AppointmentDateTime"" />
+        <ValidationMessage For=""@(() => formModel.AppointmentDateTime)"" />
+    </div>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"" Block>Submit</BlazyButton>
+</EditForm>";
+
+    private string disabledCode = @"@* Standalone disabled *@
+<BlazyDateInput TValue=""DateOnly?"" Disabled=""true"" Value=""@(new DateOnly(2024, 1, 15))"" />
+
+@* Disabled with binding *@
+<BlazyDateInput TValue=""DateOnly?"" @bind-Value=""value"" Disabled=""true"" />";
+
+    private string constraintsCode = @"<BlazyDateInput TValue=""DateOnly?"" @bind-Value=""value"" min=""2024-01-01"" max=""2024-12-31"" />";
+}
