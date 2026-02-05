@@ -80,6 +80,14 @@ New components should have a design document in `docs/plans/YYYY-MM-DD-<componen
 
 Never commit changes unless explicitly asked by the user.
 
+## Releases
+
+**NEVER make releases (NuGet publish, GitHub releases, version bumps) without explicitly asking the user first.** Always confirm before:
+- Bumping version numbers
+- Publishing to NuGet
+- Creating GitHub releases
+- Pushing release tags
+
 ## Testing
 
 Always stop the demo app process after testing is complete.
