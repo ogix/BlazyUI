@@ -151,13 +151,30 @@
     </CodeExample>
 </section>
 
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Enum Binding</h2>
+    <CodeExample Code="@enumCode">
+        <BlazySelect TValue="Priority" @bind-Value="selectedPriority" class="w-full max-w-xs">
+            <option value="" disabled>Select priority</option>
+            <option value="@Priority.Low">Low</option>
+            <option value="@Priority.Medium">Medium</option>
+            <option value="@Priority.High">High</option>
+            <option value="@Priority.Critical">Critical</option>
+        </BlazySelect>
+        <p class="mt-2 text-sm opacity-70">Selected: @selectedPriority</p>
+    </CodeExample>
+</section>
+
 @code {
     private string basicValue = "";
     private string sizeValue = "";
     private string colorValue = "";
     private string ghostValue = "";
     private string attrValue = "";
+    private Priority selectedPriority = Priority.Medium;
     private bool formSubmitted = false;
+
+    private enum Priority { Low, Medium, High, Critical }
 
     private FormModel formModel = new();
 
@@ -214,4 +231,17 @@
     <option value="""" disabled selected>Disabled</option>
     <option value=""1"">Option 1</option>
 </BlazySelect>";
+
+    private string enumCode = @"<BlazySelect TValue=""Priority"" @bind-Value=""selectedPriority"">
+    <option value="""" disabled>Select priority</option>
+    <option value=""@Priority.Low"">Low</option>
+    <option value=""@Priority.Medium"">Medium</option>
+    <option value=""@Priority.High"">High</option>
+    <option value=""@Priority.Critical"">Critical</option>
+</BlazySelect>
+
+@code {
+    private Priority selectedPriority = Priority.Medium;
+    private enum Priority { Low, Medium, High, Critical }
+}";
 }

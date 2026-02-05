@@ -1,10 +1,13 @@
 @namespace BlazyUI
-@inherits BlazyInputBase<string>
+@using System.Diagnostics.CodeAnalysis
+@using System.Globalization
+@typeparam TValue
+@inherits BlazyInputBase<TValue>
 
 <select id="@GetFieldId()"
         name="@GetFieldName()"
         class="@ComputedCssClass"
-        value="@CurrentValue"
+        value="@CurrentValueAsString"
         disabled="@Disabled"
         @onchange="OnChange"
         @attributes="AdditionalAttributes">
@@ -36,18 +39,75 @@
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
+    /// <summary>
+    /// Gets or sets the error message used when displaying a parsing error.
+    /// </summary>
+    [Parameter]
+    public string ParsingErrorMessage { get; set; } = "The {0} field could not be parsed.";
+
     /// <inheritdoc />
     protected override string GetErrorColorClass() => "select-error";
 
     /// <inheritdoc />
     protected override bool TryParseValueFromString(
         string? value,
-        [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out string? result,
-        [System.Diagnostics.CodeAnalysis.NotNullWhen(false)] out string? validationErrorMessage)
+        [MaybeNullWhen(false)] out TValue result,
+        [NotNullWhen(false)] out string? validationErrorMessage)
     {
-        result = value ?? string.Empty;
-        validationErrorMessage = null;
-        return true;
+        // Special case for bool/bool? since BindConverter reserves bool for conditional attributes
+        if (typeof(TValue) == typeof(bool))
+        {
+            if (bool.TryParse(value, out var boolResult))
+            {
+                result = (TValue)(object)boolResult;
+                validationErrorMessage = null;
+                return true;
+            }
+            result = default!;
+            validationErrorMessage = string.Format(CultureInfo.InvariantCulture, ParsingErrorMessage, FieldIdentifier.FieldName);
+            return false;
+        }
+
+        if (typeof(TValue) == typeof(bool?))
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                result = default!;
+                validationErrorMessage = null;
+                return true;
+            }
+            if (bool.TryParse(value, out var boolResult))
+            {
+                result = (TValue)(object)boolResult;
+                validationErrorMessage = null;
+                return true;
+            }
+            result = default!;
+            validationErrorMessage = string.Format(CultureInfo.InvariantCulture, ParsingErrorMessage, FieldIdentifier.FieldName);
+            return false;
+        }
+
+        // Use BindConverter for all other types (string, enum, int, etc.)
+        if (BindConverter.TryConvertTo<TValue>(value, CultureInfo.InvariantCulture, out result))
+        {
+            validationErrorMessage = null;
+            return true;
+        }
+
+        validationErrorMessage = string.Format(CultureInfo.InvariantCulture, ParsingErrorMessage, FieldIdentifier.FieldName);
+        return false;
+    }
+
+    /// <inheritdoc />
+    protected override string? FormatValueAsString(TValue? value)
+    {
+        // Special case for bool to ensure lowercase HTML-compatible values
+        if (value is bool boolValue)
+        {
+            return boolValue ? "true" : "false";
+        }
+
+        return value?.ToString();
     }
 
     private string ComputedCssClass => MergeClasses(
@@ -58,7 +118,7 @@
     );
 
     private void OnChange(ChangeEventArgs e)
-        => CurrentValue = e.Value?.ToString();
+        => CurrentValueAsString = e.Value?.ToString();
 
     private string SizeClass => Size switch
     {
