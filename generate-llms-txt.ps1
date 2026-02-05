@@ -30,6 +30,7 @@ $ComponentDescriptions = @{
     "Button"         = "Interactive buttons with colors, sizes, and states"
     "Card"           = "Container with header, body, and action sections"
     "Checkbox"       = "Boolean input for forms with validation support"
+    "DateInput"      = "Date/time input supporting DateTime, DateOnly, TimeOnly types"
     "Collapse"       = "Single collapsible panel for show/hide content"
     "Divider"        = "Visual separator between content sections"
     "Drawer"         = "Off-canvas sidebar navigation panel"
@@ -65,7 +66,7 @@ $ComponentDescriptions = @{
 # Component categories for organization
 $ComponentCategories = @{
     "Layout" = @("Card", "Accordion", "Collapse", "Divider", "Drawer", "Join", "NavBar", "Tabs", "Timeline")
-    "Form Inputs" = @("TextInput", "Textarea", "Select", "Checkbox", "Radio", "Toggle", "Range", "Rating", "FileInput", "Fieldset", "FormField", "Label", "FieldValidator")
+    "Form Inputs" = @("TextInput", "Textarea", "Select", "Checkbox", "Radio", "Toggle", "Range", "Rating", "FileInput", "DateInput", "Fieldset", "FormField", "Label", "FieldValidator")
     "Visual/Feedback" = @("Alert", "Badge", "Button", "Loading", "Progress", "Skeleton", "Stat", "Status", "Tooltip", "Kbd", "Indicator")
     "Dialogs/Overlays" = @("Modal", "Toast")
     "Navigation" = @("Menu")
