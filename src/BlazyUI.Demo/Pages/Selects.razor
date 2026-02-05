@@ -165,6 +165,20 @@
     </CodeExample>
 </section>
 
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Using BlazySelectOption</h2>
+    <CodeExample Code="@selectOptionCode">
+        <BlazySelect TValue="Priority" @bind-Value="optionPriority" class="w-full max-w-xs">
+            <BlazySelectOption TValue="Priority" Disabled>Select priority</BlazySelectOption>
+            <BlazySelectOption Value="Priority.Low">Low</BlazySelectOption>
+            <BlazySelectOption Value="Priority.Medium">Medium</BlazySelectOption>
+            <BlazySelectOption Value="Priority.High">High</BlazySelectOption>
+            <BlazySelectOption Value="Priority.Critical">Critical</BlazySelectOption>
+        </BlazySelect>
+        <p class="mt-2 text-sm opacity-70">Selected: @optionPriority</p>
+    </CodeExample>
+</section>
+
 @code {
     private string basicValue = "";
     private string sizeValue = "";
@@ -172,6 +186,7 @@
     private string ghostValue = "";
     private string attrValue = "";
     private Priority selectedPriority = Priority.Medium;
+    private Priority optionPriority = Priority.Medium;
     private bool formSubmitted = false;
 
     private enum Priority { Low, Medium, High, Critical }
@@ -244,4 +259,12 @@
     private Priority selectedPriority = Priority.Medium;
     private enum Priority { Low, Medium, High, Critical }
 }";
+
+    private string selectOptionCode = @"<BlazySelect TValue=""Priority"" @bind-Value=""selectedPriority"">
+    <BlazySelectOption TValue=""Priority"" Disabled>Select priority</BlazySelectOption>
+    <BlazySelectOption Value=""Priority.Low"">Low</BlazySelectOption>
+    <BlazySelectOption Value=""Priority.Medium"">Medium</BlazySelectOption>
+    <BlazySelectOption Value=""Priority.High"">High</BlazySelectOption>
+    <BlazySelectOption Value=""Priority.Critical"">Critical</BlazySelectOption>
+</BlazySelect>";
 }

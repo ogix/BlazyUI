@@ -1,0 +1,46 @@
+@namespace BlazyUI
+@typeparam TValue
+
+<option value="@ValueAsString"
+        disabled="@Disabled"
+        @attributes="AdditionalAttributes">@ChildContent</option>
+
+@code {
+    /// <summary>
+    /// The value of the option.
+    /// </summary>
+    [Parameter]
+    public TValue? Value { get; set; }
+
+    /// <summary>
+    /// Whether the option is disabled.
+    /// </summary>
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    /// <summary>
+    /// The content to display for the option.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    /// <summary>
+    /// Gets or sets a collection of additional attributes that will be applied to the element.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string? ValueAsString
+    {
+        get
+        {
+            // Special case for bool to ensure lowercase HTML-compatible values
+            if (Value is bool boolValue)
+            {
+                return boolValue ? "true" : "false";
+            }
+
+            return Value?.ToString();
+        }
+    }
+}
