@@ -9,55 +9,91 @@
        name="@GetFieldName()"
        class="@ComputedCssClass"
        value="@CurrentValueAsString"
-       min="@FormatNumber(Min)"
-       max="@FormatNumber(Max)"
-       step="@(Step is not null ? FormatNumber(Step) : _stepAttributeValue)"
+       min="@(IsDefaultMin ? null : FormatNumber(Min))"
+       max="@(IsDefaultMax ? null : FormatNumber(Max))"
+       step="@FormatNumber(Step)"
        placeholder="@Placeholder"
        disabled="@Disabled"
        @onchange="OnChange"
        @attributes="AdditionalAttributes" />
 
 @code {
-    private static readonly string _stepAttributeValue = GetStepAttributeValue();
+    private static readonly T _defaultMin = GetTypeMinValue();
+    private static readonly T _defaultMax = GetTypeMaxValue();
 
-    private static string GetStepAttributeValue()
+    private static T GetTypeMinValue()
     {
-        // Unwrap Nullable<T>, because InputBase already deals with the Nullable aspect
-        // of it for us. We will only get asked to parse the T for nonempty inputs.
         var targetType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
-        if (targetType == typeof(int) ||
-            targetType == typeof(long) ||
-            targetType == typeof(short) ||
-            targetType == typeof(float) ||
-            targetType == typeof(double) ||
-            targetType == typeof(decimal) ||
-            targetType == typeof(byte))
+        object value = targetType switch
         {
-            return "any";
-        }
-        else
+            Type t when t == typeof(int) => int.MinValue,
+            Type t when t == typeof(long) => long.MinValue,
+            Type t when t == typeof(short) => short.MinValue,
+            Type t when t == typeof(float) => float.MinValue,
+            Type t when t == typeof(double) => double.MinValue,
+            Type t when t == typeof(decimal) => decimal.MinValue,
+            Type t when t == typeof(byte) => byte.MinValue,
+            _ => throw new InvalidOperationException($"The type '{targetType}' is not a supported numeric type.")
+        };
+        return (T)value;
+    }
+
+    private static T GetTypeMaxValue()
+    {
+        var targetType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
+        object value = targetType switch
         {
-            throw new InvalidOperationException($"The type '{targetType}' is not a supported numeric type.");
-        }
+            Type t when t == typeof(int) => int.MaxValue,
+            Type t when t == typeof(long) => long.MaxValue,
+            Type t when t == typeof(short) => short.MaxValue,
+            Type t when t == typeof(float) => float.MaxValue,
+            Type t when t == typeof(double) => double.MaxValue,
+            Type t when t == typeof(decimal) => decimal.MaxValue,
+            Type t when t == typeof(byte) => byte.MaxValue,
+            _ => throw new InvalidOperationException($"The type '{targetType}' is not a supported numeric type.")
+        };
+        return (T)value;
     }
 
     /// <summary>
-    /// The minimum allowed value. Set to null (default) for no minimum constraint.
+    /// The minimum allowed value. Defaults to the minimum value of the numeric type (e.g., int.MinValue).
     /// </summary>
     [Parameter]
-    public object? Min { get; set; }
+    public T Min { get; set; } = _defaultMin;
 
     /// <summary>
-    /// The maximum allowed value. Set to null (default) for no maximum constraint.
+    /// The maximum allowed value. Defaults to the maximum value of the numeric type (e.g., int.MaxValue).
     /// </summary>
     [Parameter]
-    public object? Max { get; set; }
+    public T Max { get; set; } = _defaultMax;
 
     /// <summary>
-    /// The step increment for the input. Set to null (default) to allow any value.
+    /// The step increment for the input. Defaults to 1.
     /// </summary>
     [Parameter]
-    public object? Step { get; set; }
+    public T Step { get; set; } = _defaultStep;
+
+    private static readonly T _defaultStep = GetDefaultStep();
+
+    private static T GetDefaultStep()
+    {
+        var targetType = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
+        object value = targetType switch
+        {
+            Type t when t == typeof(int) => 1,
+            Type t when t == typeof(long) => 1L,
+            Type t when t == typeof(short) => (short)1,
+            Type t when t == typeof(float) => 1f,
+            Type t when t == typeof(double) => 1d,
+            Type t when t == typeof(decimal) => 1m,
+            Type t when t == typeof(byte) => (byte)1,
+            _ => throw new InvalidOperationException($"The type '{targetType}' is not a supported numeric type.")
+        };
+        return (T)value;
+    }
+
+    private bool IsDefaultMin => EqualityComparer<T>.Default.Equals(Min, _defaultMin);
+    private bool IsDefaultMax => EqualityComparer<T>.Default.Equals(Max, _defaultMax);
 
     /// <summary>
     /// Placeholder text displayed when the input is empty.
@@ -144,7 +180,7 @@
         CurrentValueAsString = e.Value?.ToString();
     }
 
-    private string? FormatNumber(object? value)
+    private string? FormatNumber(T value)
     {
         // Use the same formatting logic as FormatValueAsString for consistency
         return value switch
@@ -157,7 +193,7 @@
             double @double => BindConverter.FormatValue(@double, CultureInfo.InvariantCulture),
             decimal @decimal => BindConverter.FormatValue(@decimal, CultureInfo.InvariantCulture),
             byte @byte => @byte.ToString(CultureInfo.InvariantCulture),
-            _ => string.Format(CultureInfo.InvariantCulture, "{0}", value)
+            _ => throw new InvalidOperationException($"Unsupported type {typeof(T)}")
         };
     }
 
