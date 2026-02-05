@@ -158,7 +158,7 @@ function Get-ComponentUrl {
     #>
     param([string]$ComponentName)
 
-    return "$RepoUrl/$ComponentsPath/$ComponentName/$ComponentName.razor"
+    return "$RepoUrl/$ComponentsPath/$ComponentName/Blazy$ComponentName.razor"
 }
 
 function Build-LlmsTxt {
@@ -206,7 +206,7 @@ function Build-LlmsTxt {
             foreach ($component in ($categorized[$category] | Sort-Object)) {
                 $url = Get-ComponentUrl -ComponentName $component
                 $description = Get-ComponentDescription -ComponentName $component
-                $content += "- [$component]($url): $description`n"
+                $content += "- [Blazy$component]($url): $description`n"
             }
         }
     }

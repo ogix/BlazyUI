@@ -22,64 +22,64 @@
 
 ## Components - Layout
 
-- [Accordion](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Accordion/Accordion.razor): Collapsible content sections with expandable panels
-- [Card](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Card/Card.razor): Container with header, body, and action sections
-- [Collapse](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Collapse/Collapse.razor): Single collapsible panel for show/hide content
-- [Divider](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Divider/Divider.razor): Visual separator between content sections
-- [Drawer](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Drawer/Drawer.razor): Off-canvas sidebar navigation panel
-- [Join](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Join/Join.razor): Group elements together with connected styling
-- [NavBar](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/NavBar/NavBar.razor): Top navigation bar with responsive layout
-- [Tabs](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Tabs/Tabs.razor): Tabbed content panels with multiple styles
-- [Timeline](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Timeline/Timeline.razor): Chronological event display
+- [BlazyAccordion](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Accordion/BlazyAccordion.razor): Collapsible content sections with expandable panels
+- [BlazyCard](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Card/BlazyCard.razor): Container with header, body, and action sections
+- [BlazyCollapse](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Collapse/BlazyCollapse.razor): Single collapsible panel for show/hide content
+- [BlazyDivider](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Divider/BlazyDivider.razor): Visual separator between content sections
+- [BlazyDrawer](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Drawer/BlazyDrawer.razor): Off-canvas sidebar navigation panel
+- [BlazyJoin](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Join/BlazyJoin.razor): Group elements together with connected styling
+- [BlazyNavBar](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/NavBar/BlazyNavBar.razor): Top navigation bar with responsive layout
+- [BlazyTabs](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Tabs/BlazyTabs.razor): Tabbed content panels with multiple styles
+- [BlazyTimeline](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Timeline/BlazyTimeline.razor): Chronological event display
 
 
 ## Components - Form Inputs
 
-- [Checkbox](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Checkbox/Checkbox.razor): Boolean input for forms with validation support
-- [DateInput](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/DateInput/DateInput.razor): Date/time input supporting DateTime, DateOnly, TimeOnly types
-- [Fieldset](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Fieldset/Fieldset.razor): Form field grouping with legend support
-- [FieldValidator](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/FieldValidator/FieldValidator.razor): Validation message display for form fields
-- [FileInput](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/FileInput/FileInput.razor): File upload input with drag-and-drop
-- [FormField](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/FormField/FormField.razor): Complete form field with label, input, and validation
-- [Label](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Label/Label.razor): Form field labels with required indicator
-- [Radio](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Radio/Radio.razor): Single selection from radio button options
-- [Range](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Range/Range.razor): Slider input for numeric range selection
-- [Rating](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Rating/Rating.razor): Star rating input component
-- [Select](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Select/Select.razor): Dropdown selection with validation support
-- [Textarea](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Textarea/Textarea.razor): Multi-line text input with validation
-- [TextInput](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/TextInput/TextInput.razor): Text, email, password inputs with validation
-- [Toggle](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Toggle/Toggle.razor): Switch/toggle input for boolean values
+- [BlazyCheckbox](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Checkbox/BlazyCheckbox.razor): Boolean input for forms with validation support
+- [BlazyDateInput](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/DateInput/BlazyDateInput.razor): Date/time input supporting DateTime, DateOnly, TimeOnly types
+- [BlazyFieldset](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Fieldset/BlazyFieldset.razor): Form field grouping with legend support
+- [BlazyFieldValidator](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/FieldValidator/BlazyFieldValidator.razor): Validation message display for form fields
+- [BlazyFileInput](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/FileInput/BlazyFileInput.razor): File upload input with drag-and-drop
+- [BlazyFormField](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/FormField/BlazyFormField.razor): Complete form field with label, input, and validation
+- [BlazyLabel](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Label/BlazyLabel.razor): Form field labels with required indicator
+- [BlazyRadio](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Radio/BlazyRadio.razor): Single selection from radio button options
+- [BlazyRange](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Range/BlazyRange.razor): Slider input for numeric range selection
+- [BlazyRating](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Rating/BlazyRating.razor): Star rating input component
+- [BlazySelect](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Select/BlazySelect.razor): Dropdown selection with validation support
+- [BlazyTextarea](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Textarea/BlazyTextarea.razor): Multi-line text input with validation
+- [BlazyTextInput](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/TextInput/BlazyTextInput.razor): Text, email, password inputs with validation
+- [BlazyToggle](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Toggle/BlazyToggle.razor): Switch/toggle input for boolean values
 
 
 ## Components - Visual/Feedback
 
-- [Alert](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Alert/Alert.razor): Contextual feedback messages with color variants
-- [Badge](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Badge/Badge.razor): Small status indicators and labels
-- [Button](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Button/Button.razor): Interactive buttons with colors, sizes, and states
-- [Indicator](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Indicator/Indicator.razor): Notification badge overlay for elements
-- [Kbd](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Kbd/Kbd.razor): Keyboard key styling for shortcuts
-- [Loading](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Loading/Loading.razor): Loading spinners and skeleton animations
-- [Progress](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Progress/Progress.razor): Progress bars with value indication
-- [Skeleton](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Skeleton/Skeleton.razor): Loading placeholder animations
-- [Stat](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Stat/Stat.razor): Statistical displays with title and value
-- [Status](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Status/Status.razor): Status dot indicators
-- [Tooltip](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Tooltip/Tooltip.razor): Hover information tooltips
+- [BlazyAlert](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Alert/BlazyAlert.razor): Contextual feedback messages with color variants
+- [BlazyBadge](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Badge/BlazyBadge.razor): Small status indicators and labels
+- [BlazyButton](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Button/BlazyButton.razor): Interactive buttons with colors, sizes, and states
+- [BlazyIndicator](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Indicator/BlazyIndicator.razor): Notification badge overlay for elements
+- [BlazyKbd](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Kbd/BlazyKbd.razor): Keyboard key styling for shortcuts
+- [BlazyLoading](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Loading/BlazyLoading.razor): Loading spinners and skeleton animations
+- [BlazyProgress](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Progress/BlazyProgress.razor): Progress bars with value indication
+- [BlazySkeleton](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Skeleton/BlazySkeleton.razor): Loading placeholder animations
+- [BlazyStat](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Stat/BlazyStat.razor): Statistical displays with title and value
+- [BlazyStatus](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Status/BlazyStatus.razor): Status dot indicators
+- [BlazyTooltip](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Tooltip/BlazyTooltip.razor): Hover information tooltips
 
 
 ## Components - Dialogs/Overlays
 
-- [Modal](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Modal/Modal.razor): Dialog windows via IModalService
-- [Toast](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Toast/Toast.razor): Toast notifications via IToastService
+- [BlazyModal](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Modal/BlazyModal.razor): Dialog windows via IModalService
+- [BlazyToast](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Toast/BlazyToast.razor): Toast notifications via IToastService
 
 
 ## Components - Navigation
 
-- [Menu](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Menu/Menu.razor): Vertical menu with items and nested dropdowns
+- [BlazyMenu](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Menu/BlazyMenu.razor): Vertical menu with items and nested dropdowns
 
 
 ## Components - Other
 
-- [NumberInput](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/NumberInput/NumberInput.razor): UI component
+- [BlazyNumberInput](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/NumberInput/BlazyNumberInput.razor): UI component
 
 ## Optional
 
