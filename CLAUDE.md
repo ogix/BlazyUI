@@ -82,7 +82,9 @@ Never commit changes unless explicitly asked by the user.
 
 ## Releases
 
-**NEVER make releases (NuGet publish, GitHub releases, version bumps) without explicitly asking the user first.** Always confirm before:
+**After every commit, ask the user if they want to create a new GitHub release and publish a new NuGet version.**
+
+**NEVER make releases without explicit user confirmation.** Always confirm before:
 - Bumping version numbers
 - Publishing to NuGet
 - Creating GitHub releases
