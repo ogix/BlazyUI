@@ -42,6 +42,7 @@
 - [BlazyFileInput](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/FileInput/BlazyFileInput.razor): File upload input with drag-and-drop
 - [BlazyFormField](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/FormField/BlazyFormField.razor): Complete form field with label, input, and validation
 - [BlazyLabel](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Label/BlazyLabel.razor): Form field labels with required indicator
+- [BlazyNumberInput](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/NumberInput/BlazyNumberInput.razor): Numeric input with validation support
 - [BlazyRadio](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Radio/BlazyRadio.razor): Single selection from radio button options
 - [BlazyRange](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Range/BlazyRange.razor): Slider input for numeric range selection
 - [BlazyRating](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Rating/BlazyRating.razor): Star rating input component
@@ -75,11 +76,7 @@
 ## Components - Navigation
 
 - [BlazyMenu](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Menu/BlazyMenu.razor): Vertical menu with items and nested dropdowns
-
-
-## Components - Other
-
-- [BlazyNumberInput](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/NumberInput/BlazyNumberInput.razor): UI component
+- [BlazySteps](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Steps/BlazySteps.razor): Step-by-step navigation with color and direction support
 
 ## Optional
 

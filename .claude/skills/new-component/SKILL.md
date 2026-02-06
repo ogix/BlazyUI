@@ -243,7 +243,26 @@ Create at: `src/BlazyUI.Demo/Pages/{ComponentName}s.razor`
 
 ### 6. Add Navigation Link
 
-Add the component to the sidebar navigation in `src/BlazyUI.Demo/Layout/MainLayout.razor`.
+Add the component to the sidebar navigation in `src/BlazyUI.Demo/Layout/NavMenu.razor`.
+
+### 7. Register in llms.txt Generator
+
+Update `generate-llms-txt.ps1` with the new component:
+
+1. Add a description entry to `$ComponentDescriptions`:
+   ```powershell
+   "{ComponentName}" = "Brief description of the component"
+   ```
+
+2. Add the component name to the appropriate category in `$ComponentCategories`:
+   ```powershell
+   # Categories: "Layout", "Form Inputs", "Visual/Feedback", "Dialogs/Overlays", "Navigation"
+   ```
+
+3. Run the script to regenerate `llms.txt`:
+   ```bash
+   pwsh ./generate-llms-txt.ps1
+   ```
 
 ## Reference Files
 
@@ -264,5 +283,8 @@ After scaffolding, verify:
 - [ ] Switch expressions throw `ArgumentOutOfRangeException` for unhandled values
 - [ ] Demo page has `@page` directive with correct route
 - [ ] Demo page uses `CodeExample` component for all examples
-- [ ] Navigation link added to MainLayout
+- [ ] Navigation link added to NavMenu
+- [ ] Component added to `$ComponentDescriptions` in `generate-llms-txt.ps1`
+- [ ] Component added to appropriate `$ComponentCategories` in `generate-llms-txt.ps1`
+- [ ] `pwsh ./generate-llms-txt.ps1` run to regenerate llms.txt
 - [ ] `dotnet build` succeeds

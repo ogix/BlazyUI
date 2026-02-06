@@ -43,6 +43,7 @@ $ComponentDescriptions = @{
     "Kbd"            = "Keyboard key styling for shortcuts"
     "Label"          = "Form field labels with required indicator"
     "Loading"        = "Loading spinners and skeleton animations"
+    "NumberInput"    = "Numeric input with validation support"
     "Menu"           = "Vertical menu with items and nested dropdowns"
     "Modal"          = "Dialog windows via IModalService"
     "NavBar"         = "Top navigation bar with responsive layout"
@@ -54,6 +55,7 @@ $ComponentDescriptions = @{
     "Skeleton"       = "Loading placeholder animations"
     "Stat"           = "Statistical displays with title and value"
     "Status"         = "Status dot indicators"
+    "Steps"          = "Step-by-step navigation with color and direction support"
     "Tabs"           = "Tabbed content panels with multiple styles"
     "Textarea"       = "Multi-line text input with validation"
     "TextInput"      = "Text, email, password inputs with validation"
@@ -66,10 +68,10 @@ $ComponentDescriptions = @{
 # Component categories for organization
 $ComponentCategories = @{
     "Layout" = @("Card", "Accordion", "Collapse", "Divider", "Drawer", "Join", "NavBar", "Tabs", "Timeline")
-    "Form Inputs" = @("TextInput", "Textarea", "Select", "Checkbox", "Radio", "Toggle", "Range", "Rating", "FileInput", "DateInput", "Fieldset", "FormField", "Label", "FieldValidator")
+    "Form Inputs" = @("TextInput", "Textarea", "Select", "Checkbox", "Radio", "Toggle", "Range", "Rating", "FileInput", "DateInput", "NumberInput", "Fieldset", "FormField", "Label", "FieldValidator")
     "Visual/Feedback" = @("Alert", "Badge", "Button", "Loading", "Progress", "Skeleton", "Stat", "Status", "Tooltip", "Kbd", "Indicator")
     "Dialogs/Overlays" = @("Modal", "Toast")
-    "Navigation" = @("Menu")
+    "Navigation" = @("Menu", "Steps")
 }
 
 # Folders to exclude from component discovery
