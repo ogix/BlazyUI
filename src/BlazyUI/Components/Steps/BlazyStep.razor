@@ -1,0 +1,58 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<li class="@CssClass"
+    data-content="@DataContent"
+    @attributes="AdditionalAttributes">
+    @if (Icon != null)
+    {
+        <span class="step-icon">@Icon</span>
+    }
+    @ChildContent
+</li>
+
+@code {
+    /// <summary>
+    /// The color variant of the step.
+    /// </summary>
+    [Parameter]
+    public BlazyStepColor Color { get; set; } = BlazyStepColor.Default;
+
+    /// <summary>
+    /// Custom content for the step marker (displayed via data-content attribute).
+    /// For example: "✓", "✕", "●", numbers, etc.
+    /// </summary>
+    [Parameter]
+    public string? DataContent { get; set; }
+
+    /// <summary>
+    /// Custom icon content rendered inside a step-icon span.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? Icon { get; set; }
+
+    /// <summary>
+    /// The content to display inside the step.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "step",
+        ColorClass
+    );
+
+    private string? ColorClass => Color switch
+    {
+        BlazyStepColor.Default => null,
+        BlazyStepColor.Neutral => "step-neutral",
+        BlazyStepColor.Primary => "step-primary",
+        BlazyStepColor.Secondary => "step-secondary",
+        BlazyStepColor.Accent => "step-accent",
+        BlazyStepColor.Info => "step-info",
+        BlazyStepColor.Success => "step-success",
+        BlazyStepColor.Warning => "step-warning",
+        BlazyStepColor.Error => "step-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+}

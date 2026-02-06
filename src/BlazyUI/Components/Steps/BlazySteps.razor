@@ -1,0 +1,32 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<ul class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</ul>
+
+@code {
+    /// <summary>
+    /// The direction of the steps layout.
+    /// </summary>
+    [Parameter]
+    public BlazyStepsDirection Direction { get; set; } = BlazyStepsDirection.Vertical;
+
+    /// <summary>
+    /// The content to display inside the steps container (BlazyStep components).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "steps",
+        DirectionClass
+    );
+
+    private string? DirectionClass => Direction switch
+    {
+        BlazyStepsDirection.Vertical => "steps-vertical",
+        BlazyStepsDirection.Horizontal => "steps-horizontal",
+        _ => throw new ArgumentOutOfRangeException(nameof(Direction), Direction, null)
+    };
+}

@@ -1,0 +1,163 @@
+@page "/steps"
+
+<PageTitle>Steps</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Steps Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <BlazySteps Direction="BlazyStepsDirection.Horizontal">
+            <BlazyStep Color="BlazyStepColor.Primary">Register</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Primary">Choose plan</BlazyStep>
+            <BlazyStep>Purchase</BlazyStep>
+            <BlazyStep>Receive Product</BlazyStep>
+        </BlazySteps>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <BlazySteps Direction="BlazyStepsDirection.Horizontal">
+            <BlazyStep Color="BlazyStepColor.Neutral">Neutral</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Primary">Primary</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Secondary">Secondary</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Accent">Accent</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Info">Info</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Success">Success</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Warning">Warning</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Error">Error</BlazyStep>
+        </BlazySteps>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Vertical</h2>
+    <CodeExample Code="@verticalCode">
+        <BlazySteps Direction="BlazyStepsDirection.Vertical">
+            <BlazyStep Color="BlazyStepColor.Primary">Register</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Primary">Choose plan</BlazyStep>
+            <BlazyStep>Purchase</BlazyStep>
+            <BlazyStep>Receive Product</BlazyStep>
+        </BlazySteps>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With data-content</h2>
+    <CodeExample Code="@dataContentCode">
+        <BlazySteps Direction="BlazyStepsDirection.Horizontal">
+            <BlazyStep Color="BlazyStepColor.Neutral" DataContent="?">Step 1</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Neutral" DataContent="!">Step 2</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Neutral" DataContent="✓">Step 3</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Neutral" DataContent="✕">Step 4</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Neutral" DataContent="★">Step 5</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Neutral" DataContent="">Step 6</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Neutral" DataContent="●">Step 7</BlazyStep>
+        </BlazySteps>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With custom icon</h2>
+    <CodeExample Code="@iconCode">
+        <BlazySteps Direction="BlazyStepsDirection.Horizontal">
+            <BlazyStep Color="BlazyStepColor.Primary">
+                <Icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </Icon>
+                <ChildContent>Register</ChildContent>
+            </BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Primary">
+                <Icon>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </Icon>
+                <ChildContent>Choose plan</ChildContent>
+            </BlazyStep>
+            <BlazyStep>Purchase</BlazyStep>
+            <BlazyStep>Receive Product</BlazyStep>
+        </BlazySteps>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Mixed Colors (Progress)</h2>
+    <CodeExample Code="@progressCode">
+        <BlazySteps Direction="BlazyStepsDirection.Horizontal">
+            <BlazyStep Color="BlazyStepColor.Success">Ordered</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Success">Shipped</BlazyStep>
+            <BlazyStep Color="BlazyStepColor.Warning">In Transit</BlazyStep>
+            <BlazyStep>Delivered</BlazyStep>
+        </BlazySteps>
+    </CodeExample>
+</section>
+
+@code {
+    private string basicCode = @"<BlazySteps Direction=""BlazyStepsDirection.Horizontal"">
+    <BlazyStep Color=""BlazyStepColor.Primary"">Register</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Primary"">Choose plan</BlazyStep>
+    <BlazyStep>Purchase</BlazyStep>
+    <BlazyStep>Receive Product</BlazyStep>
+</BlazySteps>";
+
+    private string colorsCode = @"<BlazySteps Direction=""BlazyStepsDirection.Horizontal"">
+    <BlazyStep Color=""BlazyStepColor.Neutral"">Neutral</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Primary"">Primary</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Secondary"">Secondary</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Accent"">Accent</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Info"">Info</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Success"">Success</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Warning"">Warning</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Error"">Error</BlazyStep>
+</BlazySteps>";
+
+    private string verticalCode = @"<BlazySteps Direction=""BlazyStepsDirection.Vertical"">
+    <BlazyStep Color=""BlazyStepColor.Primary"">Register</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Primary"">Choose plan</BlazyStep>
+    <BlazyStep>Purchase</BlazyStep>
+    <BlazyStep>Receive Product</BlazyStep>
+</BlazySteps>";
+
+    private string dataContentCode = @"<BlazySteps Direction=""BlazyStepsDirection.Horizontal"">
+    <BlazyStep Color=""BlazyStepColor.Neutral"" DataContent=""?"">Step 1</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Neutral"" DataContent=""!"">Step 2</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Neutral"" DataContent=""✓"">Step 3</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Neutral"" DataContent=""✕"">Step 4</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Neutral"" DataContent=""★"">Step 5</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Neutral"" DataContent="""">Step 6</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Neutral"" DataContent=""●"">Step 7</BlazyStep>
+</BlazySteps>";
+
+    private string iconCode = @"<BlazySteps Direction=""BlazyStepsDirection.Horizontal"">
+    <BlazyStep Color=""BlazyStepColor.Primary"">
+        <Icon>
+            <svg xmlns=""http://www.w3.org/2000/svg"" class=""h-5 w-5"" fill=""none"" viewBox=""0 0 24 24"" stroke=""currentColor"">
+                <path stroke-linecap=""round"" stroke-linejoin=""round"" stroke-width=""2"" d=""M5 13l4 4L19 7"" />
+            </svg>
+        </Icon>
+        <ChildContent>Register</ChildContent>
+    </BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Primary"">
+        <Icon>
+            <svg xmlns=""http://www.w3.org/2000/svg"" class=""h-5 w-5"" fill=""none"" viewBox=""0 0 24 24"" stroke=""currentColor"">
+                <path stroke-linecap=""round"" stroke-linejoin=""round"" stroke-width=""2"" d=""M5 13l4 4L19 7"" />
+            </svg>
+        </Icon>
+        <ChildContent>Choose plan</ChildContent>
+    </BlazyStep>
+    <BlazyStep>Purchase</BlazyStep>
+    <BlazyStep>Receive Product</BlazyStep>
+</BlazySteps>";
+
+    private string progressCode = @"<BlazySteps Direction=""BlazyStepsDirection.Horizontal"">
+    <BlazyStep Color=""BlazyStepColor.Success"">Ordered</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Success"">Shipped</BlazyStep>
+    <BlazyStep Color=""BlazyStepColor.Warning"">In Transit</BlazyStep>
+    <BlazyStep>Delivered</BlazyStep>
+</BlazySteps>";
+}
