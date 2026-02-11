@@ -10,6 +10,7 @@
 @code {
     private BlazyTabsContext _context = default!;
     private string _groupName = default!;
+    private readonly HashSet<string> _activatedTabs = new();
 
     /// <summary>
     /// The style variant of the tabs.
@@ -48,6 +49,12 @@
     public EventCallback<string?> ActiveTabChanged { get; set; }
 
     /// <summary>
+    /// Controls how tab content is rendered. Lazy and LazyOnce modes require ActiveTab binding.
+    /// </summary>
+    [Parameter]
+    public BlazyTabLoadMode LoadMode { get; set; } = BlazyTabLoadMode.Eager;
+
+    /// <summary>
     /// The content of the tabs (typically TabItem components).
     /// </summary>
     [Parameter]
@@ -60,7 +67,12 @@
 
     protected override void OnParametersSet()
     {
-        _context = new BlazyTabsContext(_groupName, ActiveTab, OnTabSelected);
+        if (ActiveTab != null)
+        {
+            _activatedTabs.Add(ActiveTab);
+        }
+
+        _context = new BlazyTabsContext(_groupName, ActiveTab, OnTabSelected, LoadMode, _activatedTabs);
     }
 
     private void OnTabSelected(string? tabId)

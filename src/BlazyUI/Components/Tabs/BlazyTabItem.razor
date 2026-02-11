@@ -10,7 +10,7 @@
        disabled="@Disabled"
        @onchange="OnChange"
        @attributes="AdditionalAttributes" />
-@if (ChildContent != null)
+@if (ChildContent != null && ShouldRenderContent)
 {
     <div role="tabpanel" class="@ContentCssClass">
         @ChildContent
@@ -82,6 +82,13 @@
         // Radio change event only fires when selected, so we can directly notify
         Context?.OnTabSelected?.Invoke(EffectiveId);
     }
+
+    private bool ShouldRenderContent => Context?.LoadMode switch
+    {
+        BlazyTabLoadMode.Lazy => IsChecked,
+        BlazyTabLoadMode.LazyOnce => IsChecked || (Context?.ActivatedTabs.Contains(EffectiveId) ?? false),
+        _ => true
+    };
 
     private string TabCssClass => MergeClasses(
         "tab",

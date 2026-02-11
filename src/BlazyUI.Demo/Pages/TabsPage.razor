@@ -211,9 +211,77 @@
     </CodeExample>
 </section>
 
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Lazy Loading</h2>
+    <p class="text-sm text-base-content/70 mb-4">
+        With <code>LoadMode="BlazyTabLoadMode.Lazy"</code>, only the active tab's content is rendered.
+        Switching away destroys the content. Try typing in an input, switch tabs, then come back — your text will be gone.
+    </p>
+    <CodeExample Code="@lazyCode">
+        <div class="space-y-4">
+            <BlazyTabs @bind-ActiveTab="lazyTab" LoadMode="BlazyTabLoadMode.Lazy" Variant="BlazyTabVariant.Box">
+                <BlazyTabItem Id="lazy1" Label="Tab 1">
+                    <div class="p-4">
+                        <p class="mb-2">Type something, switch tabs, then come back:</p>
+                        <input type="text" class="input input-bordered w-full max-w-xs" placeholder="Type here..." />
+                    </div>
+                </BlazyTabItem>
+                <BlazyTabItem Id="lazy2" Label="Tab 2">
+                    <div class="p-4">
+                        <p class="mb-2">Type something, switch tabs, then come back:</p>
+                        <input type="text" class="input input-bordered w-full max-w-xs" placeholder="Type here..." />
+                    </div>
+                </BlazyTabItem>
+                <BlazyTabItem Id="lazy3" Label="Tab 3">
+                    <div class="p-4">
+                        <p class="mb-2">Type something, switch tabs, then come back:</p>
+                        <input type="text" class="input input-bordered w-full max-w-xs" placeholder="Type here..." />
+                    </div>
+                </BlazyTabItem>
+            </BlazyTabs>
+            <p class="text-sm text-base-content/70">Active tab: <strong>@(lazyTab ?? "none")</strong></p>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Lazy Once Loading</h2>
+    <p class="text-sm text-base-content/70 mb-4">
+        With <code>LoadMode="BlazyTabLoadMode.LazyOnce"</code>, each tab is rendered on first activation
+        and kept in the DOM afterward. Try typing in an input, switch tabs, then come back — your text is preserved.
+    </p>
+    <CodeExample Code="@lazyOnceCode">
+        <div class="space-y-4">
+            <BlazyTabs @bind-ActiveTab="lazyOnceTab" LoadMode="BlazyTabLoadMode.LazyOnce" Variant="BlazyTabVariant.Box">
+                <BlazyTabItem Id="once1" Label="Tab 1">
+                    <div class="p-4">
+                        <p class="mb-2">Type something, switch tabs, then come back:</p>
+                        <input type="text" class="input input-bordered w-full max-w-xs" placeholder="Type here..." />
+                    </div>
+                </BlazyTabItem>
+                <BlazyTabItem Id="once2" Label="Tab 2">
+                    <div class="p-4">
+                        <p class="mb-2">Type something, switch tabs, then come back:</p>
+                        <input type="text" class="input input-bordered w-full max-w-xs" placeholder="Type here..." />
+                    </div>
+                </BlazyTabItem>
+                <BlazyTabItem Id="once3" Label="Tab 3">
+                    <div class="p-4">
+                        <p class="mb-2">Type something, switch tabs, then come back:</p>
+                        <input type="text" class="input input-bordered w-full max-w-xs" placeholder="Type here..." />
+                    </div>
+                </BlazyTabItem>
+            </BlazyTabs>
+            <p class="text-sm text-base-content/70">Active tab: <strong>@(lazyOnceTab ?? "none")</strong></p>
+        </div>
+    </CodeExample>
+</section>
+
 @code {
     private string? activeTab = "home";
     private string? controlledTab = "tab1";
+    private string? lazyTab = "lazy1";
+    private string? lazyOnceTab = "once1";
 
     private string basicCode = @"<BlazyTabs>
     <BlazyTabItem Label=""Tab 1"" DefaultActive>
@@ -361,5 +429,43 @@
 
 @code {
     private string? controlledTab = ""tab1"";
+}";
+
+    private string lazyCode = @"<BlazyTabs @bind-ActiveTab=""lazyTab"" LoadMode=""BlazyTabLoadMode.Lazy"" Variant=""BlazyTabVariant.Box"">
+    <BlazyTabItem Id=""lazy1"" Label=""Tab 1"">
+        <div class=""p-4"">
+            <p class=""mb-2"">Type something, switch tabs, then come back:</p>
+            <input type=""text"" class=""input input-bordered w-full max-w-xs"" placeholder=""Type here..."" />
+        </div>
+    </BlazyTabItem>
+    <BlazyTabItem Id=""lazy2"" Label=""Tab 2"">
+        <div class=""p-4"">
+            <p class=""mb-2"">Type something, switch tabs, then come back:</p>
+            <input type=""text"" class=""input input-bordered w-full max-w-xs"" placeholder=""Type here..."" />
+        </div>
+    </BlazyTabItem>
+</BlazyTabs>
+
+@code {
+    private string? lazyTab = ""lazy1"";
+}";
+
+    private string lazyOnceCode = @"<BlazyTabs @bind-ActiveTab=""lazyOnceTab"" LoadMode=""BlazyTabLoadMode.LazyOnce"" Variant=""BlazyTabVariant.Box"">
+    <BlazyTabItem Id=""once1"" Label=""Tab 1"">
+        <div class=""p-4"">
+            <p class=""mb-2"">Type something, switch tabs, then come back:</p>
+            <input type=""text"" class=""input input-bordered w-full max-w-xs"" placeholder=""Type here..."" />
+        </div>
+    </BlazyTabItem>
+    <BlazyTabItem Id=""once2"" Label=""Tab 2"">
+        <div class=""p-4"">
+            <p class=""mb-2"">Type something, switch tabs, then come back:</p>
+            <input type=""text"" class=""input input-bordered w-full max-w-xs"" placeholder=""Type here..."" />
+        </div>
+    </BlazyTabItem>
+</BlazyTabs>
+
+@code {
+    private string? lazyOnceTab = ""once1"";
 }";
 }
