@@ -116,14 +116,16 @@
     <p class="mb-4 text-sm text-base-content/70">FormField also works with Checkbox and Toggle components.</p>
     <CodeExample Code="@checkboxCode">
         <div class="max-w-sm flex flex-col gap-4">
-            <BlazyFormField Label="Notifications" For="@(() => emailNotifications)">
-                <div class="flex items-center gap-2">
-                    <BlazyCheckbox @bind-Value="emailNotifications" Color="BlazyCheckboxColor.Primary" />
-                    <span>Email notifications</span>
-                </div>
+            <BlazyFormField Label="Email notifications"
+                       For="@(() => emailNotifications)"
+                       Orientation="BlazyFormFieldOrientation.Horizontal">
+                <BlazyCheckbox @bind-Value="emailNotifications" Color="BlazyCheckboxColor.Primary" />
             </BlazyFormField>
 
-            <BlazyFormField Label="Dark Mode" For="@(() => darkMode)" HelperText="Enable dark mode for the interface">
+            <BlazyFormField Label="Dark Mode"
+                       For="@(() => darkMode)"
+                       Orientation="BlazyFormFieldOrientation.Horizontal"
+                       HelperText="Enable dark mode for the interface">
                 <BlazyToggle @bind-Value="darkMode" Color="BlazyToggleColor.Primary" />
             </BlazyFormField>
         </div>
@@ -326,14 +328,16 @@
     </BlazySelect>
 </BlazyFormField>";
 
-    private string checkboxCode = @"<BlazyFormField Label=""Notifications"" For=""@(() => notifications)"">
-    <div class=""flex items-center gap-2"">
-        <BlazyCheckbox @bind-Value=""notifications"" Color=""BlazyCheckboxColor.Primary"" />
-        <span>Email notifications</span>
-    </div>
+    private string checkboxCode = @"<BlazyFormField Label=""Email notifications""
+           For=""@(() => notifications)""
+           Orientation=""BlazyFormFieldOrientation.Horizontal"">
+    <BlazyCheckbox @bind-Value=""notifications"" Color=""BlazyCheckboxColor.Primary"" />
 </BlazyFormField>
 
-<BlazyFormField Label=""Dark Mode"" For=""@(() => darkMode)"" HelperText=""Enable dark mode for the interface"">
+<BlazyFormField Label=""Dark Mode""
+           For=""@(() => darkMode)""
+           Orientation=""BlazyFormFieldOrientation.Horizontal""
+           HelperText=""Enable dark mode for the interface"">
     <BlazyToggle @bind-Value=""darkMode"" Color=""BlazyToggleColor.Primary"" />
 </BlazyFormField>";
 
