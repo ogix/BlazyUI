@@ -9,7 +9,11 @@
     {
         <div class="flex items-center gap-2">
             @ChildContent
-            @if (!string.IsNullOrEmpty(Label))
+            @if (LabelContent is not null)
+            {
+                <BlazyLabel TValue="TValue" For="@For" Class="@LabelCssClass">@LabelContent</BlazyLabel>
+            }
+            else if (!string.IsNullOrEmpty(Label))
             {
                 <BlazyLabel TValue="TValue" For="@For" Text="@LabelDisplayText" Class="@LabelCssClass" />
             }
@@ -22,7 +26,11 @@
     }
     else
     {
-        @if (!string.IsNullOrEmpty(Label))
+        @if (LabelContent is not null)
+        {
+            <BlazyLabel TValue="TValue" For="@For" Class="@LabelCssClass">@LabelContent</BlazyLabel>
+        }
+        else if (!string.IsNullOrEmpty(Label))
         {
             <BlazyLabel TValue="TValue" For="@For" Text="@LabelDisplayText" Class="@LabelCssClass" />
         }
@@ -47,6 +55,12 @@
     /// </summary>
     [Parameter]
     public string? Label { get; set; }
+
+    /// <summary>
+    /// Custom content for the label. When provided, takes precedence over the Label text parameter.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? LabelContent { get; set; }
 
     /// <summary>
     /// Expression for the field being validated. Used for both the label's for attribute and ValidationMessage.
