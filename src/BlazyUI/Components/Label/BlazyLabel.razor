@@ -4,7 +4,7 @@
 @using System.Linq.Expressions
 @using BlazyUI.Components
 
-@if (Variant == BlazyLabelVariant.Standalone)
+@if (Variant is BlazyLabelVariant.Standalone or BlazyLabelVariant.Inline)
 {
     <label class="@ComputedCssClass" for="@FieldId" @attributes="AdditionalAttributes">
         @if (ChildContent is not null)
@@ -131,6 +131,7 @@ else
         BlazyLabelVariant.Input => MergeClasses("input"),
         BlazyLabelVariant.Select => MergeClasses("select"),
         BlazyLabelVariant.Floating => MergeClasses("floating-label"),
+        BlazyLabelVariant.Inline => MergeClasses(),
         _ => throw new ArgumentOutOfRangeException(nameof(Variant), Variant, null)
     };
 

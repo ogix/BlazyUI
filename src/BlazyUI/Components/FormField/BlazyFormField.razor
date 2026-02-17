@@ -11,11 +11,11 @@
             @ChildContent
             @if (LabelContent is not null)
             {
-                <BlazyLabel TValue="TValue" For="@For" Class="@LabelCssClass">@LabelContent</BlazyLabel>
+                <BlazyLabel TValue="TValue" For="@For" Variant="BlazyLabelVariant.Inline" Class="@LabelCssClass">@LabelContent</BlazyLabel>
             }
             else if (!string.IsNullOrEmpty(Label))
             {
-                <BlazyLabel TValue="TValue" For="@For" Text="@LabelDisplayText" Class="@LabelCssClass" />
+                <BlazyLabel TValue="TValue" For="@For" Variant="BlazyLabelVariant.Inline" Text="@LabelDisplayText" Class="@LabelCssClass" />
             }
         </div>
         <BlazyFieldValidator TValue="TValue" For="@For" Hint="@Hint" Mode="@ValidationMode" HideHintWhenValid="@HideHintWhenValid" HintClass="@HintClass">

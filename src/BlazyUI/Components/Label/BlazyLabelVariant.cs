@@ -23,5 +23,11 @@ public enum BlazyLabelVariant
     /// <summary>
     /// Wraps content with a floating label effect.
     /// </summary>
-    Floating
+    Floating,
+
+    /// <summary>
+    /// Renders as a plain label element without any DaisyUI structural class.
+    /// Use when the label is an inline child within an external flex/grid layout.
+    /// </summary>
+    Inline
 }
