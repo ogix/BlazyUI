@@ -1,0 +1,135 @@
+@namespace BlazyUI
+@inherits BlazyInputBase<IReadOnlyList<TValue>>
+@typeparam TValue
+
+<div class="@ContainerClass" @attributes="AdditionalAttributes">
+    @{ var index = 0; }
+    @foreach (var item in Items ?? Enumerable.Empty<TValue>())
+    {
+        var capturedItem = item;
+        var capturedIndex = index++;
+        var isChecked = CurrentValue?.Contains(capturedItem) ?? false;
+        var itemId = $"{GetFieldId()}-{capturedIndex}";
+        <label @key="capturedItem" class="label cursor-pointer gap-2 justify-start" for="@itemId">
+            <input type="checkbox"
+                   id="@itemId"
+                   name="@GetFieldName()"
+                   class="@CheckboxCssClass"
+                   checked="@isChecked"
+                   disabled="@Disabled"
+                   @onchange="e => OnCheckboxChange(capturedItem, e)" />
+            <span class="label-text">@GetText(capturedItem)</span>
+        </label>
+    }
+</div>
+
+@code {
+    /// <summary>
+    /// The collection of items to display as checkboxes.
+    /// </summary>
+    [Parameter]
+    public IEnumerable<TValue>? Items { get; set; }
+
+    /// <summary>
+    /// Optional function to extract display text from each item.
+    /// Defaults to calling ToString() on the item.
+    /// </summary>
+    [Parameter]
+    public Func<TValue, string>? TextSelector { get; set; }
+
+    /// <summary>
+    /// The size of the checkboxes in the group.
+    /// </summary>
+    [Parameter]
+    public BlazyCheckboxSize Size { get; set; } = BlazyCheckboxSize.Medium;
+
+    /// <summary>
+    /// The color of the checkboxes in the group.
+    /// </summary>
+    [Parameter]
+    public BlazyCheckboxColor Color { get; set; } = BlazyCheckboxColor.Default;
+
+    /// <summary>
+    /// The layout direction of the checkbox group.
+    /// </summary>
+    [Parameter]
+    public BlazyCheckboxGroupLayout Layout { get; set; } = BlazyCheckboxGroupLayout.Vertical;
+
+    protected override string GetErrorColorClass() => "checkbox-error";
+
+    protected override bool TryParseValueFromString(
+        string? value,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(true)] out IReadOnlyList<TValue> result,
+        [System.Diagnostics.CodeAnalysis.NotNullWhen(false)] out string? validationErrorMessage)
+        => throw new NotSupportedException(
+            $"This component does not parse string inputs. Bind to the '{nameof(CurrentValue)}' property, not '{nameof(CurrentValueAsString)}'.");
+
+    private string GetText(TValue item)
+        => TextSelector?.Invoke(item) ?? item?.ToString() ?? string.Empty;
+
+    private void OnCheckboxChange(TValue item, ChangeEventArgs e)
+    {
+        var isChecked = (bool)(e.Value ?? false);
+        var list = CurrentValue?.ToList() ?? new List<TValue>();
+
+        if (isChecked && !list.Contains(item))
+            list.Add(item);
+        else if (!isChecked)
+            list.Remove(item);
+
+        CurrentValue = list.AsReadOnly();
+    }
+
+    private string ContainerClass
+    {
+        get
+        {
+            var layoutClass = Layout switch
+            {
+                BlazyCheckboxGroupLayout.Vertical => "flex flex-col gap-2",
+                BlazyCheckboxGroupLayout.Horizontal => "flex flex-row flex-wrap gap-x-4",
+                _ => throw new ArgumentOutOfRangeException(nameof(Layout), Layout, null)
+            };
+
+            var allClasses = new[] { layoutClass, ShouldShowValidatorClass ? "validator" : null, Class }
+                .Where(c => !string.IsNullOrWhiteSpace(c))
+                .ToArray();
+            return TwMerge.Merge(allClasses) ?? string.Empty;
+        }
+    }
+
+    private string CheckboxCssClass
+    {
+        get
+        {
+            var allClasses = new[] { "checkbox", SizeClass, ColorClass, ValidationColorClass }
+                .Where(c => !string.IsNullOrWhiteSpace(c))
+                .ToArray();
+            return TwMerge.Merge(allClasses) ?? string.Empty;
+        }
+    }
+
+    private string SizeClass => Size switch
+    {
+        BlazyCheckboxSize.ExtraSmall => "checkbox-xs",
+        BlazyCheckboxSize.Small => "checkbox-sm",
+        BlazyCheckboxSize.Medium => "checkbox-md",
+        BlazyCheckboxSize.Large => "checkbox-lg",
+        BlazyCheckboxSize.ExtraLarge => "checkbox-xl",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string? ColorClass => Color switch
+    {
+        BlazyCheckboxColor.Default => null,
+        BlazyCheckboxColor.Neutral => "checkbox-neutral",
+        BlazyCheckboxColor.Primary => "checkbox-primary",
+        BlazyCheckboxColor.Secondary => "checkbox-secondary",
+        BlazyCheckboxColor.Accent => "checkbox-accent",
+        BlazyCheckboxColor.Info => "checkbox-info",
+        BlazyCheckboxColor.Success => "checkbox-success",
+        BlazyCheckboxColor.Warning => "checkbox-warning",
+        BlazyCheckboxColor.Error => "checkbox-error",
+        _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
+    };
+}

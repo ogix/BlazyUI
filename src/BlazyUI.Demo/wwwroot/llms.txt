@@ -36,6 +36,7 @@
 ## Components - Form Inputs
 
 - [BlazyCheckbox](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Checkbox/BlazyCheckbox.razor): Boolean input for forms with validation support
+- [BlazyCheckboxGroup](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/CheckboxGroup/BlazyCheckboxGroup.razor): Multi-selection checkbox group with items, layout, and validation
 - [BlazyDateInput](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/DateInput/BlazyDateInput.razor): Date/time input supporting DateTime, DateOnly, TimeOnly types
 - [BlazyFieldset](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Fieldset/BlazyFieldset.razor): Form field grouping with legend support
 - [BlazyFieldValidator](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/FieldValidator/BlazyFieldValidator.razor): Validation message display for form fields

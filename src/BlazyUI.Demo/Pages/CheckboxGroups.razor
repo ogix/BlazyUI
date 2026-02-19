@@ -1,0 +1,264 @@
+@page "/checkboxgroups"
+
+<PageTitle>CheckboxGroup - BlazyUI</PageTitle>
+
+<h1 class="text-3xl font-bold mb-8">CheckboxGroup</h1>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <BlazyCheckboxGroup TValue="string"
+                            Items="fruits"
+                            @bind-Value="selectedFruits" />
+        <p class="mt-2 text-sm opacity-70">Selected: @string.Join(", ", selectedFruits)</p>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With TextSelector</h2>
+    <CodeExample Code="@textSelectorCode">
+        <BlazyCheckboxGroup TValue="Country"
+                            Items="countries"
+                            TextSelector="c => c.Name"
+                            @bind-Value="selectedCountries" />
+        <p class="mt-2 text-sm opacity-70">Selected: @string.Join(", ", selectedCountries.Select(c => c.Name))</p>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Colors</h2>
+    <CodeExample Code="@colorsCode">
+        <div class="flex flex-wrap gap-8">
+            <div>
+                <p class="text-sm font-medium mb-2">Primary</p>
+                <BlazyCheckboxGroup TValue="string"
+                                    Items="@(new[] { "Option A", "Option B" })"
+                                    Color="BlazyCheckboxColor.Primary"
+                                    @bind-Value="colorPrimarySelected" />
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">Secondary</p>
+                <BlazyCheckboxGroup TValue="string"
+                                    Items="@(new[] { "Option A", "Option B" })"
+                                    Color="BlazyCheckboxColor.Secondary"
+                                    @bind-Value="colorSecondarySelected" />
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">Accent</p>
+                <BlazyCheckboxGroup TValue="string"
+                                    Items="@(new[] { "Option A", "Option B" })"
+                                    Color="BlazyCheckboxColor.Accent"
+                                    @bind-Value="colorAccentSelected" />
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">Success</p>
+                <BlazyCheckboxGroup TValue="string"
+                                    Items="@(new[] { "Option A", "Option B" })"
+                                    Color="BlazyCheckboxColor.Success"
+                                    @bind-Value="colorSuccessSelected" />
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">Warning</p>
+                <BlazyCheckboxGroup TValue="string"
+                                    Items="@(new[] { "Option A", "Option B" })"
+                                    Color="BlazyCheckboxColor.Warning"
+                                    @bind-Value="colorWarningSelected" />
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">Error</p>
+                <BlazyCheckboxGroup TValue="string"
+                                    Items="@(new[] { "Option A", "Option B" })"
+                                    Color="BlazyCheckboxColor.Error"
+                                    @bind-Value="colorErrorSelected" />
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <CodeExample Code="@sizesCode">
+        <div class="flex flex-wrap gap-8">
+            <div>
+                <p class="text-sm font-medium mb-2">Extra Small</p>
+                <BlazyCheckboxGroup TValue="string"
+                                    Items="@(new[] { "A", "B" })"
+                                    Size="BlazyCheckboxSize.ExtraSmall"
+                                    @bind-Value="sizeXsSelected" />
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">Small</p>
+                <BlazyCheckboxGroup TValue="string"
+                                    Items="@(new[] { "A", "B" })"
+                                    Size="BlazyCheckboxSize.Small"
+                                    @bind-Value="sizeSmSelected" />
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">Medium</p>
+                <BlazyCheckboxGroup TValue="string"
+                                    Items="@(new[] { "A", "B" })"
+                                    @bind-Value="sizeMdSelected" />
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">Large</p>
+                <BlazyCheckboxGroup TValue="string"
+                                    Items="@(new[] { "A", "B" })"
+                                    Size="BlazyCheckboxSize.Large"
+                                    @bind-Value="sizeLgSelected" />
+            </div>
+            <div>
+                <p class="text-sm font-medium mb-2">Extra Large</p>
+                <BlazyCheckboxGroup TValue="string"
+                                    Items="@(new[] { "A", "B" })"
+                                    Size="BlazyCheckboxSize.ExtraLarge"
+                                    @bind-Value="sizeXlSelected" />
+            </div>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Horizontal Layout</h2>
+    <CodeExample Code="@horizontalCode">
+        <BlazyCheckboxGroup TValue="string"
+                            Items="fruits"
+                            Layout="BlazyCheckboxGroupLayout.Horizontal"
+                            Color="BlazyCheckboxColor.Primary"
+                            @bind-Value="horizontalSelected" />
+        <p class="mt-2 text-sm opacity-70">Selected: @string.Join(", ", horizontalSelected)</p>
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">Disabled</h2>
+    <CodeExample Code="@disabledCode">
+        <BlazyCheckboxGroup TValue="string"
+                            Items="fruits"
+                            Disabled
+                            @bind-Value="disabledSelected" />
+    </CodeExample>
+</section>
+
+<section class="mb-12">
+    <h2 class="text-xl font-semibold mb-4">With Validation</h2>
+    <CodeExample Code="@validationCode">
+        <EditForm Model="@formModel" OnValidSubmit="@HandleValidSubmit" class="max-w-sm">
+            <DataAnnotationsValidator />
+
+            <div class="mb-4">
+                <p class="font-medium mb-2">Select at least one topping:</p>
+                <BlazyCheckboxGroup TValue="string"
+                                    Items="toppings"
+                                    Color="BlazyCheckboxColor.Primary"
+                                    @bind-Value="formModel.SelectedToppings" />
+                <ValidationMessage For="@(() => formModel.SelectedToppings)" class="text-error text-sm mt-1" />
+            </div>
+
+            <BlazyButton Type="submit" Color="BlazyButtonColor.Primary" Block>Order</BlazyButton>
+        </EditForm>
+        @if (formSubmitted)
+        {
+            <BlazyAlert Color="BlazyAlertColor.Success" class="mt-4">
+                Order placed with: @string.Join(", ", formModel.SelectedToppings)
+            </BlazyAlert>
+        }
+    </CodeExample>
+</section>
+
+@code {
+    private string[] fruits = ["Apple", "Banana", "Cherry", "Date"];
+    private string[] toppings = ["Cheese", "Pepperoni", "Mushrooms", "Olives", "Peppers"];
+
+    private record Country(string Code, string Name);
+    private Country[] countries =
+    [
+        new("US", "United States"),
+        new("UK", "United Kingdom"),
+        new("DE", "Germany"),
+        new("FR", "France")
+    ];
+
+    private IReadOnlyList<string> selectedFruits = new List<string> { "Apple" };
+    private IReadOnlyList<Country> selectedCountries = new List<Country>();
+    private IReadOnlyList<string> colorPrimarySelected = new List<string>();
+    private IReadOnlyList<string> colorSecondarySelected = new List<string>();
+    private IReadOnlyList<string> colorAccentSelected = new List<string>();
+    private IReadOnlyList<string> colorSuccessSelected = new List<string>();
+    private IReadOnlyList<string> colorWarningSelected = new List<string>();
+    private IReadOnlyList<string> colorErrorSelected = new List<string>();
+    private IReadOnlyList<string> sizeXsSelected = new List<string>();
+    private IReadOnlyList<string> sizeSmSelected = new List<string>();
+    private IReadOnlyList<string> sizeMdSelected = new List<string>();
+    private IReadOnlyList<string> sizeLgSelected = new List<string>();
+    private IReadOnlyList<string> sizeXlSelected = new List<string>();
+    private IReadOnlyList<string> horizontalSelected = new List<string> { "Apple", "Cherry" };
+    private IReadOnlyList<string> disabledSelected = new List<string> { "Apple", "Cherry" };
+
+    private bool formSubmitted = false;
+    private FormModel formModel = new();
+
+    private void HandleValidSubmit()
+    {
+        formSubmitted = true;
+    }
+
+    private class FormModel
+    {
+        [System.ComponentModel.DataAnnotations.MinLength(1, ErrorMessage = "Please select at least one topping.")]
+        public IReadOnlyList<string> SelectedToppings { get; set; } = new List<string>();
+    }
+
+    private const string basicCode = @"<BlazyCheckboxGroup TValue=""string""
+                    Items=""fruits""
+                    @bind-Value=""selectedFruits"" />";
+
+    private const string textSelectorCode = @"<BlazyCheckboxGroup TValue=""Country""
+                    Items=""countries""
+                    TextSelector=""c => c.Name""
+                    @bind-Value=""selectedCountries"" />";
+
+    private const string colorsCode = @"<BlazyCheckboxGroup TValue=""string""
+                    Items=""options""
+                    Color=""BlazyCheckboxColor.Primary""
+                    @bind-Value=""selected"" />
+
+<BlazyCheckboxGroup TValue=""string""
+                    Items=""options""
+                    Color=""BlazyCheckboxColor.Success""
+                    @bind-Value=""selected"" />";
+
+    private const string sizesCode = @"<BlazyCheckboxGroup TValue=""string"" Items=""items""
+                    Size=""BlazyCheckboxSize.ExtraSmall"" @bind-Value=""selected"" />
+<BlazyCheckboxGroup TValue=""string"" Items=""items""
+                    Size=""BlazyCheckboxSize.Small"" @bind-Value=""selected"" />
+<BlazyCheckboxGroup TValue=""string"" Items=""items""
+                    @bind-Value=""selected"" />
+<BlazyCheckboxGroup TValue=""string"" Items=""items""
+                    Size=""BlazyCheckboxSize.Large"" @bind-Value=""selected"" />
+<BlazyCheckboxGroup TValue=""string"" Items=""items""
+                    Size=""BlazyCheckboxSize.ExtraLarge"" @bind-Value=""selected"" />";
+
+    private const string horizontalCode = @"<BlazyCheckboxGroup TValue=""string""
+                    Items=""fruits""
+                    Layout=""BlazyCheckboxGroupLayout.Horizontal""
+                    Color=""BlazyCheckboxColor.Primary""
+                    @bind-Value=""selected"" />";
+
+    private const string disabledCode = @"<BlazyCheckboxGroup TValue=""string""
+                    Items=""fruits""
+                    Disabled
+                    @bind-Value=""selected"" />";
+
+    private const string validationCode = @"<EditForm Model=""@formModel"" OnValidSubmit=""@HandleValidSubmit"">
+    <DataAnnotationsValidator />
+    <div class=""mb-4"">
+        <p class=""font-medium mb-2"">Select at least one topping:</p>
+        <BlazyCheckboxGroup TValue=""string""
+                            Items=""toppings""
+                            Color=""BlazyCheckboxColor.Primary""
+                            @bind-Value=""formModel.SelectedToppings"" />
+        <ValidationMessage For=""@(() => formModel.SelectedToppings)"" />
+    </div>
+    <BlazyButton Type=""submit"" Color=""BlazyButtonColor.Primary"" Block>Order</BlazyButton>
+</EditForm>";
+}
