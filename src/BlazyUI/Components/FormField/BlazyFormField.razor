@@ -18,11 +18,7 @@
                 <BlazyLabel TValue="TValue" For="@For" Variant="BlazyLabelVariant.Inline" Text="@LabelDisplayText" Class="@LabelCssClass" />
             }
         </div>
-        <BlazyFieldValidator TValue="TValue" For="@For" Hint="@Hint" Mode="@ValidationMode" HideHintWhenValid="@HideHintWhenValid" HintClass="@HintClass">
-            <HintContent>
-                @HintContent
-            </HintContent>
-        </BlazyFieldValidator>
+        <BlazyFieldValidator TValue="TValue" For="@For" Hint="@Hint" Mode="@ValidationMode" HideHintWhenValid="@HideHintWhenValid" HintClass="@HintClass" HintContent="@HintContent" />
     }
     else
     {
@@ -34,13 +30,8 @@
         {
             <BlazyLabel TValue="TValue" For="@For" Text="@LabelDisplayText" Class="@LabelCssClass" />
         }
-        <BlazyFieldValidator TValue="TValue" For="@For" Hint="@Hint" Mode="@ValidationMode" HideHintWhenValid="@HideHintWhenValid" HintClass="@HintClass">
-            <ChildContent>
-                @ChildContent
-            </ChildContent>
-            <HintContent>
-                @HintContent
-            </HintContent>
+        <BlazyFieldValidator TValue="TValue" For="@For" Hint="@Hint" Mode="@ValidationMode" HideHintWhenValid="@HideHintWhenValid" HintClass="@HintClass" HintContent="@HintContent">
+            @ChildContent
         </BlazyFieldValidator>
     }
     @if (!string.IsNullOrEmpty(HelperText))
