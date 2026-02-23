@@ -1,9 +1,9 @@
 namespace BlazyUI;
 
 /// <summary>
-/// Style variants for the Button component.
+/// Visual variants for the Button component.
 /// </summary>
-public enum BlazyButtonStyle
+public enum BlazyButtonVariant
 {
     /// <summary>Solid fill (default).</summary>
     Default,

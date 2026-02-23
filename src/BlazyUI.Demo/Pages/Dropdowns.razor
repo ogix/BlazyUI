@@ -1,0 +1,169 @@
+@page "/dropdowns"
+
+<PageTitle>Dropdowns</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Dropdown Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <div class="flex flex-wrap gap-4">
+            <BlazyDropdown>
+                <TriggerContent>Click me</TriggerContent>
+                <ChildContent>
+                    <BlazyMenu Class="w-52 rounded-box bg-base-100 shadow-sm">
+                        <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+                        <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+                    </BlazyMenu>
+                </ChildContent>
+            </BlazyDropdown>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Button Colors</h2>
+    <CodeExample Code="@buttonColorsCode">
+        <div class="flex flex-wrap gap-4">
+            <BlazyDropdown ButtonColor="BlazyButtonColor.Primary">
+                <TriggerContent>Primary</TriggerContent>
+                <ChildContent>
+                    <BlazyMenu Class="w-52 rounded-box bg-base-100 shadow-sm">
+                        <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+                        <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+                    </BlazyMenu>
+                </ChildContent>
+            </BlazyDropdown>
+            <BlazyDropdown ButtonColor="BlazyButtonColor.Secondary">
+                <TriggerContent>Secondary</TriggerContent>
+                <ChildContent>
+                    <BlazyMenu Class="w-52 rounded-box bg-base-100 shadow-sm">
+                        <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+                        <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+                    </BlazyMenu>
+                </ChildContent>
+            </BlazyDropdown>
+            <BlazyDropdown ButtonColor="BlazyButtonColor.Accent">
+                <TriggerContent>Accent</TriggerContent>
+                <ChildContent>
+                    <BlazyMenu Class="w-52 rounded-box bg-base-100 shadow-sm">
+                        <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+                        <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+                    </BlazyMenu>
+                </ChildContent>
+            </BlazyDropdown>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Hover</h2>
+    <CodeExample Code="@hoverCode">
+        <div class="flex flex-wrap gap-4">
+            <BlazyDropdown Hover="true">
+                <TriggerContent>Hover me</TriggerContent>
+                <ChildContent>
+                    <BlazyMenu Class="w-52 rounded-box bg-base-100 shadow-sm">
+                        <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+                        <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+                    </BlazyMenu>
+                </ChildContent>
+            </BlazyDropdown>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Force Open</h2>
+    <CodeExample Code="@forceOpenCode">
+        <div class="flex flex-wrap gap-4 mb-40">
+            <BlazyDropdown Open="true">
+                <TriggerContent>Always Open</TriggerContent>
+                <ChildContent>
+                    <BlazyMenu Class="w-52 rounded-box bg-base-100 shadow-sm">
+                        <BlazyMenuItem Href="#">Item 1</BlazyMenuItem>
+                        <BlazyMenuItem Href="#">Item 2</BlazyMenuItem>
+                    </BlazyMenu>
+                </ChildContent>
+            </BlazyDropdown>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">With Card Content</h2>
+    <CodeExample Code="@cardContentCode">
+        <div class="flex flex-wrap gap-4">
+            <BlazyDropdown ButtonColor="BlazyButtonColor.Primary">
+                <TriggerContent>Open Card</TriggerContent>
+                <ChildContent>
+                    <div class="card compact w-64 bg-base-100 shadow-sm p-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Card Title</h3>
+                            <p>This dropdown contains a card instead of a menu.</p>
+                        </div>
+                    </div>
+                </ChildContent>
+            </BlazyDropdown>
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private string basicCode = @"<BlazyDropdown>
+    <TriggerContent>Click me</TriggerContent>
+    <ChildContent>
+        <BlazyMenu Class=""w-52 rounded-box bg-base-100 shadow-sm"">
+            <BlazyMenuItem Href=""#"">Item 1</BlazyMenuItem>
+            <BlazyMenuItem Href=""#"">Item 2</BlazyMenuItem>
+        </BlazyMenu>
+    </ChildContent>
+</BlazyDropdown>";
+
+    private string buttonColorsCode = @"<BlazyDropdown ButtonColor=""BlazyButtonColor.Primary"">
+    <TriggerContent>Primary</TriggerContent>
+    <ChildContent>
+        <BlazyMenu Class=""w-52 rounded-box bg-base-100 shadow-sm"">
+            <BlazyMenuItem Href=""#"">Item 1</BlazyMenuItem>
+            <BlazyMenuItem Href=""#"">Item 2</BlazyMenuItem>
+        </BlazyMenu>
+    </ChildContent>
+</BlazyDropdown>
+
+<BlazyDropdown ButtonColor=""BlazyButtonColor.Secondary"">
+    <TriggerContent>Secondary</TriggerContent>
+    ...
+</BlazyDropdown>";
+
+    private string hoverCode = @"<BlazyDropdown Hover=""true"">
+    <TriggerContent>Hover me</TriggerContent>
+    <ChildContent>
+        <BlazyMenu Class=""w-52 rounded-box bg-base-100 shadow-sm"">
+            <BlazyMenuItem Href=""#"">Item 1</BlazyMenuItem>
+            <BlazyMenuItem Href=""#"">Item 2</BlazyMenuItem>
+        </BlazyMenu>
+    </ChildContent>
+</BlazyDropdown>";
+
+    private string forceOpenCode = @"<BlazyDropdown Open=""true"">
+    <TriggerContent>Always Open</TriggerContent>
+    <ChildContent>
+        <BlazyMenu Class=""w-52 rounded-box bg-base-100 shadow-sm"">
+            <BlazyMenuItem Href=""#"">Item 1</BlazyMenuItem>
+            <BlazyMenuItem Href=""#"">Item 2</BlazyMenuItem>
+        </BlazyMenu>
+    </ChildContent>
+</BlazyDropdown>";
+
+    private string cardContentCode = @"<BlazyDropdown ButtonColor=""BlazyButtonColor.Primary"">
+    <TriggerContent>Open Card</TriggerContent>
+    <ChildContent>
+        <div class=""card compact w-64 bg-base-100 shadow-sm p-4"">
+            <div class=""card-body"">
+                <h3 class=""card-title"">Card Title</h3>
+                <p>Custom content inside the dropdown.</p>
+            </div>
+        </div>
+    </ChildContent>
+</BlazyDropdown>";
+}

@@ -25,7 +25,7 @@
 </section>
 
 <section class="mb-8">
-    <h2 class="text-xl font-semibold mb-4">Styles</h2>
+    <h2 class="text-xl font-semibold mb-4">Variants</h2>
     <CodeExample Code="@stylesCode">
         <div class="flex flex-wrap gap-4">
             <BlazyCard Class="w-64 shadow-xl">
@@ -34,13 +34,13 @@
                     <p>Default card style</p>
                 </BlazyCardBody>
             </BlazyCard>
-            <BlazyCard Style="BlazyCardStyle.Border" Class="w-64">
+            <BlazyCard Variant="BlazyCardVariant.Border" Class="w-64">
                 <BlazyCardBody>
                     <BlazyCardTitle>Border</BlazyCardTitle>
                     <p>Card with border style</p>
                 </BlazyCardBody>
             </BlazyCard>
-            <BlazyCard Style="BlazyCardStyle.Dash" Class="w-64">
+            <BlazyCard Variant="BlazyCardVariant.Dash" Class="w-64">
                 <BlazyCardBody>
                     <BlazyCardTitle>Dash</BlazyCardTitle>
                     <p>Card with dashed border</p>
@@ -90,19 +90,19 @@
     <h2 class="text-xl font-semibold mb-4">Card Sizes</h2>
     <CodeExample Code="@sizesCode">
         <div class="flex flex-wrap gap-4">
-            <BlazyCard Size="BlazyCardSize.ExtraSmall" Style="BlazyCardStyle.Border">
+            <BlazyCard Size="BlazyCardSize.ExtraSmall" Variant="BlazyCardVariant.Border">
                 <BlazyCardBody>
                     <BlazyCardTitle>XS Card</BlazyCardTitle>
                     <p>Extra small card</p>
                 </BlazyCardBody>
             </BlazyCard>
-            <BlazyCard Size="BlazyCardSize.Small" Style="BlazyCardStyle.Border">
+            <BlazyCard Size="BlazyCardSize.Small" Variant="BlazyCardVariant.Border">
                 <BlazyCardBody>
                     <BlazyCardTitle>Small Card</BlazyCardTitle>
                     <p>Small card size</p>
                 </BlazyCardBody>
             </BlazyCard>
-            <BlazyCard Style="BlazyCardStyle.Border">
+            <BlazyCard Variant="BlazyCardVariant.Border">
                 <BlazyCardBody>
                     <BlazyCardTitle>Default Card</BlazyCardTitle>
                     <p>Default card size</p>
@@ -116,7 +116,7 @@
     <h2 class="text-xl font-semibold mb-4">Card Actions Alignment</h2>
     <CodeExample Code="@actionsAlignCode">
         <div class="flex flex-wrap gap-4">
-            <BlazyCard Style="BlazyCardStyle.Border" Class="w-64">
+            <BlazyCard Variant="BlazyCardVariant.Border" Class="w-64">
                 <BlazyCardBody>
                     <BlazyCardTitle>Start</BlazyCardTitle>
                     <BlazyCardActions Justify="BlazyCardActionsJustify.Start">
@@ -124,7 +124,7 @@
                     </BlazyCardActions>
                 </BlazyCardBody>
             </BlazyCard>
-            <BlazyCard Style="BlazyCardStyle.Border" Class="w-64">
+            <BlazyCard Variant="BlazyCardVariant.Border" Class="w-64">
                 <BlazyCardBody>
                     <BlazyCardTitle>Center</BlazyCardTitle>
                     <BlazyCardActions Justify="BlazyCardActionsJustify.Center">
@@ -132,7 +132,7 @@
                     </BlazyCardActions>
                 </BlazyCardBody>
             </BlazyCard>
-            <BlazyCard Style="BlazyCardStyle.Border" Class="w-64">
+            <BlazyCard Variant="BlazyCardVariant.Border" Class="w-64">
                 <BlazyCardBody>
                     <BlazyCardTitle>End (Default)</BlazyCardTitle>
                     <BlazyCardActions Justify="BlazyCardActionsJustify.End">
@@ -165,14 +165,14 @@
     </BlazyCardBody>
 </BlazyCard>
 
-<BlazyCard Style=""BlazyCardStyle.Border"" Class=""w-64"">
+<BlazyCard Variant=""BlazyCardVariant.Border"" Class=""w-64"">
     <BlazyCardBody>
         <BlazyCardTitle>Border</BlazyCardTitle>
         <p>Card with border style</p>
     </BlazyCardBody>
 </BlazyCard>
 
-<BlazyCard Style=""BlazyCardStyle.Dash"" Class=""w-64"">
+<BlazyCard Variant=""BlazyCardVariant.Dash"" Class=""w-64"">
     <BlazyCardBody>
         <BlazyCardTitle>Dash</BlazyCardTitle>
         <p>Card with dashed border</p>
@@ -205,28 +205,28 @@
     </BlazyCardBody>
 </BlazyCard>";
 
-    private string sizesCode = @"<BlazyCard Size=""BlazyCardSize.ExtraSmall"" Style=""BlazyCardStyle.Border"">
+    private string sizesCode = @"<BlazyCard Size=""BlazyCardSize.ExtraSmall"" Variant=""BlazyCardVariant.Border"">
     <BlazyCardBody>
         <BlazyCardTitle>XS Card</BlazyCardTitle>
         <p>Extra small card</p>
     </BlazyCardBody>
 </BlazyCard>
 
-<BlazyCard Size=""BlazyCardSize.Small"" Style=""BlazyCardStyle.Border"">
+<BlazyCard Size=""BlazyCardSize.Small"" Variant=""BlazyCardVariant.Border"">
     <BlazyCardBody>
         <BlazyCardTitle>Small Card</BlazyCardTitle>
         <p>Small card size</p>
     </BlazyCardBody>
 </BlazyCard>
 
-<BlazyCard Style=""BlazyCardStyle.Border"">
+<BlazyCard Variant=""BlazyCardVariant.Border"">
     <BlazyCardBody>
         <BlazyCardTitle>Default Card</BlazyCardTitle>
         <p>Default card size</p>
     </BlazyCardBody>
 </BlazyCard>";
 
-    private string actionsAlignCode = @"<BlazyCard Style=""BlazyCardStyle.Border"" Class=""w-64"">
+    private string actionsAlignCode = @"<BlazyCard Variant=""BlazyCardVariant.Border"" Class=""w-64"">
     <BlazyCardBody>
         <BlazyCardTitle>Start</BlazyCardTitle>
         <BlazyCardActions Justify=""BlazyCardActionsJustify.Start"">
@@ -235,7 +235,7 @@
     </BlazyCardBody>
 </BlazyCard>
 
-<BlazyCard Style=""BlazyCardStyle.Border"" Class=""w-64"">
+<BlazyCard Variant=""BlazyCardVariant.Border"" Class=""w-64"">
     <BlazyCardBody>
         <BlazyCardTitle>Center</BlazyCardTitle>
         <BlazyCardActions Justify=""BlazyCardActionsJustify.Center"">
@@ -244,7 +244,7 @@
     </BlazyCardBody>
 </BlazyCard>
 
-<BlazyCard Style=""BlazyCardStyle.Border"" Class=""w-64"">
+<BlazyCard Variant=""BlazyCardVariant.Border"" Class=""w-64"">
     <BlazyCardBody>
         <BlazyCardTitle>End (Default)</BlazyCardTitle>
         <BlazyCardActions Justify=""BlazyCardActionsJustify.End"">

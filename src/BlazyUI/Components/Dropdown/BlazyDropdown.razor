@@ -1,0 +1,73 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<BlazyButton @attributes="AdditionalAttributes"
+             Color="@ButtonColor"
+             Size="@ButtonSize"
+             Variant="@ButtonVariant"
+             popovertarget="@_id"
+             style="@_triggerStyle">
+    @TriggerContent
+</BlazyButton>
+
+<div class="@ContentCssClass"
+     popover
+     id="@_id"
+     style="@_contentStyle">
+    @ChildContent
+</div>
+
+@code {
+    private readonly string _id = $"blazy-dd-{Guid.NewGuid().ToString("N")[..8]}";
+    private string _triggerStyle => $"anchor-name: --{_id}";
+    private string _contentStyle => $"position-anchor: --{_id}";
+
+    /// <summary>
+    /// The color variant of the trigger button.
+    /// </summary>
+    [Parameter]
+    public BlazyButtonColor ButtonColor { get; set; } = BlazyButtonColor.Default;
+
+    /// <summary>
+    /// The size of the trigger button.
+    /// </summary>
+    [Parameter]
+    public BlazyButtonSize ButtonSize { get; set; } = BlazyButtonSize.Medium;
+
+    /// <summary>
+    /// The visual variant of the trigger button.
+    /// </summary>
+    [Parameter]
+    public BlazyButtonVariant ButtonVariant { get; set; } = BlazyButtonVariant.Default;
+
+    /// <summary>
+    /// Whether the dropdown also opens on hover.
+    /// </summary>
+    [Parameter]
+    public bool Hover { get; set; }
+
+    /// <summary>
+    /// Force the dropdown open (true), closed (false), or use default toggle behavior (null).
+    /// </summary>
+    [Parameter]
+    public bool? Open { get; set; }
+
+    /// <summary>
+    /// The content to display inside the trigger button.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? TriggerContent { get; set; }
+
+    /// <summary>
+    /// The content to display inside the dropdown panel.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string ContentCssClass => MergeClasses(
+        "dropdown",
+        Hover ? "dropdown-hover" : null,
+        Open == true ? "dropdown-open" : null,
+        Open == false ? "dropdown-close" : null
+    );
+}

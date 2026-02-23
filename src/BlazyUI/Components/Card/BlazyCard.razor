@@ -13,10 +13,10 @@
     public BlazyCardSize Size { get; set; } = BlazyCardSize.Medium;
 
     /// <summary>
-    /// The style variant of the card.
+    /// The visual variant of the card.
     /// </summary>
     [Parameter]
-    public BlazyCardStyle Style { get; set; } = BlazyCardStyle.Default;
+    public BlazyCardVariant Variant { get; set; } = BlazyCardVariant.Default;
 
     /// <summary>
     /// Displays the card horizontally with image on the side.
@@ -40,7 +40,7 @@
         "card",
         "bg-base-100",
         SizeClass,
-        StyleClass,
+        VariantClass,
         Side ? "card-side" : null,
         ImageFull ? "image-full" : null
     );
@@ -55,11 +55,11 @@
         _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
     };
 
-    private string? StyleClass => Style switch
+    private string? VariantClass => Variant switch
     {
-        BlazyCardStyle.Default => null,
-        BlazyCardStyle.Border => "card-border",
-        BlazyCardStyle.Dash => "card-dash",
-        _ => throw new ArgumentOutOfRangeException(nameof(Style), Style, null)
+        BlazyCardVariant.Default => null,
+        BlazyCardVariant.Border => "card-border",
+        BlazyCardVariant.Dash => "card-dash",
+        _ => throw new ArgumentOutOfRangeException(nameof(Variant), Variant, null)
     };
 }

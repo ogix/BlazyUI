@@ -44,14 +44,14 @@
 </section>
 
 <section class="mb-8">
-    <h2 class="text-xl font-semibold mb-4">Styles</h2>
+    <h2 class="text-xl font-semibold mb-4">Variants</h2>
     <CodeExample Code="@stylesCode">
         <div class="flex flex-wrap gap-4">
             <BlazyBadge Color="BlazyBadgeColor.Primary">Default</BlazyBadge>
-            <BlazyBadge Color="BlazyBadgeColor.Primary" Style="BlazyBadgeStyle.Outline">Outline</BlazyBadge>
-            <BlazyBadge Color="BlazyBadgeColor.Primary" Style="BlazyBadgeStyle.Dash">Dash</BlazyBadge>
-            <BlazyBadge Color="BlazyBadgeColor.Primary" Style="BlazyBadgeStyle.Soft">Soft</BlazyBadge>
-            <BlazyBadge Color="BlazyBadgeColor.Primary" Style="BlazyBadgeStyle.Ghost">Ghost</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Primary" Variant="BlazyBadgeVariant.Outline">Outline</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Primary" Variant="BlazyBadgeVariant.Dash">Dash</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Primary" Variant="BlazyBadgeVariant.Soft">Soft</BlazyBadge>
+            <BlazyBadge Color="BlazyBadgeColor.Primary" Variant="BlazyBadgeVariant.Ghost">Ghost</BlazyBadge>
         </div>
     </CodeExample>
 </section>
@@ -78,7 +78,7 @@
             </BlazyButton>
             <BlazyButton Color="BlazyButtonColor.Primary">
                 Messages
-                <BlazyBadge Style="BlazyBadgeStyle.Outline">New</BlazyBadge>
+                <BlazyBadge Variant="BlazyBadgeVariant.Outline">New</BlazyBadge>
             </BlazyButton>
         </div>
     </CodeExample>
@@ -104,10 +104,10 @@
 <BlazyBadge Size=""BlazyBadgeSize.ExtraLarge"">XL</BlazyBadge>";
 
     private string stylesCode = @"<BlazyBadge Color=""BlazyBadgeColor.Primary"">Default</BlazyBadge>
-<BlazyBadge Color=""BlazyBadgeColor.Primary"" Style=""BlazyBadgeStyle.Outline"">Outline</BlazyBadge>
-<BlazyBadge Color=""BlazyBadgeColor.Primary"" Style=""BlazyBadgeStyle.Dash"">Dash</BlazyBadge>
-<BlazyBadge Color=""BlazyBadgeColor.Primary"" Style=""BlazyBadgeStyle.Soft"">Soft</BlazyBadge>
-<BlazyBadge Color=""BlazyBadgeColor.Primary"" Style=""BlazyBadgeStyle.Ghost"">Ghost</BlazyBadge>";
+<BlazyBadge Color=""BlazyBadgeColor.Primary"" Variant=""BlazyBadgeVariant.Outline"">Outline</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Primary"" Variant=""BlazyBadgeVariant.Dash"">Dash</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Primary"" Variant=""BlazyBadgeVariant.Soft"">Soft</BlazyBadge>
+<BlazyBadge Color=""BlazyBadgeColor.Primary"" Variant=""BlazyBadgeVariant.Ghost"">Ghost</BlazyBadge>";
 
     private string inTextCode = @"<h2>
     Inbox
@@ -120,6 +120,6 @@
 </BlazyButton>
 <BlazyButton Color=""BlazyButtonColor.Primary"">
     Messages
-    <BlazyBadge Style=""BlazyBadgeStyle.Outline"">New</BlazyBadge>
+    <BlazyBadge Variant=""BlazyBadgeVariant.Outline"">New</BlazyBadge>
 </BlazyButton>";
 }

@@ -22,7 +22,7 @@
     /// The style variant of the badge.
     /// </summary>
     [Parameter]
-    public BlazyBadgeStyle Style { get; set; } = BlazyBadgeStyle.Default;
+    public BlazyBadgeVariant Variant { get; set; } = BlazyBadgeVariant.Default;
 
     /// <summary>
     /// The content to display inside the badge.
@@ -34,7 +34,7 @@
         "badge",
         ColorClass,
         SizeClass,
-        StyleClass
+        VariantClass
     );
 
     private string? ColorClass => Color switch
@@ -61,13 +61,13 @@
         _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
     };
 
-    private string? StyleClass => Style switch
+    private string? VariantClass => Variant switch
     {
-        BlazyBadgeStyle.Default => null,
-        BlazyBadgeStyle.Outline => "badge-outline",
-        BlazyBadgeStyle.Dash => "badge-dash",
-        BlazyBadgeStyle.Soft => "badge-soft",
-        BlazyBadgeStyle.Ghost => "badge-ghost",
-        _ => throw new ArgumentOutOfRangeException(nameof(Style), Style, null)
+        BlazyBadgeVariant.Default => null,
+        BlazyBadgeVariant.Outline => "badge-outline",
+        BlazyBadgeVariant.Dash => "badge-dash",
+        BlazyBadgeVariant.Soft => "badge-soft",
+        BlazyBadgeVariant.Ghost => "badge-ghost",
+        _ => throw new ArgumentOutOfRangeException(nameof(Variant), Variant, null)
     };
 }

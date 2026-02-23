@@ -1,9 +1,9 @@
 namespace BlazyUI;
 
 /// <summary>
-/// Style variants for the Alert component.
+/// Visual variants for the Alert component.
 /// </summary>
-public enum BlazyAlertStyle
+public enum BlazyAlertVariant
 {
     /// <summary>Solid fill (default styling).</summary>
     Default,

@@ -1,9 +1,9 @@
 namespace BlazyUI;
 
 /// <summary>
-/// Style variants for the Card component.
+/// Visual variants for the Card component.
 /// </summary>
-public enum BlazyCardStyle
+public enum BlazyCardVariant
 {
     /// <summary>No style modifier (default styling).</summary>
     Default,

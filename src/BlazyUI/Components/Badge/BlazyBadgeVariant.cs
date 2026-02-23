@@ -1,9 +1,9 @@
 namespace BlazyUI;
 
 /// <summary>
-/// Style variants for the Badge component.
+/// Visual variants for the Badge component.
 /// </summary>
-public enum BlazyBadgeStyle
+public enum BlazyBadgeVariant
 {
     /// <summary>No style modifier (default styling).</summary>
     Default,

@@ -34,6 +34,7 @@ $ComponentDescriptions = @{
     "DateInput"      = "Date/time input supporting DateTime, DateOnly, TimeOnly types"
     "Collapse"       = "Single collapsible panel for show/hide content"
     "Divider"        = "Visual separator between content sections"
+    "Dropdown"       = "Popover-based dropdown menu with position and alignment control"
     "Drawer"         = "Off-canvas sidebar navigation panel"
     "Fieldset"       = "Form field grouping with legend support"
     "FieldValidator" = "Validation message display for form fields"
@@ -71,7 +72,7 @@ $ComponentCategories = @{
     "Layout" = @("Card", "Accordion", "Collapse", "Divider", "Drawer", "Join", "NavBar", "Tabs", "Timeline")
     "Form Inputs" = @("TextInput", "Textarea", "Select", "Checkbox", "CheckboxGroup", "Radio", "Toggle", "Range", "Rating", "FileInput", "DateInput", "NumberInput", "Fieldset", "FormField", "Label", "FieldValidator")
     "Visual/Feedback" = @("Alert", "Badge", "Button", "Loading", "Progress", "Skeleton", "Stat", "Status", "Tooltip", "Kbd", "Indicator")
-    "Dialogs/Overlays" = @("Modal", "Toast")
+    "Dialogs/Overlays" = @("Dropdown", "Modal", "Toast")
     "Navigation" = @("Menu", "Steps")
 }
 

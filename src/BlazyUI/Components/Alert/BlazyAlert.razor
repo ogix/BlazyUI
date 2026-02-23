@@ -14,10 +14,10 @@
     public BlazyAlertColor Color { get; set; } = BlazyAlertColor.Default;
 
     /// <summary>
-    /// The style variant of the alert.
+    /// The visual variant of the alert.
     /// </summary>
     [Parameter]
-    public BlazyAlertStyle Style { get; set; } = BlazyAlertStyle.Default;
+    public BlazyAlertVariant Variant { get; set; } = BlazyAlertVariant.Default;
 
     /// <summary>
     /// The layout direction of the alert.
@@ -40,7 +40,7 @@
     private string CssClass => MergeClasses(
         "alert",
         ColorClass,
-        StyleClass,
+        VariantClass,
         LayoutClass
     );
 
@@ -54,13 +54,13 @@
         _ => throw new ArgumentOutOfRangeException(nameof(Color), Color, null)
     };
 
-    private string? StyleClass => Style switch
+    private string? VariantClass => Variant switch
     {
-        BlazyAlertStyle.Default => null,
-        BlazyAlertStyle.Outline => "alert-outline",
-        BlazyAlertStyle.Dash => "alert-dash",
-        BlazyAlertStyle.Soft => "alert-soft",
-        _ => throw new ArgumentOutOfRangeException(nameof(Style), Style, null)
+        BlazyAlertVariant.Default => null,
+        BlazyAlertVariant.Outline => "alert-outline",
+        BlazyAlertVariant.Dash => "alert-dash",
+        BlazyAlertVariant.Soft => "alert-soft",
+        _ => throw new ArgumentOutOfRangeException(nameof(Variant), Variant, null)
     };
 
     private string? LayoutClass => Layout switch

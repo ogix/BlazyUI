@@ -6,7 +6,7 @@
     <div class="toast @GetPositionClasses(positionGroup.Key) z-[1000]">
         @foreach (var toast in positionGroup)
         {
-            <BlazyAlert Color="@GetBlazyAlertColor(toast.Type)" Style="@toast.Options.Style">
+            <BlazyAlert Color="@GetBlazyAlertColor(toast.Type)" Variant="@toast.Options.Variant">
                 <Icon>
                     @switch (toast.Type)
                     {
@@ -28,7 +28,7 @@
                     <span>@toast.Message</span>
                     @if (toast.Options.ShowCloseButton)
                     {
-                        <BlazyButton Size="BlazyButtonSize.Small" Style="BlazyButtonStyle.Ghost" OnClick="() => Remove(toast.Id)">
+                        <BlazyButton Size="BlazyButtonSize.Small" Variant="BlazyButtonVariant.Ghost" OnClick="() => Remove(toast.Id)">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>

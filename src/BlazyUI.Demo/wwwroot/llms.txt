@@ -70,6 +70,7 @@
 
 ## Components - Dialogs/Overlays
 
+- [BlazyDropdown](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Dropdown/BlazyDropdown.razor): Popover-based dropdown menu with position and alignment control
 - [BlazyModal](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Modal/BlazyModal.razor): Dialog windows via IModalService
 - [BlazyToast](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Toast/BlazyToast.razor): Toast notifications via IToastService
 

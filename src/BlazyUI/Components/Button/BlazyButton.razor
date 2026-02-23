@@ -48,10 +48,10 @@ else
     public BlazyButtonSize Size { get; set; } = BlazyButtonSize.Medium;
 
     /// <summary>
-    /// The style variant of the button.
+    /// The visual variant of the button.
     /// </summary>
     [Parameter]
-    public BlazyButtonStyle Style { get; set; } = BlazyButtonStyle.Default;
+    public BlazyButtonVariant Variant { get; set; } = BlazyButtonVariant.Default;
 
     /// <summary>
     /// Makes the button wider than normal.
@@ -133,7 +133,7 @@ else
         "btn",
         ColorClass,
         SizeClass,
-        StyleClass,
+        VariantClass,
         Wide ? "btn-wide" : null,
         Block ? "btn-block" : null,
         Square ? "btn-square" : null,
@@ -174,14 +174,14 @@ else
         _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
     };
 
-    private string? StyleClass => Style switch
+    private string? VariantClass => Variant switch
     {
-        BlazyButtonStyle.Default => null,
-        BlazyButtonStyle.Outline => "btn-outline",
-        BlazyButtonStyle.Dash => "btn-dash",
-        BlazyButtonStyle.Soft => "btn-soft",
-        BlazyButtonStyle.Ghost => "btn-ghost",
-        BlazyButtonStyle.Link => "btn-link",
-        _ => throw new ArgumentOutOfRangeException(nameof(Style), Style, null)
+        BlazyButtonVariant.Default => null,
+        BlazyButtonVariant.Outline => "btn-outline",
+        BlazyButtonVariant.Dash => "btn-dash",
+        BlazyButtonVariant.Soft => "btn-soft",
+        BlazyButtonVariant.Ghost => "btn-ghost",
+        BlazyButtonVariant.Link => "btn-link",
+        _ => throw new ArgumentOutOfRangeException(nameof(Variant), Variant, null)
     };
 }
