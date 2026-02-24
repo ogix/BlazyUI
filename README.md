@@ -14,7 +14,7 @@ BlazyUI provides strongly-typed Blazor components built on top of [DaisyUI](http
 
 ## Features
 
-- **34+ Strongly-Typed Components** - Full IntelliSense and compile-time safety
+- **40+ Strongly-Typed Components** - Full IntelliSense and compile-time safety
 - **Light/Dark Theme Support** - Built-in DaisyUI theming with easy switching
 - **EditForm Integration** - Input components work seamlessly with Blazor validation
 - **TailwindMerge** - Intelligent class conflict resolution for custom styling
@@ -97,12 +97,16 @@ In your `MainLayout.razor` or `App.razor`:
 - **BlazyTextarea** - Multi-line text input
 - **BlazySelect** - Dropdown selection
 - **BlazyCheckbox** - Boolean input
+- **BlazyCheckboxGroup** - Group of checkboxes with multi-select binding
 - **BlazyRadio** - Single selection from options
 - **BlazyToggle** - Switch input
 - **BlazyRange** - Slider input
 - **BlazyRating** - Star rating input
+- **BlazyNumberInput** - Numeric input with validation
+- **BlazyDateInput** - Date input with validation
 - **BlazyFileInput** - File upload input
 - **BlazyFieldset** - Form field grouping
+- **BlazyFormField** - Form field with label, hint, and validation
 - **BlazyLabel** - Form field labels
 
 ### Visual & Feedback
@@ -120,11 +124,13 @@ In your `MainLayout.razor` or `App.razor`:
 - **BlazyTimeline** - Chronological events
 
 ### Dialogs & Overlays
+- **BlazyDropdown** - Dropdown menu using the Popover API
 - **BlazyModalProvider** - Dialog windows (via `IBlazyModalService`)
 - **BlazyToastProvider** - Toast notifications (via `IBlazyToastService`)
 
 ### Navigation
 - **BlazyMenu** - Vertical menu with items and dropdowns
+- **BlazySteps** - Step-based navigation
 
 ## Usage Examples
 
@@ -132,7 +138,7 @@ In your `MainLayout.razor` or `App.razor`:
 
 ```razor
 <BlazyButton Color="BlazyButtonColor.Primary">Primary</BlazyButton>
-<BlazyButton Color="BlazyButtonColor.Secondary" Style="BlazyButtonStyle.Outline">Outline</BlazyButton>
+<BlazyButton Color="BlazyButtonColor.Secondary" Variant="BlazyButtonVariant.Outline">Outline</BlazyButton>
 <BlazyButton Color="BlazyButtonColor.Accent" Size="BlazyButtonSize.Large">Large</BlazyButton>
 <BlazyButton Loading="true">Loading...</BlazyButton>
 ```
