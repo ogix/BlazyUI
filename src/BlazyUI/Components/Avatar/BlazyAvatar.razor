@@ -47,6 +47,12 @@
     public BlazyAvatarStatus Status { get; set; } = BlazyAvatarStatus.Default;
 
     /// <summary>
+    /// Additional CSS classes to apply to the inner wrapper div (the one with size/shape classes).
+    /// </summary>
+    [Parameter]
+    public string? InnerClass { get; set; }
+
+    /// <summary>
     /// The content to display inside the avatar when no Src is provided (placeholder mode).
     /// </summary>
     [Parameter]
@@ -63,7 +69,8 @@
     private string InnerCssClass => TwMerge.Merge(
         SizeClass,
         ShapeClass,
-        IsPlaceholder ? "bg-neutral text-neutral-content" : null
+        IsPlaceholder ? "bg-neutral text-neutral-content" : null,
+        InnerClass
     ) ?? string.Empty;
 
     private string? StatusClass => Status switch
