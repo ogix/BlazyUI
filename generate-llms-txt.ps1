@@ -26,6 +26,7 @@ $OutputPath = "src/BlazyUI.Demo/wwwroot/llms.txt"
 $ComponentDescriptions = @{
     "Accordion"      = "Collapsible content sections with expandable panels"
     "Alert"          = "Contextual feedback messages with color variants"
+    "Avatar"         = "User profile images and placeholder initials with status indicators"
     "Badge"          = "Small status indicators and labels"
     "Button"         = "Interactive buttons with colors, sizes, and states"
     "Card"           = "Container with header, body, and action sections"
@@ -71,7 +72,7 @@ $ComponentDescriptions = @{
 $ComponentCategories = @{
     "Layout" = @("Card", "Accordion", "Collapse", "Divider", "Drawer", "Join", "NavBar", "Tabs", "Timeline")
     "Form Inputs" = @("TextInput", "Textarea", "Select", "Checkbox", "CheckboxGroup", "Radio", "Toggle", "Range", "Rating", "FileInput", "DateInput", "NumberInput", "Fieldset", "FormField", "Label", "FieldValidator")
-    "Visual/Feedback" = @("Alert", "Badge", "Button", "Loading", "Progress", "Skeleton", "Stat", "Status", "Tooltip", "Kbd", "Indicator")
+    "Visual/Feedback" = @("Alert", "Avatar", "Badge", "Button", "Loading", "Progress", "Skeleton", "Stat", "Status", "Tooltip", "Kbd", "Indicator")
     "Dialogs/Overlays" = @("Dropdown", "Modal", "Toast")
     "Navigation" = @("Menu", "Steps")
 }

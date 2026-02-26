@@ -1,0 +1,19 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="@CssClass" @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    /// <summary>
+    /// The avatar components to display in the group.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private string CssClass => MergeClasses(
+        "avatar-group",
+        "-space-x-6"
+    );
+}

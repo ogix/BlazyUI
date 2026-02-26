@@ -1,0 +1,127 @@
+@page "/avatars"
+
+<PageTitle>Avatars</PageTitle>
+
+<h1 class="text-3xl font-bold mb-6">Avatar Component</h1>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Basic</h2>
+    <CodeExample Code="@basicCode">
+        <div class="flex flex-wrap gap-4">
+            <BlazyAvatar Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="Avatar" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Sizes</h2>
+    <CodeExample Code="@sizesCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <BlazyAvatar Size="BlazyAvatarSize.ExtraSmall" Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="XS" />
+            <BlazyAvatar Size="BlazyAvatarSize.Small" Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="SM" />
+            <BlazyAvatar Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="MD" />
+            <BlazyAvatar Size="BlazyAvatarSize.Large" Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="LG" />
+            <BlazyAvatar Size="BlazyAvatarSize.ExtraLarge" Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="XL" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Shapes</h2>
+    <CodeExample Code="@shapesCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <BlazyAvatar Shape="BlazyAvatarShape.Circle" Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="Circle" />
+            <BlazyAvatar Shape="BlazyAvatarShape.Rounded" Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="Rounded" />
+            <BlazyAvatar Shape="BlazyAvatarShape.Squircle" Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="Squircle" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Status</h2>
+    <CodeExample Code="@statusCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <BlazyAvatar Status="BlazyAvatarStatus.Online" Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="Online" />
+            <BlazyAvatar Status="BlazyAvatarStatus.Offline" Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="Offline" />
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Placeholder</h2>
+    <CodeExample Code="@placeholderCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <BlazyAvatar Size="BlazyAvatarSize.Large">
+                <span class="text-3xl">D</span>
+            </BlazyAvatar>
+            <BlazyAvatar>
+                <span class="text-xl">AB</span>
+            </BlazyAvatar>
+            <BlazyAvatar Size="BlazyAvatarSize.Small">
+                <span>C</span>
+            </BlazyAvatar>
+        </div>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Avatar Group</h2>
+    <CodeExample Code="@groupCode">
+        <BlazyAvatarGroup>
+            <BlazyAvatar Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="User 1" />
+            <BlazyAvatar Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="User 2" />
+            <BlazyAvatar Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="User 3" />
+            <BlazyAvatar>
+                <span>+99</span>
+            </BlazyAvatar>
+        </BlazyAvatarGroup>
+    </CodeExample>
+</section>
+
+<section class="mb-8">
+    <h2 class="text-xl font-semibold mb-4">Ring</h2>
+    <CodeExample Code="@ringCode">
+        <div class="flex flex-wrap items-center gap-4">
+            <BlazyAvatar Class="ring-primary ring-offset-base-100 ring ring-offset-2" Src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" Alt="Ring" />
+        </div>
+    </CodeExample>
+</section>
+
+@code {
+    private string basicCode = @"<BlazyAvatar Src=""https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"" Alt=""Avatar"" />";
+
+    private string sizesCode = @"<BlazyAvatar Size=""BlazyAvatarSize.ExtraSmall"" Src=""..."" Alt=""XS"" />
+<BlazyAvatar Size=""BlazyAvatarSize.Small"" Src=""..."" Alt=""SM"" />
+<BlazyAvatar Src=""..."" Alt=""MD"" />
+<BlazyAvatar Size=""BlazyAvatarSize.Large"" Src=""..."" Alt=""LG"" />
+<BlazyAvatar Size=""BlazyAvatarSize.ExtraLarge"" Src=""..."" Alt=""XL"" />";
+
+    private string shapesCode = @"<BlazyAvatar Shape=""BlazyAvatarShape.Circle"" Src=""..."" Alt=""Circle"" />
+<BlazyAvatar Shape=""BlazyAvatarShape.Rounded"" Src=""..."" Alt=""Rounded"" />
+<BlazyAvatar Shape=""BlazyAvatarShape.Squircle"" Src=""..."" Alt=""Squircle"" />";
+
+    private string statusCode = @"<BlazyAvatar Status=""BlazyAvatarStatus.Online"" Src=""..."" Alt=""Online"" />
+<BlazyAvatar Status=""BlazyAvatarStatus.Offline"" Src=""..."" Alt=""Offline"" />";
+
+    private string placeholderCode = @"<BlazyAvatar Size=""BlazyAvatarSize.Large"">
+    <span class=""text-3xl"">D</span>
+</BlazyAvatar>
+<BlazyAvatar>
+    <span class=""text-xl"">AB</span>
+</BlazyAvatar>
+<BlazyAvatar Size=""BlazyAvatarSize.Small"">
+    <span>C</span>
+</BlazyAvatar>";
+
+    private string groupCode = @"<BlazyAvatarGroup>
+    <BlazyAvatar Src=""..."" Alt=""User 1"" />
+    <BlazyAvatar Src=""..."" Alt=""User 2"" />
+    <BlazyAvatar Src=""..."" Alt=""User 3"" />
+    <BlazyAvatar>
+        <span>+99</span>
+    </BlazyAvatar>
+</BlazyAvatarGroup>";
+
+    private string ringCode = @"<BlazyAvatar Class=""ring-primary ring-offset-base-100 ring ring-offset-2""
+             Src=""..."" Alt=""Ring"" />";
+}

@@ -1,0 +1,94 @@
+@namespace BlazyUI
+@inherits BlazyComponentBase
+
+<div class="@CssClass" @attributes="AdditionalAttributes">
+    <div class="@InnerCssClass">
+        @if (!string.IsNullOrEmpty(Src))
+        {
+            <img src="@Src" alt="@Alt" />
+        }
+        else
+        {
+            @ChildContent
+        }
+    </div>
+</div>
+
+@code {
+    /// <summary>
+    /// The image source URL. When provided, renders an img element.
+    /// When not provided, renders ChildContent as a placeholder.
+    /// </summary>
+    [Parameter]
+    public string? Src { get; set; }
+
+    /// <summary>
+    /// Alt text for the avatar image.
+    /// </summary>
+    [Parameter]
+    public string? Alt { get; set; }
+
+    /// <summary>
+    /// The size of the avatar.
+    /// </summary>
+    [Parameter]
+    public BlazyAvatarSize Size { get; set; } = BlazyAvatarSize.Medium;
+
+    /// <summary>
+    /// The shape of the avatar.
+    /// </summary>
+    [Parameter]
+    public BlazyAvatarShape Shape { get; set; } = BlazyAvatarShape.Circle;
+
+    /// <summary>
+    /// The status indicator for the avatar.
+    /// </summary>
+    [Parameter]
+    public BlazyAvatarStatus Status { get; set; } = BlazyAvatarStatus.Default;
+
+    /// <summary>
+    /// The content to display inside the avatar when no Src is provided (placeholder mode).
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private bool IsPlaceholder => string.IsNullOrEmpty(Src);
+
+    private string CssClass => MergeClasses(
+        "avatar",
+        StatusClass,
+        IsPlaceholder ? "avatar-placeholder" : null
+    );
+
+    private string InnerCssClass => TwMerge.Merge(
+        SizeClass,
+        ShapeClass,
+        IsPlaceholder ? "bg-neutral text-neutral-content" : null
+    ) ?? string.Empty;
+
+    private string? StatusClass => Status switch
+    {
+        BlazyAvatarStatus.Default => null,
+        BlazyAvatarStatus.Online => "avatar-online",
+        BlazyAvatarStatus.Offline => "avatar-offline",
+        _ => throw new ArgumentOutOfRangeException(nameof(Status), Status, null)
+    };
+
+    private string SizeClass => Size switch
+    {
+        BlazyAvatarSize.ExtraSmall => "w-8",
+        BlazyAvatarSize.Small => "w-12",
+        BlazyAvatarSize.Medium => "w-16",
+        BlazyAvatarSize.Large => "w-24",
+        BlazyAvatarSize.ExtraLarge => "w-32",
+        _ => throw new ArgumentOutOfRangeException(nameof(Size), Size, null)
+    };
+
+    private string ShapeClass => Shape switch
+    {
+        BlazyAvatarShape.Circle => "rounded-full",
+        BlazyAvatarShape.Rounded => "rounded-xl",
+        BlazyAvatarShape.Squircle => "mask mask-squircle",
+        _ => throw new ArgumentOutOfRangeException(nameof(Shape), Shape, null)
+    };
+}

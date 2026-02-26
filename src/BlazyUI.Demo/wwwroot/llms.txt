@@ -56,6 +56,7 @@
 ## Components - Visual/Feedback
 
 - [BlazyAlert](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Alert/BlazyAlert.razor): Contextual feedback messages with color variants
+- [BlazyAvatar](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Avatar/BlazyAvatar.razor): User profile images and placeholder initials with status indicators
 - [BlazyBadge](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Badge/BlazyBadge.razor): Small status indicators and labels
 - [BlazyButton](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Button/BlazyButton.razor): Interactive buttons with colors, sizes, and states
 - [BlazyIndicator](https://raw.githubusercontent.com/ogix/BlazyUI/refs/heads/main/src/BlazyUI/Components/Indicator/BlazyIndicator.razor): Notification badge overlay for elements
